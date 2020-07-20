@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckArchiveEditor : MonoBehaviour
+public class StratagemCardEditor : CardEditor
 {
     // Start is called before the first frame update
     void Start()

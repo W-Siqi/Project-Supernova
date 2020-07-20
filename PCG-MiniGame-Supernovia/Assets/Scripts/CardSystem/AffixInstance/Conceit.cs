@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KindomDeckEditor : MonoBehaviour
+// 自负： 如果策略没有被采纳，会减少忠诚度
+public class Conceit : CharacterAffix
 {
     // Start is called before the first frame update
     void Start()

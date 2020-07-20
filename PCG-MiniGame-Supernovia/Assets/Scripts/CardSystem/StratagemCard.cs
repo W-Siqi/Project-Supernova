@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StratagemCard
+public class StratagemCard:Card
 {
-    public string name;
+    public bool bindToCharacter = false;
+    public string bindedCharacterName = "";
 }

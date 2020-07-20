@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81eaa1a3492e144c904528730d703e8, type: 3}
+  m_Name: DeckArchive
+  m_EditorClassIdentifier: 
+  characterCards:
+  - name: name
+    avatarImagePath: Assets/External/ccg_styles/lava_style/back_(lava)/back_(lava).PSD
+    attributes:
+      competent: 0
+      loyal: 0
+      shrewdness: 0
+  - name: name
+    avatarImagePath: 
+    attributes:
+      competent: 0
+      loyal: 0
+      shrewdness: 0
+  eventCards:
+  - name: name
+    avatarImagePath: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenterGeo.psd
+    discruption: this is a event, somthing happened
+  - name: name
+    avatarImagePath: 
+    discruption: this is a event, somthing happened
+  - name: name
+    avatarImagePath: 
+    discruption: this is a event, somthing happened
+  - name: name
+    avatarImagePath: 
+    discruption: this is a event, somthing happened
+  - name: name
+    avatarImagePath: 
+    discruption: this is a event, somthing happened
+  stratagemCards:
+  - name: name
+    avatarImagePath: 
+    bindToCharacter: 0
+    bindedCharacterName: 
+  - name: name
+    avatarImagePath: 
+    bindToCharacter: 0
+    bindedCharacterName: 
+  - name: name
+    avatarImagePath: 
+    bindToCharacter: 0
+    bindedCharacterName: 
+  - name: name
+    avatarImagePath: Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP -
+      Sprite Asset Icon.psd
+    bindToCharacter: 0
+    bindedCharacterName: 
+  - name: name
+    avatarImagePath: 
+    bindToCharacter: 0
+    bindedCharacterName: 
