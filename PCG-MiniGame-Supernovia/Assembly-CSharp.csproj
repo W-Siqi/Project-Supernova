@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Viewers\StratagemViewer.cs" />
     <Compile Include="Assets\Scripts\Wrapper\RTSCamWrapper.cs" />
     <None Include="Assets\External\Local\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\External\2D Fantasy Art Assets Full Pack\readme.txt" />
     <None Include="Assets\External\RTS_Camera\Demo\Projectors\Guidelines.txt" />
     <None Include="Assets\External\Local\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\External\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
