@@ -15,6 +15,5 @@ public class CharacterCard : Card
 
     public Attributes attributes = new Attributes();
     public Deck<StratagemCard> deck = new Deck<StratagemCard>();
-    public List<CharacterAffix> characterAffixes = new List<CharacterAffix>();
     public List<Qualifier> qualifiers;
 }
