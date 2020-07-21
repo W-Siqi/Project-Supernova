@@ -5,15 +5,24 @@ using UnityEngine;
 
 public abstract class  CharacterAffix
 {
-    public string titleName = "default affix";
+    public string name {
+        get {
+            var titleNameAttribute = (AffixTitleName) Attribute.GetCustomAttribute(this.GetType(), typeof(AffixTitleName));
+            if (titleNameAttribute != null) {
+                return titleNameAttribute.name;
+            }
+
+            return this.GetType().Name;
+        }
+    }
 }
 
 
 [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
-public class AffixDisplayName : Attribute {
-    private string name;
+public class AffixTitleName : Attribute {
+    public string name;
 
-    public AffixDisplayName(string name)
+    public AffixTitleName(string name)
     {
         this.name = name;
     }

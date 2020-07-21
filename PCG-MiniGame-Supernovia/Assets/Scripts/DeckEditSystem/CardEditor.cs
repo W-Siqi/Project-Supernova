@@ -56,11 +56,11 @@ public abstract class CardEditor : EditorWindow
         EditorGUILayout.EndHorizontal();
     }
 
-    private void OnEnable() {
+    protected virtual void OnEnable() {
         defaultAvatarImg = new Texture2D(100,100);
     }
 
-    private void OnDisable() {
+    protected virtual void OnDisable() {
         EditorUtility.SetDirty(DeckArchive.instance);
         AssetDatabase.Refresh();
         openingWindows.Remove(editTarget);

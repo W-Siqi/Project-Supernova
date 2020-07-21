@@ -16,6 +16,8 @@ public class DeckArchive : ScriptableObject {
     public List<CharacterCard> characterCards = new List<CharacterCard>();
     public List<EventCard> eventCards = new List<EventCard>();
     public List<StratagemCard> stratagemCards = new List<StratagemCard>();
+    public QualifierLibrary characterQualifierLib= new QualifierLibrary();
+    public QualifierLibrary environmentQualifierLib = new QualifierLibrary();
 
     public static DeckArchive instance {
         get {
