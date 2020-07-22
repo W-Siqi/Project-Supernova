@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [System.Serializable]
-public abstract class Card
-{
+public abstract class Card {
     public string name = "name";
     private static Texture2D defaultImage = null;
 
@@ -35,3 +34,4 @@ public abstract class Card
         loadedAvatarImage = AssetDatabase.LoadAssetAtPath<Texture2D>(avatarImagePath);
     }
 }
+

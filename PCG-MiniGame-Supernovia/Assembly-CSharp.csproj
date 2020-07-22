@@ -74,6 +74,113 @@
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\Inventory.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\Inventory_ChangeItem.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\Inventory_UIItem.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\Inventory_UIItemList.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\InventoryItem.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\ItemDefinitions.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Quests\Scripts\Quest_UIItem.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Quests\Scripts\Quest_UIList.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Quests\Scripts\QuestDefinition.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Quests\Scripts\Quests.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\HistoryEvent.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\Timeline.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\Timeline_UIEventList.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\Timeline_UIItem.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\AchievementsScript.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\addAchievement.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\AddGameLog.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\addValue.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\addValueToValue.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\CardStack.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\CardStyle.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\changeValue.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\conditionalActionList.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ConditionsAndEffects.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\CountryNameDisplay.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\CountryNameGenerator.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\DeletePlayerPrefs.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Destroy.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\AnimatorBool.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\AnimatorInt.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\ButtonPressed.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\DebugEvent.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\DelayedEvent.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\GlobalMessageEventManager.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\GlobalMessageEventReceiver.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\GlobalMessageEventSender.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\GlobalMessageImageSender.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\LogicalStateMachineBehaviour.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\OnCollisionTag.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\OnEnterTag.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventMessageSystem\RandomEvents.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\EventScript.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\firstStartGameObjectSetter.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\GameDictionary.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\GameDictionary_InputField.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\GameLogger.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\GameStateManager.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\GenderGenerator.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\HighScoreNameLinker.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\HighScoreNameLinkerGroup.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\InfoDisplay.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\JsonHelper.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\KeyboardToEvent.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\KingsCardStyle.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\KingsCardStyleList.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\KingsLevelUp.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\KingsTypewriter.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\LevelUpDisplay.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\MakeChanges.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\MathExtension.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Mobile_Leaderboard.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\OrientationHandler.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\PersistentImages.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\PlayAdMob.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\PlayUnityAd.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\RandomElementWithPropability.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\RatioHandler.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ReadOnlyInspectorAttribute.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ResultCheat.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\SafeAreaHelper\SafeArea.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\SafeAreaHelper\SafeAreaDemo.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\scoreCalculator.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\scoreCounter.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ScrollbarIncrementer.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\SecurePlayerPrefs.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\AudioVolume.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\BackActivate.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\BackDeActivate.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\ExitScript.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\LoadScene.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\MusicPlayer.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\OpenURL.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\saveSlider.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\sliderToVolume.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Settings\UniToggle.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\setValue.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ShowGameLog.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Swipe.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\TextReplacement.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\TextReplacementDisplay.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\TranslatableContent.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\TranslationManager.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\UIPositionSwitcher.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ValueChangePreview.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueDefinitions.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueDependentConditionalImages.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueDependentEnable.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueDependentEvent.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ValueDependentGameLogs.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueDependentImages.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueDependentTexts.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueDependentTimer.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ValueDisplay.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\valueManager.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ValueMath.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\ValueScript.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\VideoPlayerEvents.cs" />
     <Compile Include="Assets\External\RTS_Camera\Demo\DemoScene.cs" />
     <Compile Include="Assets\External\RTS_Camera\Demo\TargetSelector.cs" />
     <Compile Include="Assets\External\RTS_Camera\Scripts\RTS_Camera.cs" />
@@ -81,6 +188,11 @@
     <Compile Include="Assets\Scripts\CardDealer\StratagemCardDealer.cs" />
     <Compile Include="Assets\Scripts\CardSystem\Card.cs" />
     <Compile Include="Assets\Scripts\CardSystem\CharacterCard.cs" />
+    <Compile Include="Assets\Scripts\CardSystem\Consequence\CharacterConsequence.cs" />
+    <Compile Include="Assets\Scripts\CardSystem\Consequence\Consequence.cs" />
+    <Compile Include="Assets\Scripts\CardSystem\Consequence\ConsequenceSet.cs" />
+    <Compile Include="Assets\Scripts\CardSystem\Consequence\EnvironmentConsequence.cs" />
+    <Compile Include="Assets\Scripts\CardSystem\Consequence\QualiferAlteration.cs" />
     <Compile Include="Assets\Scripts\CardSystem\Deck.cs" />
     <Compile Include="Assets\Scripts\CardSystem\EventCard.cs" />
     <Compile Include="Assets\Scripts\CardSystem\Precondition\CharacterPrecondition.cs" />
@@ -99,9 +211,16 @@
     <Compile Include="Assets\Scripts\EditSystem\QualiferLibraryEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\StratagemCardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\StratagemDeckEditor.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\CharacterConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\ConsequenceWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\DynamicWidgetGroup.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\EnvConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\PreconditionEditWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierAlterationListWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierEditWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\SelectAndAddWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
     <Compile Include="Assets\Scripts\EventController.cs" />
     <Compile Include="Assets\Scripts\GameLoopController.cs" />
     <Compile Include="Assets\Scripts\Kindom.cs" />
@@ -116,6 +235,10 @@
     <None Include="Assets\External\Local\Demigiant\DOTweenPro\readme.txt" />
     <None Include="Assets\External\2D Fantasy Art Assets Full Pack\readme.txt" />
     <None Include="Assets\External\RTS_Camera\Demo\Projectors\Guidelines.txt" />
+    <None Include="Assets\External\Local\Kings\scripts\SafeAreaHelper\SafeAreaReadme.txt" />
+    <None Include="Assets\External\Local\Kings\fonts\SourceSansPro-OFL.txt" />
+    <None Include="Assets\External\Local\Kings\TermList.txt" />
+    <None Include="Assets\External\Local\Kings\fonts\Abbasy Calligraphy Typeface.txt" />
     <None Include="Assets\External\Local\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\External\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
     <None Include="Assets\External\Local\Demigiant\DemiLib\Core\DemiLib.xml" />
@@ -124,8 +247,14 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Monetization">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -139,11 +268,26 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -333,6 +477,15 @@
     </Reference>
     <Reference Include="DOTweenPro">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Assets/External/Local/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

@@ -65,6 +65,30 @@
   <ItemGroup>
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenPreviewManager.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\Editor\InventoryEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Quests\Scripts\Editor\QuestsEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\Editor\Timeline_UIEventListEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\Editor\TimelineEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\addValueToValueEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\CardStackEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\ConditionsAndEffectsEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\CountryNameGeneratorEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\DeletePlayerPrefsEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\EventScriptEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\GameDictionaryEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\GameLoggerEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\HighScoreNameLinkerEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\KingsCardStyleListEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\KingsImEx.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\KingsTypewriterEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\LevelUpEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\PlayAdMobEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\ResultCheatEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\TranslationManagerEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\ValueManagerEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\ValueMathEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\ValueScriptEditor.cs" />
+    <Compile Include="Assets\External\Local\Kings\scripts\Editor\VideoPlayerEventsEditor.cs" />
     <Compile Include="Assets\External\RTS_Camera\Scripts\Editor\LayoutHelpers.cs" />
     <Compile Include="Assets\External\RTS_Camera\Scripts\Editor\RTS_CameraEditor.cs" />
     <None Include="Assets\External\Local\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
@@ -77,8 +101,14 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Monetization">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -92,11 +122,26 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -319,6 +364,21 @@
     </Reference>
     <Reference Include="DOTweenProEditor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Assets/External/Local/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.ads@3.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>

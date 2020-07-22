@@ -24,43 +24,93 @@ MonoBehaviour:
     - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
     - name: "\u9001\u8FBE\u65B9"
   - name: name
-    avatarImagePath: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 1/character_48.png
     attributes:
-      competent: 0
-      loyal: 0
-      shrewdness: 0
+      competent: 2.62
+      loyal: 6.2
+      shrewdness: 4.01
     qualifiers:
     - name: "\u9001\u8FBE\u65B9"
+    - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
   eventCards:
   - name: name
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
       Pack Vol 1/background_61.png
     discruption: this is a event, somthing happened
-  - name: name
-    avatarImagePath: 
+    preconditonSet:
+      characterPreconditions:
+      - qualifiers: []
+      - qualifiers: []
+      - qualifiers: []
+      environmentPrecondition:
+        qualifiers:
+        - name: "\u662F\u7684"
+        - name: "\u66B4\u541B"
+      eventPreconditions:
+      - eventCardName: "\u6728"
+  - name: "\u6728"
+    avatarImagePath: Assets/External/ccg_styles/wooden_style/back_(wood)/back_wood.PSD
     discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions:
+      - eventCardName: name
+  - name: "\u8349\u5730"
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_8.png
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions:
+      - eventCardName: "\u8349\u5730"
   stratagemCards:
   - name: name
-    avatarImagePath: 
-    bindToCharacter: 0
-    bindedCharacterName: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_50.png
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
   - name: name
     avatarImagePath: 
-    bindToCharacter: 0
-    bindedCharacterName: 
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
   - name: name
     avatarImagePath: 
-    bindToCharacter: 0
-    bindedCharacterName: 
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
   - name: name
-    avatarImagePath: Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP -
-      Sprite Asset Icon.psd
-    bindToCharacter: 0
-    bindedCharacterName: 
+    avatarImagePath: Assets/External/ccg_styles/grey_wood/card_title_(grey_wood)/slot_grey_wood.png
+    preconditonSet:
+      characterPreconditions:
+      - qualifiers:
+        - name: "\u5FE0\u5FC3"
+      - qualifiers:
+        - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+      environmentPrecondition:
+        qualifiers:
+        - name: "\u66B4\u541B"
+      eventPreconditions:
+      - eventCardName: "\u6728"
   - name: name
     avatarImagePath: 
-    bindToCharacter: 0
-    bindedCharacterName: 
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
   characterQualifierLib:
     qualifiers:
     - name: "\u9001\u8FBE\u65B9"
