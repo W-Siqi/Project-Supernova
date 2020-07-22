@@ -19,6 +19,8 @@ public class DeckArchive : ScriptableObject {
     public QualifierLibrary characterQualifierLib= new QualifierLibrary();
     public QualifierLibrary environmentQualifierLib = new QualifierLibrary();
 
+    private Dictionary<Type, List<Card>> directory = null;
+
     public static DeckArchive instance {
         get {
             if (_instance == null) {

@@ -13,33 +13,28 @@ MonoBehaviour:
   m_Name: DeckArchive
   m_EditorClassIdentifier: 
   characterCards:
-  - name: name
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_5.png
+  - name: "\u4EBA\u9A6C\u517D"
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 2/character_70.png
     attributes:
-      competent: 5.24
-      loyal: 4.33
-      shrewdness: 8.93
-    qualifiers: []
+      competent: 3.47
+      loyal: 10
+      shrewdness: 5.72
+    qualifiers:
+    - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+    - name: "\u9001\u8FBE\u65B9"
   - name: name
     avatarImagePath: 
     attributes:
       competent: 0
       loyal: 0
       shrewdness: 0
-    qualifiers: []
+    qualifiers:
+    - name: "\u9001\u8FBE\u65B9"
   eventCards:
   - name: name
-    avatarImagePath: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenterGeo.psd
-    discruption: this is a event, somthing happened
-  - name: name
-    avatarImagePath: 
-    discruption: this is a event, somthing happened
-  - name: name
-    avatarImagePath: 
-    discruption: this is a event, somthing happened
-  - name: name
-    avatarImagePath: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_61.png
     discruption: this is a event, somthing happened
   - name: name
     avatarImagePath: 
@@ -67,8 +62,18 @@ MonoBehaviour:
     bindToCharacter: 0
     bindedCharacterName: 
   characterQualifierLib:
-    qualifiers: []
-    names: []
+    qualifiers:
+    - name: "\u9001\u8FBE\u65B9"
+    - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+    - name: "\u5FE0\u5FC3"
+    names:
+    - "\u9001\u8FBE\u65B9"
+    - "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+    - "\u5FE0\u5FC3"
   environmentQualifierLib:
-    qualifiers: []
-    names: []
+    qualifiers:
+    - name: "\u662F\u7684"
+    - name: "\u66B4\u541B"
+    names:
+    - "\u662F\u7684"
+    - "\u66B4\u541B"

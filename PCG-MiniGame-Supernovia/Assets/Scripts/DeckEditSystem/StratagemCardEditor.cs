@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class StratagemCardEditor : CardEditor
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    PreconditionEditWidget preconditionEditWidget;
+    protected override void Init(Card editTarget) {
+        base.Init(editTarget);
+        var editStratagemTarget = editTarget as StratagemCard;
+        preconditionEditWidget = new PreconditionEditWidget(editStratagemTarget.preconditonSet);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    protected override void OnGUI() {
+        base.OnGUI();
+        preconditionEditWidget.RenderUI();
     }
 }

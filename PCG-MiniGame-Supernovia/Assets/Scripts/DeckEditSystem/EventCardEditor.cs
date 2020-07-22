@@ -5,37 +5,16 @@ using UnityEngine;
 
 public class EventCardEditor : CardEditor
 {
+    PreconditionEditWidget preconditionEditWidget;
+
     protected override void OnGUI() {
         base.OnGUI();
+        preconditionEditWidget.RenderUI();
+    }
+
+    protected override void Init(Card editTarget) {
+        base.Init(editTarget);
         var editEventTarget = editTarget as EventCard;
-        PreconditonEdit(editEventTarget);
-    }
-
-    // 前置条件编辑
-    private void PreconditonEdit(EventCard eventCard) {
-        CharacterPreconditionEdit(eventCard);
-        EnvironmentPreconditonEdit(eventCard);
-        EnvironmentPreconditonEdit(eventCard);
-    }
-
-    private void CharacterPreconditionEdit(EventCard eventCard) {
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("前置人物");
-        if (GUILayout.Button("+")) {
-
-        }
-        EditorGUILayout.EndHorizontal();
-    }
-
-
-    private void EnvironmentPreconditonEdit(EventCard eventCard) { 
-    }
-
-    private void EventPreconditonEdit(EventCard eventCard) {
-    }
-
-    // 后置结果编辑
-    private void ConsequenceEdit(EventCard eventCard) { 
-    
+        preconditionEditWidget = new PreconditionEditWidget(editEventTarget.preconditonSet);
     }
 }

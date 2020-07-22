@@ -35,7 +35,7 @@ public abstract class CardEditor : EditorWindow
             }
 
             if (newWindow) {
-                newWindow.editTarget = card;
+                newWindow.Init(card);
                 openingWindows[card] = newWindow;
                 newWindow.Show();
             }
@@ -56,11 +56,15 @@ public abstract class CardEditor : EditorWindow
         EditorGUILayout.EndHorizontal();
     }
 
-    protected virtual void OnEnable() {
+    protected virtual void Init(Card editTarget) {
+        this.editTarget = editTarget;
+    }
+
+    private void OnEnable() {
         defaultAvatarImg = new Texture2D(100,100);
     }
 
-    protected virtual void OnDisable() {
+    private void OnDisable() {
         EditorUtility.SetDirty(DeckArchive.instance);
         AssetDatabase.Refresh();
         openingWindows.Remove(editTarget);

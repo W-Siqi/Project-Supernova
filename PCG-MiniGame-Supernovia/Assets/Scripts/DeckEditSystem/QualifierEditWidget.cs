@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class QualifierEditField
+public class QualifierEditWidget
 {
-    //private List<Qualifier> editTarget;
-    //private QualifierLibrary attachedLibrary;
     private int selectIndex = 0;
+    private List<Qualifier> editTarget;
+    private QualifierLibrary attachedLibrary;
 
-    //public QualifierEditField(List<Qualifier> editTarget, QualifierLibrary attachedLibrary) {
-    //    this.editTarget = editTarget;
-    //    this.attachedLibrary = attachedLibrary;
-    //}
+    public QualifierEditWidget(List<Qualifier> editTarget, QualifierLibrary attachedLibrary) {
+        this.editTarget = editTarget;
+        this.attachedLibrary = attachedLibrary;
+    }
 
-    public void RenderUI(List<Qualifier> editTarget, QualifierLibrary attachedLibrary) {
-        EditorGUILayout.LabelField("Test");
+    // 渲染入口
+    public void RenderUI() {
         NewQualiferEditor(editTarget, attachedLibrary);
         EditExistedQualifiers(editTarget);
     }

@@ -5,6 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class StratagemCard:Card
 {
-    public bool bindToCharacter = false;
-    public string bindedCharacterName = "";
+    public PreconditonSet preconditonSet = new PreconditonSet();
 }
