@@ -59,15 +59,20 @@ public class PreconditionWidget : Widget {
     }
 
     public override void RenderUI() {
+        EditorGUILayout.BeginVertical();
         if (characterEnabled) {
             RenderChadracterPrecontionUI();
+            EditorGUILayout.Space();
         }
         if (environmentEnabled) {
             RenderEnvironmentPrecontionUI();
+            EditorGUILayout.Space();
         }
         if (eventEnabled) {
             RenderEventPreconditionUI();
+            EditorGUILayout.Space();
         }
+        EditorGUILayout.EndVertical();
     }
 
     public void SetMask(bool characterEnabled, bool environmentEnabled, bool eventEnabled){
@@ -86,7 +91,7 @@ public class PreconditionWidget : Widget {
     }
 
     private void RenderChadracterPrecontionUI() {
-        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginHorizontal(EditorStyleResource.preconditionBlockStyle);
         
         EditorGUILayout.LabelField("前置人物");
         // 添加新的人物前提
@@ -100,24 +105,24 @@ public class PreconditionWidget : Widget {
     }
 
     private void RenderEnvironmentPrecontionUI() {
-        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginHorizontal(EditorStyleResource.preconditionBlockStyle);
         EditorGUILayout.LabelField("环境");
-        addEnvQualifierWidget.RenderUI();
         envQualiferWidgetGroup.RenderUI();
+        addEnvQualifierWidget.RenderUI();
         EditorGUILayout.EndHorizontal();
     }
 
     private void RenderEventPreconditionUI() {
-        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginHorizontal(EditorStyleResource.preconditionBlockStyle);
 
         EditorGUILayout.LabelField("前置事件");
 
         EditorGUILayout.BeginVertical();
-        AddNewEventPreconditon();
+        ShowExistedEventPreconditon();
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical();
-        ShowExistedEventPreconditon();
+        AddNewEventPreconditon();
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.EndHorizontal();
@@ -131,7 +136,12 @@ public class PreconditionWidget : Widget {
             allEventCardsNames.Add(eveCard.name);
         }
         EditorGUILayout.BeginHorizontal();
-        eventPreconditionPopupIndex = EditorGUILayout.Popup(eventPreconditionPopupIndex, allEventCardsNames.ToArray());
+
+        eventPreconditionPopupIndex = EditorGUILayout.Popup(
+            eventPreconditionPopupIndex,
+            allEventCardsNames.ToArray(),
+            GUILayout.Width(EditorStyleResource.SEARCH_BAR_WIDTH));
+
         if (GUILayout.Button("+", GUILayout.Width(BUTTON_WIDTH))) {
             // index 有效 
             if (eventPreconditionPopupIndex < DeckArchive.instance.eventCards.Count){
@@ -152,7 +162,7 @@ public class PreconditionWidget : Widget {
         var toDelete = new List<EventPrecondition>();
 
         foreach (var condition in editTarget.eventPreconditions) {
-            EditorGUILayout.ObjectField(eventPrectionsDict[condition].GetAvatarImage(), typeof(Texture2D));
+            GUILayout.Label(eventPrectionsDict[condition].GetAvatarImage(),GUILayout.Width(100),GUILayout.Height(150)); 
             if (GUILayout.Button("X", GUILayout.Width(20))) {
                 toDelete.Add(condition);
             }

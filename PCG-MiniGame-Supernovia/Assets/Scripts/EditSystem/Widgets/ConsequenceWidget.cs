@@ -21,17 +21,24 @@ public class ConsequenceWidget : Widget{
     }
 
     public override void RenderUI() {
+        EditorGUILayout.Space();
         if (enableCharacterConsequence) {
+            EditorGUILayout.BeginVertical(EditorStyleResource.consequenceBlockStyle);
             EditorGUILayout.LabelField("人物型后果");
             if (GUILayout.Button("Add")) {
                 editTarget.characterConsequences.Add(new CharacterConsequence());
             }
             characaterConsequenceGroup.RenderUI();
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space();
         }
 
         if (enaleEnviromentConsequence) {
+            EditorGUILayout.BeginVertical(EditorStyleResource.consequenceBlockStyle);
             EditorGUILayout.LabelField("环境结果");
             envConsequenceWidget.RenderUI();
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space();
         }
     }
 

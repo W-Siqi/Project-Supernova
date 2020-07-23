@@ -203,6 +203,7 @@
     <Compile Include="Assets\Scripts\CardSystem\StratagemCard.cs" />
     <Compile Include="Assets\Scripts\EditSystem\DeckArchive.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorBlock\DescriptionBlock.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\EditorStyleResource.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\CardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\CharacterCardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\CharacterDeckEditor.cs" />
@@ -244,6 +245,7 @@
     <None Include="Assets\External\Local\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\External\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
     <None Include="Assets\External\Local\Demigiant\DemiLib\Core\DemiLib.xml" />
+    <None Include="Assets\External\Local\Lean\READ ME.txt" />
     <None Include="Assets\External\RTS_Camera\Demo\Projectors\Shaders\ProjectorMultiply.shader" />
     <None Include="Assets\External\Local\Demigiant\readme_DOTweenPro.txt" />
     <Reference Include="Unity.Timeline.Editor">
@@ -849,6 +851,20 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="LeanCommon.csproj">
+      <Project>{52354362-53EA-BAD7-5BB7-60D71CEC66AA}</Project>
+      <Name>LeanCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="LeanTransition.csproj">
+      <Project>{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}</Project>
+      <Name>LeanTransition</Name>
+    </ProjectReference>
+    <ProjectReference Include="LeanGUI.csproj">
+      <Project>{A6F253CC-AB54-A1EE-EEED-32104E126B9C}</Project>
+      <Name>LeanGUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -40,7 +40,7 @@ public class DynamicWidgetGroup<WidgetT, WidgetEditTarget>where WidgetT: Widget{
             var w = widgetDict[target];
             w.GetType().GetMethod(RENDER_UI_METHOD).Invoke(w, null);
             // delete
-            if (GUILayout.Button("X")) {
+            if (GUILayout.Button("X",GUILayout.Width(30))) {
                 toDelete.Add(target);
             }
             EditorGUILayout.EndHorizontal();

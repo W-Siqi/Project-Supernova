@@ -32,7 +32,7 @@ public class SelectAndAddWidget<T>:Widget
 
         EditorGUILayout.BeginHorizontal();
         var allOptions = getPotencialOptions();
-        selectedIndex = EditorGUILayout.Popup(selectedIndex, allOptions,GUILayout.Width(100));
+        selectedIndex = EditorGUILayout.Popup(selectedIndex, allOptions,GUILayout.Width(EditorStyleResource.SEARCH_BAR_WIDTH));
         if (GUILayout.Button("+", GUILayout.Width(BUTTON_WIDTH))) {
             // index 有效 
             if (selectedIndex < allOptions.Length) {

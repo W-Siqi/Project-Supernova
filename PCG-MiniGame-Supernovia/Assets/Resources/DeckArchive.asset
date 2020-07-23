@@ -42,18 +42,17 @@ MonoBehaviour:
       characterPreconditions:
       - enabled: 1
         qualifiers: []
-      - enabled: 1
-        qualifiers: []
       environmentPrecondition:
         enabled: 1
-        qualifiers: []
+        qualifiers:
+        - name: "\u662F\u7684"
       eventPreconditions:
       - enabled: 1
         eventCardName: "\u6728"
       - enabled: 1
-        eventCardName: name
-      - enabled: 1
         eventCardName: "\u8349\u5730"
+      - enabled: 1
+        eventCardName: name
     consequenceSet:
       characterConsequences:
       - enabled: 1
@@ -139,24 +138,26 @@ MonoBehaviour:
       Pack Vol 1/background_50.png
     preconditonSet:
       characterPreconditions:
-      - enabled: 0
+      - enabled: 1
         qualifiers: []
-      - enabled: 0
+      - enabled: 1
         qualifiers: []
       environmentPrecondition:
         enabled: 1
         qualifiers: []
-      eventPreconditions: []
+      eventPreconditions:
+      - enabled: 1
+        eventCardName: "\u6728"
     consequenceSet:
       characterConsequences:
-      - enabled: 0
+      - enabled: 1
         bindFlag: 0
         qualiferAlterations: []
-      - enabled: 0
+      - enabled: 1
         bindFlag: 0
         qualiferAlterations: []
       environmentConsequence:
-        enabled: 0
+        enabled: 1
         qualiferAlterations: []
   - name: name
     avatarImagePath: 
