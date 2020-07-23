@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class ConsequenceWidget{
+public class ConsequenceWidget : Widget{
     private ConsequenceSet editTarget;
 
     private EnvConsequenceWidget envConsequenceWidget;
@@ -17,7 +17,7 @@ public class ConsequenceWidget{
         envConsequenceWidget = new EnvConsequenceWidget(this.editTarget.environmentConsequence);
     }
 
-    public void RenderUI() {
+    public override void RenderUI() {
         EditorGUILayout.LabelField("人物型后果");
         if (GUILayout.Button("Add")) {
             editTarget.characterConsequences.Add(new CharacterConsequence());

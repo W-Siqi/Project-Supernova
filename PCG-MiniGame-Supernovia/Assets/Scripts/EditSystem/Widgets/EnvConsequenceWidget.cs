@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class EnvConsequenceWidget
+public class EnvConsequenceWidget : Widget
 {
     private EnvironmentConsequence editTarget;
     private SelectAndAddWidget<QualiferAlteration> addQualiferAlterationWidget;
@@ -18,7 +18,7 @@ public class EnvConsequenceWidget
             QualiferAlteration.CreateByName);
     }
 
-    public void RenderUI() {
+    public override void RenderUI() {
         addQualiferAlterationWidget.RenderUI();
         widgetGroup.RenderUI();
     }

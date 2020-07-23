@@ -37,4 +37,14 @@ public class QualifierLibrary
     public string[] GetAllQualifiersNames() {
         return names.ToArray();
     }
+
+    public string[] GetQualiferNamesWithBlackList(List<Qualifier> blacklist) {
+        var candidates = new List<string>();
+        foreach (var name in GetAllQualifiersNames()) {
+            if (!blacklist.Exists((existed) => existed.name == name)) {
+                candidates.Add(name);
+            }
+        }
+        return candidates.ToArray();
+    }
 }

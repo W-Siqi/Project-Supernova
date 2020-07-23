@@ -212,12 +212,14 @@
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\StratagemCardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\StratagemDeckEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\CharacterConsequenceWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\CharacterPreconditonWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\ConsequenceWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\DescriputionWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\DynamicWidgetGroup.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\EnvConsequenceWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\EventPreconditonWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\PreconditionEditWidget.cs" />
-    <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierAlterationListWidget.cs" />
-    <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierEditWidget.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierAlterationWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\SelectAndAddWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />

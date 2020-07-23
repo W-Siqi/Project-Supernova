@@ -5,19 +5,15 @@ using UnityEditor;
 
 public class CharacterCardEditor : CardEditor
 {
-    private QualifierEditWidget qualifierEditField;
-
     protected override void OnGUI() {
         base.OnGUI();
         var characterCard = editTarget as CharacterCard;
         CharacterAttribueEdit(characterCard);
-        qualifierEditField.RenderUI();
     }
 
     protected override void Init(Card editTarget) {
         base.Init(editTarget);
         var targetCharacterCard = (CharacterCard)editTarget;
-        qualifierEditField = new QualifierEditWidget(targetCharacterCard.qualifiers, DeckArchive.instance.characterQualifierLib);
     }
 
     // 编辑属性

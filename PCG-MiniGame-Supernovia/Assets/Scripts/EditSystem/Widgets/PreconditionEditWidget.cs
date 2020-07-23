@@ -4,28 +4,34 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class PreconditionEditWidget {
+public class PreconditionEditWidget : Widget {
 
     private PreconditonSet editTarget;
 
-    // 每个绑定对象的绘制，引用一个QualifierEditWidget
-    private Dictionary<CharacterPrecondition, QualifierEditWidget> charPrecontionWidgets;
-    private QualifierEditWidget envPrecontionWidgets;
-    private Dictionary<EventPrecondition, EventCard> eventPrectionsDict;
+    // environment preconditon
+    private SelectAndAddWidget<Qualifier> addEnvQualifierWidget;
+    private DynamicWidgetGroup<QualifierWidget, Qualifier> envQualiferWidgetGroup;
 
+    private Dictionary<EventPrecondition, EventCard> eventPrectionsDict;
     private int eventPreconditionPopupIndex = 0;
+
+    // character precondtion
+    private DynamicWidgetGroup<CharacterPreconditonWidget, CharacterPrecondition> chaPreconditonWidgetGroup;
 
     public PreconditionEditWidget(PreconditonSet target) {
         editTarget = target;
 
-        // init character
-        charPrecontionWidgets = new Dictionary<CharacterPrecondition, QualifierEditWidget>();
-        foreach (var condition in target.characterPreconditions) {
-            charPrecontionWidgets[condition] = new QualifierEditWidget(condition.qualifiers, DeckArchive.instance.characterQualifierLib);
-        }
+        // init environment widgets
+        List<Qualifier> envQualifers = editTarget.environmentPrecondition.qualifiers;
+        addEnvQualifierWidget = new SelectAndAddWidget<Qualifier>(
+            envQualifers,
+            () => DeckArchive.instance.environmentQualifierLib.GetQualiferNamesWithBlackList(envQualifers),
+            (string name) =>new Qualifier(name));
+        envQualiferWidgetGroup = new DynamicWidgetGroup<QualifierWidget, Qualifier>(editTarget.environmentPrecondition.qualifiers);
 
-        // init enviroment
-        envPrecontionWidgets = new QualifierEditWidget(target.environmentPrecondition.qualifiers, DeckArchive.instance.environmentQualifierLib);
+
+        chaPreconditonWidgetGroup = new DynamicWidgetGroup<CharacterPreconditonWidget, CharacterPrecondition>(editTarget.characterPreconditions, false);
+
 
         // init event
         eventPrectionsDict = new Dictionary<EventPrecondition, EventCard>();
@@ -47,7 +53,7 @@ public class PreconditionEditWidget {
         }
     }
 
-    public void RenderUI() {
+    public override void RenderUI() {
         RenderChadracterPrecontionUI();
         RenderEnvironmentPrecontionUI();
         RenderEventPreconditionUI();
@@ -61,26 +67,8 @@ public class PreconditionEditWidget {
         if (GUILayout.Button("+")) {
             var newPrecondition = new CharacterPrecondition();
             editTarget.characterPreconditions.Add(newPrecondition);
-            charPrecontionWidgets[newPrecondition] = new QualifierEditWidget(newPrecondition.qualifiers, DeckArchive.instance.characterQualifierLib);
         }
-
-        EditorGUILayout.BeginVertical();
-        var toDelete = new List<CharacterPrecondition>();
-        // 逐个绘制人物前提编辑控件
-        foreach (var chaPrecondition in editTarget.characterPreconditions) {
-            EditorGUILayout.BeginHorizontal();
-            charPrecontionWidgets[chaPrecondition].RenderUI();
-            if (GUILayout.Button("X")) {
-                toDelete.Add(chaPrecondition); 
-            }
-            EditorGUILayout.EndHorizontal();
-        }
-        EditorGUILayout.EndVertical();
-        // 删除被选中的
-        foreach (var condition in toDelete) {
-            editTarget.characterPreconditions.Remove(condition);
-            charPrecontionWidgets.Remove(condition);
-        }
+        chaPreconditonWidgetGroup.RenderUI();
 
         EditorGUILayout.EndHorizontal();
     }
@@ -88,7 +76,8 @@ public class PreconditionEditWidget {
     private void RenderEnvironmentPrecontionUI() {
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("环境");
-        envPrecontionWidgets.RenderUI();
+        addEnvQualifierWidget.RenderUI();
+        envQualiferWidgetGroup.RenderUI();
         EditorGUILayout.EndHorizontal();
     }
 
