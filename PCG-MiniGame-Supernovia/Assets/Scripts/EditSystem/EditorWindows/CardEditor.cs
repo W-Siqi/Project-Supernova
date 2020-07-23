@@ -15,7 +15,7 @@ public abstract class CardEditor : EditorWindow
     protected Texture2D defaultAvatarImg;
 
     /// <summary>
-    /// will instanticate edit based on card real type
+    /// 根据卡片类型，实例化对应的编辑器窗口
     /// </summary>
     /// <param name="card"></param>
     public static void ShowWindow(Card card) {
@@ -50,7 +50,6 @@ public abstract class CardEditor : EditorWindow
         // name edit
         EditorGUILayout.BeginVertical();
         DrawNameEdit(WINDOW_WIDTH - IMAGE_WIDTH);
-        DrawAffixEdit(WINDOW_WIDTH - IMAGE_WIDTH);
         EditorGUILayout.EndVertical();
         
         EditorGUILayout.EndHorizontal();
@@ -101,11 +100,6 @@ public abstract class CardEditor : EditorWindow
     private void DrawNameEdit(int windowWidth) {
         GUILayout.Label("名称编辑：");
         editTarget.name = EditorGUILayout.TextField(editTarget.name, GUILayout.Width(windowWidth));
-    }
-    // 编辑词缀
-    private void DrawAffixEdit(int windowWidth) {
-        // select affix 
-        // show existed affix
     }
 }
 

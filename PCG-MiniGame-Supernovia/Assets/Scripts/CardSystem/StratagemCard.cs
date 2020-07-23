@@ -6,4 +6,5 @@ using UnityEngine;
 public class StratagemCard:Card
 {
     public PreconditonSet preconditonSet = new PreconditonSet();
+    public ConsequenceSet consequenceSet = new ConsequenceSet();
 }

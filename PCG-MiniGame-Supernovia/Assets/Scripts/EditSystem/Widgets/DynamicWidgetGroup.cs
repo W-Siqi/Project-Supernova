@@ -7,6 +7,7 @@ using UnityEngine;
 
 // 生成动态的控件数组
 // 支持删除
+// TBD: list外部被clear掉的时候，wdgetDict对应的控件会仍然留在内存中的
 public class DynamicWidgetGroup<WidgetT, WidgetEditTarget>where WidgetT: Widget{
     const string RENDER_UI_METHOD = "RenderUI";
 

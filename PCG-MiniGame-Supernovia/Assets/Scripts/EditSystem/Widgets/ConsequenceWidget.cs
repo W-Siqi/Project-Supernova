@@ -8,6 +8,9 @@ public class ConsequenceWidget : Widget{
 
     private EnvConsequenceWidget envConsequenceWidget;
     private DynamicWidgetGroup<CharacterConsequenceWidget, CharacterConsequence> characaterConsequenceGroup;
+    private bool enaleEnviromentConsequence;
+    private bool enableCharacterConsequence;
+
     public ConsequenceWidget(ConsequenceSet editTarget) {
         this.editTarget = editTarget;
 
@@ -18,12 +21,27 @@ public class ConsequenceWidget : Widget{
     }
 
     public override void RenderUI() {
-        EditorGUILayout.LabelField("人物型后果");
-        if (GUILayout.Button("Add")) {
-            editTarget.characterConsequences.Add(new CharacterConsequence());
+        if (enableCharacterConsequence) {
+            EditorGUILayout.LabelField("人物型后果");
+            if (GUILayout.Button("Add")) {
+                editTarget.characterConsequences.Add(new CharacterConsequence());
+            }
+            characaterConsequenceGroup.RenderUI();
         }
-        characaterConsequenceGroup.RenderUI();
-        EditorGUILayout.LabelField("环境结果");
-        envConsequenceWidget.RenderUI();
+
+        if (enaleEnviromentConsequence) {
+            EditorGUILayout.LabelField("环境结果");
+            envConsequenceWidget.RenderUI();
+        }
+    }
+
+    public void SetMask(bool enableCharacterConsequence, bool enaleEnviromentConsequence) {
+        this.enableCharacterConsequence = enableCharacterConsequence;
+        foreach (var conseq in editTarget.characterConsequences) {
+            conseq.enabled = enableCharacterConsequence;
+        }
+     
+        this.enaleEnviromentConsequence = enaleEnviromentConsequence;
+        editTarget.environmentConsequence.enabled = enaleEnviromentConsequence;       
     }
 }

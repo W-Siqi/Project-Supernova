@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class StratagemCardEditor : CardEditor
 {
-    PreconditionEditWidget preconditionEditWidget;
+    private DescriptionBlock descriptionBlock;
+
     protected override void Init(Card editTarget) {
         base.Init(editTarget);
-        var editStratagemTarget = editTarget as StratagemCard;
-        preconditionEditWidget = new PreconditionEditWidget(editStratagemTarget.preconditonSet);
+        descriptionBlock = new DescriptionBlock(editTarget as StratagemCard);
     }
 
     protected override void OnGUI() {
         base.OnGUI();
-        preconditionEditWidget.RenderUI();
+        descriptionBlock.RenderUI();
     }
 }

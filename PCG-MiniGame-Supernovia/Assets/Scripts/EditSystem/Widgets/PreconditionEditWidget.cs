@@ -4,21 +4,26 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class PreconditionEditWidget : Widget {
-
+public class PreconditionWidget : Widget {
     private PreconditonSet editTarget;
 
     // environment preconditon
     private SelectAndAddWidget<Qualifier> addEnvQualifierWidget;
     private DynamicWidgetGroup<QualifierWidget, Qualifier> envQualiferWidgetGroup;
 
+    // event preconditon
     private Dictionary<EventPrecondition, EventCard> eventPrectionsDict;
     private int eventPreconditionPopupIndex = 0;
 
     // character precondtion
     private DynamicWidgetGroup<CharacterPreconditonWidget, CharacterPrecondition> chaPreconditonWidgetGroup;
 
-    public PreconditionEditWidget(PreconditonSet target) {
+    // enble mask
+    private bool environmentEnabled = true;
+    private bool characterEnabled = true;
+    private bool eventEnabled = true;
+
+    public PreconditionWidget(PreconditonSet target) {
         editTarget = target;
 
         // init environment widgets
@@ -54,9 +59,30 @@ public class PreconditionEditWidget : Widget {
     }
 
     public override void RenderUI() {
-        RenderChadracterPrecontionUI();
-        RenderEnvironmentPrecontionUI();
-        RenderEventPreconditionUI();
+        if (characterEnabled) {
+            RenderChadracterPrecontionUI();
+        }
+        if (environmentEnabled) {
+            RenderEnvironmentPrecontionUI();
+        }
+        if (eventEnabled) {
+            RenderEventPreconditionUI();
+        }
+    }
+
+    public void SetMask(bool characterEnabled, bool environmentEnabled, bool eventEnabled){
+        this.characterEnabled = characterEnabled;
+        foreach (var condition in editTarget.characterPreconditions) {
+            condition.enabled = characterEnabled;   
+        }
+
+        this.environmentEnabled = environmentEnabled;
+        editTarget.environmentPrecondition.enabled = environmentEnabled;
+
+        this.eventEnabled = eventEnabled;
+        foreach (var condition in editTarget.eventPreconditions) {
+            condition.enabled = eventEnabled;
+        }
     }
 
     private void RenderChadracterPrecontionUI() {

@@ -5,22 +5,15 @@ using UnityEngine;
 
 public class EventCardEditor : CardEditor
 {
-    DescriputionWidget descriputionWidget;
-    PreconditionEditWidget preconditionEditWidget;
-    ConsequenceWidget consequenceWidget;
+    private DescriptionBlock descriptionBlock;
 
     protected override void OnGUI() {
         base.OnGUI();
-        descriputionWidget.RenderUI();
-        preconditionEditWidget.RenderUI();
-        consequenceWidget.RenderUI();
+        descriptionBlock.RenderUI();
     }
 
     protected override void Init(Card editTarget) {
         base.Init(editTarget);
-        var editEventTarget = editTarget as EventCard;
-        preconditionEditWidget = new PreconditionEditWidget(editEventTarget.preconditonSet);
-        consequenceWidget = new ConsequenceWidget(editEventTarget.consequenceSet);
-        descriputionWidget = new DescriputionWidget();
+        descriptionBlock = new DescriptionBlock(editTarget as EventCard);
     }
 }

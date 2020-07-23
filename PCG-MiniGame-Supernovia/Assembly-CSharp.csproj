@@ -202,6 +202,7 @@
     <Compile Include="Assets\Scripts\CardSystem\Precondition\PreconditonSet.cs" />
     <Compile Include="Assets\Scripts\CardSystem\StratagemCard.cs" />
     <Compile Include="Assets\Scripts\EditSystem\DeckArchive.cs" />
+    <Compile Include="Assets\Scripts\EditSystem\EditorBlock\DescriptionBlock.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\CardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\CharacterCardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\CharacterDeckEditor.cs" />
@@ -214,7 +215,6 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\CharacterConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\CharacterPreconditonWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\ConsequenceWidget.cs" />
-    <Compile Include="Assets\Scripts\EditSystem\Widgets\DescriputionWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\DynamicWidgetGroup.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\EnvConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\EventPreconditonWidget.cs" />

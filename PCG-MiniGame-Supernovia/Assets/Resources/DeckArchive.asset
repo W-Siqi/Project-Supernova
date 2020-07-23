@@ -40,24 +40,68 @@ MonoBehaviour:
     discruption: this is a event, somthing happened
     preconditonSet:
       characterPreconditions:
-      - qualifiers: []
-      - qualifiers: []
-      - qualifiers: []
+      - enabled: 1
+        qualifiers: []
+      - enabled: 1
+        qualifiers: []
       environmentPrecondition:
-        qualifiers:
-        - name: "\u662F\u7684"
-        - name: "\u66B4\u541B"
+        enabled: 1
+        qualifiers: []
       eventPreconditions:
-      - eventCardName: "\u6728"
+      - enabled: 1
+        eventCardName: "\u6728"
+      - enabled: 1
+        eventCardName: name
+      - enabled: 1
+        eventCardName: "\u8349\u5730"
+    consequenceSet:
+      characterConsequences:
+      - enabled: 1
+        bindFlag: 2
+        qualiferAlterations: []
+      environmentConsequence:
+        enabled: 1
+        qualiferAlterations:
+        - targetQualifier:
+            name: "\u662F\u7684"
+          type: 2
+        - targetQualifier:
+            name: "\u66B4\u541B"
+          type: 2
   - name: "\u6728"
     avatarImagePath: Assets/External/ccg_styles/wooden_style/back_(wood)/back_wood.PSD
     discruption: this is a event, somthing happened
     preconditonSet:
       characterPreconditions: []
       environmentPrecondition:
+        enabled: 1
         qualifiers: []
       eventPreconditions:
-      - eventCardName: name
+      - enabled: 1
+        eventCardName: name
+    consequenceSet:
+      characterConsequences:
+      - enabled: 1
+        bindFlag: 2
+        qualiferAlterations: []
+      - enabled: 1
+        bindFlag: 0
+        qualiferAlterations: []
+      - enabled: 1
+        bindFlag: 0
+        qualiferAlterations: []
+      - enabled: 1
+        bindFlag: 0
+        qualiferAlterations: []
+      environmentConsequence:
+        enabled: 0
+        qualiferAlterations:
+        - targetQualifier:
+            name: "\u66B4\u541B"
+          type: 2
+        - targetQualifier:
+            name: "\u662F\u7684"
+          type: 2
   - name: "\u8349\u5730"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
       Pack Vol 1/background_8.png
@@ -65,52 +109,116 @@ MonoBehaviour:
     preconditonSet:
       characterPreconditions: []
       environmentPrecondition:
+        enabled: 1
         qualifiers: []
       eventPreconditions:
-      - eventCardName: "\u8349\u5730"
+      - enabled: 0
+        eventCardName: "\u8349\u5730"
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 1
+        qualiferAlterations: []
+  - name: name
+    avatarImagePath: 
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        enabled: 1
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 1
+        qualiferAlterations: []
   stratagemCards:
   - name: name
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
       Pack Vol 1/background_50.png
     preconditonSet:
-      characterPreconditions: []
+      characterPreconditions:
+      - enabled: 0
+        qualifiers: []
+      - enabled: 0
+        qualifiers: []
       environmentPrecondition:
+        enabled: 1
         qualifiers: []
       eventPreconditions: []
+    consequenceSet:
+      characterConsequences:
+      - enabled: 0
+        bindFlag: 0
+        qualiferAlterations: []
+      - enabled: 0
+        bindFlag: 0
+        qualiferAlterations: []
+      environmentConsequence:
+        enabled: 0
+        qualiferAlterations: []
   - name: name
     avatarImagePath: 
     preconditonSet:
       characterPreconditions: []
       environmentPrecondition:
+        enabled: 1
         qualifiers: []
       eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 1
+        qualiferAlterations: []
   - name: name
     avatarImagePath: 
     preconditonSet:
       characterPreconditions: []
       environmentPrecondition:
+        enabled: 1
         qualifiers: []
       eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 1
+        qualiferAlterations: []
   - name: name
     avatarImagePath: Assets/External/ccg_styles/grey_wood/card_title_(grey_wood)/slot_grey_wood.png
     preconditonSet:
       characterPreconditions:
-      - qualifiers:
+      - enabled: 1
+        qualifiers:
         - name: "\u5FE0\u5FC3"
-      - qualifiers:
+      - enabled: 1
+        qualifiers:
         - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
       environmentPrecondition:
+        enabled: 1
         qualifiers:
         - name: "\u66B4\u541B"
       eventPreconditions:
-      - eventCardName: "\u6728"
+      - enabled: 0
+        eventCardName: "\u6728"
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 1
+        qualiferAlterations: []
   - name: name
     avatarImagePath: 
     preconditonSet:
       characterPreconditions: []
       environmentPrecondition:
+        enabled: 1
         qualifiers: []
       eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 1
+        qualiferAlterations: []
   characterQualifierLib:
     qualifiers:
     - name: "\u9001\u8FBE\u65B9"
