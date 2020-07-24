@@ -5,12 +5,17 @@ using UnityEditor;
 
 [System.Serializable]
 public abstract class Card {
-    public string name = "name";
     private static Texture2D defaultImage = null;
 
+    public string name = "name";
     [SerializeField]
     private string avatarImagePath = "";
     private Texture2D loadedAvatarImage = null;
+
+    public static T DeepCopy<T>(T src) {
+        var serilized = JsonUtility.ToJson(src);
+        return JsonUtility.FromJson<T>(serilized);
+    }
 
 
     public Texture2D GetAvatarImage() {

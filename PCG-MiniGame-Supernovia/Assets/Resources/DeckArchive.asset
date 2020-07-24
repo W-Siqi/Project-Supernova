@@ -17,7 +17,7 @@ MonoBehaviour:
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 2/character_70.png
     attributes:
-      competent: 3.47
+      competent: 3.85
       loyal: 10
       shrewdness: 5.72
     qualifiers:
@@ -25,14 +25,20 @@ MonoBehaviour:
     - name: "\u9001\u8FBE\u65B9"
   - name: name
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_48.png
+      Pack Vol 1/character_22.png
     attributes:
-      competent: 2.62
-      loyal: 6.2
-      shrewdness: 4.01
-    qualifiers:
-    - name: "\u9001\u8FBE\u65B9"
-    - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+      competent: 0
+      loyal: 0
+      shrewdness: 0
+    qualifiers: []
+  - name: name
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 2/character_97.png
+    attributes:
+      competent: 0
+      loyal: 0
+      shrewdness: 0
+    qualifiers: []
   eventCards:
   - name: name
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
@@ -68,28 +74,29 @@ MonoBehaviour:
             name: "\u66B4\u541B"
           type: 2
   - name: "\u6728"
-    avatarImagePath: Assets/External/ccg_styles/wooden_style/back_(wood)/back_wood.PSD
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_21.png
     discruption: this is a event, somthing happened
     preconditonSet:
       characterPreconditions: []
       environmentPrecondition:
-        enabled: 1
+        enabled: 0
         qualifiers: []
       eventPreconditions:
-      - enabled: 1
+      - enabled: 0
         eventCardName: name
     consequenceSet:
       characterConsequences:
-      - enabled: 1
+      - enabled: 0
         bindFlag: 2
         qualiferAlterations: []
-      - enabled: 1
+      - enabled: 0
         bindFlag: 0
         qualiferAlterations: []
-      - enabled: 1
+      - enabled: 0
         bindFlag: 0
         qualiferAlterations: []
-      - enabled: 1
+      - enabled: 0
         bindFlag: 0
         qualiferAlterations: []
       environmentConsequence:
@@ -119,18 +126,109 @@ MonoBehaviour:
         enabled: 1
         qualiferAlterations: []
   - name: name
-    avatarImagePath: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_28.png
     discruption: this is a event, somthing happened
     preconditonSet:
       characterPreconditions: []
       environmentPrecondition:
-        enabled: 1
+        enabled: 0
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
       characterConsequences: []
       environmentConsequence:
-        enabled: 1
+        enabled: 0
+        qualiferAlterations: []
+  - name: name
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_13.png
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        enabled: 0
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 0
+        qualiferAlterations: []
+  - name: name
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_67.png
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        enabled: 0
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 0
+        qualiferAlterations: []
+  - name: name
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_37.png
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        enabled: 0
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 0
+        qualiferAlterations: []
+  - name: name
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_48.png
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        enabled: 0
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 0
+        qualiferAlterations: []
+  - name: name
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_14.png
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        enabled: 0
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 0
+        qualiferAlterations: []
+  - name: name
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_30.png
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      characterPreconditions: []
+      environmentPrecondition:
+        enabled: 0
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      characterConsequences: []
+      environmentConsequence:
+        enabled: 0
         qualiferAlterations: []
   stratagemCards:
   - name: name
@@ -138,26 +236,41 @@ MonoBehaviour:
       Pack Vol 1/background_50.png
     preconditonSet:
       characterPreconditions:
-      - enabled: 1
+      - enabled: 0
         qualifiers: []
-      - enabled: 1
+      - enabled: 0
+        qualifiers: []
+      - enabled: 0
         qualifiers: []
       environmentPrecondition:
-        enabled: 1
-        qualifiers: []
+        enabled: 0
+        qualifiers:
+        - name: "\u662F\u7684"
+        - name: "\u66B4\u541B"
       eventPreconditions:
       - enabled: 1
         eventCardName: "\u6728"
+      - enabled: 1
+        eventCardName: "\u8349\u5730"
     consequenceSet:
       characterConsequences:
-      - enabled: 1
-        bindFlag: 0
-        qualiferAlterations: []
-      - enabled: 1
-        bindFlag: 0
+      - enabled: 0
+        bindFlag: 1
+        qualiferAlterations:
+        - targetQualifier:
+            name: "\u9001\u8FBE\u65B9"
+          type: 1
+        - targetQualifier:
+            name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+          type: 2
+        - targetQualifier:
+            name: "\u5FE0\u5FC3"
+          type: 2
+      - enabled: 0
+        bindFlag: 2
         qualiferAlterations: []
       environmentConsequence:
-        enabled: 1
+        enabled: 0
         qualiferAlterations: []
   - name: name
     avatarImagePath: 
