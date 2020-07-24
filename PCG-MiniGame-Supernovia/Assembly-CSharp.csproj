@@ -200,15 +200,6 @@
     <Compile Include="Assets\Scripts\CardSystem\Precondition\PreconditonSet.cs" />
     <Compile Include="Assets\Scripts\CardSystem\StratagemCard.cs" />
     <Compile Include="Assets\Scripts\DeckDisplayBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Depracted\CardDealer\EventCardDealer.cs" />
-    <Compile Include="Assets\Scripts\Depracted\CardDealer\StratagemCardDealer.cs" />
-    <Compile Include="Assets\Scripts\Depracted\Deck.cs" />
-    <Compile Include="Assets\Scripts\Depracted\GameLoopController.cs" />
-    <Compile Include="Assets\Scripts\Depracted\Kindom.cs" />
-    <Compile Include="Assets\Scripts\Depracted\Viewers\AffairProcessViewer.cs" />
-    <Compile Include="Assets\Scripts\Depracted\Viewers\CharacterCardViewer.cs" />
-    <Compile Include="Assets\Scripts\Depracted\Viewers\EventViewer.cs" />
-    <Compile Include="Assets\Scripts\Depracted\Viewers\StratagemViewer.cs" />
     <Compile Include="Assets\Scripts\EditSystem\DeckArchive.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorBlock\DescriptionBlock.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorStyleResource.cs" />
@@ -232,7 +223,6 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\SelectAndAddWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
-    <Compile Include="Assets\Scripts\EventController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
     <Compile Include="Assets\Scripts\Qualifier.cs" />
