@@ -4,5 +4,4 @@ using UnityEngine;
 
 public abstract class Precondition
 {
-    public bool enabled = true;  
 }

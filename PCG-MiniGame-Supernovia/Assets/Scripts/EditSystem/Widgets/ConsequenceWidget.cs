@@ -7,22 +7,21 @@ public class ConsequenceWidget : Widget{
     private ConsequenceSet editTarget;
 
     private EnvConsequenceWidget envConsequenceWidget;
+    private FightConsequenceWidget fightConsequenceWidget;
     private DynamicWidgetGroup<CharacterConsequenceWidget, CharacterConsequence> characaterConsequenceGroup;
-    private bool enaleEnviromentConsequence;
-    private bool enableCharacterConsequence;
 
     public ConsequenceWidget(ConsequenceSet editTarget) {
         this.editTarget = editTarget;
 
-        // init character widgets
+        // init  widgets
         characaterConsequenceGroup = new DynamicWidgetGroup<CharacterConsequenceWidget, CharacterConsequence>(editTarget.characterConsequences,false);
-        // int env widgets
         envConsequenceWidget = new EnvConsequenceWidget(this.editTarget.environmentConsequence);
+        fightConsequenceWidget = new FightConsequenceWidget(this.editTarget.fightConsequence);
     }
 
     public override void RenderUI() {
         EditorGUILayout.Space();
-        if (enableCharacterConsequence) {
+        if (editTarget.characterConsequenceEnabled) {
             EditorGUILayout.BeginVertical(EditorStyleResource.consequenceBlockStyle);
             EditorGUILayout.LabelField("人物型后果");
             if (GUILayout.Button("Add")) {
@@ -33,22 +32,26 @@ public class ConsequenceWidget : Widget{
             EditorGUILayout.Space();
         }
 
-        if (enaleEnviromentConsequence) {
+        if (editTarget.environmentConsequenceEnabled) {
             EditorGUILayout.BeginVertical(EditorStyleResource.consequenceBlockStyle);
             EditorGUILayout.LabelField("环境结果");
             envConsequenceWidget.RenderUI();
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space();
         }
+
+        if (editTarget.fightConsequenceEnabled) {
+            EditorGUILayout.BeginVertical(EditorStyleResource.consequenceBlockStyle);
+            EditorGUILayout.LabelField("战斗后果");
+            fightConsequenceWidget.RenderUI();
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space();
+        }
     }
 
-    public void SetMask(bool enableCharacterConsequence, bool enaleEnviromentConsequence) {
-        this.enableCharacterConsequence = enableCharacterConsequence;
-        foreach (var conseq in editTarget.characterConsequences) {
-            conseq.enabled = enableCharacterConsequence;
-        }
-     
-        this.enaleEnviromentConsequence = enaleEnviromentConsequence;
-        editTarget.environmentConsequence.enabled = enaleEnviromentConsequence;       
+    public void SetMask(bool enableCharacterConsequence, bool enaleEnviromentConsequence, bool enableFightConsequence) {
+        editTarget.characterConsequenceEnabled = enableCharacterConsequence;
+        editTarget.environmentConsequenceEnabled = enaleEnviromentConsequence;
+        editTarget.fightConsequenceEnabled = enableFightConsequence;
     }
 }

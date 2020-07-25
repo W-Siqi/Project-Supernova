@@ -18,8 +18,11 @@ public class CharacterCardEditor : CardEditor
 
     // 编辑属性
     private void CharacterAttribueEdit(CharacterCard characterCard) {
-        characterCard.attributes.competent = EditorGUILayout.Slider("能力",characterCard.attributes.competent,0,10,GUILayout.Width(WINDOW_WIDTH));
-        characterCard.attributes.loyal = EditorGUILayout.Slider("忠诚",characterCard.attributes.loyal,0,10,GUILayout.Width(WINDOW_WIDTH));
-        characterCard.attributes.shrewdness = EditorGUILayout.Slider("城府",characterCard.attributes.shrewdness,0,10,GUILayout.Width(WINDOW_WIDTH));
+        characterCard.attributes.atkVal = EditorGUILayout.IntSlider("攻击力",characterCard.attributes.atkVal,0,10,GUILayout.Width(WINDOW_WIDTH));
+        characterCard.attributes.maxHP= EditorGUILayout.IntSlider("最大HP",characterCard.attributes.maxHP,1,20,GUILayout.Width(WINDOW_WIDTH));
+        characterCard.attributes.HP = characterCard.attributes.maxHP;
+        GUI.enabled = false;
+        EditorGUILayout.IntSlider("初始HP", characterCard.attributes.HP, 1, 20, GUILayout.Width(WINDOW_WIDTH));
+        GUI.enabled = true;
     }
 }

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class ConsequenceApplier
 {
-    public static void  Apply(ConsequenceSet consequenceSet) { 
+    public static void  Apply(ConsequenceSet consequenceSet,CharacterCard[] bindedCharacters) { 
     }
 }

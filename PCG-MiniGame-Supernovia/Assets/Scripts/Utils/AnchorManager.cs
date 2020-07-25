@@ -20,7 +20,14 @@ public class AnchorManager : MonoBehaviour
     public AnchorPoint eventCardAnchor;
     public AnchorPoint deckSpawnAnchor;
 
+    // 用于事件演出
+    public AnchorPoint showCardLeftAnchor;
+    public AnchorPoint showCardMiddleAnchor;
+    public AnchorPoint showCardRightAnchor;
+
     public string nameToAdd = "new anchor point";
+
+    private List<AnchorPoint> hiddens = new List<AnchorPoint>();
 
     [ContextMenu("Add")]
     private void AddAnchor() {
@@ -30,17 +37,19 @@ public class AnchorManager : MonoBehaviour
         anchorPoint.transform.parent = transform;
     }
 
+
+
     [ContextMenu("Hide ALL")]
     private void HideALLAcnhors() {
-        foreach (var p in FindObjectsOfType<AnchorPoint>()) {
-            p.gameObject.SetActive(false);
+        foreach (var g in GameObject.FindGameObjectsWithTag(AnchorPoint.ANCHOR_TAG)) {
+            g.SetActive(false);
         }
     }
 
     [ContextMenu("Show ALL")]
     private void ShowALLAcnhors() {
-        foreach (var p in FindObjectsOfType<AnchorPoint>()) {
-            p.gameObject.SetActive(true);
+        foreach (var g in GameObject.FindGameObjectsWithTag(AnchorPoint.ANCHOR_TAG)) {
+            g.SetActive(true);
         }
     }
 }

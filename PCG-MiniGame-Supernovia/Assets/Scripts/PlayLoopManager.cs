@@ -25,17 +25,15 @@ public class PlayLoopManager : MonoBehaviour {
         foreach (var c in selecedEvents) {
             var eventCard = c as EventCard;
 
-            // show 事件卡
-            var animationHandle = ShowManager.instance.ShowCardFromDeck(
-                eventCard,
-                ShowManager.DeckTarget.eventDeck,
-                AnchorManager.instance.eventCardAnchor);
+            // binding
+            var bindedCharacters = eventCard.preconditonSet.BindCharacters();
 
-            // 之后会变成演出
-            yield return new WaitForSeconds(3f);
+            // 演出event
+            yield return StartCoroutine(ShowManager.instance.ShowEvent(eventCard,bindedCharacters));
 
-            // 收回
-            ShowManager.instance.BackCardToDeck(animationHandle);
+            // TBD: 可能会出错，如果consequence不是确定的话，show在没apply的时候不知道确定值
+            // apply consequence
+            ConsequenceApplier.Apply(eventCard.consequenceSet, bindedCharacters);
         }
         yield return new WaitForSeconds(2f);
     }
@@ -70,8 +68,9 @@ public class PlayLoopManager : MonoBehaviour {
                 }
 
                 // 应用后果
+                var bindedCharacters = straCard.preconditonSet.BindCharacters();
                 if (agreeDecision) {
-                    ConsequenceApplier.Apply(straCard.consequenceSet);
+                    ConsequenceApplier.Apply(straCard.consequenceSet,bindedCharacters);
                 }
             }
 

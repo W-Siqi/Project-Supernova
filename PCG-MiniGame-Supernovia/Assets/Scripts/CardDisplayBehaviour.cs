@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -7,30 +8,55 @@ public class CardDisplayBehaviour : MonoBehaviour
 {
     [SerializeField]
     private RuntimeMaterial frontMaterial;
-    public static CardDisplayBehaviour Create(Card card, Vector3 positon, Quaternion rotation) {
-        return Create(card.name, card.GetAvatarImage(), positon, rotation);
-    }
+    [SerializeField]
+    private TextMeshPro name;
+    [SerializeField]
+    private TextMeshPro description;
+    [SerializeField]
+    private TextMeshPro atkVal;
+    [SerializeField]
+    private TextMeshPro hpVal;
+
 
     public static CardDisplayBehaviour CreateDummyCard(Vector3 positon, Quaternion rotation) {
-        return Create("dummy", null, positon, rotation);
+        return Create(null,positon, rotation);
     }
 
-    public void SetFrontImage(Texture2D image) {
-        frontMaterial.runtimeMat.mainTexture = image;
-    }
-
-    private static CardDisplayBehaviour Create(string name, Texture2D image, Vector3 positon, Quaternion rotation) {
+    public static CardDisplayBehaviour Create(Card card, Vector3 positon, Quaternion rotation) {
         var GO = Instantiate(ResourceTable.instance.prefabPage.cardDisplay,positon,rotation);
-        GO.name = name;
         var displayBehvaiour = GO.GetComponent<CardDisplayBehaviour>();
-        displayBehvaiour.Init();
-        if (image) {
-            displayBehvaiour.SetFrontImage(image);
-        }
+        displayBehvaiour.Init(card);
         return displayBehvaiour;
     }
 
-    private void Init() {
+    private void Init(Card card) {
+        if (card == null) {
+            gameObject.name = "dummy";
+            return;
+        }
+        else {
+            gameObject.name = card.name;
+        }
+
+        // image
         frontMaterial.Init();
+        if (card.GetAvatarImage()) {
+            frontMaterial.runtimeMat.mainTexture = card.GetAvatarImage();
+        }
+
+        // name
+        name.text = card.name;
+        // description
+        description.text = card.description;
+
+        if (card is CharacterCard) {
+            var characterCard = card as CharacterCard;
+            atkVal.text = characterCard.attributes.atkVal.ToString();
+            hpVal.text = characterCard.attributes.HP.ToString();
+        }
+        else {
+            atkVal.enabled = false;
+            hpVal.enabled = false;
+        }
     }
 }

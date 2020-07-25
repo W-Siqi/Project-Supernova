@@ -8,6 +8,8 @@ public abstract class Card {
     private static Texture2D defaultImage = null;
 
     public string name = "name";
+    public string description = "";
+
     [SerializeField]
     private string avatarImagePath = "";
     private Texture2D loadedAvatarImage = null;

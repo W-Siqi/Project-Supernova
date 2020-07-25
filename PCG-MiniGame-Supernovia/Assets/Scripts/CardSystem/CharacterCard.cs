@@ -8,9 +8,9 @@ public class CharacterCard : Card
 {
     [System.Serializable]
     public class Attributes {
-        public float competent = 0;
-        public float loyal = 0;
-        public float shrewdness = 0;
+        public int atkVal = 0;
+        public int maxHP = 0;
+        public int HP = 0;
     }
 
     public Attributes attributes = new Attributes();

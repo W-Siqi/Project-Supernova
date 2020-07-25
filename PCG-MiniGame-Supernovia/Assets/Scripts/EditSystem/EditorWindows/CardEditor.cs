@@ -49,9 +49,15 @@ public abstract class CardEditor : EditorWindow
         DrawCardImageEdit(IMAGE_WIDTH);
         // name edit
         EditorGUILayout.BeginVertical();
+        EditorGUILayout.Space();
         DrawNameEdit(WINDOW_WIDTH - IMAGE_WIDTH);
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        DrawDecriptionEdit(WINDOW_WIDTH - IMAGE_WIDTH);
         EditorGUILayout.EndVertical();
-        
+
+
         EditorGUILayout.EndHorizontal();
     }
 
@@ -100,6 +106,11 @@ public abstract class CardEditor : EditorWindow
     private void DrawNameEdit(int windowWidth) {
         GUILayout.Label("名称编辑：");
         editTarget.name = EditorGUILayout.TextField(editTarget.name, GUILayout.Width(windowWidth));
+    }
+
+    private void DrawDecriptionEdit(int windowWidth) {
+        GUILayout.Label("描述编辑：");
+        editTarget.description = EditorGUILayout.TextField(editTarget.description, GUILayout.Width(windowWidth),GUILayout.Height(windowWidth));
     }
 }
 

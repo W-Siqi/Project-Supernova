@@ -18,11 +18,6 @@ public class PreconditionWidget : Widget {
     // character precondtion
     private DynamicWidgetGroup<CharacterPreconditonWidget, CharacterPrecondition> chaPreconditonWidgetGroup;
 
-    // enble mask
-    private bool environmentEnabled = true;
-    private bool characterEnabled = true;
-    private bool eventEnabled = true;
-
     public PreconditionWidget(PreconditonSet target) {
         editTarget = target;
 
@@ -60,15 +55,15 @@ public class PreconditionWidget : Widget {
 
     public override void RenderUI() {
         EditorGUILayout.BeginVertical();
-        if (characterEnabled) {
+        if (editTarget.characterEnabled) {
             RenderChadracterPrecontionUI();
             EditorGUILayout.Space();
         }
-        if (environmentEnabled) {
+        if (editTarget.environmentEnabled) {
             RenderEnvironmentPrecontionUI();
             EditorGUILayout.Space();
         }
-        if (eventEnabled) {
+        if (editTarget.eventEnabled) {
             RenderEventPreconditionUI();
             EditorGUILayout.Space();
         }
@@ -76,18 +71,9 @@ public class PreconditionWidget : Widget {
     }
 
     public void SetMask(bool characterEnabled, bool environmentEnabled, bool eventEnabled){
-        this.characterEnabled = characterEnabled;
-        foreach (var condition in editTarget.characterPreconditions) {
-            condition.enabled = characterEnabled;   
-        }
-
-        this.environmentEnabled = environmentEnabled;
-        editTarget.environmentPrecondition.enabled = environmentEnabled;
-
-        this.eventEnabled = eventEnabled;
-        foreach (var condition in editTarget.eventPreconditions) {
-            condition.enabled = eventEnabled;
-        }
+        editTarget.characterEnabled = characterEnabled;
+        editTarget.environmentEnabled = environmentEnabled;
+        editTarget.eventEnabled = eventEnabled;
     }
 
     private void RenderChadracterPrecontionUI() {

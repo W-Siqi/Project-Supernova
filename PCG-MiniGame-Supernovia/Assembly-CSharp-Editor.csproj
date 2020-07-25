@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenPreviewManager.cs" />
+    <Compile Include="Assets\External\Local\HyperCard\Scripts\Editor\CardEditor.cs" />
     <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\Editor\InventoryEditor.cs" />
     <Compile Include="Assets\External\Local\Kings\addons\Quests\Scripts\Editor\QuestsEditor.cs" />
     <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\Editor\Timeline_UIEventListEditor.cs" />

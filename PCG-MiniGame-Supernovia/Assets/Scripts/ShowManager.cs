@@ -4,7 +4,7 @@ using UnityEngine;
 
 // 负责一切的卡牌动画，和演出效果
 public class ShowManager : MonoBehaviour {
-    public enum DeckTarget{
+    public enum DeckTarget {
         characterDeck,
         eventDeck,
         stratagemDeck
@@ -61,6 +61,19 @@ public class ShowManager : MonoBehaviour {
         yield return new WaitForSeconds(1f);
     }
 
+    // 各种事件卡的万能入口
+    public  IEnumerator ShowEvent(EventCard eventCard, CharacterCard[] bindedCharacters) {
+        // show event card selfs
+        var animationHandle = ShowCardFromDeck( eventCard, ShowManager.DeckTarget.eventDeck,AnchorManager.instance.eventCardAnchor);
+        yield return new WaitForSeconds(1f);
+
+        // show binded character cards
+
+
+        BackCardToDeck(animationHandle);
+    }
+
+
     public TrackingHandle ShowCardFromDeck(Card card,DeckTarget from, AnchorPoint anchorPoint) {
         DeckDisplayBehaviour belongedDeck;
         switch (from) {
@@ -99,6 +112,7 @@ public class ShowManager : MonoBehaviour {
         var targetCardDisplay = trackingDict[trackingHandleOfCard];
         PlayCardToDeck(targetCardDisplay,trackingHandleOfCard.belongedDeck,1f);
     }
+
 
     IEnumerator CardsToDeck(List<CardDisplayBehaviour>cards, DeckDisplayBehaviour deck) {
         foreach (var c in cards){
