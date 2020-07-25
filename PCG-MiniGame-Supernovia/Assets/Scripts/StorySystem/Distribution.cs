@@ -7,7 +7,7 @@ public class Distribution
     /// <summary>
     /// 从小到大排的，distribution
     /// </summary>
-    public List<KeyValuePair<Card, float>> cardPDFs;
+    public List<KeyValuePair<Card, float>> cardPDFs = new List<KeyValuePair<Card, float>>();
 
     public float maxPDF
     {
@@ -51,7 +51,7 @@ public class Distribution
         if (index < cardPDFs.Count)
         {
             // 计算被删除的cdf
-            float targetCDF = cardPDFs[index].Value - index > 0 ? cardPDFs[index - 1].Value : 0;
+            float targetCDF = cardPDFs[index].Value - index - 1 >= 0 ? cardPDFs[index - 1].Value : 0;
             for (int i = index; i < cardPDFs.Count - 1; i++)
             {
                 var k = cardPDFs[i + 1].Key;

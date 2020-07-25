@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class FightConsequence : Consequence
 {
     // TBD：（暂时的做法）
@@ -12,5 +13,13 @@ public class FightConsequence : Consequence
 
     public override void Apply() {
         throw new System.NotImplementedException();
+    }
+
+    public CharacterCard GetAttacker(CharacterCard[] bindedCharacters) {
+        return bindedCharacters[attackerbindFlag - 1];
+    }
+
+    public CharacterCard GetDefender(CharacterCard[] bindedCharacters) {
+        return bindedCharacters[defenderbindFlag - 1];
     }
 }

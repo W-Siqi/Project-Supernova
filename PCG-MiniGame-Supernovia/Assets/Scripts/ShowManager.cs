@@ -10,11 +10,6 @@ public class ShowManager : MonoBehaviour {
         stratagemDeck
     }
 
-    // 用来后续跟踪，并进行后续动画的一个标记
-    public class TrackingHandle {
-        public DeckDisplayBehaviour belongedDeck;
-    }
-
     // singaleton
     private static ShowManager _instance = null;
     public static ShowManager instance {
@@ -32,8 +27,6 @@ public class ShowManager : MonoBehaviour {
     private DeckDisplayBehaviour eventDeckDisplay;
     [SerializeField]
     private DeckDisplayBehaviour stratagemDeckDisplay;
-
-    private Dictionary<TrackingHandle, CardDisplayBehaviour> trackingDict = new Dictionary<TrackingHandle, CardDisplayBehaviour>();
 
     // 游戏开始时洗牌演出
     public IEnumerator PlayDeckInitShuffle() {
@@ -64,19 +57,51 @@ public class ShowManager : MonoBehaviour {
     // 各种事件卡的万能入口
     public  IEnumerator ShowEvent(EventCard eventCard, CharacterCard[] bindedCharacters) {
         // show event card selfs
-        var animationHandle = ShowCardFromDeck( eventCard, ShowManager.DeckTarget.eventDeck,AnchorManager.instance.eventCardAnchor);
+        var eventCardDisplay = ShowCardFromDeck( eventCard, DeckTarget.eventDeck,AnchorManager.instance.eventCardAnchor);
         yield return new WaitForSeconds(1f);
 
-        // show binded character cards
+        // 对战斗后果进行演出
+        if (eventCard.consequenceSet.fightConsequenceEnabled) {
+            var fightConseq = eventCard.consequenceSet.fightConsequence;
+            var attacker = fightConseq.GetAttacker(bindedCharacters);
+            var defender = fightConseq.GetDefender(bindedCharacters);
 
+            var attackDisplay = ShowCardFromDeck(attacker, DeckTarget.characterDeck, AnchorManager.instance.showCardLeftAnchor);
+            var defenderDisplay = ShowCardFromDeck(defender, DeckTarget.characterDeck, AnchorManager.instance.showCardRightAnchor);
 
-        BackCardToDeck(animationHandle);
+            yield return new WaitForSeconds(3f);
+            BackCardToDeck(attackDisplay, DeckTarget.characterDeck);
+            BackCardToDeck(defenderDisplay, DeckTarget.characterDeck);
+        }
+
+        BackCardToDeck(eventCardDisplay, DeckTarget.eventDeck);
+        yield return new WaitForSeconds(2f);
     }
 
 
-    public TrackingHandle ShowCardFromDeck(Card card,DeckTarget from, AnchorPoint anchorPoint) {
+    public CardDisplayBehaviour ShowCardFromDeck(Card card,DeckTarget from, AnchorPoint anchorPoint) {
+        DeckDisplayBehaviour belongedDeck = GetBlongedDeckDisplay(from);
+
+        Vector3 topPos;
+        Quaternion topRotation;
+        belongedDeck.DrawCard(out topPos,out topRotation);
+        var cardDisplay =  CardDisplayBehaviour.Create(card, topPos, topRotation);
+        LerpAnimator.instance.LerpPositionAndRotation(
+            cardDisplay.transform,
+            anchorPoint.transform.position,
+            anchorPoint.transform.rotation,
+            1f);
+
+        return cardDisplay;
+    }
+
+    public void BackCardToDeck(CardDisplayBehaviour cardDisplayBehaviour, DeckTarget deck) {
+        PlayCardToDeck(cardDisplayBehaviour, GetBlongedDeckDisplay(deck),1f);
+    }
+
+    private DeckDisplayBehaviour GetBlongedDeckDisplay(DeckTarget deck) {
         DeckDisplayBehaviour belongedDeck;
-        switch (from) {
+        switch (deck) {
             case DeckTarget.characterDeck:
                 belongedDeck = characterDeckDisplay;
                 break;
@@ -90,29 +115,8 @@ public class ShowManager : MonoBehaviour {
                 belongedDeck = characterDeckDisplay;
                 break;
         }
-
-        Vector3 topPos;
-        Quaternion topRotation;
-        belongedDeck.DrawCard(out topPos,out topRotation);
-        var cardDisplay =  CardDisplayBehaviour.Create(card, topPos, topRotation);
-        LerpAnimator.instance.LerpPositionAndRotation(
-            cardDisplay.transform,
-            anchorPoint.transform.position,
-            anchorPoint.transform.rotation,
-            1f);
-
-        var trackingHandle = new TrackingHandle();
-        trackingHandle.belongedDeck = belongedDeck;
-        trackingDict[trackingHandle] = cardDisplay;
-
-        return trackingHandle;
+        return belongedDeck;
     }
-
-    public void BackCardToDeck(TrackingHandle trackingHandleOfCard) {
-        var targetCardDisplay = trackingDict[trackingHandleOfCard];
-        PlayCardToDeck(targetCardDisplay,trackingHandleOfCard.belongedDeck,1f);
-    }
-
 
     IEnumerator CardsToDeck(List<CardDisplayBehaviour>cards, DeckDisplayBehaviour deck) {
         foreach (var c in cards){

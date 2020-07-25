@@ -15,8 +15,8 @@ public class ConsequenceApplier
             Debug.LogError("fight consequence， 角色绑定人数错误");
             return;
         }
-        var attacker = bindedCharacters[0];
-        var defender = bindedCharacters[1];
+        var attacker = fightConsequence.GetAttacker(bindedCharacters);
+        var defender = fightConsequence.GetDefender(bindedCharacters);
         defender.attributes.HP -= attacker.attributes.atkVal;
     }
 }

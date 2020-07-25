@@ -48,7 +48,7 @@ public class PlayLoopManager : MonoBehaviour {
             }
 
             // show 角色卡动画
-            var animationHandle = ShowManager.instance.ShowCardFromDeck(
+            var chracaterCardDisplay = ShowManager.instance.ShowCardFromDeck(
                 character,
                 ShowManager.DeckTarget.characterDeck,
                 AnchorManager.instance.characterCardAnchor);
@@ -74,7 +74,7 @@ public class PlayLoopManager : MonoBehaviour {
                 }
             }
 
-            ShowManager.instance.BackCardToDeck(animationHandle);
+            ShowManager.instance.BackCardToDeck(chracaterCardDisplay, ShowManager.DeckTarget.characterDeck);
         }
     }
 }

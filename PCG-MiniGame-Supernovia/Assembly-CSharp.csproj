@@ -243,6 +243,7 @@
     <Compile Include="Assets\Scripts\StorySystem\CardSelector.cs" />
     <Compile Include="Assets\Scripts\StorySystem\ConsequenceApplier.cs" />
     <Compile Include="Assets\Scripts\StorySystem\CountFilter.cs" />
+    <Compile Include="Assets\Scripts\StorySystem\Distribution.cs" />
     <Compile Include="Assets\Scripts\StorySystem\EventCountFilter.cs" />
     <Compile Include="Assets\Scripts\StorySystem\EventProbFilter.cs" />
     <Compile Include="Assets\Scripts\StorySystem\ProbabilityFilter.cs" />
