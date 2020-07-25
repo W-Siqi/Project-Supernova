@@ -9,9 +9,7 @@ public class StratagemProbFilter : ProbabilityFilter
         this.hookedCharacter = hookedCharacter;
     }
 
-    public override Distrubution Filt() {
-        var distribution = new Distrubution();
-        distribution.cards = StoryContext.instance.stratagemDeck.ToArray();
-        return distribution;
+    public override Distribution Filt() {
+        return GetAvartageDistribution(StoryContext.instance.stratagemDeck.ToArray());
     }
 }

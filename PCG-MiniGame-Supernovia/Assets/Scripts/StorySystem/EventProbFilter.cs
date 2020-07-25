@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EventProbFilter : ProbabilityFilter
 {
-    public override Distrubution Filt() {
-        var distribution = new Distrubution();
-        distribution.cards = StoryContext.instance.eventDeck.ToArray();
-        return distribution;
+    public override Distribution Filt() {
+        return GetAvartageDistribution(StoryContext.instance.eventDeck.ToArray());
     }
 }

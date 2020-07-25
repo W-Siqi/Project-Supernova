@@ -12,7 +12,21 @@ public class PreconditonSet
     public EnvironmentPrecondition environmentPrecondition = new EnvironmentPrecondition();
     public List<EventPrecondition> eventPreconditions = new List<EventPrecondition>();
 
+    /// <summary>
+    /// 如果连人数都不够，绑定失败，会抛错
+    /// </summary>
+    /// <returns></returns>
     public CharacterCard[] BindCharacters() {
-        throw new System.NotImplementedException();
+        var bindedCharacters = new List<CharacterCard>();
+        var randomSelectPool = new List<CharacterCard>();
+        foreach (var card in StoryContext.instance.characterDeck) {
+            randomSelectPool.Add(card);
+        }
+        for (int i = 0; i < characterPreconditions.Count; i++) {
+            var randIndex = Random.Range(0, randomSelectPool.Count);
+            bindedCharacters.Add(randomSelectPool[randIndex]);
+            randomSelectPool.RemoveAt(randIndex);
+        }
+        return bindedCharacters.ToArray();
     }
 }

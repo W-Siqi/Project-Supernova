@@ -4,10 +4,17 @@ using UnityEngine;
 
 public abstract class ProbabilityFilter
 {
-    public class Distrubution {
-        public Card[] cards;
-        public float[] PDF;
-    }
+    public abstract Distribution Filt();
 
-    public abstract Distrubution Filt();
+    protected static Distribution GetAvartageDistribution(Card[] cards) { 
+        var distribution = new Distribution();
+        float pdfStep = 1f / (float)cards.Length;
+        float pdf = pdfStep;
+        foreach (var c in cards)
+        {
+            distribution.cardPDFs.Add(new KeyValuePair<Card, float>(c, pdf));
+            pdf += pdfStep;
+        }
+        return distribution;
+    }
 }
