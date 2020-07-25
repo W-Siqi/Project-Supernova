@@ -5,19 +5,22 @@ using UnityEditor;
 using System;
 
 // 提供最初的卡片排版和罗列
-// 子类可替:
+// 子类:
 //  1)换具体渲染卡片的delegate
-//  2)指定卡组类型
+//  2)指定deck成员的获取方式
+//  2)指定创建deck内卡组的方式
 public abstract class DeckEditor : EditorWindow
 {    
     private static Texture2D defaultImg;
 
     protected delegate void DrawCardBlock(Vector2 leftUpAnchor, float width, float height, Card characterCard, out bool isDeleted);
     protected DrawCardBlock drawCardlock = DefaultDrawCardBlock;
-    protected Type cardTypeInDeck = typeof(CharacterCard);
 
     private DeckArchive archive = null;
     private Vector2 showCaseScrollView = Vector2.zero;
+
+    protected abstract Card[] GetCardsInDeck();
+    protected abstract Card CreateCardInDeck();
 
     private void OnEnable() {
         archive = DeckArchive.instance;
@@ -39,7 +42,7 @@ public abstract class DeckEditor : EditorWindow
         float CHARACTER_BLOCK_HEIGHT = 200;
         int CHARACTER_NUMER_PER_LINE = 3;
 
-        Card[] targetCards = archive.GetCards(cardTypeInDeck);
+        Card[] targetCards = GetCardsInDeck();
         // decide scroll view
         var cardNum = targetCards.Length;
         showCaseScrollView = GUI.BeginScrollView(
@@ -54,7 +57,7 @@ public abstract class DeckEditor : EditorWindow
         // block for add new..
         var addNewCharacterBtnPos = new Rect(anchor.x, anchor.y, blockWidth, CHARACTER_BLOCK_HEIGHT);
         if (GUI.Button(addNewCharacterBtnPos, "创建")) {
-            archive.AddCard((Card)Activator.CreateInstance(cardTypeInDeck));
+            archive.AddCard(CreateCardInDeck());
         }
         anchor += new Vector2(blockWidth, 0);
         // draw character one by one to fill the grid

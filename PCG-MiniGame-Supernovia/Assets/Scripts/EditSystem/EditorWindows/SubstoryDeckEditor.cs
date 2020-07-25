@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class StratagemDeckEditor : DeckEditor
-{
-    [MenuItem("卡牌编辑器/决策卡组")]
+public class SubstoryDeckEditor : DeckEditor {
+    [MenuItem("卡牌编辑器/副本卡编辑器")]
     public static void ShowWindow() {
-        var instance = (StratagemDeckEditor)EditorWindow.GetWindow(typeof(StratagemDeckEditor));
+        var instance = (SubstoryDeckEditor)EditorWindow.GetWindow(typeof(SubstoryDeckEditor));
     }
+
     protected override void OnGUI() {
         base.OnGUI();
     }
 
     protected override Card[] GetCardsInDeck() {
-        return DeckArchive.instance.GetCards(typeof(StratagemCard));
+        return DeckArchive.instance.GetCards(typeof(SubstoryCard));
     }
 
     protected override Card CreateCardInDeck() {
-        return new StratagemCard();
+        return new SubstoryCard();
     }
 }

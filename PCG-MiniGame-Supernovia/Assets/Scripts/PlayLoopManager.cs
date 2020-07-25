@@ -14,11 +14,40 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator PlayLoopCoroutine(){
         while (true) {
-            yield return StartCoroutine(CouncilStage());
-            yield return StartCoroutine(EventState());
+            //yield return StartCoroutine(CouncilStage());
+            //yield return StartCoroutine(EventState());
+            yield return StartCoroutine(SubstoryCardCheckPoint());
             yield return null;
         }
     }
+
+
+    // TBD - 当前算法是必然会出一个副本卡
+    IEnumerator SubstoryCardCheckPoint() {
+        var subStories = DeckArchive.instance.substoryCards;
+        if (subStories.Count > 0) {
+            var selectedSubstory = subStories[Random.Range(0, subStories.Count)];
+            // 动画演出
+            yield return StartCoroutine(ShowManager.instance.SubstoryArriveShow(selectedSubstory));
+            if (selectedSubstory.type == SubstoryCard.Type.dungeon) {
+                // 副本卡
+                StoryContext.instance.PushSubstory(selectedSubstory);
+            }
+            else {
+                //支线卡
+                var newCards = new List<Card>();
+                newCards.AddRange(selectedSubstory.newCharacters);
+                newCards.AddRange(selectedSubstory.eventCards);
+                newCards.AddRange(selectedSubstory.stratagemCards);
+
+                StoryContext.instance.characterDeck.AddRange(selectedSubstory.newCharacters);
+                StoryContext.instance.eventDeck.AddRange(selectedSubstory.eventCards);
+                StoryContext.instance.stratagemDeck.AddRange(selectedSubstory.stratagemCards);
+            }
+        }
+    }
+
+    
 
     IEnumerator EventState() {
         var selecedEvents = CardSelector.Select(new EventProbFilter(), new EventCountFilter());

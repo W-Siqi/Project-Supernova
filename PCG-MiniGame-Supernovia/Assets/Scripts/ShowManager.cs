@@ -28,30 +28,85 @@ public class ShowManager : MonoBehaviour {
     [SerializeField]
     private DeckDisplayBehaviour stratagemDeckDisplay;
 
-    // 游戏开始时洗牌演出
-    public IEnumerator PlayDeckInitShuffle() {
+    /// <summary>
+    /// 副本/支线 卡到来时候的动画 (必须要在StoryContext还没变之前调用！)
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator SubstoryArriveShow(SubstoryCard substoryCard) {
+        var spawnAnchor = AnchorManager.instance.deckSpawnAnchor;
+
+        var storyCardDisplay = CardDisplayBehaviour.Create(
+            substoryCard,
+            spawnAnchor.transform.position,
+            spawnAnchor.transform.rotation);
+        yield return new WaitForSeconds(1.5f);
+        DestroyImmediate(storyCardDisplay.gameObject);
+
+        if (substoryCard.type == SubstoryCard.Type.dungeon) {
+            var cardsShuffleOut = new List<Card>();
+            cardsShuffleOut.AddRange(StoryContext.instance.eventDeck);
+            cardsShuffleOut.AddRange(StoryContext.instance.stratagemDeck);
+            yield return StartCoroutine(PlayCardsShuffleOut(cardsShuffleOut.ToArray()));
+        }
+
+        var cardsShuffleIn = new List<Card>();
+        cardsShuffleIn.AddRange(substoryCard.newCharacters);
+        cardsShuffleIn.AddRange(substoryCard.eventCards);
+        cardsShuffleIn.AddRange(substoryCard.stratagemCards);
+        yield return StartCoroutine(PlayCardsShuffleIn(cardsShuffleIn.ToArray()));
+
+        yield return new WaitForSeconds(1f);
+    }
+
+    /// <summary>
+    /// 把卡片全部吸进牌组
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator PlayCardsShuffleIn(Card[] cards) {
         var anchor = AnchorManager.instance.deckSpawnAnchor;
         Vector3 startPos = anchor.transform.position;
         Quaternion startRotation = anchor.transform.rotation;
-
-        var chaCards = new List<CardDisplayBehaviour>();
-        var straCards = new List<CardDisplayBehaviour>();
-        var eveCards = new List<CardDisplayBehaviour>();
-        foreach (var src in StoryContext.instance.characterDeck) {
-            chaCards.Add(CardDisplayBehaviour.Create(src, startPos, startRotation));
+        foreach (var card in cards) {
+            DeckTarget belongedDeck;
+            if (card is CharacterCard) {
+                belongedDeck = DeckTarget.characterDeck;
+            }
+            else if (card is EventCard) {
+                belongedDeck = DeckTarget.eventDeck;
+            }
+            else {
+                belongedDeck = DeckTarget.stratagemDeck;
+            }
+            var cardDisplay = CardDisplayBehaviour.Create(card, startPos, startRotation);
+            BackCardToDeck(cardDisplay, belongedDeck);
+            yield return new WaitForSeconds(0.5f);
         }
-        foreach (var src in StoryContext.instance.eventDeck) {
-            eveCards.Add(CardDisplayBehaviour.Create(src, startPos, startRotation));
-        }
-        foreach (var src in StoryContext.instance.stratagemDeck) {
-            straCards.Add(CardDisplayBehaviour.Create(src, startPos, startRotation));
-        }
-
-        yield return StartCoroutine(CardsToDeck(chaCards, characterDeckDisplay));
-        yield return StartCoroutine(CardsToDeck(straCards, eventDeckDisplay));
-        yield return StartCoroutine(CardsToDeck(eveCards, stratagemDeckDisplay));
 
         yield return new WaitForSeconds(1f);
+    }
+
+    /// <summary>
+    /// 把当前deck里面的排全部洗出去的动画
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator PlayCardsShuffleOut(Card[] cards) {
+        var anchor = AnchorManager.instance.deckSpawnAnchor;
+        foreach (var card in cards) {
+            DeckTarget belongedDeck;
+            if (card is CharacterCard) {
+                belongedDeck = DeckTarget.characterDeck;
+            }
+            else if (card is EventCard) {
+                belongedDeck = DeckTarget.eventDeck;
+            }
+            else {
+                belongedDeck = DeckTarget.stratagemDeck;
+            }
+
+            var cardDisplay = ShowCardFromDeck(card, belongedDeck,anchor);
+            Destroy(cardDisplay.gameObject, 5f);
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     // 各种事件卡的万能入口
@@ -81,7 +136,13 @@ public class ShowManager : MonoBehaviour {
         yield return new WaitForSeconds(2f);
     }
 
-
+    /// <summary>
+    /// 卡片从牌堆抽出来到某个位置的动画
+    /// </summary>
+    /// <param name="card"></param>
+    /// <param name="from"></param>
+    /// <param name="anchorPoint"></param>
+    /// <returns></returns>
     public CardDisplayBehaviour ShowCardFromDeck(Card card,DeckTarget from, AnchorPoint anchorPoint) {
         DeckDisplayBehaviour belongedDeck = GetBlongedDeckDisplay(from);
 
@@ -98,6 +159,11 @@ public class ShowManager : MonoBehaviour {
         return cardDisplay;
     }
 
+    /// <summary>
+    /// 把卡片洗回去牌堆的动画
+    /// </summary>
+    /// <param name="cardDisplayBehaviour"></param>
+    /// <param name="deck"></param>
     public void BackCardToDeck(CardDisplayBehaviour cardDisplayBehaviour, DeckTarget deck) {
         PlayCardToDeck(cardDisplayBehaviour, GetBlongedDeckDisplay(deck),1f);
     }
@@ -119,13 +185,6 @@ public class ShowManager : MonoBehaviour {
                 break;
         }
         return belongedDeck;
-    }
-
-    IEnumerator CardsToDeck(List<CardDisplayBehaviour>cards, DeckDisplayBehaviour deck) {
-        foreach (var c in cards){
-            PlayCardToDeck(c, deck, 1f);
-            yield return new WaitForSeconds(0.2f);
-        }
     }
 
     void PlayCardToDeck(CardDisplayBehaviour card, DeckDisplayBehaviour deck, float playTime) {

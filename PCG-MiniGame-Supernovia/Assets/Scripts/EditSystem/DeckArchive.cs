@@ -16,6 +16,7 @@ public class DeckArchive : ScriptableObject {
     public List<CharacterCard> characterCards = new List<CharacterCard>();
     public List<EventCard> eventCards = new List<EventCard>();
     public List<StratagemCard> stratagemCards = new List<StratagemCard>();
+    public List<SubstoryCard> substoryCards = new List<SubstoryCard>();
     public QualifierLibrary characterQualifierLib= new QualifierLibrary();
     public QualifierLibrary environmentQualifierLib = new QualifierLibrary();
 
@@ -50,6 +51,9 @@ public class DeckArchive : ScriptableObject {
         else if (card is StratagemCard) {
             stratagemCards.Add(card as StratagemCard);
         }
+        else if (card is SubstoryCard) {
+            substoryCards.Add(card as SubstoryCard);
+        }
         else {
             throw new System.Exception("UDF type");
         }
@@ -65,6 +69,9 @@ public class DeckArchive : ScriptableObject {
         else if (card is StratagemCard) {
             stratagemCards.Remove(card as StratagemCard);
         }
+        else if (card is SubstoryCard) {
+            substoryCards.Remove(card as SubstoryCard);
+        }
         else {
             throw new System.Exception("UDF type");
         }
@@ -78,6 +85,9 @@ public class DeckArchive : ScriptableObject {
         }
         else if (cardType == typeof(StratagemCard)) {
             return stratagemCards.ToArray();
+        }
+        else if (cardType == typeof(SubstoryCard)) {
+            return substoryCards.ToArray();
         }
         throw new System.Exception("UDF type");
     }

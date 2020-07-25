@@ -8,10 +8,17 @@ public class EventDeckEditor : DeckEditor
     [MenuItem("卡牌编辑器/事件卡组")]
     public static void ShowWindow() {
         var instance = (EventDeckEditor)EditorWindow.GetWindow(typeof(EventDeckEditor));
-        instance.cardTypeInDeck = typeof(EventCard);
     }
 
     protected override void OnGUI() {
         base.OnGUI();
+    }
+
+    protected override Card[] GetCardsInDeck() {
+        return DeckArchive.instance.GetCards(typeof(EventCard));
+    }
+
+    protected override Card CreateCardInDeck() {
+        return new EventCard();
     }
 }

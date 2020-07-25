@@ -5,6 +5,7 @@ using UnityEditor;
 
 // 所有卡片编辑器的基类
 // 编辑头像，名称，前缀等共通特性
+// 子类只需要override OnGUI追加
 public abstract class CardEditor : EditorWindow
 {
     protected const int WINDOW_WIDTH = 400;
@@ -29,6 +30,9 @@ public abstract class CardEditor : EditorWindow
             }
             else if (card is StratagemCard) {
                 newWindow = CreateInstance<StratagemCardEditor>();
+            }
+            else if (card is SubstoryCard) {
+                newWindow = CreateInstance<SubstoryCardEditor>();
             }
             else {
                 Debug.LogError("unknown type of card");

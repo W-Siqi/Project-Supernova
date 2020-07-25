@@ -26,7 +26,11 @@ public class GameManager : MonoBehaviour
         StoryContext.instance.InitForNewStory(seed);
 
         // 洗牌动画
-        yield return StartCoroutine(showManager.PlayDeckInitShuffle());
+        var cardsInDeck = new List<Card>();
+        cardsInDeck.AddRange(StoryContext.instance.characterDeck);
+        cardsInDeck.AddRange(StoryContext.instance.stratagemDeck);
+        cardsInDeck.AddRange(StoryContext.instance.eventDeck);
+        yield return StartCoroutine(showManager.PlayCardsShuffleIn(cardsInDeck.ToArray()));
 
         // 开始游戏主循环
         playLoopManager.StartPlayLoop();

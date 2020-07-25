@@ -51,7 +51,7 @@ MonoBehaviour:
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 1
-      eventEnabled: 0
+      eventEnabled: 1
       characterPreconditions:
       - qualifiers: []
       - qualifiers: []
@@ -256,6 +256,246 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
+  substoryCards:
+  - name: name
+    description: 
+    avatarImagePath: Assets/External/Local/HyperCard/Textures+Artworks/Artworks/14.tif
+    type: 1
+    newCharacters:
+    - name: name
+      description: 
+      avatarImagePath: Assets/External/Local/Free Asset - 2D Handcrafted Art/Sprite/Moss1/_8.png
+      attributes:
+        atkVal: 0
+        maxHP: 1
+        HP: 1
+      qualifiers: []
+    - name: name
+      description: 
+      avatarImagePath: Assets/External/Local/HyperCard/Textures+Artworks/Artworks/40_Holomask.tif
+      attributes:
+        atkVal: 0
+        maxHP: 1
+        HP: 1
+      qualifiers: []
+    stratagemCards:
+    - name: name
+      description: 
+      avatarImagePath: 
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    eventCards:
+    - name: name
+      description: 
+      avatarImagePath: 
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
+    - name: name
+      description: 
+      avatarImagePath: 
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 0
+        eventEnabled: 0
+        characterPreconditions: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions: []
+      consequenceSet:
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 0
+        characterConsequences: []
+        environmentConsequence:
+          qualiferAlterations: []
+        fightConsequence:
+          attackerbindFlag: 0
+          defenderbindFlag: 0
   characterQualifierLib:
     qualifiers:
     - name: "\u9001\u8FBE\u65B9"
