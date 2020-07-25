@@ -1,44 +1,91 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StratagemCardInteraction : MonoBehaviour {
+    const float DISPEAR_ANIMATION_VALUE = 50f;
+    const float DISPEAR_ANIMATION_TIME = 1f;
+
     public delegate void OnDecisionMade(bool isAgree);
 
-    private StratagemCard stratagemCard;
+    [SerializeField]
+    RawImage image;
+    [SerializeField]
+    Text yesText;
+    [SerializeField]
+    Text noText;
+    [SerializeField]
+    Text titleText;
+    [SerializeField]
+    Text descriptionText;
+    [SerializeField]
+    private Swipe swipe;
+    [SerializeField]
+    [ReadOnlyInspector]
+    private float acutalSwipeValue;
+    [SerializeField]
+    private Animator cardAnimator;
+
     private OnDecisionMade decisionMade;
-    private CardDisplayBehaviour cardDisplay;
+
+    private bool onInteraction = true;
 
     public static StratagemCardInteraction Create(StratagemCard stratagemCard, OnDecisionMade onDecisionMade) {
-        var GO = new GameObject("StratagemCardInteraction - " + stratagemCard.name);
-        var interaction = GO.AddComponent<StratagemCardInteraction>();
-        interaction.stratagemCard = stratagemCard;
+        var GO = Instantiate(ResourceTable.instance.prefabPage.startagemInteraction);
+        var interaction = GO.GetComponent<StratagemCardInteraction>();
         interaction.decisionMade = onDecisionMade;
-        interaction.StartInteraction();
+
+        var canvas = FindObjectOfType<Canvas>();
+        interaction.transform.parent = canvas.transform;
+        interaction.transform.localPosition = Vector3.zero;
+
+        var tex = stratagemCard.GetAvatarImage();
+        interaction.image.texture = tex;
+
+        interaction.titleText.text = stratagemCard.name;
+        interaction.descriptionText.text = stratagemCard.description;
         return interaction;
     }
 
-    private void StartInteraction() {
-        var anchor = AnchorManager.instance.stratagemCardAnchor;
-        cardDisplay = CardDisplayBehaviour.Create(stratagemCard, anchor.transform.position, anchor.transform.rotation);
-    }
-
-
-    private void EndInteraction(bool agreed) {
-        decisionMade(agreed);
-        DestroyImmediate(cardDisplay.gameObject);
-        DestroyImmediate(gameObject);
-    }
-
-
-    // 暂时先用按键代替，之后再改..
     private void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            EndInteraction(true);
+        if (onInteraction) {
+            acutalSwipeValue = swipe.getScaledSwipeVector().x;
+            cardAnimator.SetFloat("CardPos", acutalSwipeValue);
         }
+    }
 
-        if (Input.GetMouseButtonDown(1)) {
-            EndInteraction(false);
+    public void OnSwipeLeft() {
+        if (!onInteraction) {
+            return;
         }
+        onInteraction = false;
+
+        LerpAnimator.instance.LerpValues(
+            acutalSwipeValue,
+            -DISPEAR_ANIMATION_VALUE,
+            DISPEAR_ANIMATION_TIME,
+            (float val)=> { cardAnimator.SetFloat("CardPos", val); });
+
+        decisionMade(true);
+
+        Destroy(gameObject, DISPEAR_ANIMATION_TIME);
+    }
+
+    public void OnSwipeRight() {
+        if (!onInteraction) {
+            return;
+        }
+        onInteraction = false;
+
+        LerpAnimator.instance.LerpValues(
+            acutalSwipeValue,
+            DISPEAR_ANIMATION_VALUE,
+            DISPEAR_ANIMATION_TIME,
+            (float val) => { cardAnimator.SetFloat("CardPos", val); });
+
+        decisionMade(false);
+
+        Destroy(gameObject, DISPEAR_ANIMATION_TIME);
     }
 }

@@ -169,9 +169,32 @@ MonoBehaviour:
         attackerbindFlag: 1
         defenderbindFlag: 2
   stratagemCards:
-  - name: name
-    description: 
-    avatarImagePath: 
+  - name: "V\u9886\u8272"
+    description: "\u591A\u73AF\u4FDD"
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_7.png
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: hey!
+    description: mystery
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_29.png
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -192,7 +215,8 @@ MonoBehaviour:
         defenderbindFlag: 0
   - name: name
     description: 
-    avatarImagePath: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_28.png
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -213,28 +237,7 @@ MonoBehaviour:
         defenderbindFlag: 0
   - name: name
     description: 
-    avatarImagePath: 
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: name
-    description: 
-    avatarImagePath: 
+    avatarImagePath: Assets/External/Local/HyperCard/Textures+Artworks/Artworks/7_alpha.tif
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0

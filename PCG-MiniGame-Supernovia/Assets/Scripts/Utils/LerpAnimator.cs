@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LerpAnimator : MonoBehaviour
-{
+public class LerpAnimator : MonoBehaviour {
     public delegate void OnLerpDone();
+    public delegate void OnNewLerpValue(float value);
 
     private static LerpAnimator _instance = null;
     public static LerpAnimator instance {
@@ -14,6 +14,19 @@ public class LerpAnimator : MonoBehaviour
                 _instance = GO.AddComponent<LerpAnimator>();
             }
             return _instance;
+        }
+    }
+
+    public void LerpValues(float from,float to, float playTime, OnNewLerpValue onNewLerpValue) {
+        StartCoroutine(PlayValueAnimation(from,to,playTime,onNewLerpValue));
+    }
+
+    IEnumerator PlayValueAnimation(float from, float to, float playTime, OnNewLerpValue onNewLerpValue) {
+        var startTime = Time.time;
+        while (Time.time < startTime + playTime) {
+            var t = (Time.time - startTime) / playTime;
+            onNewLerpValue(Mathf.Lerp(from,to,t));
+            yield return null;
         }
     }
 

@@ -74,6 +74,19 @@
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\ParticleEffectsLibrary.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\PEButtonScript.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\PEDestoryTimed.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\UICanvasManager.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\Scripts\ETFXButtonScript.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\Scripts\ETFXMouseOrbit.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Scripts\ETFXLightFade.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
+    <Compile Include="Assets\External\Local\Epic Toon FX\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\External\Local\Free Asset - 2D Handcrafted Art\Scripts\CamerController.cs" />
     <Compile Include="Assets\External\Local\HyperCard\Scripts\Card.cs" />
     <Compile Include="Assets\External\Local\HyperCard\Scripts\Demo\DissolveOverTime.cs" />
@@ -292,6 +305,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\External\Local\HyperCard\Shaders\Card (Back).shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\External\Local\Epic Toon FX\ETFX Readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\External\Local\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
