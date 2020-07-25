@@ -21,10 +21,25 @@ public class LerpAnimator : MonoBehaviour {
         StartCoroutine(PlayValueAnimation(from,to,playTime,onNewLerpValue));
     }
 
-    IEnumerator PlayValueAnimation(float from, float to, float playTime, OnNewLerpValue onNewLerpValue) {
+    /// <summary>
+    /// animation curve 的 y就是实际的t,代表幅度。 x是0~1代表时间进程
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    /// <param name="playTime"></param>
+    /// <param name="animationCurve"></param>
+    /// <param name="onNewLerpValue"></param>
+    public void LerpValues(float from, float to, float playTime,AnimationCurve animationCurve, OnNewLerpValue onNewLerpValue) {
+        StartCoroutine(PlayValueAnimation(from, to, playTime, onNewLerpValue,animationCurve));
+    }
+
+    IEnumerator PlayValueAnimation(float from, float to, float playTime, OnNewLerpValue onNewLerpValue, AnimationCurve animationCurve = null) {
         var startTime = Time.time;
         while (Time.time < startTime + playTime) {
             var t = (Time.time - startTime) / playTime;
+            if (animationCurve != null) {
+                t = animationCurve.Evaluate(t);
+            }
             onNewLerpValue(Mathf.Lerp(from,to,t));
             yield return null;
         }

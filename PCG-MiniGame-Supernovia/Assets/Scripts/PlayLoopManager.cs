@@ -70,7 +70,9 @@ public class PlayLoopManager : MonoBehaviour {
                 // 应用后果
                 var bindedCharacters = straCard.preconditonSet.BindCharacters();
                 if (agreeDecision) {
+                    // 如果采纳，则不进行后续的策略建议
                     ConsequenceApplier.Apply(straCard.consequenceSet,bindedCharacters);
+                    break;
                 }
             }
 

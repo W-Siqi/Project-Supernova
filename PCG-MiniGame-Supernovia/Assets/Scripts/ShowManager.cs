@@ -68,8 +68,11 @@ public class ShowManager : MonoBehaviour {
 
             var attackDisplay = ShowCardFromDeck(attacker, DeckTarget.characterDeck, AnchorManager.instance.showCardLeftAnchor);
             var defenderDisplay = ShowCardFromDeck(defender, DeckTarget.characterDeck, AnchorManager.instance.showCardRightAnchor);
+            yield return new WaitForSeconds(2f);
 
+            HitEffect.Create(attacker.attributes.atkVal, defenderDisplay.transform.position);
             yield return new WaitForSeconds(3f);
+
             BackCardToDeck(attackDisplay, DeckTarget.characterDeck);
             BackCardToDeck(defenderDisplay, DeckTarget.characterDeck);
         }

@@ -249,6 +249,7 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\SelectAndAddWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HitEffect.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
     <Compile Include="Assets\Scripts\Qualifier.cs" />
     <Compile Include="Assets\Scripts\QualifierLibrary.cs" />

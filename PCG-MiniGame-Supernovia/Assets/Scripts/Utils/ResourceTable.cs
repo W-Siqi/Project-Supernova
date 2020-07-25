@@ -24,6 +24,7 @@ public class ResourceTable : MonoBehaviour
         public GameObject cardDisplay;
         public GameObject startagemInteraction;
         public GameObject anchorPoint;
+        public GameObject hitEffect;
     }
 
     public TexturePage texturePage = new TexturePage();
