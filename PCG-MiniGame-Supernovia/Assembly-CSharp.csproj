@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\External\Book\Scripts\BookController.cs" />
+    <Compile Include="Assets\External\Book\Scripts\Demo.cs" />
+    <Compile Include="Assets\External\Book\Scripts\PageTurnAnimation.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
