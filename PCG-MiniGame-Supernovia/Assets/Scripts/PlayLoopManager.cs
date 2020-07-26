@@ -14,8 +14,8 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator PlayLoopCoroutine(){
         while (true) {
-            //yield return StartCoroutine(CouncilStage());
-            //yield return StartCoroutine(EventState());
+            yield return StartCoroutine(CouncilStage());
+            yield return StartCoroutine(EventState());
             yield return StartCoroutine(SubstoryCardCheckPoint());
             yield return null;
         }
@@ -50,6 +50,8 @@ public class PlayLoopManager : MonoBehaviour {
     
 
     IEnumerator EventState() {
+        yield return StartCoroutine(StoryBook.instance.TurnPage(StoryBook.instance.eventPage));
+
         var selecedEvents = CardSelector.Select(new EventProbFilter(), new EventCountFilter());
         foreach (var c in selecedEvents) {
             var eventCard = c as EventCard;
@@ -68,6 +70,8 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator CouncilStage() {
+        yield return StartCoroutine(StoryBook.instance.TurnPage(StoryBook.instance.councilPage));
+
         foreach (var character in StoryContext.instance.characterDeck) {
             if (!straProbFilters.ContainsKey(character)) {
                 straProbFilters[character] = new StratagemProbFilter(character);

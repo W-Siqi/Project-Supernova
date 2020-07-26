@@ -26,15 +26,15 @@ public class HitEffect : MonoBehaviour
 
         //color
         LerpAnimator.instance.LerpValues(
-            0, 1, sustainTime,
             colorCurve,
+            sustainTime,
             (float val) => { meshPro.color = Color.Lerp(startColor, endColor, val); });
 
         // size
         var normalSize = meshPro.transform.localScale;
         LerpAnimator.instance.LerpValues(
-            0, 1, sustainTime,
             sizeCurve,
+            sustainTime,
             (float val) => { meshPro.transform.localScale = Vector3.Lerp(Vector3.zero, normalSize,val);});
 
         Destroy(gameObject, sustainTime + 1f);

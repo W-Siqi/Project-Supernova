@@ -15,8 +15,8 @@ public class ResourceTable : MonoBehaviour
     }
 
     [System.Serializable]
-    public class TexturePage { 
-    
+    public class SceneReferencePage {
+        public Canvas swipeCanvas;
     }
 
     [System.Serializable]
@@ -27,6 +27,6 @@ public class ResourceTable : MonoBehaviour
         public GameObject hitEffect;
     }
 
-    public TexturePage texturePage = new TexturePage();
+    public SceneReferencePage sceneReferencePage = new SceneReferencePage();
     public PrefabPage prefabPage = new PrefabPage();
 }

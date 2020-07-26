@@ -36,7 +36,7 @@ public class StratagemCardInteraction : MonoBehaviour {
         var interaction = GO.GetComponent<StratagemCardInteraction>();
         interaction.decisionMade = onDecisionMade;
 
-        var canvas = FindObjectOfType<Canvas>();
+        var canvas = ResourceTable.instance.sceneReferencePage.swipeCanvas;
         interaction.transform.parent = canvas.transform;
         interaction.transform.localPosition = Vector3.zero;
 

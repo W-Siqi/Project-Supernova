@@ -22,25 +22,33 @@ public class LerpAnimator : MonoBehaviour {
     }
 
     /// <summary>
-    /// animation curve 的 y就是实际的t,代表幅度。 x是0~1代表时间进程
+    /// animation curve 的 y就是实际的val,代表幅度。 x是0~1代表时间进程
     /// </summary>
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="playTime"></param>
     /// <param name="animationCurve"></param>
     /// <param name="onNewLerpValue"></param>
-    public void LerpValues(float from, float to, float playTime,AnimationCurve animationCurve, OnNewLerpValue onNewLerpValue) {
-        StartCoroutine(PlayValueAnimation(from, to, playTime, onNewLerpValue,animationCurve));
+    public void LerpValues(AnimationCurve animationCurve, float playTime,  OnNewLerpValue onNewLerpValue) {
+        StartCoroutine(PlayValueAnimation(animationCurve, playTime, onNewLerpValue));
     }
 
-    IEnumerator PlayValueAnimation(float from, float to, float playTime, OnNewLerpValue onNewLerpValue, AnimationCurve animationCurve = null) {
+    IEnumerator PlayValueAnimation(float from, float to, float playTime, OnNewLerpValue onNewLerpValue) {
         var startTime = Time.time;
         while (Time.time < startTime + playTime) {
             var t = (Time.time - startTime) / playTime;
-            if (animationCurve != null) {
-                t = animationCurve.Evaluate(t);
-            }
             onNewLerpValue(Mathf.Lerp(from,to,t));
+            yield return null;
+        }
+    }
+
+    IEnumerator PlayValueAnimation(AnimationCurve animationCurve, float playTime, OnNewLerpValue onNewLerpValue) {
+        var startTime = Time.time;
+        while (Time.time < startTime + playTime) {
+            var t = (Time.time - startTime) / playTime;
+            var val = animationCurve.Evaluate(t);
+            
+            onNewLerpValue(val);
             yield return null;
         }
     }

@@ -25,6 +25,10 @@ public class AnchorManager : MonoBehaviour
     public AnchorPoint showCardMiddleAnchor;
     public AnchorPoint showCardRightAnchor;
 
+    // story book 相关
+    public AnchorPoint storyBookClose;
+    public AnchorPoint storyBookFar;
+
     public string nameToAdd = "new anchor point";
 
     private List<AnchorPoint> hiddens = new List<AnchorPoint>();

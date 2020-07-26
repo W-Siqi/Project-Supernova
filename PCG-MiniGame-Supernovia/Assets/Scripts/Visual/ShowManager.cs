@@ -79,7 +79,7 @@ public class ShowManager : MonoBehaviour {
             }
             var cardDisplay = CardDisplayBehaviour.Create(card, startPos, startRotation);
             BackCardToDeck(cardDisplay, belongedDeck);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         yield return new WaitForSeconds(1f);
@@ -105,7 +105,7 @@ public class ShowManager : MonoBehaviour {
 
             var cardDisplay = ShowCardFromDeck(card, belongedDeck,anchor);
             Destroy(cardDisplay.gameObject, 5f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 

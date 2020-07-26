@@ -6,8 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private ShowManager showManager;
-    [SerializeField]
     private PlayLoopManager playLoopManager;
 
     private void Awake() {
@@ -30,7 +28,7 @@ public class GameManager : MonoBehaviour
         cardsInDeck.AddRange(StoryContext.instance.characterDeck);
         cardsInDeck.AddRange(StoryContext.instance.stratagemDeck);
         cardsInDeck.AddRange(StoryContext.instance.eventDeck);
-        yield return StartCoroutine(showManager.PlayCardsShuffleIn(cardsInDeck.ToArray()));
+        yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(cardsInDeck.ToArray()));
 
         // 开始游戏主循环
         playLoopManager.StartPlayLoop();
