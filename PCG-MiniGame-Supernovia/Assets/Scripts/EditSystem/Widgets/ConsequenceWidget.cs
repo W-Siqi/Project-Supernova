@@ -6,6 +6,7 @@ using UnityEditor;
 public class ConsequenceWidget : Widget{
     private ConsequenceSet editTarget;
 
+    private StatusConsequenceWidget statusConsequenceWidget;
     private EnvConsequenceWidget envConsequenceWidget;
     private FightConsequenceWidget fightConsequenceWidget;
     private DynamicWidgetGroup<CharacterConsequenceWidget, CharacterConsequence> characaterConsequenceGroup;
@@ -14,6 +15,7 @@ public class ConsequenceWidget : Widget{
         this.editTarget = editTarget;
 
         // init  widgets
+        statusConsequenceWidget = new StatusConsequenceWidget(editTarget.statusConsequence);
         characaterConsequenceGroup = new DynamicWidgetGroup<CharacterConsequenceWidget, CharacterConsequence>(editTarget.characterConsequences,false);
         envConsequenceWidget = new EnvConsequenceWidget(this.editTarget.environmentConsequence);
         fightConsequenceWidget = new FightConsequenceWidget(this.editTarget.fightConsequence);
@@ -21,6 +23,14 @@ public class ConsequenceWidget : Widget{
 
     public override void RenderUI() {
         EditorGUILayout.Space();
+        if (editTarget.statusConsequenceEnabled) {
+            EditorGUILayout.BeginVertical(EditorStyleResource.consequenceBlockStyle);
+            EditorGUILayout.LabelField("状态值 后果");
+            statusConsequenceWidget.RenderUI();
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space();
+        }
+
         if (editTarget.characterConsequenceEnabled) {
             EditorGUILayout.BeginVertical(EditorStyleResource.consequenceBlockStyle);
             EditorGUILayout.LabelField("人物型后果");
@@ -49,9 +59,14 @@ public class ConsequenceWidget : Widget{
         }
     }
 
-    public void SetMask(bool enableCharacterConsequence, bool enaleEnviromentConsequence, bool enableFightConsequence) {
+    public void SetMask(
+        bool enableCharacterConsequence, 
+        bool enaleEnviromentConsequence, 
+        bool enableFightConsequence,
+        bool statusConsequence) {
         editTarget.characterConsequenceEnabled = enableCharacterConsequence;
         editTarget.environmentConsequenceEnabled = enaleEnviromentConsequence;
         editTarget.fightConsequenceEnabled = enableFightConsequence;
+        editTarget.statusConsequenceEnabled = statusConsequence;
     }
 }

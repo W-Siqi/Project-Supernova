@@ -63,9 +63,15 @@ MonoBehaviour:
       - eventCardName: "\u8349\u5730"
       - eventCardName: name
     consequenceSet:
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
+      statusConsequenceEnabled: 1
+      environmentConsequenceEnabled: 1
+      characterConsequenceEnabled: 1
       fightConsequenceEnabled: 1
+      statusConsequence:
+        delta:
+          army: 21
+          financy: 8
+          luck: -44
       characterConsequences:
       - bindFlag: 2
         qualiferAlterations: []
@@ -94,9 +100,15 @@ MonoBehaviour:
       eventPreconditions:
       - eventCardName: name
     consequenceSet:
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
       fightConsequenceEnabled: 1
+      statusConsequence:
+        delta:
+          army: 1
+          financy: 1
+          luck: 1
       characterConsequences:
       - bindFlag: 2
         qualiferAlterations: []
@@ -134,9 +146,15 @@ MonoBehaviour:
       eventPreconditions:
       - eventCardName: "\u8349\u5730"
     consequenceSet:
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
       fightConsequenceEnabled: 1
+      statusConsequence:
+        delta:
+          army: 1
+          financy: 1
+          luck: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -159,9 +177,15 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 1
       characterConsequenceEnabled: 1
       fightConsequenceEnabled: 1
+      statusConsequence:
+        delta:
+          army: 1
+          financy: 1
+          luck: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -182,9 +206,15 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
       fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          financy: 1
+          luck: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -204,9 +234,15 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
       fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          financy: 1
+          luck: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -226,9 +262,15 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
       fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          financy: 1
+          luck: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -247,9 +289,15 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
       fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          financy: 1
+          luck: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -291,9 +339,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -312,9 +366,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -333,9 +393,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -354,9 +420,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -377,9 +449,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -399,9 +477,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -421,9 +505,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -443,9 +533,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -465,9 +561,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -487,9 +589,15 @@ MonoBehaviour:
           qualifiers: []
         eventPreconditions: []
       consequenceSet:
+        statusConsequenceEnabled: 0
         environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
         fightConsequenceEnabled: 0
+        statusConsequence:
+          delta:
+            army: 1
+            financy: 1
+            luck: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []

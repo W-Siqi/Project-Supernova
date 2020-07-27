@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 用于保存一切故事运作信息的单例
-public class StoryContext {
+public class StoryContext : MonoBehaviour {
     [System.Serializable]
-    public class KindomStateValue {
+    public class StatusVector {
         public int army = 1;
-        public int financy = 1;
+        public int finance = 1;
         public int luck = 1;
     }
 
@@ -31,7 +31,7 @@ public class StoryContext {
     public List<CharacterCard> characterDeck = new List<CharacterCard>();
     public List<StratagemCard> stratagemDeck = new List<StratagemCard>();
     public List<EventCard> eventDeck = new List<EventCard>();
-    public KindomStateValue kindomState = new KindomStateValue();
+    public StatusVector statusVector = new StatusVector();
     public List<Qualifier> environmentQualifiers = new List<Qualifier>();
 
     // 故事栈只管Deck里有哪些卡，不管状态。也就是环境状态这些是全局的
@@ -40,7 +40,8 @@ public class StoryContext {
     public static StoryContext instance {
         get {
             if (_instance == null) {
-                _instance = new StoryContext();
+                var GO = new GameObject("Story Context");
+                _instance = GO.AddComponent<StoryContext>();
             }
             return _instance;
         }
