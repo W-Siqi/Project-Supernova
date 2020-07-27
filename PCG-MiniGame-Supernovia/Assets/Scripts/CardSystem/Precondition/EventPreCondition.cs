@@ -11,7 +11,11 @@ public class EventPrecondition : Precondition
         eventCardName = eventCard.name;
     }
 
+    /// <summary>
+    /// TBD: 当前为空实现
+    /// </summary>
+    /// <returns></returns>
     public override bool SatisfiedByCurrentContext() {
-        throw new System.NotImplementedException();
+        return true;
     }
 }
