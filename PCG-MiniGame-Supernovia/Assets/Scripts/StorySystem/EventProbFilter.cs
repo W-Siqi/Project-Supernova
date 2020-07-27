@@ -5,6 +5,12 @@ using UnityEngine;
 public class EventProbFilter : ProbabilityFilter
 {
     public override Distribution Filt() {
-        return GetAvartageDistribution(StoryContext.instance.eventDeck.ToArray());
+        var candidates = new List<EventCard>();
+        foreach (var eventCard in StoryContext.instance.eventDeck) {
+            if (eventCard.preconditonSet.SatisfiedByCurrentContext()) {
+                candidates.Add(eventCard);
+            }
+        }
+        return GetAvartageDistribution(candidates.ToArray());
     }
 }

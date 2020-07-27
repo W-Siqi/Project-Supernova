@@ -29,4 +29,34 @@ public class PreconditonSet
         }
         return bindedCharacters.ToArray();
     }
+
+    /// <summary>
+    /// TBD: 角色的判定会有问题，不能单独判
+    /// </summary>
+    /// <returns></returns>
+    public bool SatisfiedByCurrentContext() {
+        var charaSatisfied = true;
+        var envSatisfied = true;
+        var eventSatusfied = true;
+
+        if (!environmentPrecondition.SatisfiedByCurrentContext()) {
+            envSatisfied = true;
+        }
+
+        foreach (var cha in characterPreconditions ) {
+            if (!cha.SatisfiedByCurrentContext()) {
+                charaSatisfied = false;
+                break;
+            }
+        }
+
+        foreach (var eventPreconditon in eventPreconditions) {
+            if (!eventPreconditon.SatisfiedByCurrentContext()) {
+                envSatisfied = false;
+                break;
+            }
+        }
+
+        return charaSatisfied && envSatisfied && eventSatusfied;
+    }
 }

@@ -9,6 +9,14 @@ public class StoryContext : MonoBehaviour {
         public int army = 1;
         public int finance = 1;
         public int luck = 1;
+
+        public static StatusVector operator + (StatusVector a, StatusVector b) {
+            var res = new StatusVector();
+            res.army = a.army + b.army;
+            res.finance = a.finance + b.finance;
+            res.luck = a.luck + b.luck;
+            return res;
+        }
     }
 
     // 因为经常要切换上下文（副本卡），以及本中本

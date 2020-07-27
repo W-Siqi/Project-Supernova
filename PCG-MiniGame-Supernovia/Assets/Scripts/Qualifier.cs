@@ -4,9 +4,9 @@ using UnityEngine;
 
 // 修饰词，目前环境修饰词和角色修饰词都共用这个类
 [System.Serializable]
-public class Qualifier
+public struct Qualifier
 {
-    public string name = "";
+    public string name;
     public Qualifier(string name) {
         this.name = name;
     }

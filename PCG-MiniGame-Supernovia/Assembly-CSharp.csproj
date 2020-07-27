@@ -217,7 +217,6 @@
     <Compile Include="Assets\Scripts\CardSystem\Consequence\ConsequenceSet.cs" />
     <Compile Include="Assets\Scripts\CardSystem\Consequence\EnvironmentConsequence.cs" />
     <Compile Include="Assets\Scripts\CardSystem\Consequence\FightConsequence.cs" />
-    <Compile Include="Assets\Scripts\CardSystem\Consequence\QualiferAlteration.cs" />
     <Compile Include="Assets\Scripts\CardSystem\Consequence\StatusConsequence.cs" />
     <Compile Include="Assets\Scripts\CardSystem\EventCard.cs" />
     <Compile Include="Assets\Scripts\CardSystem\Precondition\CharacterPrecondition.cs" />
@@ -257,6 +256,7 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
+    <Compile Include="Assets\Scripts\QualiferAlteration.cs" />
     <Compile Include="Assets\Scripts\Qualifier.cs" />
     <Compile Include="Assets\Scripts\QualifierLibrary.cs" />
     <Compile Include="Assets\Scripts\ResourceTable.cs" />

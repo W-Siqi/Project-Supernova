@@ -4,4 +4,5 @@ using UnityEngine;
 
 public abstract class Precondition
 {
+    public abstract bool SatisfiedByCurrentContext();
 }

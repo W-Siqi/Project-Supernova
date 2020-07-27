@@ -6,4 +6,8 @@ using UnityEngine;
 public class CharacterPrecondition : Precondition
 {
     public List<Qualifier> qualifiers = new List<Qualifier>();
+
+    public override bool SatisfiedByCurrentContext() {
+        throw new System.NotImplementedException();
+    }
 }

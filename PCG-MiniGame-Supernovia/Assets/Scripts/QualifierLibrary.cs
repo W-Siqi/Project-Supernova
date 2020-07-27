@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// 保存所有可用的修饰词
 // 修饰词用 string 作为唯一ID
 // TBD: 检测冲突情况
 [System.Serializable]

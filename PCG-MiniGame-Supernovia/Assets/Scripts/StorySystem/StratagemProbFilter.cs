@@ -10,6 +10,12 @@ public class StratagemProbFilter : ProbabilityFilter
     }
 
     public override Distribution Filt() {
-        return GetAvartageDistribution(StoryContext.instance.stratagemDeck.ToArray());
+        var candidates = new List<StratagemCard>();
+        foreach (var stratagemCard in StoryContext.instance.stratagemDeck) {
+            if (stratagemCard.preconditonSet.SatisfiedByCurrentContext()) {
+                candidates.Add(stratagemCard);
+            }
+        }
+        return GetAvartageDistribution(candidates.ToArray());
     }
 }

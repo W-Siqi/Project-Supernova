@@ -11,10 +11,6 @@ public class FightConsequence : Consequence
     public int attackerbindFlag = 0;
     public int defenderbindFlag = 0;
 
-    public override void Apply() {
-        throw new System.NotImplementedException();
-    }
-
     public CharacterCard GetAttacker(CharacterCard[] bindedCharacters) {
         return bindedCharacters[attackerbindFlag - 1];
     }

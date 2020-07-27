@@ -6,8 +6,4 @@ using UnityEngine;
 public class StatusConsequence : Consequence
 {
     public StoryContext.StatusVector delta = new StoryContext.StatusVector();
-
-    public override void Apply() {
-        throw new System.NotImplementedException();
-    }
 }
