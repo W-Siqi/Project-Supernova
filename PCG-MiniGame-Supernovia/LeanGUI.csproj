@@ -63,34 +63,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanButton.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanConstrainAnchoredPosition.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanConstrainToParent.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanDrag.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanGui.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanHitbox.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanHover.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanJoystick.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanMoveToTop.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanOrientation.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanPulse.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanResize.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSafeArea.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSelection.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSelectionHighlight.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSelectionManager.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSelectionPriority.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanShake.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSizer.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSnap.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSwipe.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanSwitch.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanToggle.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanTooltip.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanTooltipData.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanWindow.cs" />
-    <Compile Include="Assets\External\Local\Lean\GUI\Scripts\LeanWindowCloser.cs" />
-    <None Include="Assets\External\Local\Lean\GUI\LeanGUI.asmdef" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanButton.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanConstrainAnchoredPosition.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanConstrainToParent.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanDrag.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanGui.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanHitbox.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanHover.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanJoystick.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanMoveToTop.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanOrientation.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanPulse.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanResize.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSafeArea.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSelection.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSelectionHighlight.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSelectionManager.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSelectionPriority.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanShake.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSizer.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSnap.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSwipe.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanSwitch.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanToggle.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanTooltip.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanTooltipData.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanWindow.cs" />
+    <Compile Include="Assets\External\Lean\GUI\Scripts\LeanWindowCloser.cs" />
+    <None Include="Assets\External\Lean\GUI\LeanGUI.asmdef" />
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>

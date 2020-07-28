@@ -55,16 +55,34 @@ MonoBehaviour:
           fightConsequence:
             attackerbindFlag: 0
             defenderbindFlag: 0
-    - characterCard:
-        name: name
-        description: 
-        avatarImagePath: 
-        attributes:
-          atkVal: 0
-          maxHP: 0
-          HP: 0
-        qualifiers: []
-      stratagemCards: []
+      - name: "V\u9886\u8272"
+        description: "\u591A\u73AF\u4FDD"
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+          Pack Vol 1/background_7.png
+        preconditonSet:
+          environmentEnabled: 0
+          characterEnabled: 0
+          eventEnabled: 0
+          characterPreconditions: []
+          environmentPrecondition:
+            qualifiers: []
+          eventPreconditions: []
+        consequenceSet:
+          statusConsequenceEnabled: 1
+          environmentConsequenceEnabled: 0
+          characterConsequenceEnabled: 0
+          fightConsequenceEnabled: 0
+          statusConsequence:
+            delta:
+              army: 11
+              finance: 41
+              luck: 24
+          characterConsequences: []
+          environmentConsequence:
+            qualiferAlterations: []
+          fightConsequence:
+            attackerbindFlag: 0
+            defenderbindFlag: 0
     eventCards:
     - name: test first
       description: 
@@ -110,46 +128,48 @@ MonoBehaviour:
         fightConsequence:
           attackerbindFlag: 1
           defenderbindFlag: 2
-    - name: test first
+    - name: "\u6728"
       description: 
       avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-        Pack Vol 1/background_61.png
+        Pack Vol 1/background_21.png
       discruption: this is a event, somthing happened
       preconditonSet:
-        environmentEnabled: 1
+        environmentEnabled: 0
         characterEnabled: 1
-        eventEnabled: 1
+        eventEnabled: 0
         characterPreconditions:
         - qualifiers: []
         - qualifiers: []
         environmentPrecondition:
-          qualifiers:
-          - name: "\u662F\u7684"
-          - name: "\u66B4\u541B"
+          qualifiers: []
         eventPreconditions:
-        - eventCardName: "\u6728"
-        - eventCardName: "\u8349\u5730"
         - eventCardName: name
       consequenceSet:
         statusConsequenceEnabled: 1
-        environmentConsequenceEnabled: 1
-        characterConsequenceEnabled: 1
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
         fightConsequenceEnabled: 1
         statusConsequence:
           delta:
-            army: 21
-            finance: 35
-            luck: 18
+            army: -17
+            finance: 26
+            luck: 28
         characterConsequences:
         - bindFlag: 2
+          qualiferAlterations: []
+        - bindFlag: 0
+          qualiferAlterations: []
+        - bindFlag: 0
+          qualiferAlterations: []
+        - bindFlag: 0
           qualiferAlterations: []
         environmentConsequence:
           qualiferAlterations:
           - targetQualifier:
-              name: "\u662F\u7684"
-            type: 1
-          - targetQualifier:
               name: "\u66B4\u541B"
+            type: 2
+          - targetQualifier:
+              name: "\u662F\u7684"
             type: 2
         fightConsequence:
           attackerbindFlag: 1
@@ -172,18 +192,121 @@ MonoBehaviour:
           maxHP: 0
           HP: 0
         qualifiers: []
-      stratagemCards: []
+      stratagemCards:
+      - name: hey!
+        description: mystery
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+          Pack Vol 1/background_29.png
+        preconditonSet:
+          environmentEnabled: 0
+          characterEnabled: 0
+          eventEnabled: 0
+          characterPreconditions: []
+          environmentPrecondition:
+            qualifiers: []
+          eventPreconditions: []
+        consequenceSet:
+          statusConsequenceEnabled: 1
+          environmentConsequenceEnabled: 0
+          characterConsequenceEnabled: 0
+          fightConsequenceEnabled: 0
+          statusConsequence:
+            delta:
+              army: 24
+              finance: -20
+              luck: 26
+          characterConsequences: []
+          environmentConsequence:
+            qualiferAlterations: []
+          fightConsequence:
+            attackerbindFlag: 0
+            defenderbindFlag: 0
     - characterCard:
         name: name
         description: 
-        avatarImagePath: 
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+          Pack Vol 1/character_22.png
         attributes:
-          atkVal: 0
-          maxHP: 0
-          HP: 0
+          atkVal: 6
+          maxHP: 5
+          HP: 5
         qualifiers: []
-      stratagemCards: []
-    eventCards: []
+      stratagemCards:
+      - name: name
+        description: 
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+          Pack Vol 1/background_28.png
+        preconditonSet:
+          environmentEnabled: 0
+          characterEnabled: 0
+          eventEnabled: 0
+          characterPreconditions: []
+          environmentPrecondition:
+            qualifiers: []
+          eventPreconditions: []
+        consequenceSet:
+          statusConsequenceEnabled: 1
+          environmentConsequenceEnabled: 0
+          characterConsequenceEnabled: 0
+          fightConsequenceEnabled: 0
+          statusConsequence:
+            delta:
+              army: 21
+              finance: 28
+              luck: -12
+          characterConsequences: []
+          environmentConsequence:
+            qualiferAlterations: []
+          fightConsequence:
+            attackerbindFlag: 0
+            defenderbindFlag: 0
+    eventCards:
+    - name: "\u6728"
+      description: 
+      avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+        Pack Vol 1/background_21.png
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 0
+        characterEnabled: 1
+        eventEnabled: 0
+        characterPreconditions:
+        - qualifiers: []
+        - qualifiers: []
+        environmentPrecondition:
+          qualifiers: []
+        eventPreconditions:
+        - eventCardName: name
+      consequenceSet:
+        statusConsequenceEnabled: 1
+        environmentConsequenceEnabled: 0
+        characterConsequenceEnabled: 0
+        fightConsequenceEnabled: 1
+        statusConsequence:
+          delta:
+            army: -17
+            finance: 26
+            luck: 28
+        characterConsequences:
+        - bindFlag: 2
+          qualiferAlterations: []
+        - bindFlag: 0
+          qualiferAlterations: []
+        - bindFlag: 0
+          qualiferAlterations: []
+        - bindFlag: 0
+          qualiferAlterations: []
+        environmentConsequence:
+          qualiferAlterations:
+          - targetQualifier:
+              name: "\u66B4\u541B"
+            type: 2
+          - targetQualifier:
+              name: "\u662F\u7684"
+            type: 2
+        fightConsequence:
+          attackerbindFlag: 1
+          defenderbindFlag: 2
     substoryCard:
       name: name
       description: 

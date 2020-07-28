@@ -53,16 +53,15 @@ MonoBehaviour:
       characterEnabled: 1
       eventEnabled: 1
       characterPreconditions:
+      - qualifiers:
+        - name: "\u9001\u8FBE\u65B9"
       - qualifiers: []
       - qualifiers: []
       environmentPrecondition:
         qualifiers:
         - name: "\u662F\u7684"
-        - name: "\u66B4\u541B"
       eventPreconditions:
       - eventCardName: "\u6728"
-      - eventCardName: "\u8349\u5730"
-      - eventCardName: name
     consequenceSet:
       statusConsequenceEnabled: 1
       environmentConsequenceEnabled: 1
@@ -72,9 +71,11 @@ MonoBehaviour:
         delta:
           army: 21
           finance: 35
-          luck: 18
+          luck: -13
       characterConsequences:
-      - bindFlag: 2
+      - bindFlag: 0
+        qualiferAlterations: []
+      - bindFlag: 0
         qualiferAlterations: []
       environmentConsequence:
         qualiferAlterations:

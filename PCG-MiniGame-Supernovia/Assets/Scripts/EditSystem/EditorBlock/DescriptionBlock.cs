@@ -6,6 +6,8 @@ using UnityEngine;
 // 渲染对事件卡/决策卡两种卡的 修饰词编辑的模块
 public class DescriptionBlock{
     const int DESCRIPTION_COUNT = 7;
+    const string DOWN_ARRORW_IMAGE_PATH = "Assets/ArtResourse/UI/downarrow.png";
+
     static string[] descriptionMaskArray= new string[] { "前置 - 人物", "前置 - 环境", "前置 - 事件", "后果 - 人物", "后果 - 环境","后果 - 战斗","后果-状态值" };
    
     private int mask ;
@@ -65,7 +67,7 @@ public class DescriptionBlock{
         // 前提描述绘制
         preconditionWidget.SetMask(selectedMask[0], selectedMask[1], selectedMask[2]);
         preconditionWidget.RenderUI();
-
+        //GUILayout.Label(EditorStyleResource.LoadTex(DOWN_ARRORW_IMAGE_PATH),GUILayout.Height(100));
         // 后果描述绘制
         consequenceWidget.SetMask(selectedMask[3],selectedMask[4],selectedMask[5],selectedMask[6]);
         consequenceWidget.RenderUI();

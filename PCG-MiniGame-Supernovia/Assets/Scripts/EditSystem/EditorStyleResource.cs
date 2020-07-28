@@ -9,10 +9,10 @@ public class EditorStyleResource
     public const float BUTTON_WIDTH = 30f;
 
     private static Texture2D defaultTex = new Texture2D(10,10);
-    private const string PRECONDITION_IMAGE_PATH = "Assets/ArtResourse/UI/frame.png";
-    private const string CONSEQUENCE_IMAGE_PATH = "Assets/ArtResourse/UI/red.png";
+    private const string PRECONDITION_IMAGE_PATH = "Assets/ArtResourse/UI/consequenceFrame.png";
+    private const string CONSEQUENCE_IMAGE_PATH = "Assets/ArtResourse/UI/preconditionFrame.png";
     private const string QUALIFIER_IMAGE_PATH = "Assets/ArtResourse/UI/qualifer.png";
-
+    
     /// <summary>
     /// 会返回默认tex，如果加载失败
     /// </summary>

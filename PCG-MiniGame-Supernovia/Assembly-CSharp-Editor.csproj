@@ -63,9 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\External\HyperCard\Scripts\Editor\CardEditor.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenPreviewManager.cs" />
-    <Compile Include="Assets\External\Local\HyperCard\Scripts\Editor\CardEditor.cs" />
     <Compile Include="Assets\External\Local\Kings\addons\Inventory\Scripts\Editor\InventoryEditor.cs" />
     <Compile Include="Assets\External\Local\Kings\addons\Quests\Scripts\Editor\QuestsEditor.cs" />
     <Compile Include="Assets\External\Local\Kings\addons\Timeline\Scripts\Editor\Timeline_UIEventListEditor.cs" />
@@ -125,11 +125,17 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
@@ -148,12 +154,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
