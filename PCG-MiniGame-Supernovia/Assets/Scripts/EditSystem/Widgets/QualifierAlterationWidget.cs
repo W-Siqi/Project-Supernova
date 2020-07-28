@@ -12,7 +12,7 @@ public class QualifierAlterationWidget:Widget
     }
 
     public override void RenderUI() {
-        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginHorizontal(EditorStyleResource.qualifierBlockStyle);
         EditorGUILayout.LabelField(editTarget.targetQualifier.name);
         editTarget.type =(QualiferAlteration.Type) EditorGUILayout.EnumPopup(editTarget.type);
         EditorGUILayout.EndHorizontal();

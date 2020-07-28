@@ -11,7 +11,7 @@ public class QualifierWidget : Widget {
     }
 
     public override void RenderUI() {
-        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginHorizontal(EditorStyleResource.qualifierBlockStyle);
         EditorGUILayout.LabelField(editTarget.name, GUILayout.Width(25f));
         EditorGUILayout.EndHorizontal();
     }

@@ -7,10 +7,19 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private PlayLoopManager playLoopManager;
+    [SerializeField]
+    private bool debugMode;
+    [SerializeField]
+    private SerializedStoryPlayer storyPlayerForDebug;
 
     private void Awake() {
         DontDestroyOnLoad(gameObject);
-        StartGame();
+        if (!debugMode) {
+            StartGame();
+        }
+        else {
+            storyPlayerForDebug.Play();
+        }
     }
 
     // [ContextMenu("start game")]

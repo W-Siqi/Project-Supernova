@@ -40,10 +40,11 @@ public class DynamicWidgetGroup<WidgetT, WidgetEditTarget>where WidgetT: Widget{
             var w = widgetDict[target];
             w.GetType().GetMethod(RENDER_UI_METHOD).Invoke(w, null);
             // delete
-            if (GUILayout.Button("X",GUILayout.Width(30))) {
+            if (GUILayout.Button("X",GUILayout.Width(60),GUILayout.Width(60))) {
                 toDelete.Add(target);
             }
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
         }
 
         // 删除对应widget

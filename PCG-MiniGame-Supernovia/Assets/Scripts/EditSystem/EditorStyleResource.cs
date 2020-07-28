@@ -11,6 +11,7 @@ public class EditorStyleResource
     private static Texture2D defaultTex = new Texture2D(10,10);
     private const string PRECONDITION_IMAGE_PATH = "Assets/ArtResourse/UI/frame.png";
     private const string CONSEQUENCE_IMAGE_PATH = "Assets/ArtResourse/UI/red.png";
+    private const string QUALIFIER_IMAGE_PATH = "Assets/ArtResourse/UI/qualifer.png";
 
     /// <summary>
     /// 会返回默认tex，如果加载失败
@@ -37,6 +38,14 @@ public class EditorStyleResource
         get {
             var s = new GUIStyle();
             s.normal.background = LoadTex(CONSEQUENCE_IMAGE_PATH);
+            return s;
+        }
+    }
+
+    public static GUIStyle qualifierBlockStyle {
+        get {
+            var s = new GUIStyle();
+            s.normal.background = LoadTex(QUALIFIER_IMAGE_PATH);
             return s;
         }
     }

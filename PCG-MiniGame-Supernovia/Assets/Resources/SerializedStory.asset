@@ -1,0 +1,194 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41bbf2c36a62e949ad159951302d55a, type: 3}
+  m_Name: SerializedStory
+  m_EditorClassIdentifier: 
+  sections:
+  - councilStageInfos:
+    - characterCard:
+        name: big horse
+        description: he is very ver angry!
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+          Pack Vol 2/character_70.png
+        attributes:
+          atkVal: 6
+          maxHP: 8
+          HP: 8
+        qualifiers:
+        - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+        - name: "\u9001\u8FBE\u65B9"
+      stratagemCards:
+      - name: "V\u9886\u8272"
+        description: "\u591A\u73AF\u4FDD"
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+          Pack Vol 1/background_7.png
+        preconditonSet:
+          environmentEnabled: 0
+          characterEnabled: 0
+          eventEnabled: 0
+          characterPreconditions: []
+          environmentPrecondition:
+            qualifiers: []
+          eventPreconditions: []
+        consequenceSet:
+          statusConsequenceEnabled: 1
+          environmentConsequenceEnabled: 0
+          characterConsequenceEnabled: 0
+          fightConsequenceEnabled: 0
+          statusConsequence:
+            delta:
+              army: 11
+              finance: 41
+              luck: 24
+          characterConsequences: []
+          environmentConsequence:
+            qualiferAlterations: []
+          fightConsequence:
+            attackerbindFlag: 0
+            defenderbindFlag: 0
+    - characterCard:
+        name: name
+        description: 
+        avatarImagePath: 
+        attributes:
+          atkVal: 0
+          maxHP: 0
+          HP: 0
+        qualifiers: []
+      stratagemCards: []
+    eventCards:
+    - name: test first
+      description: 
+      avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+        Pack Vol 1/background_61.png
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 1
+        characterEnabled: 1
+        eventEnabled: 1
+        characterPreconditions:
+        - qualifiers: []
+        - qualifiers: []
+        environmentPrecondition:
+          qualifiers:
+          - name: "\u662F\u7684"
+          - name: "\u66B4\u541B"
+        eventPreconditions:
+        - eventCardName: "\u6728"
+        - eventCardName: "\u8349\u5730"
+        - eventCardName: name
+      consequenceSet:
+        statusConsequenceEnabled: 1
+        environmentConsequenceEnabled: 1
+        characterConsequenceEnabled: 1
+        fightConsequenceEnabled: 1
+        statusConsequence:
+          delta:
+            army: 21
+            finance: 35
+            luck: 18
+        characterConsequences:
+        - bindFlag: 2
+          qualiferAlterations: []
+        environmentConsequence:
+          qualiferAlterations:
+          - targetQualifier:
+              name: "\u662F\u7684"
+            type: 1
+          - targetQualifier:
+              name: "\u66B4\u541B"
+            type: 2
+        fightConsequence:
+          attackerbindFlag: 1
+          defenderbindFlag: 2
+    - name: test first
+      description: 
+      avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+        Pack Vol 1/background_61.png
+      discruption: this is a event, somthing happened
+      preconditonSet:
+        environmentEnabled: 1
+        characterEnabled: 1
+        eventEnabled: 1
+        characterPreconditions:
+        - qualifiers: []
+        - qualifiers: []
+        environmentPrecondition:
+          qualifiers:
+          - name: "\u662F\u7684"
+          - name: "\u66B4\u541B"
+        eventPreconditions:
+        - eventCardName: "\u6728"
+        - eventCardName: "\u8349\u5730"
+        - eventCardName: name
+      consequenceSet:
+        statusConsequenceEnabled: 1
+        environmentConsequenceEnabled: 1
+        characterConsequenceEnabled: 1
+        fightConsequenceEnabled: 1
+        statusConsequence:
+          delta:
+            army: 21
+            finance: 35
+            luck: 18
+        characterConsequences:
+        - bindFlag: 2
+          qualiferAlterations: []
+        environmentConsequence:
+          qualiferAlterations:
+          - targetQualifier:
+              name: "\u662F\u7684"
+            type: 1
+          - targetQualifier:
+              name: "\u66B4\u541B"
+            type: 2
+        fightConsequence:
+          attackerbindFlag: 1
+          defenderbindFlag: 2
+    substoryCard:
+      name: name
+      description: 
+      avatarImagePath: 
+      type: 0
+      newCharacters: []
+      stratagemCards: []
+      eventCards: []
+  - councilStageInfos:
+    - characterCard:
+        name: name
+        description: 
+        avatarImagePath: 
+        attributes:
+          atkVal: 0
+          maxHP: 0
+          HP: 0
+        qualifiers: []
+      stratagemCards: []
+    - characterCard:
+        name: name
+        description: 
+        avatarImagePath: 
+        attributes:
+          atkVal: 0
+          maxHP: 0
+          HP: 0
+        qualifiers: []
+      stratagemCards: []
+    eventCards: []
+    substoryCard:
+      name: name
+      description: 
+      avatarImagePath: 
+      type: 0
+      newCharacters: []
+      stratagemCards: []
+      eventCards: []
