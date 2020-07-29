@@ -24,16 +24,7 @@ public class SerializedStoryPlayer : MonoBehaviour
     }
 
     IEnumerator PlayStory() {
-        // 初始化故事状态
-        int seed = Random.Range(-10000, 100000);
-        StoryContext.instance.InitForNewStory(seed);
-
-        // 洗牌动画
-        var cardsInDeck = new List<Card>();
-        cardsInDeck.AddRange(StoryContext.instance.characterDeck);
-        cardsInDeck.AddRange(StoryContext.instance.stratagemDeck);
-        cardsInDeck.AddRange(StoryContext.instance.eventDeck);
-        yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(cardsInDeck.ToArray()));
+        yield return StartCoroutine(StoryBegining());
 
         foreach (var section in serializedStory.sections) {
             yield return StartCoroutine(ExeCouncilStage(section));
@@ -43,8 +34,41 @@ public class SerializedStoryPlayer : MonoBehaviour
         }
     }
 
+    IEnumerator StoryBegining() {
+        // 初始化故事状态
+        int seed = Random.Range(-10000, 100000);
+        StoryContext.instance.InitForNewStory(seed);
+
+        StoryBook.PageContent storyPageContent;
+
+        storyPageContent = new StoryBook.PageContent("从前有个王国，");
+        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+
+        storyPageContent = new StoryBook.PageContent("国王下有一堆大臣....");
+        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        // 洗角色牌
+        var characters = StoryContext.instance.characterDeck.ToArray();
+        yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(characters));
+
+
+        storyPageContent = new StoryBook.PageContent("大臣都会提出各种建议....");
+        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        // 洗决策卡
+        var stratagems = StoryContext.instance.stratagemDeck.ToArray();
+        yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(stratagems));
+
+        storyPageContent = new StoryBook.PageContent("在这里，各种各样的故事发生着....");
+        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        // 洗事件卡
+        var eventCards = StoryContext.instance.eventDeck.ToArray();
+        yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(eventCards));
+
+        storyPageContent = new StoryBook.PageContent("第一章，故事的开始");
+        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+    }
+
     IEnumerator ExeEventState(SerializedStory.Section section) {
-        yield return StartCoroutine(StoryBook.instance.TurnPage(StoryBook.instance.eventPage));
+        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent("过了几日")));
 
         foreach (var eventCard in section.eventCards) {
             // binding
@@ -61,7 +85,8 @@ public class SerializedStoryPlayer : MonoBehaviour
     }
 
     IEnumerator ExeCouncilStage(SerializedStory.Section section) {
-        yield return StartCoroutine(StoryBook.instance.TurnPage(StoryBook.instance.councilPage));
+        var newPageContent = new StoryBook.PageContent(StoryBook.instance.councilPage);
+        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
 
         foreach (var councilInfo in section.councilStageInfos) {
             // show 角色卡动画

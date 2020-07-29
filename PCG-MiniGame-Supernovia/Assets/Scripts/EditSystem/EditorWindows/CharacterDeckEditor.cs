@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class CharacterDeckEditor : DeckEditor {
-    [MenuItem("卡牌编辑器/人物卡组")]
+    [MenuItem("PCG编辑/卡组编辑/人物卡")]
     public static void ShowWindow() {
         var instance = (CharacterDeckEditor)EditorWindow.GetWindow(typeof(CharacterDeckEditor));
     }

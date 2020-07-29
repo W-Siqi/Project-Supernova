@@ -11,7 +11,7 @@ public class SerializedStoryEditor : EditorWindow
 
     private Vector2 scrollView;
 
-    [MenuItem("卡牌编辑器/SerilizedStoryDirector")]
+    [MenuItem("PCG编辑/测试/SerilizedStoryDirector")]
     public static void ShowWindow() {
         GetWindow(typeof(SerializedStoryEditor));
     }
@@ -27,6 +27,7 @@ public class SerializedStoryEditor : EditorWindow
     }
 
     private void OnGUI() {
+        EditorGUILayout.HelpBox("这里编辑都是原card的副本，不是引用！", MessageType.Warning);
         scrollView = EditorGUILayout.BeginScrollView(scrollView);
 
         if (sectionWidgets != null) {

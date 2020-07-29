@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class SubstoryDeckEditor : DeckEditor {
-    [MenuItem("卡牌编辑器/副本卡编辑器")]
+    [MenuItem("PCG编辑/子故事编辑器")]
     public static void ShowWindow() {
         var instance = (SubstoryDeckEditor)EditorWindow.GetWindow(typeof(SubstoryDeckEditor));
     }

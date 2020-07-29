@@ -12,7 +12,10 @@ public class QualifierWidget : Widget {
 
     public override void RenderUI() {
         EditorGUILayout.BeginHorizontal(EditorStyleResource.qualifierBlockStyle);
-        EditorGUILayout.LabelField(editTarget.name, GUILayout.Width(25f));
+        GUI.color = Color.red;
+        GUIStyle s = new GUIStyle();
+        EditorGUILayout.LabelField(editTarget.name, GUILayout.Width(25f), GUILayout.Height(25f));
+        GUI.color = Color.white;
         EditorGUILayout.EndHorizontal();
     }
 }

@@ -19,6 +19,13 @@ public class ResourceTable : MonoBehaviour
         public Canvas swipeCanvas;
     }
 
+
+    [System.Serializable]
+    public class Texturepage {
+        public Texture aynominousCharacter;
+    }
+
+
     [System.Serializable]
     public class PrefabPage {
         public GameObject cardDisplay;
@@ -29,4 +36,5 @@ public class ResourceTable : MonoBehaviour
 
     public SceneReferencePage sceneReferencePage = new SceneReferencePage();
     public PrefabPage prefabPage = new PrefabPage();
+    public Texturepage texturepage = new Texturepage();
 }

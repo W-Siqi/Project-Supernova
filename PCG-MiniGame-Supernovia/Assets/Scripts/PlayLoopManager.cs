@@ -50,7 +50,8 @@ public class PlayLoopManager : MonoBehaviour {
     
 
     IEnumerator EventState() {
-        yield return StartCoroutine(StoryBook.instance.TurnPage(StoryBook.instance.eventPage));
+        var newPageContent = new StoryBook.PageContent(StoryBook.instance.eventPage);
+        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
 
         var selecedEvents = CardSelector.Select(new EventProbFilter(), new EventCountFilter());
         foreach (var c in selecedEvents) {
@@ -70,7 +71,8 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator CouncilStage() {
-        yield return StartCoroutine(StoryBook.instance.TurnPage(StoryBook.instance.councilPage));
+        var newPageContent = new StoryBook.PageContent(StoryBook.instance.councilPage);
+        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
 
         foreach (var character in StoryContext.instance.characterDeck) {
             if (!straProbFilters.ContainsKey(character)) {

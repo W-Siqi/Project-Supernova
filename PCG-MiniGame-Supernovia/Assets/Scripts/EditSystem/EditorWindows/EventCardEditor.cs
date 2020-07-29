@@ -9,6 +9,8 @@ public class EventCardEditor : CardEditor
 
     protected override void OnGUI() {
         base.OnGUI();
+        var eventCard = editTarget as EventCard;
+        eventCard.isAanonymous = EditorGUILayout.Toggle("匿名",eventCard.isAanonymous);
         descriptionBlock.RenderUI();
     }
 

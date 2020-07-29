@@ -1,10 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StoryBook : MonoBehaviour
 {
+    public class PageContent {
+        public Texture image = null;
+        public string text = "";
+
+        public PageContent(Texture image) {
+            this.image = image;
+        }
+
+        public PageContent(string text) {
+            this.text = text;
+        }
+
+        public PageContent(Texture image, string text) {
+            this.image = image;
+            this.text = text;
+        }
+    }
+
     private static StoryBook _instance = null;
     public static StoryBook instance {
         get {
@@ -23,6 +42,8 @@ public class StoryBook : MonoBehaviour
     [SerializeField]
     private RawImage contentPageImage;
     [SerializeField]
+    private Text textContent;
+    [SerializeField]
     private float turnPageDelay;
     [SerializeField]
     private AnimationCurve turnPageCurve;
@@ -31,10 +52,10 @@ public class StoryBook : MonoBehaviour
     
     [ContextMenu("测试翻页")]
     private void Test() {
-        StartCoroutine(TurnPage(councilPage));
+        StartCoroutine(TurnPage(new PageContent("测试")));
     }
 
-    public IEnumerator TurnPage(RenderTexture pageContent) {
+    public IEnumerator TurnPage(PageContent pageContent) {
         // 书本镜头动画
         var turnPageTime = 1.5f;
         var closePos = AnchorManager.instance.storyBookClose.transform.position;
@@ -45,13 +66,25 @@ public class StoryBook : MonoBehaviour
         yield return new WaitForSeconds(turnPageDelay);
         // 翻页
         bookControllerWrapper.TurnNextPage();
-        // 翻页不久后替换内容页的texture
-        StartCoroutine(UpdatePageDelayed(pageContent));
+        // 换内容
+        ChangePageContent(pageContent);
 
         yield return new WaitForSeconds(turnPageTime);
     }
 
-    IEnumerator UpdatePageDelayed(RenderTexture pageContent) {
+    private void ChangePageContent(PageContent pageContent) {
+        if (pageContent.image != null) {
+            contentPageImage.enabled = true;
+            StartCoroutine(UpdatePageDelayed(pageContent.image));
+        }
+        else {
+            contentPageImage.enabled = false;
+        }
+
+        textContent.text = pageContent.text;
+    }
+
+    IEnumerator UpdatePageDelayed(Texture pageContent) {
         yield return new WaitForEndOfFrame();
         contentPageImage.texture = pageContent;
     }

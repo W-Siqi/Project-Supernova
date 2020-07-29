@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class EventDeckEditor : DeckEditor
 {
-    [MenuItem("卡牌编辑器/事件卡组")]
+    [MenuItem("PCG编辑/卡组编辑/事件卡")]
     public static void ShowWindow() {
         var instance = (EventDeckEditor)EditorWindow.GetWindow(typeof(EventDeckEditor));
     }

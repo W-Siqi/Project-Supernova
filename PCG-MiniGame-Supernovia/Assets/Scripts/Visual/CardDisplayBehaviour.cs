@@ -22,6 +22,24 @@ public class CardDisplayBehaviour : MonoBehaviour
         return Create(null,positon, rotation);
     }
 
+    public static CardDisplayBehaviour CreateAnonymousCard(Vector3 positon, Quaternion rotation) {
+        var GO = Instantiate(ResourceTable.instance.prefabPage.cardDisplay, positon, rotation);
+
+        var displayBehvaiour = GO.GetComponent<CardDisplayBehaviour>();
+        displayBehvaiour.gameObject.name = "AnonymousCard";
+
+        // image
+        displayBehvaiour.frontMaterial.Init();
+        displayBehvaiour.frontMaterial.runtimeMat.mainTexture = ResourceTable.instance.texturepage.aynominousCharacter;
+
+        // name
+        displayBehvaiour.name.text = "";
+        // description
+        displayBehvaiour.description.text = "";
+
+        return displayBehvaiour;
+    }
+
     public static CardDisplayBehaviour Create(Card card, Vector3 positon, Quaternion rotation) {
         var GO = Instantiate(ResourceTable.instance.prefabPage.cardDisplay,positon,rotation);
         var displayBehvaiour = GO.GetComponent<CardDisplayBehaviour>();

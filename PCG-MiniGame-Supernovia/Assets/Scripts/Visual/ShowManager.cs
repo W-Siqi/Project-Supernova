@@ -64,9 +64,18 @@ public class ShowManager : MonoBehaviour {
     /// <returns></returns>
     public IEnumerator PlayCardsShuffleIn(Card[] cards) {
         var anchor = AnchorManager.instance.deckSpawnAnchor;
-        Vector3 startPos = anchor.transform.position;
-        Quaternion startRotation = anchor.transform.rotation;
+        var randDistance = 0.2f;
+        //var randRotateAngle = 30f;
+
+        var instanciteCards = new List<KeyValuePair<CardDisplayBehaviour, DeckTarget>>();
+        // spwan init 
         foreach (var card in cards) {
+            // spwan
+            var spawnPos = anchor.transform.position + randDistance * Random.insideUnitSphere;
+            var spwanRotation = anchor.transform.rotation;
+            var cardDisplay = CardDisplayBehaviour.Create(card, spawnPos, spwanRotation);
+
+            // add
             DeckTarget belongedDeck;
             if (card is CharacterCard) {
                 belongedDeck = DeckTarget.characterDeck;
@@ -77,12 +86,20 @@ public class ShowManager : MonoBehaviour {
             else {
                 belongedDeck = DeckTarget.stratagemDeck;
             }
-            var cardDisplay = CardDisplayBehaviour.Create(card, startPos, startRotation);
-            BackCardToDeck(cardDisplay, belongedDeck);
-            yield return new WaitForSeconds(0.05f);
+            instanciteCards.Add(new KeyValuePair<CardDisplayBehaviour, DeckTarget>(cardDisplay, belongedDeck));
+
+            yield return new WaitForSeconds(0.1f);
         }
 
         yield return new WaitForSeconds(1f);
+
+        // back to 
+        foreach (var record in instanciteCards) {
+
+            BackCardToDeck(record.Key, record.Value);
+        }
+
+        yield return new WaitForSeconds(2f);
     }
 
     /// <summary>
@@ -113,7 +130,12 @@ public class ShowManager : MonoBehaviour {
     public  IEnumerator ShowEvent(EventCard eventCard, CharacterCard[] bindedCharacters) {
         // show event card selfs
         var eventCardDisplay = ShowCardFromDeck( eventCard, DeckTarget.eventDeck,AnchorManager.instance.eventCardAnchor);
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.name )));
+        BackCardToDeck(eventCardDisplay, DeckTarget.eventDeck);
+
+        // show name and descriptipn
+        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.description)));
+        yield return new WaitForSeconds(2f);
 
         // 对战斗后果进行演出
         if (eventCard.consequenceSet.fightConsequenceEnabled) {
@@ -121,8 +143,8 @@ public class ShowManager : MonoBehaviour {
             var attacker = fightConseq.GetAttacker(bindedCharacters);
             var defender = fightConseq.GetDefender(bindedCharacters);
 
-            var attackDisplay = ShowCardFromDeck(attacker, DeckTarget.characterDeck, AnchorManager.instance.showCardLeftAnchor);
-            var defenderDisplay = ShowCardFromDeck(defender, DeckTarget.characterDeck, AnchorManager.instance.showCardRightAnchor);
+            var attackDisplay = ShowCardFromDeck(attacker, DeckTarget.characterDeck, AnchorManager.instance.showCardLeftAnchor, eventCard.isAanonymous);
+            var defenderDisplay = ShowCardFromDeck(defender, DeckTarget.characterDeck, AnchorManager.instance.showCardRightAnchor, eventCard.isAanonymous);
             yield return new WaitForSeconds(2f);
 
             HitEffect.Create(attacker.attributes.atkVal, defenderDisplay.transform.position);
@@ -132,7 +154,6 @@ public class ShowManager : MonoBehaviour {
             BackCardToDeck(defenderDisplay, DeckTarget.characterDeck);
         }
 
-        BackCardToDeck(eventCardDisplay, DeckTarget.eventDeck);
         yield return new WaitForSeconds(2f);
     }
 
@@ -143,13 +164,20 @@ public class ShowManager : MonoBehaviour {
     /// <param name="from"></param>
     /// <param name="anchorPoint"></param>
     /// <returns></returns>
-    public CardDisplayBehaviour ShowCardFromDeck(Card card,DeckTarget from, AnchorPoint anchorPoint) {
+    public CardDisplayBehaviour ShowCardFromDeck(Card card,DeckTarget from, AnchorPoint anchorPoint, bool isAnonymous = false) {
         DeckDisplayBehaviour belongedDeck = GetBlongedDeckDisplay(from);
 
         Vector3 topPos;
         Quaternion topRotation;
         belongedDeck.DrawCard(out topPos,out topRotation);
-        var cardDisplay =  CardDisplayBehaviour.Create(card, topPos, topRotation);
+        CardDisplayBehaviour cardDisplay;
+        if (isAnonymous) {
+            cardDisplay = CardDisplayBehaviour.CreateAnonymousCard(topPos, topRotation);
+        }
+        else {
+            cardDisplay = CardDisplayBehaviour.Create(card, topPos, topRotation);
+        }
+
         LerpAnimator.instance.LerpPositionAndRotation(
             cardDisplay.transform,
             anchorPoint.transform.position,

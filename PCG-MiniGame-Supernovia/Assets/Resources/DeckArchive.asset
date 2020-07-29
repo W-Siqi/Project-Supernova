@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: DeckArchive
   m_EditorClassIdentifier: 
   characterCards:
-  - name: big horse
-    description: he is very ver angry!
+  - name: "\u9AD8\u5C06\u519B"
+    description: "\u6CA1\u4E8B\u559C\u6B22\u6253\u4EBA"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 2/character_70.png
+      Pack Vol 1/character_37.png
     attributes:
       atkVal: 6
       maxHP: 8
@@ -24,49 +24,103 @@ MonoBehaviour:
     qualifiers:
     - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
     - name: "\u9001\u8FBE\u65B9"
-  - name: name
-    description: 
+  - name: "\u9648\u5458\u5916"
+    description: "\u559C\u6B22\u793E\u4EA4"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_22.png
+      Pack Vol 1/character_19.png
     attributes:
       atkVal: 6
       maxHP: 5
       HP: 5
     qualifiers: []
-  - name: name
-    description: 
+  - name: "\u738B\u516C\u516C"
+    description: "\u6700\u559C\u6B22\u94B1\u4E86"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 2/character_97.png
+      Pack Vol 2/character_96.png
     attributes:
       atkVal: 9
       maxHP: 20
       HP: 20
     qualifiers: []
-  eventCards:
-  - name: test first
+  - name: "\u5927\u65A7\u5934"
+    description: '.....'
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 1/character_17.png
+    attributes:
+      atkVal: 0
+      maxHP: 1
+      HP: 1
+    qualifiers: []
+  - name: "\u5916\u6765\u4F7F\u8005"
+    description: "\uFF1F\uFF1F"
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 3/character_133.png
+    attributes:
+      atkVal: 0
+      maxHP: 1
+      HP: 1
+    qualifiers: []
+  - name: "\u7F8E\u5C11\u5973\u5C06\u519B"
     description: 
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_61.png
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 1/character_55.png
+    attributes:
+      atkVal: 0
+      maxHP: 1
+      HP: 1
+    qualifiers: []
+  - name: "\u4F1A\u6709"
+    description: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 4/character_238.png
+    attributes:
+      atkVal: 0
+      maxHP: 1
+      HP: 1
+    qualifiers: []
+  - name: "\u53D1\u591A\u5C11"
+    description: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 1/character_44.png
+    attributes:
+      atkVal: 0
+      maxHP: 1
+      HP: 1
+    qualifiers: []
+  - name: name
+    description: 
+    avatarImagePath: 
+    attributes:
+      atkVal: 0
+      maxHP: 1
+      HP: 1
+    qualifiers: []
+  eventCards:
+  - name: "\u4F7F\u8005\u6765\u8BBF"
+    description: "\u963F\u62C9\u57FA\u672C\u738B\u56FD\u5E26\u6765\u4E86\u53CB\u597D\u7684\u95EE\u5019"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 014806.png
+    isAanonymous: 1
     discruption: this is a event, somthing happened
     preconditonSet:
-      environmentEnabled: 1
-      characterEnabled: 1
-      eventEnabled: 1
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
       characterPreconditions:
       - qualifiers:
         - name: "\u9001\u8FBE\u65B9"
+        - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
+        - name: "\u5FE0\u5FC3"
       - qualifiers: []
       - qualifiers: []
       environmentPrecondition:
         qualifiers:
         - name: "\u662F\u7684"
-      eventPreconditions:
-      - eventCardName: "\u6728"
+      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 1
-      characterConsequenceEnabled: 1
-      fightConsequenceEnabled: 1
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
       statusConsequence:
         delta:
           army: 21
@@ -88,14 +142,14 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 1
         defenderbindFlag: 2
-  - name: "\u6728"
-    description: 
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_21.png
+  - name: "\u53D1\u751F\u76D7\u7A83"
+    description: "\u7687\u4E0A\uFF01\u56FD\u5E93\u7684\u7EAF\u91D1\u5B50\u90FD\u4E0D\u89C1\u5566\uFF01"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015705.png
+    isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 1
+      characterEnabled: 0
       eventEnabled: 0
       characterPreconditions:
       - qualifiers: []
@@ -105,10 +159,10 @@ MonoBehaviour:
       eventPreconditions:
       - eventCardName: name
     consequenceSet:
-      statusConsequenceEnabled: 1
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 1
+      fightConsequenceEnabled: 0
       statusConsequence:
         delta:
           army: -17
@@ -134,14 +188,14 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 1
         defenderbindFlag: 2
-  - name: "\u8349\u5730"
-    description: 
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_8.png
+  - name: "\u65A9\u9996"
+    description: "\u6740\u65E0\u8D66\uFF01"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 021910.png
+    isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 1
+      characterEnabled: 0
       eventEnabled: 0
       characterPreconditions:
       - qualifiers: []
@@ -151,10 +205,10 @@ MonoBehaviour:
       eventPreconditions:
       - eventCardName: "\u8349\u5730"
     consequenceSet:
-      statusConsequenceEnabled: 1
+      statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 1
+      fightConsequenceEnabled: 0
       statusConsequence:
         delta:
           army: 1
@@ -170,11 +224,12 @@ MonoBehaviour:
     description: 
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
       Pack Vol 1/background_67.png
+    isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
-      environmentEnabled: 1
-      characterEnabled: 1
-      eventEnabled: 1
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
       characterPreconditions:
       - qualifiers: []
       - qualifiers: []
@@ -182,10 +237,10 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 1
-      characterConsequenceEnabled: 1
-      fightConsequenceEnabled: 1
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
       statusConsequence:
         delta:
           army: 19
@@ -197,11 +252,187 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 1
         defenderbindFlag: 2
-  stratagemCards:
-  - name: "V\u9886\u8272"
-    description: "\u591A\u73AF\u4FDD"
+  - name: name
+    description: 
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_7.png
+      Pack Vol 1/background_75.png
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: name
+    description: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_55.png
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: name
+    description: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
+      Pack Vol 1/background_72.png
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: name
+    description: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/3_dist.tif
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: name
+    description: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10.tif
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: "\u90BB\u56FD\u6765\u88AD"
+    description: "\u4F7F\u8005\u88AB\u6740\uFF0C\u5BF9\u65B9\u56FD\u738B\u5927\u6012\uFF0C\u53D1\u8D77\u4E86\u8FDB\u653B"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 014928.png
+    isAanonymous: 1
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  stratagemCards:
+  - name: "\u5E2E\u52A9\u707E\u6C11"
+    description: "\u56FD\u5E93\u5145\u8DB3\uFF0C\u6551\u6551\u5B69\u5B50\uFF01"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015017.png
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -226,10 +457,9 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: hey!
-    description: mystery
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_29.png
+  - name: "\u5916\u4EA4"
+    description: "\u90BB\u56FD\u4F7F\u8005\u6765\u8BBF"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015422.png
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -254,10 +484,9 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: name
-    description: 
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_28.png
+  - name: "\u8981\u94B1"
+    description: "\u6700\u8FD1\u76D6\u4E86\u65B0\u5E9C\u5B50\uFF0C\u4FF8\u7984\u4E0D\u592A\u591F"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015318.png
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -276,6 +505,87 @@ MonoBehaviour:
           army: 21
           finance: 28
           luck: -12
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: "\u8054\u59FB"
+    description: "\u4E3A\u4E86\u56FD\u5BB6\u5173\u7CFB\uFF01"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 020018.png
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: "\u65A9\u9996"
+    description: "\u94B1\u4E00\u5B9A\u662F\u738B\u516C\u516C\u4ED6\u5077\u7684"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015843.png
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
+      characterConsequences: []
+      environmentConsequence:
+        qualiferAlterations: []
+      fightConsequence:
+        attackerbindFlag: 0
+        defenderbindFlag: 0
+  - name: "\u65A9\u9996 "
+    description: "\u5916\u6765\u4F7F\u8005\u7ED9\u6740\u4E86\uFF01"
+    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015843.png
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          army: 1
+          finance: 1
+          luck: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -390,6 +700,7 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      isAanonymous: 0
       discruption: this is a event, somthing happened
       preconditonSet:
         environmentEnabled: 0
@@ -418,6 +729,7 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      isAanonymous: 0
       discruption: this is a event, somthing happened
       preconditonSet:
         environmentEnabled: 0
@@ -446,6 +758,7 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      isAanonymous: 0
       discruption: this is a event, somthing happened
       preconditonSet:
         environmentEnabled: 0
@@ -474,6 +787,7 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      isAanonymous: 0
       discruption: this is a event, somthing happened
       preconditonSet:
         environmentEnabled: 0
@@ -502,6 +816,7 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      isAanonymous: 0
       discruption: this is a event, somthing happened
       preconditonSet:
         environmentEnabled: 0
@@ -530,6 +845,7 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      isAanonymous: 0
       discruption: this is a event, somthing happened
       preconditonSet:
         environmentEnabled: 0
