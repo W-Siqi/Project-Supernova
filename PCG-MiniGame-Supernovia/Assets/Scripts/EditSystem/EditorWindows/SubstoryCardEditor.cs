@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using PCG;
 
 public class SubstoryCardEditor : CardEditor
 {

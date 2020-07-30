@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3934502602374500326, guid: 7af37e4274c244d4aa19df8cea785b78, type: 2}
+  - {fileID: -1052768858900678686, guid: aa351d64bc13bcf439e643082fcd0f53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,8 +116,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u53EF\u662F\u5BB3\u4E86"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7af37e4274c244d4aa19df8cea785b78, type: 2}
-  m_sharedMaterial: {fileID: -3934502602374500326, guid: 7af37e4274c244d4aa19df8cea785b78,
+  m_fontAsset: {fileID: 11400000, guid: aa351d64bc13bcf439e643082fcd0f53, type: 2}
+  m_sharedMaterial: {fileID: -1052768858900678686, guid: aa351d64bc13bcf439e643082fcd0f53,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -187,11 +187,11 @@ MonoBehaviour:
     characterCount: 4
     spriteCount: 0
     spaceCount: 0
-    wordCount: 2
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -1269,7 +1269,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3934502602374500326, guid: 7af37e4274c244d4aa19df8cea785b78, type: 2}
+  - {fileID: -1052768858900678686, guid: aa351d64bc13bcf439e643082fcd0f53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1328,8 +1328,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u6211\u7684\u7956\u5148"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7af37e4274c244d4aa19df8cea785b78, type: 2}
-  m_sharedMaterial: {fileID: -3934502602374500326, guid: 7af37e4274c244d4aa19df8cea785b78,
+  m_fontAsset: {fileID: 11400000, guid: aa351d64bc13bcf439e643082fcd0f53, type: 2}
+  m_sharedMaterial: {fileID: -1052768858900678686, guid: aa351d64bc13bcf439e643082fcd0f53,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

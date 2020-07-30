@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using PCG;
 public class EventDeckEditor : DeckEditor
 {
     [MenuItem("PCG编辑/卡组编辑/事件卡")]

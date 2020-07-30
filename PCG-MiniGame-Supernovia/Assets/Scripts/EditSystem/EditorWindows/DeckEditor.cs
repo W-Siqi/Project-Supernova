@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
+using PCG;
 
 // 提供最初的卡片排版和罗列
 // 子类:

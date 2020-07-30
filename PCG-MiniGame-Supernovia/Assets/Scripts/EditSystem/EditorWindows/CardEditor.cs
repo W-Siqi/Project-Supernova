@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+namespace PCG { 
 // 所有卡片编辑器的基类
 // 编辑头像，名称，前缀等共通特性
 // 子类只需要override OnGUI追加
@@ -116,5 +117,7 @@ public abstract class CardEditor : EditorWindow
         GUILayout.Label("描述编辑：");
         editTarget.description = EditorGUILayout.TextField(editTarget.description, GUILayout.Width(windowWidth),GUILayout.Height(windowWidth));
     }
+}
+
 }
 

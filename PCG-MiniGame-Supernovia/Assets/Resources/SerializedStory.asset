@@ -132,7 +132,7 @@ MonoBehaviour:
             defenderbindFlag: 0
     eventCards:
     - name: "\u4F7F\u8005\u6765\u8BBF"
-      description: "\u963F\u62C9\u57FA\u672C\u738B\u56FD\u5E26\u6765\u4E86\u53CB\u597D\u7684\u95EE\u5019"
+      description: "\u4F4F\u4F60\u65C1\u8FB9\u7684\u56FD\u5BB6\u5E26\u6765\u4E86\u53CB\u597D\u7684\u95EE\u5019"
       avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 014806.png
       isAanonymous: 1
       discruption: this is a event, somthing happened
@@ -178,7 +178,8 @@ MonoBehaviour:
           attackerbindFlag: 1
           defenderbindFlag: 2
     - name: "\u53D1\u751F\u76D7\u7A83"
-      description: "\u7687\u4E0A\uFF01\u56FD\u5E93\u7684\u7EAF\u91D1\u5B50\u90FD\u4E0D\u89C1\u5566\uFF01"
+      description: "\u4E00\u4E2A\u795E\u79D8\u4EBA\u95EF\u8FDB\u4E86\u91D1\u5E93\uFF0C
+        \u7136\u540E\u91D1\u5B50\u4E0D\u89C1\u4E86"
       avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015705.png
       isAanonymous: 0
       discruption: this is a event, somthing happened
@@ -223,14 +224,28 @@ MonoBehaviour:
         fightConsequence:
           attackerbindFlag: 1
           defenderbindFlag: 2
-    substoryCard:
-      name: name
-      description: 
-      avatarImagePath: 
-      type: 0
-      newCharacters: []
-      stratagemCards: []
-      eventCards: []
+    showInfos:
+    - target:
+        name: "\u5916\u6765\u4F7F\u8005"
+        description: "\uFF1F\uFF1F"
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+          Pack Vol 3/character_133.png
+        attributes:
+          atkVal: 0
+          maxHP: 1
+          HP: 1
+        qualifiers: []
+      type: 2
+    - target:
+        name: "\u795E\u79D8\u4EBA"
+        description: "\u4ED6\u662F\u8C01\uFF1F"
+        avatarImagePath: Assets/ArtResourse/CardImage/anoyminousCharacter.png
+        attributes:
+          atkVal: 0
+          maxHP: 1
+          HP: 1
+        qualifiers: []
+      type: 3
   - councilStageInfos:
     - characterCard:
         name: "\u5916\u6765\u4F7F\u8005"
@@ -382,7 +397,7 @@ MonoBehaviour:
           attackerbindFlag: 1
           defenderbindFlag: 2
     - name: "\u90BB\u56FD\u6765\u88AD"
-      description: "\u4F7F\u8005\u88AB\u6740\uFF0C\u5BF9\u65B9\u56FD\u738B\u5927\u6012\uFF0C\u53D1\u8D77\u4E86\u8FDB\u653B"
+      description: "\u90BB\u56FD\u56FD\u738B\u5927\u6012\uFF0C\u53D1\u8D77\u4E86\u8FDB\u653B"
       avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 014928.png
       isAanonymous: 1
       discruption: this is a event, somthing happened
@@ -410,11 +425,15 @@ MonoBehaviour:
         fightConsequence:
           attackerbindFlag: 0
           defenderbindFlag: 0
-    substoryCard:
-      name: name
-      description: 
-      avatarImagePath: 
-      type: 0
-      newCharacters: []
-      stratagemCards: []
-      eventCards: []
+    showInfos:
+    - target:
+        name: "\u5916\u6765\u4F7F\u8005"
+        description: "\uFF1F\uFF1F"
+        avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+          Pack Vol 3/character_133.png
+        attributes:
+          atkVal: 0
+          maxHP: 1
+          HP: 1
+        qualifiers: []
+      type: 1

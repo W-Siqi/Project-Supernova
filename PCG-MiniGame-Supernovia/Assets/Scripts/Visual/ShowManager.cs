@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PCG;
 
 // 负责一切的卡牌动画，和演出效果
 public class ShowManager : MonoBehaviour {
@@ -130,12 +131,16 @@ public class ShowManager : MonoBehaviour {
     public  IEnumerator ShowEvent(EventCard eventCard, CharacterCard[] bindedCharacters) {
         // show event card selfs
         var eventCardDisplay = ShowCardFromDeck( eventCard, DeckTarget.eventDeck,AnchorManager.instance.eventCardAnchor);
+
+        // show name 
         yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.name )));
         BackCardToDeck(eventCardDisplay, DeckTarget.eventDeck);
 
-        // show name and descriptipn
+        // show descriptipn
         yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.description)));
-        yield return new WaitForSeconds(2f);
+
+        // show image
+        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.GetAvatarImage())));
 
         // 对战斗后果进行演出
         if (eventCard.consequenceSet.fightConsequenceEnabled) {
@@ -154,7 +159,7 @@ public class ShowManager : MonoBehaviour {
             BackCardToDeck(defenderDisplay, DeckTarget.characterDeck);
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
     }
 
     /// <summary>

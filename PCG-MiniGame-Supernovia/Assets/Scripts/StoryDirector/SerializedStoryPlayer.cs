@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PCG;
 
 // 播放story的时候，无视玩家输入的结果。
 // 也就是eventcard和stratagemcard完全是按照记录播放，而不是根据上下文播放
@@ -70,12 +71,19 @@ public class SerializedStoryPlayer : MonoBehaviour
     IEnumerator ExeEventState(SerializedStory.Section section) {
         yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent("过了几日")));
 
-        foreach (var eventCard in section.eventCards) {
+        for (int i = 0; i < section.eventCards.Count; i++) {
+            var eventCard = section.eventCards[i];
+
             // binding
             var bindedCharacters = eventCard.preconditonSet.BindCharacters();
 
             // 演出event
             yield return StartCoroutine(ShowManager.instance.ShowEvent(eventCard, bindedCharacters));
+            // 加戏
+            if (i < section.showInfos.Count) {
+                var showInfo = section.showInfos[i];
+                yield return StartCoroutine(DisplayShowInfo(showInfo));
+            }
 
             // TBD: 可能会出错，如果consequence不是确定的话，show在没apply的时候不知道确定值
             // apply consequence
@@ -117,6 +125,28 @@ public class SerializedStoryPlayer : MonoBehaviour
             }
 
             ShowManager.instance.BackCardToDeck(chracaterCardDisplay, ShowManager.DeckTarget.characterDeck);
+        }
+    }
+
+    IEnumerator DisplayShowInfo(ShowInfo showInfo) {
+        yield return null;
+        if (showInfo.type == ShowInfo.Type.die) {
+            var cardToShuffleOut = new Card[] { showInfo.target };
+            yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleOut(cardToShuffleOut));
+            yield return new WaitForSeconds(3f);
+        }
+        else if (showInfo.type == ShowInfo.Type.add) {
+            var anchor = AnchorManager.instance.showCardMiddleAnchor;
+            var newCardDisplay= CardDisplayBehaviour.Create(showInfo.target, anchor.transform.position, anchor.transform.rotation);
+            yield return new WaitForSeconds(3f);
+            ShowManager.instance.BackCardToDeck(newCardDisplay, ShowManager.DeckTarget.characterDeck);
+            yield return new WaitForSeconds(1f);
+        }
+        else if (showInfo.type == ShowInfo.Type.showAndBack) {
+            var characterCardDisplay = ShowManager.instance.ShowCardFromDeck(showInfo.target,  ShowManager.DeckTarget.characterDeck, AnchorManager.instance.showCardMiddleAnchor);
+            yield return new WaitForSeconds(5f);
+            ShowManager.instance.BackCardToDeck(characterCardDisplay, ShowManager.DeckTarget.characterDeck);
+            yield return new WaitForSeconds(1f);
         }
     }
 }

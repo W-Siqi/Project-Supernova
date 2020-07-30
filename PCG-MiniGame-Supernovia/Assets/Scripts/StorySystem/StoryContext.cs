@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PCG;
 
 // 用于保存一切故事运作信息的单例
 public class StoryContext : MonoBehaviour {

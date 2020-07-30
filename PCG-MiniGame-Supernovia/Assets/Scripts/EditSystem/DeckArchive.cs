@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEditor;
 using System;
+using PCG;
 
 [System.Serializable]
 public class DeckArchive : ScriptableObject {

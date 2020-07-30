@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using PCG;
 
 // 渲染对事件卡/决策卡两种卡的 修饰词编辑的模块
 public class DescriptionBlock{

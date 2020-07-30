@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class StratagemCard:Card
-{
-    public PreconditonSet preconditonSet = new PreconditonSet();
-    public ConsequenceSet consequenceSet = new ConsequenceSet();
+namespace PCG {
+    [System.Serializable]
+    public class StratagemCard : Card {
+        public PreconditonSet preconditonSet = new PreconditonSet();
+        public ConsequenceSet consequenceSet = new ConsequenceSet();
+    }
 }

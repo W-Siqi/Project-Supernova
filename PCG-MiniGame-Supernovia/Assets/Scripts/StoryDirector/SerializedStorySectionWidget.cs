@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using PCG;
 
 public class SerializedStorySectionWidget : Widget
 {
@@ -9,15 +10,21 @@ public class SerializedStorySectionWidget : Widget
     private DynamicWidgetGroup<CouncilStateInfoWidget, SerializedStory.CouncilStageInfo> countilStateInfoWidgets;
     private SearchCardBlock searchEventBlcok;
     private DynamicWidgetGroup<CardReferenceWidget, EventCard> eventCardWidgets;
-    private CardReferenceWidget substoryCardWidget;
+    private DynamicWidgetGroup<ShowInfoWidget, ShowInfo> showInfoWidgets;
 
     public SerializedStorySectionWidget(SerializedStory.Section editTarget) {
+        // council stage
         this.editTarget = editTarget;
         countilStateInfoWidgets = new DynamicWidgetGroup<CouncilStateInfoWidget, SerializedStory.CouncilStageInfo>(editTarget.councilStageInfos,false);
+        
+        // event
         eventCardWidgets = new DynamicWidgetGroup<CardReferenceWidget, EventCard>(editTarget.eventCards);
         searchEventBlcok = new SearchCardBlock(
             SearchCardBlock.SearchTarget.eventCard,
             (selected) => { editTarget.eventCards.Add(selected as EventCard); });
+
+        // show infos
+        showInfoWidgets = new DynamicWidgetGroup<ShowInfoWidget, ShowInfo>(editTarget.showInfos);
     }
 
     public override void RenderUI() {
@@ -35,10 +42,11 @@ public class SerializedStorySectionWidget : Widget
         eventCardWidgets.RenderUI();
         EditorGUILayout.EndVertical();
 
-        // subsutory secetion
-        if (substoryCardWidget != null) {
-            substoryCardWidget.RenderUI();
+        // show infos
+        if (GUILayout.Button("+Show Info")) {
+            editTarget.showInfos.Add(new ShowInfo());
         }
+        showInfoWidgets.RenderUI();
         EditorGUILayout.EndVertical();
     }
 }

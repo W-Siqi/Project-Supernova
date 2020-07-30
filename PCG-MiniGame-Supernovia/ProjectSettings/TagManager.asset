@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - anchor
+  - PlayerOwned
+  - OpponentOwned
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - PageScene
+  - 
   - 
   - 
   - 
@@ -41,4 +42,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Board
+    uniqueID: 4206570519
+    locked: 0
+  - name: Battlefield
+    uniqueID: 671583717
+    locked: 0
+  - name: BoardUI
+    uniqueID: 569613683
+    locked: 0
+  - name: BoardCards
+    uniqueID: 3017639489
+    locked: 0
+  - name: HandCards
+    uniqueID: 3794351331
+    locked: 0
+  - name: Foreground
+    uniqueID: 2546685719
+    locked: 0
+  - name: GameUI
+    uniqueID: 540465013
     locked: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using PCG;
 
 public class CardDisplayBehaviour : MonoBehaviour
 {

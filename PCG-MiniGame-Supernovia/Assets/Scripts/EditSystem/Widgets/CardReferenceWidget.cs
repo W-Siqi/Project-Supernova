@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+using PCG;
 
 /// <summary>
 /// 所有card都可用的

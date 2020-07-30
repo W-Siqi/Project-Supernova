@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using PCG;
 
 public class SubstoryDeckEditor : DeckEditor {
     [MenuItem("PCG编辑/子故事编辑器")]

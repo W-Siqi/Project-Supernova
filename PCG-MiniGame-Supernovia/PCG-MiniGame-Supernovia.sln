@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanTransition", "LeanTransition.csproj", "{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{6FFFA65C-C08C-27A1-C12F-A78BAF45A60C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanTransition", "LeanTransition.csproj", "{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanGUI", "LeanGUI.csproj", "{A6F253CC-AB54-A1EE-EEED-32104E126B9C}"
 EndProject
@@ -17,14 +17,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FFFA65C-C08C-27A1-C12F-A78BAF45A60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6FFFA65C-C08C-27A1-C12F-A78BAF45A60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FFFA65C-C08C-27A1-C12F-A78BAF45A60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FFFA65C-C08C-27A1-C12F-A78BAF45A60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A3CB77-0490-9018-EF2F-67FBA2CC732A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6F253CC-AB54-A1EE-EEED-32104E126B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6F253CC-AB54-A1EE-EEED-32104E126B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F253CC-AB54-A1EE-EEED-32104E126B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using PCG;
 
 public class PreconditionWidget : Widget {
     private PreconditonSet editTarget;

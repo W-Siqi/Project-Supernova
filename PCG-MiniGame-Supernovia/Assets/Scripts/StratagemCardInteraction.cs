@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PCG;
 
 public class StratagemCardInteraction : MonoBehaviour {
     const float DISPEAR_ANIMATION_VALUE = 50f;
