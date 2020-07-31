@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CCGKit\FullSerializer\Source\Aot\Editor\fsAotConfigurationEditor.cs" />
     <Compile Include="Assets\External\HyperCard\Scripts\Editor\CardEditor.cs" />
     <Compile Include="Assets\External\Kings\addons\Inventory\Scripts\Editor\InventoryEditor.cs" />
     <Compile Include="Assets\External\Kings\addons\Quests\Scripts\Editor\QuestsEditor.cs" />
@@ -89,6 +88,7 @@
     <Compile Include="Assets\External\Kings\scripts\Editor\ValueMathEditor.cs" />
     <Compile Include="Assets\External\Kings\scripts\Editor\ValueScriptEditor.cs" />
     <Compile Include="Assets\External\Kings\scripts\Editor\VideoPlayerEventsEditor.cs" />
+    <Compile Include="Assets\External\Local\CCGKit\FullSerializer\Source\Aot\Editor\fsAotConfigurationEditor.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\External\Local\Demigiant\DOTweenPro\Editor\DOTweenPreviewManager.cs" />
     <Compile Include="Assets\External\Local\MidevilVillageKindow\Editor\ExplodePartEditor.cs" />

@@ -15,6 +15,7 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator PlayLoopCoroutine(){
         while (true) {
+            yield return StartCoroutine(FightStage());
             yield return StartCoroutine(CouncilStage());
             yield return StartCoroutine(EventState());
             yield return StartCoroutine(SubstoryCardCheckPoint());
@@ -51,7 +52,7 @@ public class PlayLoopManager : MonoBehaviour {
     
 
     IEnumerator EventState() {
-        var newPageContent = new StoryBook.PageContent(StoryBook.instance.eventPage);
+        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneRT);
         yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
 
         var selecedEvents = CardSelector.Select(new EventProbFilter(), new EventCountFilter());
@@ -72,7 +73,7 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator CouncilStage() {
-        var newPageContent = new StoryBook.PageContent(StoryBook.instance.councilPage);
+        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
 
         foreach (var character in StoryContext.instance.characterDeck) {
@@ -114,5 +115,13 @@ public class PlayLoopManager : MonoBehaviour {
 
             ShowManager.instance.BackCardToDeck(chracaterCardDisplay, ShowManager.DeckTarget.characterDeck);
         }
+    }
+
+    IEnumerator FightStage() {
+        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.fightSceneRT);
+        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
+
+        var enemies = FightManager.instance.InstanticteRandomEnemies();
+        yield return StartCoroutine(FightManager.instance.ExecuteFight(StoryContext.instance.characterDeck.ToArray(),enemies));
     }
 }

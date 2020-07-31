@@ -18,9 +18,9 @@ MonoBehaviour:
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 1/character_37.png
     attributes:
-      atkVal: 6
-      maxHP: 8
-      HP: 8
+      atkVal: 4
+      maxHP: 20
+      HP: 20
     qualifiers:
     - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
     - name: "\u9001\u8FBE\u65B9"
@@ -30,15 +30,15 @@ MonoBehaviour:
       Pack Vol 1/character_19.png
     attributes:
       atkVal: 6
-      maxHP: 5
-      HP: 5
+      maxHP: 7
+      HP: 7
     qualifiers: []
   - name: "\u738B\u516C\u516C"
     description: "\u6700\u559C\u6B22\u94B1\u4E86"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 2/character_96.png
     attributes:
-      atkVal: 9
+      atkVal: 3
       maxHP: 20
       HP: 20
     qualifiers: []
@@ -47,45 +47,45 @@ MonoBehaviour:
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 1/character_17.png
     attributes:
-      atkVal: 0
-      maxHP: 1
-      HP: 1
+      atkVal: 8
+      maxHP: 12
+      HP: 12
     qualifiers: []
   - name: "\u5916\u6765\u4F7F\u8005"
     description: "\u4E2D\u7ACB\u4E4B\u4EBA"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 3/character_133.png
     attributes:
-      atkVal: 0
-      maxHP: 1
-      HP: 1
+      atkVal: 3
+      maxHP: 11
+      HP: 11
     qualifiers: []
   - name: "\u7F8E\u5C11\u5973\u5C06\u519B"
     description: "\u5251\u672F\u4E00\u6D41"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 1/character_55.png
     attributes:
-      atkVal: 0
-      maxHP: 1
-      HP: 1
+      atkVal: 10
+      maxHP: 3
+      HP: 3
     qualifiers: []
   - name: "\u5DEB\u5E08"
     description: "\u5360\u535C\u5360\u535C"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 4/character_238.png
     attributes:
-      atkVal: 0
-      maxHP: 1
-      HP: 1
+      atkVal: 7
+      maxHP: 16
+      HP: 16
     qualifiers: []
   - name: "\u4E8C\u5C06\u519B"
     description: "\u559C\u6B22\u953B\u70BC"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 1/character_44.png
     attributes:
-      atkVal: 0
-      maxHP: 1
-      HP: 1
+      atkVal: 7
+      maxHP: 17
+      HP: 17
     qualifiers: []
   eventCards:
   - name: "\u4F7F\u8005\u6765\u8BBF"

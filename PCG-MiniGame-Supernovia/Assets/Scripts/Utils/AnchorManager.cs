@@ -29,6 +29,14 @@ public class AnchorManager : MonoBehaviour
     public AnchorPoint storyBookClose;
     public AnchorPoint storyBookFar;
 
+    // fight 相关
+    public AnchorPoint fightLeftBottom;
+    public AnchorPoint fightLeftUp;
+    public AnchorPoint fightLeftSpawn;
+    public AnchorPoint fightRightBottom;
+    public AnchorPoint fightRightUp;
+    public AnchorPoint fightRightSpawn;
+
     public string nameToAdd = "new anchor point";
 
     private List<AnchorPoint> hiddens = new List<AnchorPoint>();

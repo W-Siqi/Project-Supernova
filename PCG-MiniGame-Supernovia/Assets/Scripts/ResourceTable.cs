@@ -23,6 +23,9 @@ public class ResourceTable : MonoBehaviour
     [System.Serializable]
     public class Texturepage {
         public Texture aynominousCharacter;
+        public RenderTexture fightSceneRT;
+        public RenderTexture councilSceneRT;
+        public RenderTexture eventSceneRT;
     }
 
 
@@ -32,6 +35,7 @@ public class ResourceTable : MonoBehaviour
         public GameObject startagemInteraction;
         public GameObject anchorPoint;
         public GameObject hitEffect;
+        public GameObject attackEffect;
     }
 
     public SceneReferencePage sceneReferencePage = new SceneReferencePage();

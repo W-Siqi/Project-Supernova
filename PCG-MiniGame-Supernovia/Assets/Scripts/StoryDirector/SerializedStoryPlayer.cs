@@ -93,7 +93,7 @@ public class SerializedStoryPlayer : MonoBehaviour
     }
 
     IEnumerator ExeCouncilStage(SerializedStory.Section section) {
-        var newPageContent = new StoryBook.PageContent(StoryBook.instance.councilPage);
+        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
 
         foreach (var councilInfo in section.councilStageInfos) {

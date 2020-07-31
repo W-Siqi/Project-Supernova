@@ -34,9 +34,6 @@ public class StoryBook : MonoBehaviour
         }
     }
 
-    public RenderTexture councilPage;
-    public RenderTexture eventPage;
-
     [SerializeField]
     private Camera mainCamera;
     [SerializeField]

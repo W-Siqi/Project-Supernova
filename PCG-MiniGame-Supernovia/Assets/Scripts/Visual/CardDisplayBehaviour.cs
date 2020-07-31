@@ -47,6 +47,10 @@ public class CardDisplayBehaviour : MonoBehaviour
         return displayBehvaiour;
     }
 
+    public void UpdateHPValue(float newHP) {
+        hpVal.text = newHP.ToString();
+    }
+
     private void Init(Card card) {
         if (card == null) {
             gameObject.name = "dummy";
