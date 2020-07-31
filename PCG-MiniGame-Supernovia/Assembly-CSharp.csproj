@@ -66,6 +66,7 @@
     <Compile Include="Assets\External\Book\Scripts\BookController.cs" />
     <Compile Include="Assets\External\Book\Scripts\Demo.cs" />
     <Compile Include="Assets\External\Book\Scripts\PageTurnAnimation.cs" />
+    <Compile Include="Assets\External\Campfire Pack\Script\SwitchView.cs" />
     <Compile Include="Assets\External\DissolveEmissionShader\DissolveSphere.cs" />
     <Compile Include="Assets\External\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\ParticleEffectsLibrary.cs" />
     <Compile Include="Assets\External\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\PEButtonScript.cs" />
@@ -80,6 +81,21 @@
     <Compile Include="Assets\External\Epic Toon FX\Scripts\ETFXLightFade.cs" />
     <Compile Include="Assets\External\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
     <Compile Include="Assets\External\Epic Toon FX\Scripts\ETFXRotation.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\2D Character Controller\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\2D Character Controller\Scripts\Controller2D.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\2D Character Controller\Scripts\PlatformController.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\2D Character Controller\Scripts\Player.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\2D Character Controller\Scripts\PlayerInput.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\2D Character Controller\Scripts\RaycastController.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\CameraPreventZFighting.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\BreakablePlatform.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\DoDamageOnTrigger.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\FadeOutAndDestroy.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\FalseFloor.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\SecretWall.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\TimedObjectDestructor.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\Trampoline.cs" />
+    <Compile Include="Assets\External\Forest Sprite Pack\Scripts\OrthoParallax.cs" />
     <Compile Include="Assets\External\Free Asset - 2D Handcrafted Art\Scripts\CamerController.cs" />
     <Compile Include="Assets\External\HyperCard\Scripts\Card.cs" />
     <Compile Include="Assets\External\HyperCard\Scripts\Demo\DissolveOverTime.cs" />
@@ -359,6 +375,7 @@
     <Compile Include="Assets\Scripts\Visual\ViewManager.cs" />
     <Compile Include="Assets\Scripts\Wrapper\BookControllerWrapper.cs" />
     <Compile Include="Assets\Scripts\Wrapper\RTSCamWrapper.cs" />
+    <None Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\READ ME before playing.txt" />
     <None Include="Assets\External\Local\MidevilVillageKindow\beffio\Medieval Kingdom\Content\Shaders\MobileShader\beffio_Water_Mobile.shader" />
     <None Include="Assets\External\Local\Demigiant\DOTweenPro\readme.txt" />
     <None Include="Assets\External\2D Fantasy Art Assets Full Pack\readme.txt" />
@@ -373,8 +390,10 @@
     <None Include="Assets\External\Local\MidevilVillageKindow\beffio\Medieval Kingdom\Content\Shaders\beffio_Fire.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\External\Kings\scripts\SafeAreaHelper\SafeAreaReadme.txt" />
+    <None Include="Assets\External\Forest Sprite Pack\Ferr2D\READ ME - Requires Ferr2D.txt" />
     <None Include="Assets\External\Kings\fonts\SourceSansPro-OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\2D Character Controller\Scripts\_Created By Sebastian Lague.txt" />
     <None Include="Assets\External\DissolveEmissionShader\DissolveEmission.shader" />
     <None Include="Assets\External\Local\MidevilVillageKindow\beffio\Medieval Kingdom\How to Start &amp; Documentation.txt" />
     <None Include="Assets\External\Local\MidevilVillageKindow\beffio\Medieval Kingdom\Content\Shaders\beffio_Parallax.shader" />
@@ -417,6 +436,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\External\Local\MidevilVillageKindow\beffio\Medieval Kingdom\Content\Shaders\beffio_Water.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\External\Forest Sprite Pack\Prefabs\Particles\Dust Particles\Created By Dusker Studios.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/siqiwan2/Documents/GitHub/Project-Supernova/PCG-MiniGame-Supernovia/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
