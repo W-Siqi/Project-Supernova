@@ -13,22 +13,14 @@ public class PreconditonSet
     public EnvironmentPrecondition environmentPrecondition = new EnvironmentPrecondition();
     public List<EventPrecondition> eventPreconditions = new List<EventPrecondition>();
 
-    /// <summary>
-    /// 如果连人数都不够，绑定失败，会抛错
-    /// </summary>
-    /// <returns></returns>
-    public CharacterCard[] BindCharacters() {
-        var bindedCharacters = new List<CharacterCard>();
-        var randomSelectPool = new List<CharacterCard>();
-        foreach (var card in StoryContext.instance.characterDeck) {
-            randomSelectPool.Add(card);
+    // TBD:
+    // 多个precondition 可能会bind到同一个对象
+    public BindingInfo[] Bind() {
+        var bindingInfos = new List<BindingInfo>();
+        foreach (var preconditon in characterPreconditions) {
+            bindingInfos.Add(preconditon.Bind());
         }
-        for (int i = 0; i < characterPreconditions.Count; i++) {
-            var randIndex = Random.Range(0, randomSelectPool.Count);
-            bindedCharacters.Add(randomSelectPool[randIndex]);
-            randomSelectPool.RemoveAt(randIndex);
-        }
-        return bindedCharacters.ToArray();
+        return bindingInfos.ToArray();
     }
 
     /// <summary>

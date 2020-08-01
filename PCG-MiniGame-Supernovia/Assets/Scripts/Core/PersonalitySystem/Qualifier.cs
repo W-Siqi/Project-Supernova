@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 修饰词，目前环境修饰词和角色修饰词都共用这个类
+// 修饰词，目前环境修饰词和角色修饰词(Personality 的State)都共用这个类
 [System.Serializable]
 public struct Qualifier
 {

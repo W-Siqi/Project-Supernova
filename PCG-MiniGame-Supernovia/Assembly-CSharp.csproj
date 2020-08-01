@@ -292,6 +292,8 @@
     <Compile Include="Assets\Scripts\Core\Cards\EventCard.cs" />
     <Compile Include="Assets\Scripts\Core\Cards\StratagemCard.cs" />
     <Compile Include="Assets\Scripts\Core\Cards\SubstoryCard.cs" />
+    <Compile Include="Assets\Scripts\Core\PersonalitySystem\Personality.cs" />
+    <Compile Include="Assets\Scripts\Core\PersonalitySystem\PersonalityState.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\QualiferAlteration.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\Qualifier.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\QualifierLibrary.cs" />
@@ -307,6 +309,7 @@
     <Compile Include="Assets\Scripts\Core\StorySystem\Distribution.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\EventCountFilter.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\EventProbFilter.cs" />
+    <Compile Include="Assets\Scripts\Core\StorySystem\Precondition\BindingInfo.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Precondition\CharacterPrecondition.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Precondition\EnvironmentPrecondition.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Precondition\EventPreCondition.cs" />

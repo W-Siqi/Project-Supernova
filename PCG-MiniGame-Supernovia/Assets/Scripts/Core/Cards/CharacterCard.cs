@@ -6,6 +6,8 @@ using UnityEditor;
 namespace PCG {
     [System.Serializable]
     public class CharacterCard : Card {
+        const int PERSONALITY_COUNT = 3;
+
         [System.Serializable]
         public class Attributes {
             public int atkVal = 0;
@@ -14,6 +16,6 @@ namespace PCG {
         }
 
         public Attributes attributes = new Attributes();
-        public List<Qualifier> qualifiers;
+        public Personality[] personalities = new Personality[PERSONALITY_COUNT];
     }
 }

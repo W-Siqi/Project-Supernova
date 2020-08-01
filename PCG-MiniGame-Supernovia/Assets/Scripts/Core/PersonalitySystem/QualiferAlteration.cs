@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class QualiferAlteration
-{
-    public enum Type { enhence,weaken,add,remove}
+public class QualiferAlteration {
+    public enum Type { add, remove }
     public Qualifier targetQualifier;
     public Type type;
 

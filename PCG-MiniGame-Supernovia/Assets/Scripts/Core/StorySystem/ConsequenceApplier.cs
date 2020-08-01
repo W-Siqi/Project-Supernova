@@ -5,16 +5,17 @@ using PCG;
 
 public class ConsequenceApplier
 {
-    public static void  Apply(ConsequenceSet consequenceSet,CharacterCard[] bindedCharacters) {
-        if (consequenceSet.fightConsequenceEnabled) {
-            ApplyFightConsequence(consequenceSet.fightConsequence, bindedCharacters);
-        }
+    // TBD：人物和fight先是空实现
+    public static void  Apply(ConsequenceSet consequenceSet,BindingInfo[] bindedInfos) {
+        //if (consequenceSet.fightConsequenceEnabled) {
+        //    ApplyFightConsequence(consequenceSet.fightConsequence, bindedCharacters);
+        //}
 
-        if (consequenceSet.characterConsequenceEnabled) {
-            foreach (var consequence in consequenceSet.characterConsequences) {
-                ApplyCharatcterConsequence(consequence.GetBindedCharacter(bindedCharacters), consequence);
-            }
-        }
+        //if (consequenceSet.characterConsequenceEnabled) {
+        //    foreach (var consequence in consequenceSet.characterConsequences) {
+        //        ApplyCharatcterConsequence(consequence.GetBindedCharacter(bindedCharacters), consequence);
+        //    }
+        //}
 
         if (consequenceSet.environmentConsequenceEnabled) {
             ApplyEnvironmentConsequence(consequenceSet.environmentConsequence);
@@ -25,21 +26,21 @@ public class ConsequenceApplier
         }
     }
 
-    private static void ApplyFightConsequence(FightConsequence fightConsequence, CharacterCard[] bindedCharacters) {
-        if (bindedCharacters.Length < 2) {
-            Debug.LogError("fight consequence， 角色绑定人数错误");
-            return;
-        }
-        var attacker = fightConsequence.GetAttacker(bindedCharacters);
-        var defender = fightConsequence.GetDefender(bindedCharacters);
-        defender.attributes.HP -= attacker.attributes.atkVal;
-    }
+    //private static void ApplyFightConsequence(FightConsequence fightConsequence, BindingInfo[] bindedInfos) {
+    //    if (bindedCharacters.Length < 2) {
+    //        Debug.LogError("fight consequence， 角色绑定人数错误");
+    //        return;
+    //    }
+    //    var attacker = fightConsequence.GetAttacker(bindedCharacters);
+    //    var defender = fightConsequence.GetDefender(bindedCharacters);
+    //    defender.attributes.HP -= attacker.attributes.atkVal;
+    //}
 
-    private static void ApplyCharatcterConsequence(CharacterCard target, CharacterConsequence consequence) {
-        foreach (var qualiterAlteraion in consequence.qualiferAlterations) {
-            ApplyQualifiersAlateration(target.qualifiers, qualiterAlteraion);
-        }
-    }
+    //private static void ApplyCharatcterConsequence(CharacterCard target, CharacterConsequence consequence) {
+    //    foreach (var qualiterAlteraion in consequence.qualiferAlterations) {
+    //        ApplyQualifiersAlateration(target.qualifiers, qualiterAlteraion);
+    //    }
+    //}
 
     private static void ApplyStatusConsequence(StatusConsequence consequence) {
         StoryContext.instance.statusVector += consequence.delta;
@@ -64,16 +65,6 @@ public class ConsequenceApplier
                 break;
             case QualiferAlteration.Type.remove:
                 if (exist) {
-                    target.Remove(alteration.targetQualifier);
-                }
-                break;
-            case QualiferAlteration.Type.enhence:
-                if (!exist && Random.value > enhanceProbability) {
-                    target.Add(new Qualifier(alteration.targetQualifier.name));
-                }
-                break;
-            case QualiferAlteration.Type.weaken:
-                if (exist && Random.value > weakenProbability) {
                     target.Remove(alteration.targetQualifier);
                 }
                 break;

@@ -1,29 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PCG;
 
 [System.Serializable]
 public class CharacterPrecondition : Precondition
 {
-    public List<Qualifier> qualifiers = new List<Qualifier>();
-
+    public Trait requiredTrait;
+    // 如果角色不是当前的状态，那么搜他旁边的，但是需要一个最大距离限制
+    public int topologyDistanceAllowed;
     public override bool SatisfiedByCurrentContext() {
            
         foreach (var character in StoryContext.instance.characterDeck) {
-            bool characterSatisfied = true;
-            foreach (var qualifier in qualifiers) {
-                if (!character.qualifiers.Exists((i) => i.name == qualifier.name)) {
-                    characterSatisfied = false;
-                    break;
+            foreach (var personality in character.personalities) {
+                // 有1个character的1个personality符合，就返回
+                if (personality.TopologyDistanceFromCurrent(requiredTrait) <= topologyDistanceAllowed) {
+                    return true;
                 }
-            }
-
-            // 但凡有一个满足，就出来
-            if (characterSatisfied) {
-                return true;
             }
         }
 
         return false;
+    }
+    
+    /// <summary>
+    /// 绑定失败，则返回一个空对象
+    /// </summary>
+    /// <returns></returns>
+    public BindingInfo Bind() {
+        return new BindingInfo();
     }
 }

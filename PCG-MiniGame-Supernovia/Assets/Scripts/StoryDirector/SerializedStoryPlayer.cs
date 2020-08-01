@@ -75,7 +75,11 @@ public class SerializedStoryPlayer : MonoBehaviour
             var eventCard = section.eventCards[i];
 
             // binding
-            var bindedCharacters = eventCard.preconditonSet.BindCharacters();
+            var bindingInfos = eventCard.preconditonSet.Bind();
+            var bindedCharacters = new CharacterCard[bindingInfos.Length];
+            for (int j = 0; j < bindingInfos.Length; j++) {
+                bindedCharacters[j] = bindingInfos[j].bindedCharacter;
+            }
 
             // 演出event
             yield return StartCoroutine(ShowManager.instance.ShowEvent(eventCard, bindedCharacters));
@@ -87,11 +91,12 @@ public class SerializedStoryPlayer : MonoBehaviour
 
             // TBD: 可能会出错，如果consequence不是确定的话，show在没apply的时候不知道确定值
             // apply consequence
-            ConsequenceApplier.Apply(eventCard.consequenceSet, bindedCharacters);
+            ConsequenceApplier.Apply(eventCard.consequenceSet, bindingInfos);
         }
         yield return new WaitForSeconds(2f);
     }
 
+    // TBD:当前后果不采用
     IEnumerator ExeCouncilStage(SerializedStory.Section section) {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
@@ -115,13 +120,13 @@ public class SerializedStoryPlayer : MonoBehaviour
                     yield return null;
                 }
 
-                // 应用后果
-                var bindedCharacters = straCard.preconditonSet.BindCharacters();
-                if (agreeDecision) {
-                    // 如果采纳，则不进行后续的策略建议
-                    ConsequenceApplier.Apply(straCard.consequenceSet, bindedCharacters);
-                    break;
-                }
+                // TBD: 不采用，应用后果
+                //var bindedCharacters = straCard.preconditonSet.BindCharacters();
+                //if (agreeDecision) {
+                //    // 如果采纳，则不进行后续的策略建议
+                //    ConsequenceApplier.Apply(straCard.consequenceSet, bindedCharacters);
+                //    break;
+                //}
             }
 
             ShowManager.instance.BackCardToDeck(chracaterCardDisplay, ShowManager.DeckTarget.characterDeck);

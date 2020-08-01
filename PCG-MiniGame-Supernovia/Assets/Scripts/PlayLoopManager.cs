@@ -60,14 +60,18 @@ public class PlayLoopManager : MonoBehaviour {
             var eventCard = c as EventCard;
 
             // binding
-            var bindedCharacters = eventCard.preconditonSet.BindCharacters();
+            var bindingInfos = eventCard.preconditonSet.Bind();
 
             // 演出event
+            var bindedCharacters = new CharacterCard[bindingInfos.Length];
+            for (int i = 0; i < bindingInfos.Length; i++) {
+                bindedCharacters[i] = bindingInfos[i].bindedCharacter;
+            }
             yield return StartCoroutine(ShowManager.instance.ShowEvent(eventCard,bindedCharacters));
 
             // TBD: 可能会出错，如果consequence不是确定的话，show在没apply的时候不知道确定值
             // apply consequence
-            ConsequenceApplier.Apply(eventCard.consequenceSet, bindedCharacters);
+            ConsequenceApplier.Apply(eventCard.consequenceSet, bindingInfos);
         }
         yield return new WaitForSeconds(2f);
     }
@@ -105,10 +109,10 @@ public class PlayLoopManager : MonoBehaviour {
                 }
 
                 // 应用后果
-                var bindedCharacters = straCard.preconditonSet.BindCharacters();
+                var bindingInfos = straCard.preconditonSet.Bind();
                 if (agreeDecision) {
                     // 如果采纳，则不进行后续的策略建议
-                    ConsequenceApplier.Apply(straCard.consequenceSet,bindedCharacters);
+                    ConsequenceApplier.Apply(straCard.consequenceSet,bindingInfos);
                     break;
                 }
             }
