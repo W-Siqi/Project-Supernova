@@ -318,8 +318,10 @@
     <Compile Include="Assets\Scripts\Core\StorySystem\ProbabilityFilter.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\StatusVector.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\StoryContext.cs" />
+    <Compile Include="Assets\Scripts\Core\StorySystem\StoryStage.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\StratagemCountFilter.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\StratagemProbFilter.cs" />
+    <Compile Include="Assets\Scripts\DecisionInteraction.cs" />
     <Compile Include="Assets\Scripts\EditSystem\DeckArchive.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorBlock\DescriptionBlock.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorBlock\SearchCardBlock.cs" />

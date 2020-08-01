@@ -21,9 +21,10 @@ MonoBehaviour:
       atkVal: 4
       maxHP: 20
       HP: 20
-    qualifiers:
-    - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
-    - name: "\u9001\u8FBE\u65B9"
+    personalities:
+    - currentTrait: 0
+    - currentTrait: 0
+    - currentTrait: 0
   - name: "\u9648\u5458\u5916"
     description: "\u559C\u6B22\u793E\u4EA4"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
@@ -32,7 +33,10 @@ MonoBehaviour:
       atkVal: 6
       maxHP: 7
       HP: 7
-    qualifiers: []
+    personalities:
+    - currentTrait: 0
+    - currentTrait: 0
+    - currentTrait: 0
   - name: "\u738B\u516C\u516C"
     description: "\u6700\u559C\u6B22\u94B1\u4E86"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
@@ -41,7 +45,10 @@ MonoBehaviour:
       atkVal: 3
       maxHP: 20
       HP: 20
-    qualifiers: []
+    personalities:
+    - currentTrait: 0
+    - currentTrait: 0
+    - currentTrait: 0
   - name: "\u5927\u65A7\u5934"
     description: "\u6CA1\u8111\u5B50"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
@@ -50,7 +57,10 @@ MonoBehaviour:
       atkVal: 8
       maxHP: 12
       HP: 12
-    qualifiers: []
+    personalities:
+    - currentTrait: 0
+    - currentTrait: 0
+    - currentTrait: 0
   - name: "\u7F8E\u5C11\u5973\u5C06\u519B"
     description: "\u5251\u672F\u4E00\u6D41"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
@@ -59,7 +69,10 @@ MonoBehaviour:
       atkVal: 10
       maxHP: 3
       HP: 3
-    qualifiers: []
+    personalities:
+    - currentTrait: 0
+    - currentTrait: 0
+    - currentTrait: 0
   eventCards:
   - name: "\u4F7F\u8005\u6765\u8BBF"
     description: "\u963F\u62C9\u57FA\u672C\u738B\u56FD\u5E26\u6765\u4E86\u53CB\u597D\u7684\u95EE\u5019"
@@ -71,29 +84,35 @@ MonoBehaviour:
       characterEnabled: 1
       eventEnabled: 0
       characterPreconditions:
-      - qualifiers:
-        - name: "\u9001\u8FBE\u65B9"
-        - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
-        - name: "\u5FE0\u5FC3"
-      - qualifiers: []
-      - qualifiers: []
+      - requiredTrait: 3
+        topologyDistanceAllowed: 0
+      - requiredTrait: 2
+        topologyDistanceAllowed: 0
+      - requiredTrait: 4
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers:
         - name: "\u662F\u7684"
       eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 1
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 1
-      fightConsequenceEnabled: 1
+      fightConsequenceEnabled: 0
       statusConsequence:
         delta:
           army: 21
           finance: 35
           luck: -13
       characterConsequences:
-      - bindFlag: 0
-        qualiferAlterations: []
+      - bindFlag: 1
+        traitToBecome: 3
+        transferStrength: 1
+      - bindFlag: 1
+        traitToBecome: 0
+        transferStrength: 1
       environmentConsequence:
         qualiferAlterations:
         - targetQualifier:
@@ -115,9 +134,8 @@ MonoBehaviour:
       characterEnabled: 1
       eventEnabled: 0
       characterPreconditions:
-      - qualifiers:
-        - name: "\u8D2A\u5A6A"
-        - name: "\u7F3A\u94B1"
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions:
@@ -134,13 +152,17 @@ MonoBehaviour:
           luck: 28
       characterConsequences:
       - bindFlag: 2
-        qualiferAlterations: []
+        traitToBecome: 0
+        transferStrength: 1
       - bindFlag: 0
-        qualiferAlterations: []
+        traitToBecome: 0
+        transferStrength: 1
       - bindFlag: 0
-        qualiferAlterations: []
+        traitToBecome: 0
+        transferStrength: 1
       - bindFlag: 0
-        qualiferAlterations: []
+        traitToBecome: 0
+        transferStrength: 1
       environmentConsequence:
         qualiferAlterations:
         - targetQualifier:
@@ -162,8 +184,10 @@ MonoBehaviour:
       characterEnabled: 1
       eventEnabled: 1
       characterPreconditions:
-      - qualifiers: []
-      - qualifiers: []
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
@@ -191,25 +215,35 @@ MonoBehaviour:
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 0
+      characterEnabled: 1
       eventEnabled: 0
       characterPreconditions:
-      - qualifiers: []
-      - qualifiers: []
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 2
+        topologyDistanceAllowed: 0
+      - requiredTrait: 3
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
       statusConsequenceEnabled: 0
       environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
+      characterConsequenceEnabled: 1
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
           army: 19
           finance: 27
           luck: -22
-      characterConsequences: []
+      characterConsequences:
+      - bindFlag: 1
+        traitToBecome: 0
+        transferStrength: 1
+      - bindFlag: 0
+        traitToBecome: 3
+        transferStrength: 1
       environmentConsequence:
         qualiferAlterations: []
       fightConsequence:
@@ -226,17 +260,12 @@ MonoBehaviour:
       characterEnabled: 1
       eventEnabled: 1
       characterPreconditions:
-      - qualifiers:
-        - name: "\u5FE0\u5FC3"
-        - name: "\u5584\u826F"
-        - name: "\u591A\u7591"
-      - qualifiers:
-        - name: "\u5FE0\u5FC3"
-        - name: "\u5584\u826F"
-      - qualifiers:
-        - name: "\u5FE0\u5FC3"
-        - name: "\u5584\u826F"
-        - name: "\u591A\u7591"
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers:
         - name: "\u66B4\u541B"
@@ -260,13 +289,8 @@ MonoBehaviour:
           luck: 1
       characterConsequences:
       - bindFlag: 2
-        qualiferAlterations:
-        - targetQualifier:
-            name: "\u5FE0\u5FC3"
-          type: 2
-        - targetQualifier:
-            name: "\u5584\u826F"
-          type: 2
+        traitToBecome: 0
+        transferStrength: 1
       environmentConsequence:
         qualiferAlterations:
         - targetQualifier:
@@ -607,7 +631,10 @@ MonoBehaviour:
         atkVal: 0
         maxHP: 1
         HP: 1
-      qualifiers: []
+      personalities:
+      - currentTrait: 0
+      - currentTrait: 0
+      - currentTrait: 0
     - name: name
       description: 
       avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/22_dist.tif
@@ -615,7 +642,10 @@ MonoBehaviour:
         atkVal: 0
         maxHP: 1
         HP: 1
-      qualifiers: []
+      personalities:
+      - currentTrait: 0
+      - currentTrait: 0
+      - currentTrait: 0
     stratagemCards:
     - name: name
       description: 

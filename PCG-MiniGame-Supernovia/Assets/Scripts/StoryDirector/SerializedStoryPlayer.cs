@@ -113,7 +113,7 @@ public class SerializedStoryPlayer : MonoBehaviour
                 // 生成交互
                 bool decisionMade = false;
                 bool agreeDecision = false;
-                StratagemCardInteraction.Create(straCard, (bool agree) => { decisionMade = true; agreeDecision = agree; });
+                //StratagemCardInteraction.Create(straCard, (bool agree) => { decisionMade = true; agreeDecision = agree; });
 
                 // 等待玩家输入
                 while (!decisionMade) {

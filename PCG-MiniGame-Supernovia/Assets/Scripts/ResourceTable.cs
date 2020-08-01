@@ -32,7 +32,7 @@ public class ResourceTable : MonoBehaviour
     [System.Serializable]
     public class PrefabPage {
         public GameObject cardDisplay;
-        public GameObject startagemInteraction;
+        public GameObject decisionInteraction;
         public GameObject anchorPoint;
         public GameObject hitEffect;
         public GameObject attackEffect;
