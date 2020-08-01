@@ -22,7 +22,7 @@ public class ValueViewer : MonoBehaviour
     private Color valueMinusDiffTextColor;
 
     private float maxVal = 100;
-    private float curVal = 100;
+    private float curVal = 0;
 
     [ContextMenu("Test with debug value")]
     public void DebugTest() {
@@ -43,9 +43,6 @@ public class ValueViewer : MonoBehaviour
         sliderOfValue.value = this.curVal / maxVal;
     }
 
-    private void Awake() {
-        SetCurrentValue(curVal);
-    }
 
     void ShowDiff(float diffValue) {
         iconSizeTween.Play();
