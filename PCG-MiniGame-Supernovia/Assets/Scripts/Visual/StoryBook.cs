@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class StoryBook : MonoBehaviour
 {
+    private const string DISSOLVE_SHADER_PROPERTY = "_SliceAmount";
+    
     public class PageContent {
         public Texture image = null;
         public string text = "";
@@ -46,10 +48,17 @@ public class StoryBook : MonoBehaviour
     private AnimationCurve turnPageCurve;
     [SerializeField]
     BookControllerWrapper bookControllerWrapper;
+
+    private Material conetentPageMat = null;
     
     [ContextMenu("测试翻页")]
     private void Test() {
         StartCoroutine(TurnPage(new PageContent("测试")));
+    }
+
+    private void Awake() {
+        conetentPageMat = new Material(contentPageImage.material);
+        contentPageImage.material = conetentPageMat;
     }
 
     public IEnumerator TurnPage(PageContent pageContent) {
@@ -73,6 +82,11 @@ public class StoryBook : MonoBehaviour
         if (pageContent.image != null) {
             contentPageImage.enabled = true;
             StartCoroutine(UpdatePageDelayed(pageContent.image));
+            var dissolveDuration = 3f;
+            LerpAnimator.instance.LerpValues(1,0,dissolveDuration,
+                (v)=> {
+                    conetentPageMat.SetFloat(DISSOLVE_SHADER_PROPERTY,v);
+                });
         }
         else {
             contentPageImage.enabled = false;

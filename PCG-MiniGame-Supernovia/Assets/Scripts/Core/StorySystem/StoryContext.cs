@@ -7,15 +7,15 @@ using PCG;
 public class StoryContext : MonoBehaviour {
     [System.Serializable]
     public class StatusVector {
-        public int army = 1;
-        public int finance = 1;
-        public int luck = 1;
+        public int food = 1;
+        public int money = 1;
+        public int authority= 1;
 
         public static StatusVector operator + (StatusVector a, StatusVector b) {
             var res = new StatusVector();
-            res.army = a.army + b.army;
-            res.finance = a.finance + b.finance;
-            res.luck = a.luck + b.luck;
+            res.food = a.food + b.food;
+            res.money = a.money + b.money;
+            res.authority = a.authority + b.authority;
             return res;
         }
     }

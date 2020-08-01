@@ -7,17 +7,17 @@ using PCG;
 public class UIController : MonoBehaviour
 {
     private void Start() {
-        ViewManager.instance.armyValue.SetMaxValue(100f);
-        ViewManager.instance.financeValue.SetMaxValue(100f);
-        ViewManager.instance.luckValue.SetMaxValue(100f);
+        ViewManager.instance.foodValue.SetMaxValue(100f);
+        ViewManager.instance.moneyValue.SetMaxValue(100f);
+        ViewManager.instance.authorityValue.SetMaxValue(100f);
     }
 
     // Update is called once per frame
     void Update()
     {
         var status = StoryContext.instance.statusVector;
-        ViewManager.instance.armyValue.SetCurrentValue(status.army);
-        ViewManager.instance.financeValue.SetCurrentValue(status.finance);
-        ViewManager.instance.luckValue.SetCurrentValue(status.luck);
+        ViewManager.instance.foodValue.SetCurrentValue(status.food);
+        ViewManager.instance.moneyValue.SetCurrentValue(status.money);
+        ViewManager.instance.authorityValue.SetCurrentValue(status.authority);
     }
 }

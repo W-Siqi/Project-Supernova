@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorTween : MonoBehaviour
+public abstract class ColorTween : MonoBehaviour
 {
-    [SerializeField]
-    private RuntimeMaterial tweenMat;
+    public Color beginColor;
+    public Color endColor;
     [SerializeField]
     private float playTime = 1f;
     [SerializeField]
-    private Color beginColor;
-    [SerializeField]
-    private Color endColor;
-    [SerializeField]
     private AnimationCurve tweenCurve;
 
+    [ContextMenu("Test Play")]
     public void Play(){
         StartCoroutine(PlayTween());
     }
+
+    protected abstract void SetColor(Color color);
 
     IEnumerator PlayTween() {
         var startTime = Time.time;
         while (Time.time < startTime + playTime) {
             var t = (Time.time - startTime) / playTime;
-            tweenMat.runtimeMat.color = Color.Lerp( beginColor,endColor,tweenCurve.Evaluate(t));
+            SetColor(Color.Lerp(beginColor, endColor, tweenCurve.Evaluate(t)));
             yield return null;
         }
     }

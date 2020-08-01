@@ -28,9 +28,9 @@ namespace PCG {
             }
         }
 
-        public ValueViewer armyValue;
-        public ValueViewer financeValue;
-        public ValueViewer luckValue;
+        public ValueViewer foodValue;
+        public ValueViewer moneyValue;
+        public ValueViewer authorityValue;
         [SerializeField]
         private ResTable resTable;
 
