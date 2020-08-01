@@ -18,6 +18,8 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator PlayLoopCoroutine(){
         foreach(var stage in storyline) {
+            yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
+
             switch (stage) {
                 case StoryStage.campfire:
                     yield return StartCoroutine(CampFireStage());
@@ -92,6 +94,9 @@ public class PlayLoopManager : MonoBehaviour {
         yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
 
         foreach (var character in StoryContext.instance.characterDeck) {
+            // show 角色
+            ViewManager.instance.ViewCharacterOfDialog(character.GetAvatarImage());
+
             if (!straProbFilters.ContainsKey(character)) {
                 straProbFilters[character] = new StratagemProbFilter(character);
             }
@@ -99,23 +104,22 @@ public class PlayLoopManager : MonoBehaviour {
                 straCountFilers[character] = new StratagemCountFilter(character);
             }
 
-            // show 角色卡动画
-            var chracaterCardDisplay = ShowManager.instance.ShowCardFromDeck(
-                character,
-                ShowManager.DeckTarget.characterDeck,
-                AnchorManager.instance.characterCardAnchor);
-
             // 抽取决策卡，并逐个进行决策流程
             var stratagesOfCharacter = CardSelector.Select(straProbFilters[character],straCountFilers[character]);
             foreach (var s  in stratagesOfCharacter) {
                 var straCard = s as StratagemCard;
+                // show Dialog
+                ViewManager.instance.ViewDialog(straCard.description);
+
+                yield return new WaitForSeconds(1f);
+
                 // 生成交互
                 bool decisionMade = false;
                 bool agreeDecision = false;
                 DecisionInteraction.Create(
                     straCard.GetAvatarImage(),
                     straCard.name,
-                    straCard.description,
+                    "",
                     (bool agree) => { decisionMade = true; agreeDecision = agree; });
 
                 // 等待玩家输入
@@ -130,9 +134,15 @@ public class PlayLoopManager : MonoBehaviour {
                     ConsequenceApplier.Apply(straCard.consequenceSet,bindingInfos);
                     break;
                 }
+
+                // end show Dialog
+                ViewManager.instance.EndViewDialog();
+                yield return new WaitForSeconds(2f);
             }
 
-            ShowManager.instance.BackCardToDeck(chracaterCardDisplay, ShowManager.DeckTarget.characterDeck);
+            // end character
+            ViewManager.instance.EndViewCharacterOfDialog();
+            yield return new WaitForSeconds(2f);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PCG;
 
 // 负责调用viewManager绘制
 public class UIController : MonoBehaviour

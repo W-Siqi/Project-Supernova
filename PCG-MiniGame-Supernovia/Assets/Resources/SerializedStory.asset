@@ -23,7 +23,10 @@ MonoBehaviour:
           atkVal: 6
           maxHP: 5
           HP: 5
-        qualifiers: []
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       stratagemCards:
       - name: "\u5916\u4EA4"
         description: "\u90BB\u56FD\u4F7F\u8005\u6765\u8BBF"
@@ -61,9 +64,10 @@ MonoBehaviour:
           atkVal: 6
           maxHP: 8
           HP: 8
-        qualifiers:
-        - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
-        - name: "\u9001\u8FBE\u65B9"
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       stratagemCards:
       - name: "\u5E2E\u52A9\u707E\u6C11"
         description: "\u56FD\u5E93\u5145\u8DB3\uFF0C\u6551\u6551\u5B69\u5B50\uFF01"
@@ -101,7 +105,10 @@ MonoBehaviour:
           atkVal: 9
           maxHP: 20
           HP: 20
-        qualifiers: []
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       stratagemCards:
       - name: "\u8981\u94B1"
         description: "\u6700\u8FD1\u76D6\u4E86\u65B0\u5E9C\u5B50\uFF0C\u4FF8\u7984\u4E0D\u592A\u591F"
@@ -141,12 +148,12 @@ MonoBehaviour:
         characterEnabled: 0
         eventEnabled: 0
         characterPreconditions:
-        - qualifiers:
-          - name: "\u9001\u8FBE\u65B9"
-          - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
-          - name: "\u5FE0\u5FC3"
-        - qualifiers: []
-        - qualifiers: []
+        - requiredTrait: 0
+          topologyDistanceAllowed: 0
+        - requiredTrait: 0
+          topologyDistanceAllowed: 0
+        - requiredTrait: 0
+          topologyDistanceAllowed: 0
         environmentPrecondition:
           qualifiers:
           - name: "\u662F\u7684"
@@ -163,9 +170,11 @@ MonoBehaviour:
             luck: -13
         characterConsequences:
         - bindFlag: 0
-          qualiferAlterations: []
+          traitToBecome: 0
+          transferStrength: 1
         - bindFlag: 0
-          qualiferAlterations: []
+          traitToBecome: 0
+          transferStrength: 1
         environmentConsequence:
           qualiferAlterations:
           - targetQualifier:
@@ -188,8 +197,10 @@ MonoBehaviour:
         characterEnabled: 0
         eventEnabled: 0
         characterPreconditions:
-        - qualifiers: []
-        - qualifiers: []
+        - requiredTrait: 0
+          topologyDistanceAllowed: 0
+        - requiredTrait: 0
+          topologyDistanceAllowed: 0
         environmentPrecondition:
           qualifiers: []
         eventPreconditions:
@@ -206,13 +217,17 @@ MonoBehaviour:
             luck: 28
         characterConsequences:
         - bindFlag: 2
-          qualiferAlterations: []
+          traitToBecome: 0
+          transferStrength: 1
         - bindFlag: 0
-          qualiferAlterations: []
+          traitToBecome: 0
+          transferStrength: 1
         - bindFlag: 0
-          qualiferAlterations: []
+          traitToBecome: 0
+          transferStrength: 1
         - bindFlag: 0
-          qualiferAlterations: []
+          traitToBecome: 0
+          transferStrength: 1
         environmentConsequence:
           qualiferAlterations:
           - targetQualifier:
@@ -234,7 +249,10 @@ MonoBehaviour:
           atkVal: 0
           maxHP: 1
           HP: 1
-        qualifiers: []
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       type: 2
     - target:
         name: "\u795E\u79D8\u4EBA"
@@ -244,7 +262,10 @@ MonoBehaviour:
           atkVal: 0
           maxHP: 1
           HP: 1
-        qualifiers: []
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       type: 3
   - councilStageInfos:
     - characterCard:
@@ -256,7 +277,10 @@ MonoBehaviour:
           atkVal: 0
           maxHP: 1
           HP: 1
-        qualifiers: []
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       stratagemCards:
       - name: "\u8054\u59FB"
         description: "\u4E3A\u4E86\u56FD\u5BB6\u5173\u7CFB\uFF01"
@@ -294,9 +318,10 @@ MonoBehaviour:
           atkVal: 6
           maxHP: 8
           HP: 8
-        qualifiers:
-        - name: "\u5F88\u5FEB\u5C31\u56DE\u5BB6"
-        - name: "\u9001\u8FBE\u65B9"
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       stratagemCards:
       - name: "\u65A9\u9996"
         description: "\u94B1\u4E00\u5B9A\u662F\u738B\u516C\u516C\u4ED6\u5077\u7684"
@@ -334,7 +359,10 @@ MonoBehaviour:
           atkVal: 6
           maxHP: 5
           HP: 5
-        qualifiers: []
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       stratagemCards:
       - name: "\u65A9\u9996 "
         description: "\u5916\u6765\u4F7F\u8005\u7ED9\u6740\u4E86\uFF01"
@@ -374,8 +402,10 @@ MonoBehaviour:
         characterEnabled: 0
         eventEnabled: 0
         characterPreconditions:
-        - qualifiers: []
-        - qualifiers: []
+        - requiredTrait: 0
+          topologyDistanceAllowed: 0
+        - requiredTrait: 0
+          topologyDistanceAllowed: 0
         environmentPrecondition:
           qualifiers: []
         eventPreconditions:
@@ -435,5 +465,8 @@ MonoBehaviour:
           atkVal: 0
           maxHP: 1
           HP: 1
-        qualifiers: []
+        personalities:
+        - currentTrait: 0
+        - currentTrait: 0
+        - currentTrait: 0
       type: 1
