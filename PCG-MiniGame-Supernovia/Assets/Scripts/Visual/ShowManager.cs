@@ -133,14 +133,14 @@ public class ShowManager : MonoBehaviour {
         var eventCardDisplay = ShowCardFromDeck( eventCard, DeckTarget.eventDeck,AnchorManager.instance.eventCardAnchor);
 
         // show name 
-        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.name )));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent(eventCard.name )));
         BackCardToDeck(eventCardDisplay, DeckTarget.eventDeck);
 
         // show descriptipn
-        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.description)));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent(eventCard.description)));
 
         // show image
-        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent(eventCard.GetAvatarImage())));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent(eventCard.GetAvatarImage())));
 
         // 对战斗后果进行演出
         if (eventCard.consequenceSet.fightConsequenceEnabled) {

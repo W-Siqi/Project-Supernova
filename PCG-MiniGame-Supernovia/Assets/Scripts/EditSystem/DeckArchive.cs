@@ -93,6 +93,27 @@ public class DeckArchive : ScriptableObject {
         throw new System.Exception("UDF type");
     }
 
+    public Card FindCardByName(string name) {
+        foreach(var card in characterCards){
+            if (card.name == name) {
+                return card;
+            }
+        }
+
+        foreach (var card in stratagemCards) {
+            if (card.name == name) {
+                return card;
+            }
+        }
+
+        foreach (var card in eventCards) {
+            if (card.name == name) {
+                return card;
+            }
+        }
+        return null;
+    }
+
     //public Card[] GetCards<T>() where T:Card{
     //    if (typeof(CharacterCard).IsAssignableFrom(typeof(T))) {
     //        return characterCards.ToArray();

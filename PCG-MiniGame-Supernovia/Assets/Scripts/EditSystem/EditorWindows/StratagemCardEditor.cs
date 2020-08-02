@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PCG;
+using UnityEditor;
 
 public class StratagemCardEditor : CardEditor
 {
@@ -14,6 +15,9 @@ public class StratagemCardEditor : CardEditor
 
     protected override void OnGUI() {
         base.OnGUI();
+        var stratagemCard = editTarget as StratagemCard;
+        stratagemCard.yesText = EditorGUILayout.TextField("yes text",stratagemCard.yesText);
+        stratagemCard.noText = EditorGUILayout.TextField("no text", stratagemCard.noText);
         descriptionBlock.RenderUI();
     }
 }

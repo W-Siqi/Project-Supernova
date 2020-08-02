@@ -43,33 +43,33 @@ public class SerializedStoryPlayer : MonoBehaviour
         StoryBook.PageContent storyPageContent;
 
         storyPageContent = new StoryBook.PageContent("从前有个王国，");
-        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(storyPageContent));
 
         storyPageContent = new StoryBook.PageContent("国王下有一堆大臣....");
-        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(storyPageContent));
         // 洗角色牌
         var characters = StoryContext.instance.characterDeck.ToArray();
         yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(characters));
 
 
         storyPageContent = new StoryBook.PageContent("大臣都会提出各种建议....");
-        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(storyPageContent));
         // 洗决策卡
         var stratagems = StoryContext.instance.stratagemDeck.ToArray();
         yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(stratagems));
 
         storyPageContent = new StoryBook.PageContent("在这里，各种各样的故事发生着....");
-        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(storyPageContent));
         // 洗事件卡
         var eventCards = StoryContext.instance.eventDeck.ToArray();
         yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(eventCards));
 
         storyPageContent = new StoryBook.PageContent("第一章，故事的开始");
-        yield return StartCoroutine(StoryBook.instance.TurnPage(storyPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(storyPageContent));
     }
 
     IEnumerator ExeEventState(SerializedStory.Section section) {
-        yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent("过了几日")));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("过了几日")));
 
         for (int i = 0; i < section.eventCards.Count; i++) {
             var eventCard = section.eventCards[i];
@@ -99,7 +99,7 @@ public class SerializedStoryPlayer : MonoBehaviour
     // TBD:当前后果不采用
     IEnumerator ExeCouncilStage(SerializedStory.Section section) {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
-        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
         foreach (var councilInfo in section.councilStageInfos) {
             // show 角色卡动画

@@ -74,8 +74,8 @@ MonoBehaviour:
     - currentTrait: 0
     - currentTrait: 0
   eventCards:
-  - name: "\u63A8\u5F00\u4E16\u754C\u7684\u95E8"
-    description: "\u4E0D\u77E5\u9053\u91CC\u9762\u6709\u4EC0\u4E48"
+  - name: "\u4E0E\u9B54\u9B3C\u505A\u4EA4\u6613"
+    description: "\u5BF9\u5FC3\u4E2D\u7684\u6076\u9B54\u533A\u670D"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
       Pack Vol 1/background_67.png
     isAanonymous: 0
@@ -87,10 +87,6 @@ MonoBehaviour:
       characterPreconditions:
       - requiredTrait: 0
         topologyDistanceAllowed: 0
-      - requiredTrait: 2
-        topologyDistanceAllowed: 0
-      - requiredTrait: 3
-        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
@@ -105,27 +101,24 @@ MonoBehaviour:
           money: 1
           authority: 1
       characterConsequences:
-      - bindFlag: 1
-        traitToBecome: 0
-        transferStrength: 1
       - bindFlag: 0
-        traitToBecome: 3
+        traitToBecome: 0
         transferStrength: 1
       environmentConsequence:
         qualiferAlterations: []
       fightConsequence:
         attackerbindFlag: 1
         defenderbindFlag: 2
-  - name: "\u795E\u6811\u5F00\u82B1"
-    description: "\u4F20\u8BF4\u6210\u771F"
+  - name: "\u591A\u4EBA\u6DF7\u6218"
+    description: "\u4E00\u884C\u4EBA\u8FDB\u5165"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_75.png
+      Pack Vol 1/background_55.png
     isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
-      environmentEnabled: 1
+      environmentEnabled: 0
       characterEnabled: 1
-      eventEnabled: 1
+      eventEnabled: 0
       characterPreconditions:
       - requiredTrait: 0
         topologyDistanceAllowed: 0
@@ -134,58 +127,40 @@ MonoBehaviour:
       - requiredTrait: 0
         topologyDistanceAllowed: 0
       environmentPrecondition:
-        qualifiers:
-        - name: "\u66B4\u541B"
-        - name: "\u4E3E\u56FD\u6B22\u5E86"
-        - name: "\u6218\u4E71"
-        - name: "\u4EBA\u5FC3\u60F6\u60F6"
-      eventPreconditions:
-      - eventCardName: "\u53D1\u751F\u76D7\u7A83"
-      - eventCardName: "\u65A9\u9996"
-      - eventCardName: name
-      - eventCardName: "\u90BB\u56FD\u6765\u88AD"
+        qualifiers: []
+      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 1
-      characterConsequenceEnabled: 1
-      fightConsequenceEnabled: 1
+      statusConsequenceEnabled: 0
+      environmentConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      fightConsequenceEnabled: 0
       statusConsequence:
         delta:
           food: 1
           money: 1
           authority: 1
-      characterConsequences:
-      - bindFlag: 2
-        traitToBecome: 0
-        transferStrength: 1
+      characterConsequences: []
       environmentConsequence:
-        qualiferAlterations:
-        - targetQualifier:
-            name: "\u66B4\u541B"
-          type: 2
-        - targetQualifier:
-            name: "\u662F\u7684"
-          type: 2
-        - targetQualifier:
-            name: "\u4EBA\u5FC3\u60F6\u60F6"
-          type: 2
-        - targetQualifier:
-            name: "\u4E3E\u56FD\u6B22\u5E86"
-          type: 2
+        qualiferAlterations: []
       fightConsequence:
-        attackerbindFlag: 2
+        attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: "\u6811\u6D1E"
-    description: "\u4E00\u884C\u4EBA\u8FDB\u5165"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_55.png
+  - name: name
+    description: 
+    avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 0
+      characterEnabled: 1
       eventEnabled: 0
-      characterPreconditions: []
+      characterPreconditions:
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
@@ -205,17 +180,22 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: "\u94E9\u7FBD\u800C\u5F52"
-    description: "\u9C9C\u8840\u67D3\u7EA2\u4E86\u8349\u539F"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_72.png
+  - name: name
+    description: 
+    avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 0
+      characterEnabled: 1
       eventEnabled: 0
-      characterPreconditions: []
+      characterPreconditions:
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
@@ -235,45 +215,24 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: "\u4E0D\u660E"
-    description: "\u6F06\u9ED1\u4E2D\u7684\u70DB\u706B"
-    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/3_dist.tif
+  - name: name
+    description: 
+    avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 0
+      characterEnabled: 1
       eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          food: 1
-          money: 1
-          authority: 1
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: "\u5E7D\u51A5"
-    description: "\u6050\u6016\u7684\u591C\u665A"
-    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10.tif
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
+      characterPreconditions:
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
+      - requiredTrait: 0
+        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
@@ -297,6 +256,8 @@ MonoBehaviour:
   - name: name
     description: 
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10_alpha_periodical.tif
+    yesText: "\u624B\u52A8\u9600\u53D1\u7684"
+    noText: "\u9001\u8FBE\u65B9"
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -324,6 +285,8 @@ MonoBehaviour:
   - name: 'fsdg '
     description: 
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/26.tif
+    yesText: "\u6559\u80B2\u8D39\u5C31"
+    noText: "\u4ECE\u73B0\u5728\u683C\u745E\u7279"
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -351,6 +314,8 @@ MonoBehaviour:
   - name: "\u7535\u996D\u9505"
     description: 
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/50.tif
+    yesText: "\u63A8\u5854\u963F\u65AF\u8482\u82AC "
+    noText: "\u94DC\u677F\u662F\u5426\u5173\u95ED"
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -407,6 +372,8 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      yesText: "\u53EF\u4EE5"
+      noText: "\u4E0D\u884C"
       preconditonSet:
         environmentEnabled: 0
         characterEnabled: 0
@@ -434,6 +401,8 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      yesText: "\u53EF\u4EE5"
+      noText: "\u4E0D\u884C"
       preconditonSet:
         environmentEnabled: 0
         characterEnabled: 0
@@ -461,6 +430,8 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: 
+      yesText: "\u53EF\u4EE5"
+      noText: "\u4E0D\u884C"
       preconditonSet:
         environmentEnabled: 0
         characterEnabled: 0

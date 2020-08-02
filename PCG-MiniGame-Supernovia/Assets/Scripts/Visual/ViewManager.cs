@@ -32,11 +32,13 @@ namespace PCG {
         public ValueViewer moneyValue;
         public ValueViewer authorityValue;
         public VoteViewer voteViewer;
+        public EventViewer eventViewer;
+
         [SerializeField]
         private ResTable resTable;
 
         public IEnumerator ViewReachNewStoryStageCoroutine(StoryStage storyStage) {
-            yield return StartCoroutine(StoryBook.instance.TurnPage(new StoryBook.PageContent("命运岔路口")));
+            yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("命运岔路口")));
 
             float intervalTime = 0.2f;
             float flyTime = 1.5f;
@@ -118,6 +120,38 @@ namespace PCG {
             var leaveAnchor = resTable.viewCardLeaveAnchor.transform;
             LerpAnimator.instance.LerpPositionAndRotation(cardGOs[dontDerstroyIndex].transform, leaveAnchor.position, leaveAnchor.rotation, 1f);
             yield return new WaitForSeconds(1);
+        }
+
+        public IEnumerator ViewCardsOnScreen(Card[] cards,float holdTime = 3f) {
+            var cardDisplays = new List<CardDisplayBehaviour>();
+            foreach (var card in cards) {
+                cardDisplays.Add(CardDisplayBehaviour.Create(card, resTable.viewCardSpwanAnchor));
+            }
+
+            // show card
+            float showupInterval = 1f;
+            float showupAnimationDuration = 2f;
+            for (int i = 0; i < cardDisplays.Count; i++) {
+                var cardDisplay = cardDisplays[i];
+                var t = (float)(i + 1) / (float)(cardDisplays.Count + 1);
+                var destPos = Vector3.Lerp(resTable.viewCardRightAnchor.position, resTable.viewCardLeftAnchor.position, t);
+                var destRotate = Quaternion.Lerp(resTable.viewCardRightAnchor.rotation, resTable.viewCardLeftAnchor.rotation, t);
+                LerpAnimator.instance.LerpPositionAndRotation(cardDisplay.transform, destPos, destRotate, showupAnimationDuration);
+                yield return new WaitForSeconds(showupInterval);
+            }
+
+            // stay 
+            yield return new WaitForSeconds(holdTime);
+
+            // card Leave
+            foreach (var cardDisplay in cardDisplays) {
+                LerpAnimator.instance.LerpPositionAndRotation(
+                    cardDisplay.transform,
+                    resTable.viewCardLeaveAnchor.position,
+                    resTable.viewCardLeaveAnchor.rotation,
+                    2f);
+            }
+            yield return new WaitForSeconds(2f);
         }
 
         public void ViewCharacterOfDialog(Texture characterImage) {

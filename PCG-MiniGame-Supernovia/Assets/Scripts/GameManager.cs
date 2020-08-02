@@ -8,18 +8,13 @@ namespace PCG {
         [SerializeField]
         private PlayLoopManager playLoopManager;
         [SerializeField]
-        private bool debugMode;
+        private GuideManager guideManager;
         [SerializeField]
-        private SerializedStoryPlayer storyPlayerForDebug;
+        private bool skipGuide;
 
         private void Awake() {
             DontDestroyOnLoad(gameObject);
-            if (!debugMode) {
-                StartGame();
-            }
-            else {
-                storyPlayerForDebug.Play();
-            }
+            StartGame();
         }
 
         // [ContextMenu("start game")]
@@ -31,18 +26,12 @@ namespace PCG {
             // 初始化故事状态
             int seed = Random.Range(-10000, 100000);
             StoryContext.instance.InitForNewStory(seed);
-
-            // 洗牌动画
-            //var cardsInDeck = new List<Card>();
-            //cardsInDeck.AddRange(StoryContext.instance.characterDeck);
-            //cardsInDeck.AddRange(StoryContext.instance.stratagemDeck);
-            //cardsInDeck.AddRange(StoryContext.instance.eventDeck);
-            //yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(cardsInDeck.ToArray()));
-            yield return null;
-
+            // 跑教程
+            if (!skipGuide) {
+                yield return StartCoroutine(guideManager.RunGuidence());
+            }
             // 开始游戏主循环
             playLoopManager.StartPlayLoop();
         }
     }
-
 }

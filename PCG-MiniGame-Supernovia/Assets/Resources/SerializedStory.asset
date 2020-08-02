@@ -46,9 +46,9 @@ MonoBehaviour:
           fightConsequenceEnabled: 0
           statusConsequence:
             delta:
-              army: 24
-              finance: -20
-              luck: 26
+              food: 1
+              money: 1
+              authority: 1
           characterConsequences: []
           environmentConsequence:
             qualiferAlterations: []
@@ -87,9 +87,9 @@ MonoBehaviour:
           fightConsequenceEnabled: 0
           statusConsequence:
             delta:
-              army: 11
-              finance: 41
-              luck: 24
+              food: 1
+              money: 1
+              authority: 1
           characterConsequences: []
           environmentConsequence:
             qualiferAlterations: []
@@ -128,9 +128,9 @@ MonoBehaviour:
           fightConsequenceEnabled: 0
           statusConsequence:
             delta:
-              army: 21
-              finance: 28
-              luck: -12
+              food: 1
+              money: 1
+              authority: 1
           characterConsequences: []
           environmentConsequence:
             qualiferAlterations: []
@@ -165,9 +165,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 21
-            finance: 35
-            luck: -13
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences:
         - bindFlag: 0
           traitToBecome: 0
@@ -212,9 +212,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: -17
-            finance: 26
-            luck: 28
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences:
         - bindFlag: 2
           traitToBecome: 0
@@ -300,9 +300,9 @@ MonoBehaviour:
           fightConsequenceEnabled: 0
           statusConsequence:
             delta:
-              army: 1
-              finance: 1
-              luck: 1
+              food: 1
+              money: 1
+              authority: 1
           characterConsequences: []
           environmentConsequence:
             qualiferAlterations: []
@@ -341,9 +341,9 @@ MonoBehaviour:
           fightConsequenceEnabled: 0
           statusConsequence:
             delta:
-              army: 1
-              finance: 1
-              luck: 1
+              food: 1
+              money: 1
+              authority: 1
           characterConsequences: []
           environmentConsequence:
             qualiferAlterations: []
@@ -382,9 +382,9 @@ MonoBehaviour:
           fightConsequenceEnabled: 0
           statusConsequence:
             delta:
-              army: 1
-              finance: 1
-              luck: 1
+              food: 1
+              money: 1
+              authority: 1
           characterConsequences: []
           environmentConsequence:
             qualiferAlterations: []
@@ -417,9 +417,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -446,9 +446,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []

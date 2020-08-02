@@ -28,6 +28,9 @@ public class CharacterPrecondition : Precondition
     /// </summary>
     /// <returns></returns>
     public BindingInfo Bind() {
-        return new BindingInfo();
+        var bindingInfo= new BindingInfo();
+        bindingInfo.bindedCharacter = StoryContext.instance.characterDeck[Random.Range(0, StoryContext.instance.characterDeck.Count)];
+        bindingInfo.bindedPersonalityOfCharacter = bindingInfo.bindedCharacter.personalities[0];
+        return bindingInfo;
     }
 }

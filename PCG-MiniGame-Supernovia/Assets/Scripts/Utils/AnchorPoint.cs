@@ -10,6 +10,9 @@ public class AnchorPoint : MonoBehaviour
     public string name = "anchor point";
     public TextMesh textMesh = null;
 
+    public Vector3 position { get { return transform.position; } }
+    public Quaternion rotation { get { return transform.rotation; } }
+
     private void Start() {
         gameObject.tag = ANCHOR_TAG;
     }

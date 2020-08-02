@@ -47,6 +47,10 @@ public class CardDisplayBehaviour : MonoBehaviour
         return displayBehvaiour;
     }
 
+    public static CardDisplayBehaviour Create(Card card, AnchorPoint spawnPoint) {
+        return Create(card, spawnPoint.position, spawnPoint.rotation);
+    }
+
     public void UpdateHPValue(float newHP) {
         hpVal.text = newHP.ToString();
     }

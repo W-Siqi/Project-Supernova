@@ -7,10 +7,29 @@ using UnityEngine.UI;
 public class StoryBook : MonoBehaviour
 {
     private const string DISSOLVE_SHADER_PROPERTY = "_SliceAmount";
-    
+    [System.Serializable]
+    private class PageConentShowPos {
+        public AnchorPoint camAnchor;
+        public RawImage contentPageImage;
+        public Text textContent;
+        [HideInInspector]
+        public Material conetentPageMat = null;
+
+        public void Init() {
+            conetentPageMat = new Material(contentPageImage.material);
+            contentPageImage.material = conetentPageMat;
+        }
+
+        public void ClearContent() {
+            contentPageImage.enabled = false;
+            textContent.text = "";
+        }
+    }
+
+    [System.Serializable]
     public class PageContent {
-        public Texture image = null;
         public string text = "";
+        public Texture image = null;
 
         public PageContent(Texture image) {
             this.image = image;
@@ -37,66 +56,77 @@ public class StoryBook : MonoBehaviour
     }
 
     [SerializeField]
+    private List<PageConentShowPos> showPoses = new List<PageConentShowPos>();
+    private int curPosIndex = 0; 
+
+    [SerializeField]
     private Camera mainCamera;
-    [SerializeField]
-    private RawImage contentPageImage;
-    [SerializeField]
-    private Text textContent;
     [SerializeField]
     private float turnPageDelay;
     [SerializeField]
-    private AnimationCurve turnPageCurve;
-    [SerializeField]
     BookControllerWrapper bookControllerWrapper;
 
-    private Material conetentPageMat = null;
-    
-    [ContextMenu("测试翻页")]
-    private void Test() {
-        StartCoroutine(TurnPage(new PageContent("测试")));
-    }
-
     private void Awake() {
-        conetentPageMat = new Material(contentPageImage.material);
-        contentPageImage.material = conetentPageMat;
+        foreach (var showPos in showPoses) {
+            showPos.Init();
+        }
     }
 
-    public IEnumerator TurnPage(PageContent pageContent) {
+    public IEnumerator ViewContent(PageContent pageContent) {
+        if (curPosIndex >= showPoses.Count) {
+            // clear 
+            foreach (var showPos in showPoses) {
+                showPos.ClearContent();
+            }
+            // turn
+            yield return StartCoroutine(TurnPage());
+            curPosIndex = 0;
+        }
+        else {
+            // move to ...
+            LerpAnimator.instance.LerpPosition(mainCamera.transform,showPoses[curPosIndex].camAnchor.position,1f);
+        }
+
+        ShowContentOn(pageContent, showPoses[curPosIndex++]);
+        yield return new WaitForSeconds(4f);
+    }
+
+    public IEnumerator TurnPage() {
         // 书本镜头动画
         var turnPageTime = 1.5f;
-        var closePos = AnchorManager.instance.storyBookClose.transform.position;
         var farPos = AnchorManager.instance.storyBookFar.transform.position;
-        LerpAnimator.instance.LerpValues(turnPageCurve, turnPageTime,
-            (float val) => { mainCamera.transform.position = Vector3.Lerp(closePos, farPos, val); });
+        var targetPos = showPoses[0].camAnchor.position;
+        LerpAnimator.instance.LerpPosition(mainCamera.transform, farPos, turnPageTime/2,
+            () => {
+                LerpAnimator.instance.LerpPosition(mainCamera.transform, targetPos, turnPageTime/2);
+            });
 
         yield return new WaitForSeconds(turnPageDelay);
         // 翻页
         bookControllerWrapper.TurnNextPage();
-        // 换内容
-        ChangePageContent(pageContent);
-
-        yield return new WaitForSeconds(turnPageTime);
     }
 
-    private void ChangePageContent(PageContent pageContent) {
+    private void ShowContentOn(PageContent pageContent,PageConentShowPos conentShowPos) {
         if (pageContent.image != null) {
-            contentPageImage.enabled = true;
-            StartCoroutine(UpdatePageDelayed(pageContent.image));
+            conentShowPos.contentPageImage.enabled= true;
+            StartCoroutine(UpdatePageDelayed(conentShowPos, pageContent.image));
             var dissolveDuration = 3f;
-            LerpAnimator.instance.LerpValues(1,0,dissolveDuration,
-                (v)=> {
-                    conetentPageMat.SetFloat(DISSOLVE_SHADER_PROPERTY,v);
+            LerpAnimator.instance.LerpValues(1, 0, dissolveDuration,
+                (v) => {
+                    conentShowPos.conetentPageMat.SetFloat(DISSOLVE_SHADER_PROPERTY, v);
                 });
         }
         else {
-            contentPageImage.enabled = false;
+            conentShowPos.contentPageImage.enabled = false;
         }
 
-        textContent.text = pageContent.text;
+        conentShowPos.textContent.text = pageContent.text;
     }
 
-    IEnumerator UpdatePageDelayed(Texture pageContent) {
+
+
+    IEnumerator UpdatePageDelayed(PageConentShowPos showPos, Texture pageContent) {
         yield return new WaitForEndOfFrame();
-        contentPageImage.texture = pageContent;
+        showPos.contentPageImage.texture = pageContent;
     }
 }

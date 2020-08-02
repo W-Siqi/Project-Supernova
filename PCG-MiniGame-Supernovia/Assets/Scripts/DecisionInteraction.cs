@@ -32,7 +32,7 @@ namespace PCG {
 
         private bool onInteraction = true;
 
-        public static DecisionInteraction Create(Texture image,string title,string description, OnDecisionMade onDecisionMade) {
+        public static DecisionInteraction Create(Texture image,string title,string description, OnDecisionMade onDecisionMade, string yesText = "可以", string noText ="不行") {
             var GO = Instantiate(ResourceTable.instance.prefabPage.decisionInteraction);
             var interaction = GO.GetComponent<DecisionInteraction>();
             interaction.decisionMade = onDecisionMade;
@@ -45,9 +45,31 @@ namespace PCG {
             interaction.image.texture = image;
             interaction.titleText.text = title;
             interaction.descriptionText.text = description;
+            interaction.yesText.text = yesText;
+            interaction.noText.text = noText;
 
             return interaction;
         }
+
+        public static DecisionInteraction Create(StratagemCard stratagemCard, OnDecisionMade onDecisionMade) {
+            var GO = Instantiate(ResourceTable.instance.prefabPage.decisionInteraction);
+            var interaction = GO.GetComponent<DecisionInteraction>();
+            interaction.decisionMade = onDecisionMade;
+
+            var canvas = ResourceTable.instance.sceneReferencePage.swipeCanvas;
+            interaction.transform.parent = canvas.transform;
+            interaction.transform.localPosition = Vector3.zero;
+
+
+            interaction.image.texture = stratagemCard.GetAvatarImage();
+            interaction.titleText.text = stratagemCard.name;
+            interaction.descriptionText.text = "";
+            interaction.yesText.text = stratagemCard.yesText;
+            interaction.noText.text = stratagemCard.noText;
+
+            return interaction;
+        }
+
 
         private void Update() {
             if (onInteraction) {

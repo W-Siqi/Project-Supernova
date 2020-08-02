@@ -7,6 +7,8 @@ using PCG;
 public class PlayLoopManager : MonoBehaviour {
     [SerializeField]
     private List<StoryStage> storyline = new List<StoryStage>();
+    [SerializeField]
+    private bool playInQuickMode = true;
 
     // 每个character 有对应的专属filer
     private Dictionary<CharacterCard, StratagemProbFilter> straProbFilters = new Dictionary<CharacterCard, StratagemProbFilter>();
@@ -17,8 +19,10 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator PlayLoopCoroutine(){
-        foreach(var stage in storyline) {
-            //yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
+        foreach (var stage in storyline) {
+            if (!playInQuickMode) {
+                yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
+            }
 
             switch (stage) {
                 case StoryStage.campfire:
@@ -66,9 +70,10 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator EventStream() {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneRT);
-        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
         var selecedEvents = CardSelector.Select(new EventProbFilter(), new EventCountFilter());
+        var eventViewer = ViewManager.instance.eventViewer;
         foreach (var c in selecedEvents) {
             var eventCard = c as EventCard;
 
@@ -76,11 +81,7 @@ public class PlayLoopManager : MonoBehaviour {
             var bindingInfos = eventCard.preconditonSet.Bind();
 
             // 演出event
-            var bindedCharacters = new CharacterCard[bindingInfos.Length];
-            for (int i = 0; i < bindingInfos.Length; i++) {
-                bindedCharacters[i] = bindingInfos[i].bindedCharacter;
-            }
-            yield return StartCoroutine(ShowManager.instance.ShowEvent(eventCard,bindedCharacters));
+            yield return StartCoroutine(eventViewer.ViewEventCoroutine(eventCard,bindingInfos));
 
             // TBD: 可能会出错，如果consequence不是确定的话，show在没apply的时候不知道确定值
             // apply consequence
@@ -91,7 +92,7 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator CampFireStage() {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
-        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
         foreach (var character in StoryContext.instance.characterDeck) {
             // show 角色
@@ -117,9 +118,7 @@ public class PlayLoopManager : MonoBehaviour {
                 bool decisionMade = false;
                 bool agreeDecision = false;
                 DecisionInteraction.Create(
-                    straCard.GetAvatarImage(),
-                    straCard.name,
-                    "",
+                    straCard,
                     (bool agree) => { decisionMade = true; agreeDecision = agree; });
 
                 // 等待玩家输入
@@ -216,7 +215,7 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator FightStage() {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.fightSceneRT);
-        yield return StartCoroutine(StoryBook.instance.TurnPage(newPageContent));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
         var enemies = FightManager.instance.InstanticteRandomEnemies();
         yield return StartCoroutine(FightManager.instance.ExecuteFight(StoryContext.instance.characterDeck.ToArray(),enemies));

@@ -69,6 +69,22 @@ public class LerpAnimator : MonoBehaviour {
             playTime, onLerpDone));
     }
 
+    /// <summary>
+    /// 以当前状态为起点
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="destPosition"></param>
+    /// <param name="destRotaton"></param>
+    /// <param name="playTime"></param>
+    /// <param name="onLerpDone"></param>
+    public void LerpPosition(Transform target, Vector3 destPosition, float playTime, OnLerpDone onLerpDone = null) {
+        StartCoroutine(LerpTransformAnimation(target,
+            target.position, destPosition,
+            target.rotation, target.rotation,
+            target.localScale, target.localScale,
+            playTime, onLerpDone));
+    }
+
     IEnumerator LerpTransformAnimation(Transform target,
         Vector3 fromPos, Vector3 toPos,
         Quaternion fromRotation, Quaternion toRotation,
