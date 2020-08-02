@@ -154,18 +154,29 @@ public class PlayLoopManager : MonoBehaviour {
 
         var voters = StoryContext.instance.characterDeck.ToArray();
         int playerVoteIndex = Random.Range(0, voters.Length);
+        int agreeVoteNumber = 0;
+        int disagreeVoteNumber = 0;
         for (int i = 0; i < voters.Length; i++) {
             // NPC Vote
             var NPCVoter = voters[i];
             var NPCVoteNumber = Random.Range(1, 7);
             var agree = Random.value < 0.5f;
+            if (agree) {
+                agreeVoteNumber += NPCVoteNumber;
+            }
+            else {
+                disagreeVoteNumber += NPCVoteNumber;
+            }
             voteViwer.NPCVote(agree, NPCVoteNumber, NPCVoter);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(1.2f);
 
             // Player Vote
             if (i == playerVoteIndex) {
-                // 玩家投票
-                // 生成交互
+                // viewer 准备
+                voteViwer.ViewBeforePlayerVote();
+                yield return new WaitForSeconds(2f);
+
+                // 玩家投票,生成交互
                 bool decisionMade = false;
                 bool agreeDecision = false;
                 DecisionInteraction.Create(
@@ -179,15 +190,27 @@ public class PlayLoopManager : MonoBehaviour {
                     yield return null;
                 }
 
-                if (decisionMade) {
-                    Debug.Log("投票- 同意");
+                var playerVoteNumber = 50;
+                if (agreeDecision) {
+                    agreeVoteNumber += playerVoteNumber;
+                    voteViwer.PlayrVote(true,playerVoteNumber);
                 }
                 else {
-                    Debug.Log("投票- 反对");
+                    disagreeVoteNumber += playerVoteNumber;
+                    voteViwer.PlayrVote(false, playerVoteNumber);
                 }
             }
+            yield return new WaitForSeconds(1f);
         }
 
+        if (agreeVoteNumber > disagreeVoteNumber) {
+            voteViwer.ViewVoteResult(true);
+        }
+        else {
+            voteViwer.ViewVoteResult(false);
+        }
+
+        yield return new WaitForSeconds(3f);
         voteViwer.Hide();
     }
 

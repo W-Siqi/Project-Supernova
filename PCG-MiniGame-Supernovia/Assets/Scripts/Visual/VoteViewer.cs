@@ -10,14 +10,20 @@ public class VoteViewer : MonoBehaviour
     private VoterGroupViewer agreeGroup;
     [SerializeField]
     private VoterGroupViewer disagreeGroup;
-
+    [SerializeField]
+    private SizeTween voteTitleShowAndHide;
+    [SerializeField]
+    private SizeTween yourTurnTitleShowAndHide;
     public void ShowUp() {
         // show up voter Group
         agreeGroup.ShowUp();
         disagreeGroup.ShowUp();
+        voteTitleShowAndHide.gameObject.SetActive(true);
+        voteTitleShowAndHide.Play();
     }
 
     public void Hide() {
+        voteTitleShowAndHide.gameObject.SetActive(false);
         agreeGroup.Hide();
         disagreeGroup.Hide();
     }
@@ -31,6 +37,34 @@ public class VoteViewer : MonoBehaviour
         }
     }
 
-    public void ViewPlayerVoteNumber() { 
+    public void PlayrVote(bool voteForAgree, int voteNumber) {
+        if (voteForAgree) {
+            agreeGroup.AddPlayerVote(voteNumber);
+        }
+        else {
+            disagreeGroup.AddPlayerVote(voteNumber);
+        }
+    }
+
+    public void ViewVoteResult(bool isAgreeGroupWin) {
+        if (isAgreeGroupWin) {
+            agreeGroup.ShowGroupWin();
+        }
+        else {
+            disagreeGroup.ShowGroupWin();
+        }
+    }
+
+    public void ViewBeforePlayerVote() {
+        StartCoroutine(BeforePlayerVote());
+    }
+
+    IEnumerator BeforePlayerVote() {
+        yourTurnTitleShowAndHide.gameObject.SetActive(true);
+        yourTurnTitleShowAndHide.Play();
+
+        yield return new WaitForSeconds(2f);
+
+        // 权威显示的动画
     }
 }

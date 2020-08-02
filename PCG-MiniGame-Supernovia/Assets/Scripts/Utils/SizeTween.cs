@@ -8,6 +8,8 @@ public class SizeTween : MonoBehaviour
     private float playTime = 1f;
     [SerializeField]
     private AnimationCurve sizeCurve;
+    [SerializeField]
+    private bool resetAfterTweenOver = false;
 
     [ContextMenu("TEST Play")]
     public void Play() {
@@ -22,6 +24,9 @@ public class SizeTween : MonoBehaviour
             transform.localScale = originalSize * sizeCurve.Evaluate(t);
             yield return null;
         }
-        transform.localScale = originalSize;
+
+        if (resetAfterTweenOver) {
+            transform.localScale = originalSize;
+        }
     }
 }

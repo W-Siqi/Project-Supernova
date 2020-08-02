@@ -20,10 +20,15 @@ public class VoterGroupViewer : MonoBehaviour
     private TextMeshProUGUI voteNumberTMP;
     [SerializeField]
     private SizeTween voteNumberTMPSizeTween;
+    [SerializeField]
+    private SizeTween groupWinShake;
+    [SerializeField]
+    private SizeTween groupWinTittleShowAndHide;
 
     private int curVoterCount = 0;
     private int curVoteNumber = 0;
     private List<GameObject> registerdVoterUI = new List<GameObject>();
+
     public void AddVote(Texture voterImage, int voteNumber) {
         // voter Show up
         var voterRawImageGO = Instantiate(
@@ -48,6 +53,19 @@ public class VoterGroupViewer : MonoBehaviour
         voteNumberTMP.text = curVoteNumber.ToString();
         voteNumberTMPSizeTween.Play();
     }
+
+    public void AddPlayerVote(int voteNumber) {
+        curVoteNumber += voteNumber;
+        voteNumberTMP.text = curVoteNumber.ToString();
+        voteNumberTMPSizeTween.Play();
+    }
+
+    public void ShowGroupWin() {
+        groupWinTittleShowAndHide.gameObject.SetActive(true);
+        groupWinShake.Play();
+        groupWinTittleShowAndHide.Play();
+    }
+
 
     public void ShowUp() {
         // play transform tween 
