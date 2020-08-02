@@ -74,139 +74,6 @@ MonoBehaviour:
     - currentTrait: 0
     - currentTrait: 0
   eventCards:
-  - name: "\u4F7F\u8005\u6765\u8BBF"
-    description: "\u963F\u62C9\u57FA\u672C\u738B\u56FD\u5E26\u6765\u4E86\u53CB\u597D\u7684\u95EE\u5019"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 014806.png
-    isAanonymous: 1
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - requiredTrait: 3
-        topologyDistanceAllowed: 0
-      - requiredTrait: 2
-        topologyDistanceAllowed: 0
-      - requiredTrait: 4
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      environmentPrecondition:
-        qualifiers:
-        - name: "\u662F\u7684"
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 1
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          army: 21
-          finance: 35
-          luck: -13
-      characterConsequences:
-      - bindFlag: 1
-        traitToBecome: 3
-        transferStrength: 1
-      - bindFlag: 1
-        traitToBecome: 0
-        transferStrength: 1
-      environmentConsequence:
-        qualiferAlterations:
-        - targetQualifier:
-            name: "\u662F\u7684"
-          type: 1
-        - targetQualifier:
-            name: "\u66B4\u541B"
-          type: 2
-      fightConsequence:
-        attackerbindFlag: 1
-        defenderbindFlag: 2
-  - name: "\u53D1\u751F\u76D7\u7A83"
-    description: "\u7687\u4E0A\uFF01\u56FD\u5E93\u7684\u7EAF\u91D1\u5B50\u90FD\u4E0D\u89C1\u5566\uFF01"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015705.png
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions:
-      - eventCardName: name
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          army: -17
-          finance: 26
-          luck: 28
-      characterConsequences:
-      - bindFlag: 2
-        traitToBecome: 0
-        transferStrength: 1
-      - bindFlag: 0
-        traitToBecome: 0
-        transferStrength: 1
-      - bindFlag: 0
-        traitToBecome: 0
-        transferStrength: 1
-      - bindFlag: 0
-        traitToBecome: 0
-        transferStrength: 1
-      environmentConsequence:
-        qualiferAlterations:
-        - targetQualifier:
-            name: "\u66B4\u541B"
-          type: 2
-        - targetQualifier:
-            name: "\u662F\u7684"
-          type: 2
-      fightConsequence:
-        attackerbindFlag: 1
-        defenderbindFlag: 2
-  - name: "\u65A9\u9996"
-    description: "\u6740\u65E0\u8D66\uFF01"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 021910.png
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 1
-      characterEnabled: 1
-      eventEnabled: 1
-      characterPreconditions:
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 1
-      characterConsequenceEnabled: 1
-      fightConsequenceEnabled: 1
-      statusConsequence:
-        delta:
-          army: 1
-          finance: 1
-          luck: 1
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 1
-        defenderbindFlag: 2
   - name: "\u63A8\u5F00\u4E16\u754C\u7684\u95E8"
     description: "\u4E0D\u77E5\u9053\u91CC\u9762\u6709\u4EC0\u4E48"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
@@ -234,9 +101,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 19
-          finance: 27
-          luck: -22
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences:
       - bindFlag: 1
         traitToBecome: 0
@@ -284,9 +151,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 1
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences:
       - bindFlag: 2
         traitToBecome: 0
@@ -329,9 +196,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -359,9 +226,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -388,9 +255,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -417,38 +284,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: "\u90BB\u56FD\u6765\u88AD"
-    description: "\u4F7F\u8005\u88AB\u6740\uFF0C\u5BF9\u65B9\u56FD\u738B\u5927\u6012\uFF0C\u53D1\u8D77\u4E86\u8FDB\u653B"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 014928.png
-    isAanonymous: 1
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -456,90 +294,9 @@ MonoBehaviour:
         attackerbindFlag: 0
         defenderbindFlag: 0
   stratagemCards:
-  - name: "\u5E2E\u52A9\u707E\u6C11"
-    description: "\u56FD\u5E93\u5145\u8DB3\uFF0C\u6551\u6551\u5B69\u5B50\uFF01"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015017.png
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          army: 11
-          finance: 41
-          luck: 24
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: "\u5916\u4EA4"
-    description: "\u90BB\u56FD\u4F7F\u8005\u6765\u8BBF"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015422.png
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          army: 24
-          finance: -20
-          luck: 26
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: "\u8981\u94B1"
-    description: "\u6700\u8FD1\u76D6\u4E86\u65B0\u5E9C\u5B50\uFF0C\u4FF8\u7984\u4E0D\u592A\u591F"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015318.png
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 1
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          army: 21
-          finance: 28
-          luck: -12
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: "\u8054\u59FB"
-    description: "\u4E3A\u4E86\u56FD\u5BB6\u5173\u7CFB\uFF01"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 020018.png
+  - name: name
+    description: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10_alpha_periodical.tif
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -555,18 +312,18 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: "\u65A9\u9996"
-    description: "\u94B1\u4E00\u5B9A\u662F\u738B\u516C\u516C\u4ED6\u5077\u7684"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015843.png
+  - name: 'fsdg '
+    description: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/26.tif
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -582,18 +339,18 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: "\u65A9\u9996 "
-    description: "\u5916\u6765\u4F7F\u8005\u7ED9\u6740\u4E86\uFF01"
-    avatarImagePath: Assets/ArtResourse/CardImage/Annotation 2020-07-29 015843.png
+  - name: "\u7535\u996D\u9505"
+    description: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/50.tif
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -609,9 +366,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          army: 1
-          finance: 1
-          luck: 1
+          food: 1
+          money: 1
+          authority: 1
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -665,9 +422,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -692,9 +449,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -719,9 +476,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -749,9 +506,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -778,9 +535,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -807,9 +564,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -836,9 +593,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -865,9 +622,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []
@@ -894,9 +651,9 @@ MonoBehaviour:
         fightConsequenceEnabled: 0
         statusConsequence:
           delta:
-            army: 1
-            finance: 1
-            luck: 1
+            food: 1
+            money: 1
+            authority: 1
         characterConsequences: []
         environmentConsequence:
           qualiferAlterations: []

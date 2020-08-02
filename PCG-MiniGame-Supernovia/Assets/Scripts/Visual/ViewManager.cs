@@ -31,6 +31,7 @@ namespace PCG {
         public ValueViewer foodValue;
         public ValueViewer moneyValue;
         public ValueViewer authorityValue;
+        public VoteViewer voteViewer;
         [SerializeField]
         private ResTable resTable;
 

@@ -18,7 +18,7 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator PlayLoopCoroutine(){
         foreach(var stage in storyline) {
-            yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
+            //yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
 
             switch (stage) {
                 case StoryStage.campfire:
@@ -147,26 +147,48 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator VoteState() {
-        // 生成交互
-        bool decisionMade = false;
-        bool agreeDecision = false;
-        DecisionInteraction.Create(
-            ResourceTable.instance.texturepage.aynominousCharacter,
-            "投票",
-            "是否放逐",
-            (bool agree) => { decisionMade = true; agreeDecision = agree; }); ;
+        // show up viewer
+        var voteViwer = ViewManager.instance.voteViewer;
+        voteViwer.ShowUp();
+        yield return new WaitForSeconds(2.5f);
 
-        // 等待玩家输入
-        while (!decisionMade) {
-            yield return null;
+        var voters = StoryContext.instance.characterDeck.ToArray();
+        int playerVoteIndex = Random.Range(0, voters.Length);
+        for (int i = 0; i < voters.Length; i++) {
+            // NPC Vote
+            var NPCVoter = voters[i];
+            var NPCVoteNumber = Random.Range(1, 7);
+            var agree = Random.value < 0.5f;
+            voteViwer.NPCVote(agree, NPCVoteNumber, NPCVoter);
+            yield return new WaitForSeconds(4f);
+
+            // Player Vote
+            if (i == playerVoteIndex) {
+                // 玩家投票
+                // 生成交互
+                bool decisionMade = false;
+                bool agreeDecision = false;
+                DecisionInteraction.Create(
+                    ResourceTable.instance.texturepage.aynominousCharacter,
+                    "投票",
+                    "是否放逐",
+                    (ag) => { decisionMade = true; agreeDecision = ag; }); ;
+
+                // 等待玩家输入
+                while (!decisionMade) {
+                    yield return null;
+                }
+
+                if (decisionMade) {
+                    Debug.Log("投票- 同意");
+                }
+                else {
+                    Debug.Log("投票- 反对");
+                }
+            }
         }
 
-        if (decisionMade) {
-            Debug.Log("投票- 同意");
-        }
-        else {
-            Debug.Log("投票- 反对");
-        }
+        voteViwer.Hide();
     }
 
     IEnumerator FightStage() {

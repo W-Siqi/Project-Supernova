@@ -39,6 +39,7 @@ public class ResourceTable : MonoBehaviour
         public GameObject anchorPoint;
         public GameObject hitEffect;
         public GameObject attackEffect;
+        public GameObject characterUIRawImage;
     }
 
     public SceneReferencePage sceneReferencePage = new SceneReferencePage();

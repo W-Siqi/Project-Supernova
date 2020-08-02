@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DissolveEmissionMaterial
   m_Shader: {fileID: 4800000, guid: f998d3b5c50b283478ecc9cce87d8e91, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveMap:
-        m_Texture: {fileID: 2800000, guid: de6142f5264d5bc4f9391c9a97d8fade, type: 3}
+        m_Texture: {fileID: 2800000, guid: 545ae3f71d869cd459b03e6e8c924e6d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: c1ed09560f431194a9da7c7cdddfab8e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -74,16 +74,16 @@ Material:
     - _DetailNormalMapScale: 1
     - _DissolveAmount: 0
     - _DissolveEmission: 1
-    - _DissolveWidth: 0.0115
+    - _DissolveWidth: 0
     - _DstBlend: 0
     - _Edges: 0.1
     - _GlossMapScale: 1
-    - _Glossiness: 0.72
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _Level: 0.1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrenght: 0.5
+    - _NormalStrenght: 0.146
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
@@ -93,7 +93,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DissolveColor: {r: 1, g: 0, b: 0.10410547, a: 1}
+    - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColour1: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColour2: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

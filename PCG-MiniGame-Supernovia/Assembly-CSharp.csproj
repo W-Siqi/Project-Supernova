@@ -356,8 +356,7 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\StatusConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
-    <Compile Include="Assets\Scripts\FightSystem\FightManager.cs" />
-    <Compile Include="Assets\Scripts\FightSystem\FightViewer.cs" />
+    <Compile Include="Assets\Scripts\FightManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
     <Compile Include="Assets\Scripts\ResourceTable.cs" />
@@ -379,12 +378,15 @@
     <Compile Include="Assets\Scripts\Utils\TextColorTween.cs" />
     <Compile Include="Assets\Scripts\Visual\CardDisplayBehaviour.cs" />
     <Compile Include="Assets\Scripts\Visual\DeckDisplayBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Visual\FightViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\HitEffect.cs" />
     <Compile Include="Assets\Scripts\Visual\ShowManager.cs" />
     <Compile Include="Assets\Scripts\Visual\StoryBook.cs" />
     <Compile Include="Assets\Scripts\Visual\UIController.cs" />
     <Compile Include="Assets\Scripts\Visual\ValueViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\ViewManager.cs" />
+    <Compile Include="Assets\Scripts\Visual\VoterGroupViewer.cs" />
+    <Compile Include="Assets\Scripts\Visual\VoteViewer.cs" />
     <Compile Include="Assets\Scripts\Wrapper\BookControllerWrapper.cs" />
     <Compile Include="Assets\Scripts\Wrapper\RTSCamWrapper.cs" />
     <None Include="Assets\External\Forest Sprite Pack\Scenes\Playable Demo Scene\READ ME before playing.txt" />
