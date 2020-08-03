@@ -23,21 +23,8 @@ public class PlayLoopManager : MonoBehaviour {
             if (!playInQuickMode) {
                 yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
             }
-
-            switch (stage) {
-                case StoryStage.campfire:
-                    yield return StartCoroutine(CampFireStage());
-                    break;
-                case StoryStage.fight:
-                    yield return StartCoroutine(FightStage());
-                    break;
-                case StoryStage.vote:
-                    yield return StartCoroutine(VoteState());
-                    break;
-            }
-
+            yield return StartCoroutine(CampFireStage());
             yield return StartCoroutine(EventStream());
-            yield return null;
         }
         Debug.Log("游戏结束");
     }

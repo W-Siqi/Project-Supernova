@@ -323,6 +323,10 @@
     <Compile Include="Assets\Scripts\Core\StorySystem\StratagemCountFilter.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\StratagemProbFilter.cs" />
     <Compile Include="Assets\Scripts\DecisionInteraction.cs" />
+    <Compile Include="Assets\Scripts\Depracted\FightManager.cs" />
+    <Compile Include="Assets\Scripts\Depracted\FightViewer.cs" />
+    <Compile Include="Assets\Scripts\Depracted\VoteViewer.cs" />
+    <Compile Include="Assets\Scripts\Depracted\VoterGroupViewer.cs" />
     <Compile Include="Assets\Scripts\EditSystem\DeckArchive.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorBlock\DescriptionBlock.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorBlock\SearchCardBlock.cs" />
@@ -353,7 +357,6 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\StatusConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
-    <Compile Include="Assets\Scripts\FightManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GuideManager.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
@@ -377,7 +380,6 @@
     <Compile Include="Assets\Scripts\Visual\CardDisplayBehaviour.cs" />
     <Compile Include="Assets\Scripts\Visual\DeckDisplayBehaviour.cs" />
     <Compile Include="Assets\Scripts\Visual\EventViewer.cs" />
-    <Compile Include="Assets\Scripts\Visual\FightViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\GuideTipViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\HitEffect.cs" />
     <Compile Include="Assets\Scripts\Visual\PersonalityViewer.cs" />
@@ -386,8 +388,6 @@
     <Compile Include="Assets\Scripts\Visual\UIController.cs" />
     <Compile Include="Assets\Scripts\Visual\ValueViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\ViewManager.cs" />
-    <Compile Include="Assets\Scripts\Visual\VoteViewer.cs" />
-    <Compile Include="Assets\Scripts\Visual\VoterGroupViewer.cs" />
     <Compile Include="Assets\Scripts\Wrapper\BookControllerWrapper.cs" />
     <Compile Include="Assets\Scripts\Wrapper\RTSCamWrapper.cs" />
     <None Include="Assets\External\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

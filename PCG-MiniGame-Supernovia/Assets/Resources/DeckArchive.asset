@@ -37,30 +37,30 @@ MonoBehaviour:
     - currentTrait: 4
     - currentTrait: 1
     - currentTrait: 4
-  - name: "\u738B\u516C\u516C"
+  - name: "\u5730\u7CBE\u5D3D\u5B50"
     description: "\u6700\u559C\u6B22\u94B1\u4E86"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 2/character_96.png
     attributes:
       atkVal: 3
-      maxHP: 20
-      HP: 20
+      maxHP: 12
+      HP: 12
     personalities:
-    - currentTrait: 0
-    - currentTrait: 0
-    - currentTrait: 0
-  - name: "\u5927\u65A7\u5934"
+    - currentTrait: 4
+    - currentTrait: 1
+    - currentTrait: 4
+  - name: "\u7EDD\u671B\u7537"
     description: "\u6CA1\u8111\u5B50"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_17.png
+      Pack Vol 1/character_23.png
     attributes:
       atkVal: 8
       maxHP: 12
       HP: 12
     personalities:
     - currentTrait: 0
-    - currentTrait: 0
-    - currentTrait: 0
+    - currentTrait: 7
+    - currentTrait: 7
   - name: "\u7F8E\u5C11\u5973\u5C06\u519B"
     description: "\u5251\u672F\u4E00\u6D41"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
@@ -109,58 +109,16 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 1
         defenderbindFlag: 2
-  - name: "\u591A\u4EBA\u6DF7\u6218"
-    description: "\u4E00\u884C\u4EBA\u8FDB\u5165"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
-      Pack Vol 1/background_55.png
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          food: 1
-          money: 1
-          authority: 1
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: name
+  - name: "\u6697\u591C\u884C\u7A83"
     description: 
-    avatarImagePath: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/14_alpha.tif
     isAanonymous: 0
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 1
+      characterEnabled: 0
       eventEnabled: 0
-      characterPreconditions:
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
+      characterPreconditions: []
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
@@ -171,81 +129,9 @@ MonoBehaviour:
       fightConsequenceEnabled: 0
       statusConsequence:
         delta:
-          food: 1
-          money: 1
-          authority: 1
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: name
-    description: 
-    avatarImagePath: 
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          food: 1
-          money: 1
-          authority: 1
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: name
-    description: 
-    avatarImagePath: 
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      - requiredTrait: 0
-        topologyDistanceAllowed: 0
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          food: 1
-          money: 1
-          authority: 1
+          food: 80
+          money: 76
+          authority: 20
       characterConsequences: []
       environmentConsequence:
         qualiferAlterations: []
@@ -287,35 +173,6 @@ MonoBehaviour:
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/26.tif
     yesText: "\u597D\u5427"
     noText: "\u6211\u62D2\u7EDD"
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          food: 1
-          money: 1
-          authority: 1
-      characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: "\u7535\u996D\u9505"
-    description: 
-    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/50.tif
-    yesText: "\u63A8\u5854\u963F\u65AF\u8482\u82AC "
-    noText: "\u94DC\u677F\u662F\u5426\u5173\u95ED"
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
