@@ -107,6 +107,7 @@ public class DeckArchive : ScriptableObject {
         }
 
         foreach (var card in eventCards) {
+            Debug.Log(card.name);
             if (card.name == name) {
                 return card;
             }

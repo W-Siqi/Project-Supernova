@@ -16,8 +16,9 @@ public class CardDisplayBehaviour : MonoBehaviour
     private TextMeshPro atkVal;
     [SerializeField]
     private TextMeshPro hpVal;
-
-
+    [SerializeField]
+    private PersonalityViewer[] personalityViewers = new PersonalityViewer[CharacterCard.PERSONALITY_COUNT];
+    private Dictionary<Personality, PersonalityViewer> personalityViewerDict = new Dictionary<Personality, PersonalityViewer>();
     public static CardDisplayBehaviour CreateDummyCard(Vector3 positon, Quaternion rotation) {
         return Create(null,positon, rotation);
     }
@@ -55,6 +56,15 @@ public class CardDisplayBehaviour : MonoBehaviour
         hpVal.text = newHP.ToString();
     }
 
+    /// <summary>
+    /// personality传进来只是当索引，不会修改personality的值，只管显示
+    /// </summary>
+    /// <param name="hookedPersonality"></param>
+    /// <param name="trait"></param>
+    public void UpdatePersonality(Personality hookedPersonality,Trait newTrait) {
+        personalityViewerDict[hookedPersonality].TransferTo(newTrait);
+    }
+
     private void Init(Card card) {
         if (card == null) {
             gameObject.name = "dummy";
@@ -77,12 +87,21 @@ public class CardDisplayBehaviour : MonoBehaviour
 
         if (card is CharacterCard) {
             var characterCard = card as CharacterCard;
+            // init values
             atkVal.text = characterCard.attributes.atkVal.ToString();
             hpVal.text = characterCard.attributes.HP.ToString();
+            // init personalities
+            for (int i = 0; i < CharacterCard.PERSONALITY_COUNT; i++) {
+                personalityViewerDict[characterCard.personalities[i]] = personalityViewers[i];
+                personalityViewers[i].InitTo(characterCard.personalities[i].currentTrait);
+            }
         }
         else {
             atkVal.enabled = false;
             hpVal.enabled = false;
+            foreach (var p in personalityViewers) {
+                p.gameObject.SetActive(false);
+            }
         }
     }
 }

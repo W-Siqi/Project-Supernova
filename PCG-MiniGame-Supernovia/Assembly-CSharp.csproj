@@ -293,10 +293,11 @@
     <Compile Include="Assets\Scripts\Core\Cards\StratagemCard.cs" />
     <Compile Include="Assets\Scripts\Core\Cards\SubstoryCard.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\Personality.cs" />
-    <Compile Include="Assets\Scripts\Core\PersonalitySystem\PersonalityState.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\QualiferAlteration.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\Qualifier.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\QualifierLibrary.cs" />
+    <Compile Include="Assets\Scripts\Core\PersonalitySystem\Trait.cs" />
+    <Compile Include="Assets\Scripts\Core\PersonalitySystem\TraitUtils.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\CardSelector.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\CharacterConsequence.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\Consequence.cs" />
@@ -379,6 +380,7 @@
     <Compile Include="Assets\Scripts\Visual\FightViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\GuideTipViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\HitEffect.cs" />
+    <Compile Include="Assets\Scripts\Visual\PersonalityViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\ShowManager.cs" />
     <Compile Include="Assets\Scripts\Visual\StoryBook.cs" />
     <Compile Include="Assets\Scripts\Visual\UIController.cs" />

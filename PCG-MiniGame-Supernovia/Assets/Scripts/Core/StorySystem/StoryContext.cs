@@ -7,9 +7,9 @@ using PCG;
 public class StoryContext : MonoBehaviour {
     [System.Serializable]
     public class StatusVector {
-        public int food = 1;
-        public int money = 1;
-        public int authority= 1;
+        public int food = 80;
+        public int money = 76;
+        public int authority= 20;
 
         public static StatusVector operator + (StatusVector a, StatusVector b) {
             var res = new StatusVector();

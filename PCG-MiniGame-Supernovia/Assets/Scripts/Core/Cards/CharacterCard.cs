@@ -6,7 +6,7 @@ using UnityEditor;
 namespace PCG {
     [System.Serializable]
     public class CharacterCard : Card {
-        const int PERSONALITY_COUNT = 3;
+        public const int PERSONALITY_COUNT = 3;
 
         [System.Serializable]
         public class Attributes {

@@ -38,7 +38,7 @@ namespace PCG {
         private ResTable resTable;
 
         public IEnumerator ViewReachNewStoryStageCoroutine(StoryStage storyStage) {
-            yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("命运岔路口")));
+            yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("营火 战斗 表决")));
 
             float intervalTime = 0.2f;
             float flyTime = 1.5f;
@@ -57,7 +57,7 @@ namespace PCG {
                 var GO = Instantiate(stagePrefabs[i], spawnAnchor.position, spawnAnchor.rotation);
                 cardGOs[i] = GO;
 
-                var t = (float)(i + 1) / 3f;
+                var t = (float)(i + 1) / 4f;
                 var destPos = Vector3.Lerp(leftAnchor.position, rightAnchor.position, t);
                 var destRotate = Quaternion.Lerp(leftAnchor.rotation, rightAnchor.rotation, t);
 
@@ -120,6 +120,16 @@ namespace PCG {
             var leaveAnchor = resTable.viewCardLeaveAnchor.transform;
             LerpAnimator.instance.LerpPositionAndRotation(cardGOs[dontDerstroyIndex].transform, leaveAnchor.position, leaveAnchor.rotation, 1f);
             yield return new WaitForSeconds(1);
+        }
+
+        // TBD: 为了demo临时的接口
+        public CardDisplayBehaviour ViewCardOnScreen(Card card) {
+            var cardDisplay = CardDisplayBehaviour.Create(card, resTable.viewCardSpwanAnchor);
+            // show card
+            var destPos = Vector3.Lerp(resTable.viewCardRightAnchor.position, resTable.viewCardLeftAnchor.position, 0.5f);
+            var destRotate = Quaternion.Lerp(resTable.viewCardRightAnchor.rotation, resTable.viewCardLeftAnchor.rotation, 0.5f);
+            LerpAnimator.instance.LerpPositionAndRotation(cardDisplay.transform, destPos, destRotate, 1);
+            return cardDisplay;
         }
 
         public IEnumerator ViewCardsOnScreen(Card[] cards,float holdTime = 3f) {

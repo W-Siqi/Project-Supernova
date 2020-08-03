@@ -87,8 +87,12 @@ public class StoryBook : MonoBehaviour
             LerpAnimator.instance.LerpPosition(mainCamera.transform,showPoses[curPosIndex].camAnchor.position,1f);
         }
 
-        ShowContentOn(pageContent, showPoses[curPosIndex++]);
-        yield return new WaitForSeconds(4f);
+        StartCoroutine( ShowContentOn(pageContent, showPoses[curPosIndex++]));
+        var waitTime = 3f;
+        if (pageContent.image != null) {
+            waitTime += 4f;
+        }
+        yield return new WaitForSeconds(waitTime);
     }
 
     public IEnumerator TurnPage() {
@@ -106,11 +110,16 @@ public class StoryBook : MonoBehaviour
         bookControllerWrapper.TurnNextPage();
     }
 
-    private void ShowContentOn(PageContent pageContent,PageConentShowPos conentShowPos) {
+    private IEnumerator ShowContentOn(PageContent pageContent,PageConentShowPos conentShowPos) {
+        conentShowPos.textContent.text = pageContent.text;
+
         if (pageContent.image != null) {
+            if (pageContent.text != null) {
+                yield return new WaitForSeconds(2f);
+            }
             conentShowPos.contentPageImage.enabled= true;
             StartCoroutine(UpdatePageDelayed(conentShowPos, pageContent.image));
-            var dissolveDuration = 3f;
+            var dissolveDuration = 2f;
             LerpAnimator.instance.LerpValues(1, 0, dissolveDuration,
                 (v) => {
                     conentShowPos.conetentPageMat.SetFloat(DISSOLVE_SHADER_PROPERTY, v);
@@ -120,7 +129,7 @@ public class StoryBook : MonoBehaviour
             conentShowPos.contentPageImage.enabled = false;
         }
 
-        conentShowPos.textContent.text = pageContent.text;
+        yield return null;
     }
 
 

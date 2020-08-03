@@ -13,30 +13,30 @@ MonoBehaviour:
   m_Name: DeckArchive
   m_EditorClassIdentifier: 
   characterCards:
-  - name: "\u9AD8\u5C06\u519B"
-    description: "\u6CA1\u4E8B\u559C\u6B22\u6253\u4EBA"
+  - name: "\u7EA2\u80E1\u5B50\u77EE\u4EBA"
+    description: "\u4ED6\u6709\u957F\u7684\u7EA2\u7684\u80E1\u5B50"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_37.png
+      Pack Vol 2/character_66.png
     attributes:
-      atkVal: 4
-      maxHP: 20
-      HP: 20
+      atkVal: 3
+      maxHP: 12
+      HP: 12
     personalities:
     - currentTrait: 0
-    - currentTrait: 0
-    - currentTrait: 0
-  - name: "\u9648\u5458\u5916"
-    description: "\u559C\u6B22\u793E\u4EA4"
+    - currentTrait: 2
+    - currentTrait: 5
+  - name: "\u9965\u997F\u96BE\u6C11"
+    description: "\u6076"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_19.png
+      Pack Vol 1/character_38.png
     attributes:
       atkVal: 6
       maxHP: 7
       HP: 7
     personalities:
-    - currentTrait: 0
-    - currentTrait: 0
-    - currentTrait: 0
+    - currentTrait: 4
+    - currentTrait: 1
+    - currentTrait: 4
   - name: "\u738B\u516C\u516C"
     description: "\u6700\u559C\u6B22\u94B1\u4E86"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
@@ -253,11 +253,11 @@ MonoBehaviour:
         attackerbindFlag: 0
         defenderbindFlag: 0
   stratagemCards:
-  - name: name
-    description: 
+  - name: "\u7EDD\u671B"
+    description: "\u6CA1\u5B8C\u6CA1\u4E86\u7684\u602A\u7269\u5165\u4FB5\uFF0C\u4F60\u89C9\u5F97\u8FD9\u6837\u7684\u65E5\u5B50\u4F1A\u6709\u5C3D\u5934\u5417\uFF1F"
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10_alpha_periodical.tif
-    yesText: "\u624B\u52A8\u9600\u53D1\u7684"
-    noText: "\u9001\u8FBE\u65B9"
+    yesText: "\u4E00\u5207\u90FD\u4F1A\u597D\u7684"
+    noText: "\u6CA1\u6709\u5E0C\u671B\u53EF\u8A00"
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -282,11 +282,11 @@ MonoBehaviour:
       fightConsequence:
         attackerbindFlag: 0
         defenderbindFlag: 0
-  - name: 'fsdg '
-    description: 
+  - name: "\u76D7\u4EA6\u6709\u9053 "
+    description: "\u5E2E\u6211\u5077\u70B9\u98DF\u7269\uFF0C\u6211\u597D\u51E0\u5929\u6CA1\u6709\u5403\u4E86\u3002\u6211\u4EEC\u4E00\u8D77\u5206"
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/26.tif
-    yesText: "\u6559\u80B2\u8D39\u5C31"
-    noText: "\u4ECE\u73B0\u5728\u683C\u745E\u7279"
+    yesText: "\u597D\u5427"
+    noText: "\u6211\u62D2\u7EDD"
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0

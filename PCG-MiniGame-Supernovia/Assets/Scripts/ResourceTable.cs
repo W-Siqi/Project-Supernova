@@ -26,6 +26,8 @@ public class ResourceTable : MonoBehaviour
         public RenderTexture fightSceneRT;
         public RenderTexture councilSceneRT;
         public RenderTexture eventSceneRT;
+        public Sprite evilTraitBG;
+        public Sprite noneEvilTraitBG;
     }
 
 

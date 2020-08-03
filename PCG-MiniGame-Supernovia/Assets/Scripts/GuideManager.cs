@@ -17,14 +17,26 @@ public class GuideManager : MonoBehaviour
     private string campfireCharacter2Name;
     [SerializeField]
     private string campfireStratagem2Name;
-
+    [SerializeField]
+    private string eventCard1Name;
+    [SerializeField]
+    private string eventCharacter1Name;
+    [SerializeField]
+    private string eventCard2Name;
+    [SerializeField]
+    private string eventCharacter2Name;
+    [SerializeField]
+    private List<StoryBook.PageContent> voteContents;
 
     public IEnumerator RunGuidence() {
         //yield return StartCoroutine(EventStreamTutorial());
 
         //yield return StartCoroutine(VoteTutorial());
-        // TMP 
+
+        // yield return StartCoroutine(EventStreamTutorial());
+
         yield return StartCoroutine(IntroStage());
+
         yield return StartCoroutine(TutorialStage());
     }
 
@@ -59,7 +71,12 @@ public class GuideManager : MonoBehaviour
         yield return StartCoroutine(CharacterDialog(campfireCharacter1Name, campfireStratagem1Name));
 
         tipViewer.ViewTip("你的选择会对人物造成影响");
+        var showCard = Card.DeepCopy( DeckArchive.instance.FindCardByName(campfireCharacter1Name) as CharacterCard);
+        var showCardDisplay = ViewManager.instance.ViewCardOnScreen(showCard);
         yield return new WaitForSeconds(2f);
+        showCardDisplay.UpdatePersonality(showCard.personalities[1], Trait.hopeless);
+        yield return new WaitForSeconds(5f);
+        DestroyImmediate(showCardDisplay.gameObject);
 
         yield return StartCoroutine(CharacterDialog(campfireCharacter2Name, campfireStratagem2Name));
     }
@@ -87,22 +104,49 @@ public class GuideManager : MonoBehaviour
 
         // end show Dialog
         ViewManager.instance.EndViewDialog();
+        ViewManager.instance.EndViewCharacterOfDialog();
         yield return new WaitForSeconds(2f);
     }
 
     IEnumerator EventStreamTutorial() {
-        yield return null;
+        yield return StartCoroutine( StoryBook.instance.ViewContent(new StoryBook.PageContent("过了几日")));
+
+        // 事件1 - 偷窃
+        var eventCard1 = DeckArchive.instance.FindCardByName(eventCard1Name) as EventCard;
+        var eventCharacter1 = DeckArchive.instance.FindCardByName(eventCharacter1Name) as CharacterCard;
+        tipViewer.ViewTip("人物的性格会导致不同的事件发生");
+        StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent( "事件-"+eventCard1.name)));
+        yield return StartCoroutine(ViewManager.instance.ViewCardsOnScreen(new Card[] { eventCard1, eventCharacter1 }));
+        StoryContext.instance.statusVector.money -= 40;
+        yield return new WaitForSeconds(5f);
+
+        // 事件2 - 魔鬼区服
+        var eventCard2 = DeckArchive.instance.FindCardByName(eventCard2Name) as EventCard;
+        var eventCharacter2 = DeckArchive.instance.FindCardByName(eventCharacter2Name) as CharacterCard;
+        StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("事件-" + eventCard2.name)));
+        yield return StartCoroutine(ViewManager.instance.ViewCardsOnScreen(new Card[] { eventCard2 }));
+
+
+        var eventCharacter2Display = ViewManager.instance.ViewCardOnScreen(eventCharacter2);
+        yield return new WaitForSeconds(2f);
+        tipViewer.ViewTip("-事件的发生也会一定程度改变人格");
+        eventCharacter2Display.UpdatePersonality(eventCharacter2.personalities[0], Trait.fury);
+        eventCharacter2Display.UpdatePersonality(eventCharacter2.personalities[1], Trait.fury);
+        yield return new WaitForSeconds(7f);
+        DestroyImmediate(eventCharacter2Display.gameObject);
+        yield return new WaitForSeconds(1f);
     }
 
     IEnumerator VoteTutorial() {
         //投票介绍
         yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(StoryStage.vote));
-        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("-最近暴风雪连连，食物不足，人们决定驱逐一些人")));
+        yield return StartCoroutine(StoryBook.instance.ViewContent(voteContents[0]));
 
         // show up viewer
         var voteViwer = ViewManager.instance.voteViewer;
         voteViwer.ShowUp();
         yield return new WaitForSeconds(2.5f);
+        yield return StartCoroutine(StoryBook.instance.ViewContent(voteContents[1]));
 
         var voters = StoryContext.instance.characterDeck.ToArray();
         int playerVoteIndex = Random.Range(0, voters.Length);
@@ -167,5 +211,6 @@ public class GuideManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         voteViwer.Hide();
 
+        yield return StartCoroutine(StoryBook.instance.ViewContent(voteContents[2]));        
     }
 }

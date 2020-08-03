@@ -40,6 +40,7 @@ public class LerpAnimator : MonoBehaviour {
             onNewLerpValue(Mathf.Lerp(from,to,t));
             yield return null;
         }
+        onNewLerpValue(to);
     }
 
     IEnumerator PlayValueAnimation(AnimationCurve animationCurve, float playTime, OnNewLerpValue onNewLerpValue) {
