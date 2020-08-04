@@ -17,62 +17,54 @@ MonoBehaviour:
     description: "\u4ED6\u6709\u957F\u7684\u7EA2\u7684\u80E1\u5B50"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 2/character_66.png
+    loyalty: 4
     attributes:
       atkVal: 3
       maxHP: 12
       HP: 12
     personalities:
-    - currentTrait: 0
-    - currentTrait: 2
-    - currentTrait: 5
+    - trait: 0
+    - trait: 0
+    - trait: 0
   - name: "\u9965\u997F\u96BE\u6C11"
     description: "\u6076"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 1/character_38.png
+    loyalty: 3
     attributes:
       atkVal: 6
       maxHP: 7
       HP: 7
     personalities:
-    - currentTrait: 4
-    - currentTrait: 1
-    - currentTrait: 4
+    - trait: 0
+    - trait: 0
+    - trait: 0
   - name: "\u5730\u7CBE\u5D3D\u5B50"
     description: "\u6700\u559C\u6B22\u94B1\u4E86"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 2/character_96.png
+    loyalty: 3
     attributes:
       atkVal: 3
       maxHP: 12
       HP: 12
     personalities:
-    - currentTrait: 4
-    - currentTrait: 1
-    - currentTrait: 4
+    - trait: 0
+    - trait: 0
+    - trait: 0
   - name: "\u7EDD\u671B\u7537"
     description: "\u6CA1\u8111\u5B50"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
       Pack Vol 1/character_23.png
+    loyalty: 3
     attributes:
       atkVal: 8
       maxHP: 12
       HP: 12
     personalities:
-    - currentTrait: 0
-    - currentTrait: 7
-    - currentTrait: 7
-  - name: "\u7F8E\u5C11\u5973\u5C06\u519B"
-    description: "\u5251\u672F\u4E00\u6D41"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_55.png
-    attributes:
-      atkVal: 10
-      maxHP: 3
-      HP: 3
-    personalities:
-    - currentTrait: 0
-    - currentTrait: 0
-    - currentTrait: 0
+    - trait: 0
+    - trait: 0
+    - trait: 0
   eventCards:
   - name: "\u4E0E\u9B54\u9B3C\u505A\u4EA4\u6613"
     description: "\u5BF9\u5FC3\u4E2D\u7684\u6076\u9B54\u533A\u670D"
@@ -85,30 +77,29 @@ MonoBehaviour:
       characterEnabled: 1
       eventEnabled: 0
       characterPreconditions:
+      - requiredTrait: 5
       - requiredTrait: 0
-        topologyDistanceAllowed: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
       statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 1
-      fightConsequenceEnabled: 0
+      keywordConsequenceEnabled: 1
       statusConsequence:
         delta:
-          food: 1
-          money: 1
-          authority: 1
+          people: 51
+          money: 14
+          army: 63
       characterConsequences:
       - bindFlag: 0
         traitToBecome: 0
         transferStrength: 1
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 1
-        defenderbindFlag: 2
+      - bindFlag: 0
+        traitToBecome: 0
+        transferStrength: 1
+      keywordConsequence:
+        keyword: 2
   - name: "\u6697\u591C\u884C\u7A83"
     description: 
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/14_alpha.tif
@@ -124,26 +115,22 @@ MonoBehaviour:
       eventPreconditions: []
     consequenceSet:
       statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
       characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
-          food: 80
+          people: 80
           money: 76
-          authority: 20
+          army: 20
       characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
+      keywordConsequence:
+        keyword: 0
   stratagemCards:
-  - name: "\u7EDD\u671B"
-    description: "\u6CA1\u5B8C\u6CA1\u4E86\u7684\u602A\u7269\u5165\u4FB5\uFF0C\u4F60\u89C9\u5F97\u8FD9\u6837\u7684\u65E5\u5B50\u4F1A\u6709\u5C3D\u5934\u5417\uFF1F"
+  - name: "\u5F81\u5175"
+    description: "\u6211\u4EEC\u9700\u8981\u66F4\u591A\u7684\u519B\u961F"
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10_alpha_periodical.tif
-    yesText: "\u4E00\u5207\u90FD\u4F1A\u597D\u7684"
-    noText: "\u6CA1\u6709\u5E0C\u671B\u53EF\u8A00"
+    yesText: "\u4E0D\u597D"
+    noText: "\u53EF\u4EE5"
     preconditonSet:
       environmentEnabled: 0
       characterEnabled: 0
@@ -154,21 +141,17 @@ MonoBehaviour:
       eventPreconditions: []
     consequenceSet:
       statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
+      characterConsequenceEnabled: 1
+      keywordConsequenceEnabled: 1
       statusConsequence:
         delta:
-          food: 1
-          money: 1
-          authority: 1
+          people: -22
+          money: -3
+          army: 20
       characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
-  - name: "\u76D7\u4EA6\u6709\u9053 "
+      keywordConsequence:
+        keyword: 0
+  - name: "\u52A0\u7A0E"
     description: "\u5E2E\u6211\u5077\u70B9\u98DF\u7269\uFF0C\u6211\u597D\u51E0\u5929\u6CA1\u6709\u5403\u4E86\u3002\u6211\u4EEC\u4E00\u8D77\u5206"
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/26.tif
     yesText: "\u597D\u5427"
@@ -182,21 +165,117 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 0
-      environmentConsequenceEnabled: 0
+      statusConsequenceEnabled: 1
       characterConsequenceEnabled: 0
-      fightConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
-          food: 1
-          money: 1
-          authority: 1
+          people: -13
+          money: 29
+          army: 6
       characterConsequences: []
-      environmentConsequence:
-        qualiferAlterations: []
-      fightConsequence:
-        attackerbindFlag: 0
-        defenderbindFlag: 0
+      keywordConsequence:
+        keyword: 0
+  - name: "\u6551\u4F60\u96BE\u6C11"
+    description: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/40.tif
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 26
+          money: -20
+          army: -4
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u7ED3\u4EA4\u4ED6\u56FD\u5173\u7CFB"
+    description: 
+    avatarImagePath: Assets/Resources/CardImage/Annotation 2020-07-29 015017.png
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 11
+          money: 15
+          army: 6
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u9881\u5E03\u65B0\u653F\u7B56"
+    description: 
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/40_Holomask.tif
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 5
+          money: -11
+          army: 6
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u52A0\u4FF8\u7984"
+    description: "\u6211\u8981\u94B1"
+    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/41_alpha.tif
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 1
+          money: -17
+          army: 4
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
   substoryCards:
   - name: name
     description: 
@@ -206,25 +285,27 @@ MonoBehaviour:
     - name: name
       description: 
       avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10.tif
+      loyalty: 3
       attributes:
         atkVal: 0
         maxHP: 1
         HP: 1
       personalities:
-      - currentTrait: 0
-      - currentTrait: 0
-      - currentTrait: 0
+      - trait: 0
+      - trait: 0
+      - trait: 0
     - name: name
       description: 
       avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/22_dist.tif
+      loyalty: 3
       attributes:
         atkVal: 0
         maxHP: 1
         HP: 1
       personalities:
-      - currentTrait: 0
-      - currentTrait: 0
-      - currentTrait: 0
+      - trait: 0
+      - trait: 0
+      - trait: 0
     stratagemCards:
     - name: name
       description: 
@@ -241,20 +322,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     - name: name
       description: 
       avatarImagePath: 
@@ -270,20 +347,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     - name: name
       description: 
       avatarImagePath: 
@@ -299,20 +372,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     eventCards:
     - name: name
       description: 
@@ -329,20 +398,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     - name: name
       description: 
       avatarImagePath: 
@@ -358,20 +423,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     - name: name
       description: 
       avatarImagePath: 
@@ -387,20 +448,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     - name: name
       description: 
       avatarImagePath: 
@@ -416,20 +473,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     - name: name
       description: 
       avatarImagePath: 
@@ -445,20 +498,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
     - name: name
       description: 
       avatarImagePath: 
@@ -474,20 +523,16 @@ MonoBehaviour:
         eventPreconditions: []
       consequenceSet:
         statusConsequenceEnabled: 0
-        environmentConsequenceEnabled: 0
         characterConsequenceEnabled: 0
-        fightConsequenceEnabled: 0
+        keywordConsequenceEnabled: 0
         statusConsequence:
           delta:
-            food: 1
+            people: 80
             money: 1
-            authority: 1
+            army: 20
         characterConsequences: []
-        environmentConsequence:
-          qualiferAlterations: []
-        fightConsequence:
-          attackerbindFlag: 0
-          defenderbindFlag: 0
+        keywordConsequence:
+          keyword: 0
   characterQualifierLib:
     qualifiers:
     - name: "\u5FE0\u5FC3"

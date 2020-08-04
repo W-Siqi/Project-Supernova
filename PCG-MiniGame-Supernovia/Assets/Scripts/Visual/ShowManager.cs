@@ -142,23 +142,6 @@ public class ShowManager : MonoBehaviour {
         // show image
         yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent(eventCard.GetAvatarImage())));
 
-        // 对战斗后果进行演出
-        if (eventCard.consequenceSet.fightConsequenceEnabled) {
-            var fightConseq = eventCard.consequenceSet.fightConsequence;
-            var attacker = fightConseq.GetAttacker(bindedCharacters);
-            var defender = fightConseq.GetDefender(bindedCharacters);
-
-            var attackDisplay = ShowCardFromDeck(attacker, DeckTarget.characterDeck, AnchorManager.instance.showCardLeftAnchor, eventCard.isAanonymous);
-            var defenderDisplay = ShowCardFromDeck(defender, DeckTarget.characterDeck, AnchorManager.instance.showCardRightAnchor, eventCard.isAanonymous);
-            yield return new WaitForSeconds(2f);
-
-            HitEffect.Create(attacker.attributes.atkVal, defenderDisplay.transform.position);
-            yield return new WaitForSeconds(3f);
-
-            BackCardToDeck(attackDisplay, DeckTarget.characterDeck);
-            BackCardToDeck(defenderDisplay, DeckTarget.characterDeck);
-        }
-
         yield return new WaitForSeconds(1f);
     }
 

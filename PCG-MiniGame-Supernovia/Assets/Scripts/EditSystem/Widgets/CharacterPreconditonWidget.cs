@@ -17,7 +17,6 @@ public class CharacterPreconditonWidget : Widget
         EditorGUILayout.BeginHorizontal();
         editTarget.requiredTrait = (Trait)EditorGUILayout.EnumPopup(editTarget.requiredTrait);
         EditorGUILayout.LabelField("误差允许度", GUILayout.Width(100));
-        editTarget.topologyDistanceAllowed = EditorGUILayout.IntField(editTarget.topologyDistanceAllowed);
         EditorGUILayout.EndHorizontal();
     }
 }

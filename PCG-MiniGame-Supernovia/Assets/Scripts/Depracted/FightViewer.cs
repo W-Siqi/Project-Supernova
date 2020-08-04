@@ -68,7 +68,7 @@ namespace PCG {
             var attackGO =Instantiate(ResourceTable.instance.prefabPage.attackEffect, attackPos, Quaternion.identity);
             Destroy(attackGO, 3f);
             HitEffect.Create(attacker.attributes.atkVal, attackPos);
-            defenderDisplay.UpdateHPValue(defender.attributes.HP);
+            //defenderDisplay.UpdateHPValue(defender.attributes.HP);
             yield return new WaitForSeconds(1f);
 
             // attacker move back

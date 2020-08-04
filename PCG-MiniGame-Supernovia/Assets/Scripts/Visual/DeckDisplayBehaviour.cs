@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PCG;
 
 // 专门用来显示牌堆
 public class DeckDisplayBehaviour : MonoBehaviour

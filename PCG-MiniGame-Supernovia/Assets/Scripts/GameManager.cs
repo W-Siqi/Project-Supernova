@@ -26,6 +26,9 @@ namespace PCG {
             // 初始化故事状态
             int seed = Random.Range(-10000, 100000);
             StoryContext.instance.InitForNewStory(seed);
+
+            ViewManager.instance.Init();
+
             // 跑教程
             if (!skipGuide) {
                 yield return StartCoroutine(guideManager.RunGuidence());

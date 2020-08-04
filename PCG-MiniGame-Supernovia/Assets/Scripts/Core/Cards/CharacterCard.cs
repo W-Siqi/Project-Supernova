@@ -7,7 +7,7 @@ namespace PCG {
     [System.Serializable]
     public class CharacterCard : Card {
         public const int PERSONALITY_COUNT = 3;
-
+        public int loyalty = 3;
         [System.Serializable]
         public class Attributes {
             public int atkVal = 0;

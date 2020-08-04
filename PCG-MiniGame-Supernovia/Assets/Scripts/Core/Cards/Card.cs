@@ -37,6 +37,10 @@ namespace PCG {
             }
         }
 
+        public Sprite GetAvatarSprite() {
+            return AssetDatabase.LoadAssetAtPath<Sprite>(avatarImagePath);
+        }
+
         public void SetAvatarImage(Texture2D newAvatarImage) {
             avatarImagePath = AssetDatabase.GetAssetPath(newAvatarImage);
             loadedAvatarImage = AssetDatabase.LoadAssetAtPath<Texture2D>(avatarImagePath);

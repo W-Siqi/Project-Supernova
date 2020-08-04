@@ -10,7 +10,7 @@ public class QualiferLibraryEditor : EditorWindow
     private LibType currentEditType = LibType.character;
     private string qualiferNameToAdd = "";
 
-    [MenuItem("PCG编辑/词缀树")]
+    //[MenuItem("PCG编辑/词缀树")]
     public static void ShowWindow() {
         EditorWindow.GetWindow(typeof(QualiferLibraryEditor));
     }

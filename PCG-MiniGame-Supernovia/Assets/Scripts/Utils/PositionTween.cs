@@ -35,4 +35,8 @@ public class PositionTween : MonoBehaviour
                 transform.position = Vector3.Lerp(from, to, t);
             });
     }
+
+    public void ResetToStart() {
+        transform.position = startAnchor.position;
+    }
 }

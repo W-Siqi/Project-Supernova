@@ -29,15 +29,13 @@ public class GuideManager : MonoBehaviour
     private List<StoryBook.PageContent> voteContents;
 
     public IEnumerator RunGuidence() {
-        //yield return StartCoroutine(EventStreamTutorial());
+        // 人物介绍
+        tipViewer.ViewTip("这些是避难所的成员");
+        yield return ViewManager.instance.ViewCardsOnScreen(StoryContext.instance.characterDeck.ToArray());
 
-        //yield return StartCoroutine(VoteTutorial());
+        //yield return StartCoroutine(IntroStage());
 
-        // yield return StartCoroutine(EventStreamTutorial());
-
-        yield return StartCoroutine(IntroStage());
-
-        yield return StartCoroutine(TutorialStage());
+        //yield return StartCoroutine(TutorialStage());
     }
 
     IEnumerator IntroStage() {
@@ -68,15 +66,15 @@ public class GuideManager : MonoBehaviour
         yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
         // 人物对话1
-        yield return StartCoroutine(CharacterDialog(campfireCharacter1Name, campfireStratagem1Name));
+        //yield return StartCoroutine(CharacterDialog(campfireCharacter1Name, campfireStratagem1Name));
 
-        tipViewer.ViewTip("你的选择会对人物造成影响");
-        var showCard = Card.DeepCopy( DeckArchive.instance.FindCardByName(campfireCharacter1Name) as CharacterCard);
-        var showCardDisplay = ViewManager.instance.ViewCardOnScreen(showCard);
-        yield return new WaitForSeconds(2f);
-        showCardDisplay.UpdatePersonality(showCard.personalities[1], Trait.hopeless);
-        yield return new WaitForSeconds(5f);
-        DestroyImmediate(showCardDisplay.gameObject);
+        //tipViewer.ViewTip("你的选择会对人物造成影响");
+        //var showCard = Card.DeepCopy( DeckArchive.instance.FindCardByName(campfireCharacter1Name) as CharacterCard);
+        //var showCardDisplay = ViewManager.instance.ViewCardOnScreen(showCard);
+        //yield return new WaitForSeconds(2f);
+        //showCardDisplay.UpdatePersonality(showCard.personalities[1], Trait.hopeless);
+        //yield return new WaitForSeconds(5f);
+        //DestroyImmediate(showCardDisplay.gameObject);
 
         yield return StartCoroutine(CharacterDialog(campfireCharacter2Name, campfireStratagem2Name));
     }

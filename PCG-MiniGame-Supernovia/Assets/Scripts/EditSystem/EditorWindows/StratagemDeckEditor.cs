@@ -6,7 +6,7 @@ using PCG;
 
 public class StratagemDeckEditor : DeckEditor
 {
-    [MenuItem("PCG编辑/卡组编辑/决策卡")]
+    [MenuItem("PCG编辑/决策卡")]
     public static void ShowWindow() {
         var instance = (StratagemDeckEditor)EditorWindow.GetWindow(typeof(StratagemDeckEditor));
     }

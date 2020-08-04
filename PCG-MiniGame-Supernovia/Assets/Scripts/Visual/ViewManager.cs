@@ -28,14 +28,20 @@ namespace PCG {
             }
         }
 
-        public ValueViewer foodValue;
+        public ValueViewer armyValue;
         public ValueViewer moneyValue;
-        public ValueViewer authorityValue;
+        public ValueViewer peopleValue;
         public VoteViewer voteViewer;
         public EventViewer eventViewer;
 
         [SerializeField]
+        private CharacterViewer characterViewer;
+        [SerializeField]
         private ResTable resTable;
+
+        public void Init() {
+            characterViewer.Init(StoryContext.instance.characterDeck.ToArray());
+        }
 
         public IEnumerator ViewReachNewStoryStageCoroutine(StoryStage storyStage) {
             yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("营火 战斗 表决")));
@@ -132,15 +138,15 @@ namespace PCG {
             return cardDisplay;
         }
 
-        public IEnumerator ViewCardsOnScreen(Card[] cards,float holdTime = 3f) {
+        public IEnumerator ViewCardsOnScreen(Card[] cards,float holdTime = 2f) {
             var cardDisplays = new List<CardDisplayBehaviour>();
             foreach (var card in cards) {
                 cardDisplays.Add(CardDisplayBehaviour.Create(card, resTable.viewCardSpwanAnchor));
             }
 
             // show card
-            float showupInterval = 1f;
-            float showupAnimationDuration = 2f;
+            float showupInterval = 0.2f;
+            float showupAnimationDuration = 1.5f;
             for (int i = 0; i < cardDisplays.Count; i++) {
                 var cardDisplay = cardDisplays[i];
                 var t = (float)(i + 1) / (float)(cardDisplays.Count + 1);
@@ -151,7 +157,7 @@ namespace PCG {
             }
 
             // stay 
-            yield return new WaitForSeconds(holdTime);
+            yield return new WaitForSeconds(holdTime + showupAnimationDuration - showupInterval);
 
             // card Leave
             foreach (var cardDisplay in cardDisplays) {
@@ -170,7 +176,7 @@ namespace PCG {
         }
 
         public void EndViewCharacterOfDialog() {
-            resTable.characterUITween.Play(true);
+            resTable.characterUITween.ResetToStart();
         }
 
         public void ViewDialog(string content) {
@@ -179,8 +185,7 @@ namespace PCG {
         }
 
         public void EndViewDialog() {
-            resTable.diaglogUITween.Play(true);
+            resTable.diaglogUITween.ResetToStart();
         }
     }
-
 }

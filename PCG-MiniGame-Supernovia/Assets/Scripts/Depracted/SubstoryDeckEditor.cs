@@ -5,7 +5,7 @@ using UnityEditor;
 using PCG;
 
 public class SubstoryDeckEditor : DeckEditor {
-    [MenuItem("PCG编辑/子故事编辑器")]
+    //[MenuItem("PCG编辑/子故事编辑器")]
     public static void ShowWindow() {
         var instance = (SubstoryDeckEditor)EditorWindow.GetWindow(typeof(SubstoryDeckEditor));
     }

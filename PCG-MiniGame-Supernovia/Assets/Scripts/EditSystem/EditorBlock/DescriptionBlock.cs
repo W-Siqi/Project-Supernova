@@ -6,10 +6,10 @@ using PCG;
 
 // 渲染对事件卡/决策卡两种卡的 修饰词编辑的模块
 public class DescriptionBlock{
-    const int DESCRIPTION_COUNT = 7;
+    const int DESCRIPTION_COUNT = 6;
     const string DOWN_ARRORW_IMAGE_PATH = "Assets/ArtResourse/UI/downarrow.png";
 
-    static string[] descriptionMaskArray= new string[] { "前置 - 人物", "前置 - 环境", "前置 - 事件", "后果 - 人物", "后果 - 环境","后果 - 战斗","后果-状态值" };
+    static string[] descriptionMaskArray= new string[] { "前置 - 人物", "前置 - 环境", "前置 - 事件", "后果 - 人物", "后果-状态值", "后果-关键词" };
    
     private int mask ;
     private PreconditionWidget preconditionWidget;
@@ -42,14 +42,11 @@ public class DescriptionBlock{
         if (consequenceSet.characterConsequenceEnabled) {
             mask |= (1 << 3);
         }
-        if (consequenceSet.environmentConsequenceEnabled) {
+        if (consequenceSet.statusConsequenceEnabled) {
             mask |= (1 << 4);
         }
-        if (consequenceSet.fightConsequenceEnabled) {
+        if (consequenceSet.keywordConsequenceEnabled) {
             mask |= (1 << 5);
-        }
-        if (consequenceSet.statusConsequenceEnabled) {
-            mask |= (1 << 6);
         }
     }
 
@@ -70,7 +67,7 @@ public class DescriptionBlock{
         preconditionWidget.RenderUI();
         //GUILayout.Label(EditorStyleResource.LoadTex(DOWN_ARRORW_IMAGE_PATH),GUILayout.Height(100));
         // 后果描述绘制
-        consequenceWidget.SetMask(selectedMask[3],selectedMask[4],selectedMask[5],selectedMask[6]);
+        consequenceWidget.SetMask(selectedMask[3],selectedMask[4],selectedMask[5]);
         consequenceWidget.RenderUI();
     }
 }
