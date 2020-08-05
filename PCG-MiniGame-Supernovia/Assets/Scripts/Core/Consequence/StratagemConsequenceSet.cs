@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StratagemConsequenceSet:ScriptableObject
+public class StratagemConsequenceSet
 {
     public List<TraitAlteration> traitAlterationsWhenAccept = new List<TraitAlteration>();
     public List<TraitAlteration> traitAlterationsWhenDecline = new List<TraitAlteration>();
