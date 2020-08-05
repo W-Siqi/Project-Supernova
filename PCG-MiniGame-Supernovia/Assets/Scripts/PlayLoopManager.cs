@@ -8,7 +8,6 @@ public class PlayLoopManager : MonoBehaviour {
     [System.Serializable]
     private class Config {
         public bool playInQuickMode = true;
-        public int winRounds = 10;
         public int eventCountPerRound = 2;
     }
 
@@ -24,7 +23,7 @@ public class PlayLoopManager : MonoBehaviour {
     IEnumerator PlayLoopCoroutine() {
         int round = 0;
         foreach (var stage in storyline) {
-            if (round >= config.winRounds) {
+            if (round >= PCGVariableTable.instance.roundCount) {
                 Debug.Log("游戏胜利");
                 break;
             }
@@ -33,7 +32,7 @@ public class PlayLoopManager : MonoBehaviour {
                 yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
             }
 
-            yield return StartCoroutine(CampFireStage());
+            yield return StartCoroutine(CouncilStage(round));
 
             yield return StartCoroutine(EventStream());
 
@@ -43,6 +42,8 @@ public class PlayLoopManager : MonoBehaviour {
                 Debug.Log("游戏失败");
                 break;
             }
+
+            round++;
         }
         Debug.Log("游戏结束");
     }
@@ -79,7 +80,7 @@ public class PlayLoopManager : MonoBehaviour {
         yield return new WaitForSeconds(2f);
     }
 
-    IEnumerator CampFireStage() {
+    IEnumerator CouncilStage(int curRound) {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
@@ -94,8 +95,8 @@ public class PlayLoopManager : MonoBehaviour {
             // show 角色
             ViewManager.instance.ViewCharacterOfDialog(character.GetAvatarImage());
 
-            // 抽取建议卡
-            var straCard = DeckArchive.instance.stratagemCards[Random.Range(0, DeckArchive.instance.stratagemCards.Count)];
+            // 提取建议卡
+            var straCard = StoryContext.instance.stratagemDict[character][curRound];
             // show Dialog
             ViewManager.instance.ViewDialog(straCard.description);
 

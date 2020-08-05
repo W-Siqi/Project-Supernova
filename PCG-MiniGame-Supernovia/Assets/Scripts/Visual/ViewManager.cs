@@ -16,6 +16,7 @@ namespace PCG {
             public AnchorPoint viewCardRightAnchor;
             public AnchorPoint viewCardLeaveAnchor;
             public AnchorPoint centerBackCardAnchor;
+            public VerticalLayoutGroup charcterStatusViewerLayout;
         }
 
         private static ViewManager _instance = null;
@@ -35,12 +36,15 @@ namespace PCG {
         public EventViewer eventViewer;
 
         [SerializeField]
-        private CharacterViewer characterViewer;
-        [SerializeField]
         private ResTable resTable;
 
         public void Init() {
-            characterViewer.Init(StoryContext.instance.characterDeck.ToArray());
+            foreach (var charcater in StoryContext.instance.characterDeck) {
+                var GO = Instantiate(ResourceTable.instance.prefabPage.characterStatusViewer);
+                var viewer = GO.GetComponent<CharacterStatusViewer>();
+                viewer.HookTo(charcater);
+                viewer.transform.SetParent(resTable.charcterStatusViewerLayout.transform);
+            }
         }
 
         public IEnumerator ViewReachNewStoryStageCoroutine(StoryStage storyStage) {

@@ -23,8 +23,8 @@ public class StoryContext : MonoBehaviour {
     static StoryContext _instance = null;
 
     public List<CharacterCard> characterDeck = new List<CharacterCard>();
-    public List<StratagemCard> stratagemDeck = new List<StratagemCard>();
     public List<EventCard> eventDeck = new List<EventCard>();
+    public Dictionary<CharacterCard, List<StratagemCard>> stratagemDict = new Dictionary<CharacterCard, List<StratagemCard>>();
     public StatusVector statusVector = new StatusVector();
     public List<Qualifier> environmentQualifiers = new List<Qualifier>();
 
@@ -41,38 +41,41 @@ public class StoryContext : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// 保存当前上下文，并切换到substory对应的上下文
-    /// </summary>
-    /// <param name="substoryCard"></param>
-    public void PushSubstory(SubstoryCard substoryCard) {
-        // 把当前故事压栈
-        var curFrame = new StoryStackFrame(characterDeck,stratagemDeck,eventDeck);
-        storyStack.Push(curFrame);
-
-        // 替换当前
-        var allCharacters = new List<CharacterCard>();
-        allCharacters.AddRange(characterDeck);
-        allCharacters.AddRange(substoryCard.newCharacters);
-        this.characterDeck = new List<CharacterCard>(allCharacters);
-        this.stratagemDeck = new List<StratagemCard>(substoryCard.stratagemCards);
-        this.eventDeck = new List<EventCard>(substoryCard.eventCards);
-    }
-
-    public void PopSubstory() {
-        if (storyStack.Count <= 0) {
-            Debug.LogError("故事栈为空，不能再出");
-            return;
-        }
-
-        var top = storyStack.Pop();
-        this.characterDeck = new List<CharacterCard>(top.characterCards);
-        this.stratagemDeck = new List<StratagemCard>(top.stratagemCards);
-        this.eventDeck = new List<EventCard>(top.eventCards);
-    }
 
     public void InitForNewStory(int randomSeed) {
-        DealStartingDecks(out characterDeck, out stratagemDeck, out eventDeck);
+        var varTable = PCGVariableTable.instance;
+        // init character
+        for (int i = 0; i < varTable.characterCount; i++) {
+            var charaPrototype = DeckArchive.instance.characterCards[i];
+            var newCharacter = Card.DeepCopy(charaPrototype);
+            // random properties
+            newCharacter.loyalty = Random.Range(3, 7);
+            foreach (var p in newCharacter.personalities) {
+                p.trait = TraitUtils.GetRandomTrait();
+            }
+
+            characterDeck.Add(newCharacter);
+        }
+
+        // init startgems of character
+        foreach (var chara in characterDeck) {
+            stratagemDict[chara] = new List<StratagemCard>();
+            for (int i = 0; i < varTable.roundCount; i++) {
+                var stratagemPrototype = DeckArchive.instance.stratagemCards[Random.Range(0, DeckArchive.instance.stratagemCards.Count)];
+                stratagemDict[chara].Add(Card.DeepCopy(stratagemPrototype));
+            }
+        }
+
+        // init event
+        eventDeck = new List<EventCard>();
+        foreach (var card in DeckArchive.instance.eventCards) {
+            eventDeck.Add(Card.DeepCopy(card));
+        }
+
+        // init status
+        statusVector.army = Random.Range(20, 100);
+        statusVector.money = Random.Range(20, 100);
+        statusVector.people = Random.Range(20, 100);
     }
 
     private static void DealStartingDecks(

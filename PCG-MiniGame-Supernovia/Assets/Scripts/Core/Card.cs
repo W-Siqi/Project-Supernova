@@ -14,6 +14,7 @@ namespace PCG {
         [SerializeField]
         private string avatarImagePath = "";
         private Texture2D loadedAvatarImage = null;
+        private Sprite loadedAvatarSprite = null;
 
         public static T DeepCopy<T>(T src) {
             var serilized = JsonUtility.ToJson(src);
@@ -38,7 +39,10 @@ namespace PCG {
         }
 
         public Sprite GetAvatarSprite() {
-            return AssetDatabase.LoadAssetAtPath<Sprite>(avatarImagePath);
+            if (loadedAvatarSprite == null) {
+                loadedAvatarSprite = AssetDatabase.LoadAssetAtPath<Sprite>(avatarImagePath);
+            }
+            return loadedAvatarSprite;     
         }
 
         public void SetAvatarImage(Texture2D newAvatarImage) {

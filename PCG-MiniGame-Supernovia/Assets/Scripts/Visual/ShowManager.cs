@@ -30,36 +30,6 @@ public class ShowManager : MonoBehaviour {
     private DeckDisplayBehaviour stratagemDeckDisplay;
 
     /// <summary>
-    /// 副本/支线 卡到来时候的动画 (必须要在StoryContext还没变之前调用！)
-    /// </summary>
-    /// <returns></returns>
-    public IEnumerator SubstoryArriveShow(SubstoryCard substoryCard) {
-        var spawnAnchor = AnchorManager.instance.deckSpawnAnchor;
-
-        var storyCardDisplay = CardDisplayBehaviour.Create(
-            substoryCard,
-            spawnAnchor.transform.position,
-            spawnAnchor.transform.rotation);
-        yield return new WaitForSeconds(1.5f);
-        DestroyImmediate(storyCardDisplay.gameObject);
-
-        if (substoryCard.type == SubstoryCard.Type.dungeon) {
-            var cardsShuffleOut = new List<Card>();
-            cardsShuffleOut.AddRange(StoryContext.instance.eventDeck);
-            cardsShuffleOut.AddRange(StoryContext.instance.stratagemDeck);
-            yield return StartCoroutine(PlayCardsShuffleOut(cardsShuffleOut.ToArray()));
-        }
-
-        var cardsShuffleIn = new List<Card>();
-        cardsShuffleIn.AddRange(substoryCard.newCharacters);
-        cardsShuffleIn.AddRange(substoryCard.eventCards);
-        cardsShuffleIn.AddRange(substoryCard.stratagemCards);
-        yield return StartCoroutine(PlayCardsShuffleIn(cardsShuffleIn.ToArray()));
-
-        yield return new WaitForSeconds(1f);
-    }
-
-    /// <summary>
     /// 把卡片全部吸进牌组
     /// </summary>
     /// <returns></returns>

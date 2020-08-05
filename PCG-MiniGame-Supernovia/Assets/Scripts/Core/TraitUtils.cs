@@ -16,23 +16,23 @@ namespace PCG {
         public static string TranslateToName(Trait trait) {
             switch (trait) {
                 case Trait.arrogent:
-                    return "傲慢";
+                    return "傲";
                 case Trait.corrupt:
-                    return "腐败";
+                    return "贪";
                 case Trait.cruel:
-                    return "残忍";
+                    return "凶";
                 case Trait.indulgent:
-                    return "放纵";
+                    return "欲";
                 case Trait.jealous:
-                    return "嫉妒";
+                    return "妒";
                 case Trait.silence:
-                    return "沉默";
+                    return "默";
                 case Trait.tricky:
-                    return "奸诈";
+                    return "奸";
                 case Trait.warlike:
-                    return "好战";
+                    return "莽";
                 case Trait.wise:
-                    return "明智";
+                    return "智";
             }
             return trait.ToString();
         }

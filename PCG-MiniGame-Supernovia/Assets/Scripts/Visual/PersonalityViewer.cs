@@ -8,6 +8,7 @@ using UnityEngine;
 public class PersonalityViewer : MonoBehaviour
 {
     private const string DISSOLVE_SHADER_PROPERTY = "_SliceAmount";
+    public Trait currentViewedTrait { get; private set; } = Trait.none;
 
     [SerializeField]
     SpriteRenderer background;
@@ -17,12 +18,14 @@ public class PersonalityViewer : MonoBehaviour
     TextMeshPro traitName;
 
     public void InitTo(Trait trait) {
+        currentViewedTrait = trait;
         traitName.text = TraitUtils.TranslateToName(trait);
         backgroundMat.Init();
         background.sprite = GetTraitBackground(trait);
     }
 
     public void TransferTo(Trait trait) {
+        currentViewedTrait = trait;
         StartCoroutine(TransferAnimation(trait));
     }
 

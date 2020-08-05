@@ -55,8 +55,8 @@ public class SerializedStoryPlayer : MonoBehaviour
         storyPageContent = new StoryBook.PageContent("大臣都会提出各种建议....");
         yield return StartCoroutine(StoryBook.instance.ViewContent(storyPageContent));
         // 洗决策卡
-        var stratagems = StoryContext.instance.stratagemDeck.ToArray();
-        yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(stratagems));
+        //var stratagems = StoryContext.instance.stratagemDeck.ToArray();
+        //yield return StartCoroutine(ShowManager.instance.PlayCardsShuffleIn(stratagems));
 
         storyPageContent = new StoryBook.PageContent("在这里，各种各样的故事发生着....");
         yield return StartCoroutine(StoryBook.instance.ViewContent(storyPageContent));

@@ -5,6 +5,9 @@ using UnityEngine;
 public class PCGVariableTable : MonoBehaviour {
     public static PCGVariableTable _instance = null;
 
+    public int roundCount = 10;
+    public int characterCount = 4;
+
     public float wiseTraitAmplifyRate = 0.3f;
     public float slicentTraitSlicenceProbility = 0.3f;
     public int corrputTraitMoneyPerRound = 2;

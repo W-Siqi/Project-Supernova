@@ -42,6 +42,7 @@ public class ResourceTable : MonoBehaviour
         public GameObject hitEffect;
         public GameObject attackEffect;
         public GameObject characterUIRawImage;
+        public GameObject characterStatusViewer;
     }
 
     public SceneReferencePage sceneReferencePage = new SceneReferencePage();

@@ -15,6 +15,7 @@ public class StratagemConsequenceSet
             if (stratagemProvider.HasTrait(Trait.wise)) {
                 finalDelta.AmplifyValueIfPositive(PCGVariableTable.instance.wiseTraitAmplifyRate);
             }
+            StoryContext.instance.statusVector += finalDelta;
 
             traitAlterationWhenAccept.ApplyTo(stratagemProvider);
         }
