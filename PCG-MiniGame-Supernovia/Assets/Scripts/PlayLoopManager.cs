@@ -6,22 +6,22 @@ using PCG;
 // 管理 决策 - 人物 - 事件 等游戏游玩主循环
 public class PlayLoopManager : MonoBehaviour {
     [System.Serializable]
-    private class Config{
+    private class Config {
         public bool playInQuickMode = true;
         public int winRounds = 10;
         public int eventCountPerRound = 2;
     }
-    
+
     [SerializeField]
     private List<StoryStage> storyline = new List<StoryStage>();
     [SerializeField]
     private Config config;
-    
+
     public void StartPlayLoop() {
         StartCoroutine(PlayLoopCoroutine());
     }
 
-    IEnumerator PlayLoopCoroutine(){
+    IEnumerator PlayLoopCoroutine() {
         int round = 0;
         foreach (var stage in storyline) {
             if (round >= config.winRounds) {
@@ -36,6 +36,8 @@ public class PlayLoopManager : MonoBehaviour {
             yield return StartCoroutine(CampFireStage());
 
             yield return StartCoroutine(EventStream());
+
+            BuffApplyBeforeRoundEnd();
 
             if (CheckDeathEnding()) {
                 Debug.Log("游戏失败");
@@ -72,7 +74,7 @@ public class PlayLoopManager : MonoBehaviour {
             yield return StartCoroutine(eventViewer.ViewEventCoroutine(selectedEvent, bindingInfos));
 
             // apply consequence
-            ConsequenceApplier.Apply(selectedEvent.consequenceSet, bindingInfos);
+            selectedEvent.consequenceSet.Apply(bindingInfos);
         }
         yield return new WaitForSeconds(2f);
     }
@@ -82,6 +84,13 @@ public class PlayLoopManager : MonoBehaviour {
         yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
         foreach (var character in StoryContext.instance.characterDeck) {
+            if (character.HasTrait(Trait.silence)) {
+                //沉默检测
+                if (Random.value < PCGVariableTable.instance.slicentTraitSlicenceProbility) {
+                    continue;
+                }
+            }
+
             // show 角色
             ViewManager.instance.ViewCharacterOfDialog(character.GetAvatarImage());
 
@@ -104,18 +113,30 @@ public class PlayLoopManager : MonoBehaviour {
 
             if (agreeDecision) {
                 // 应用后果
-                var bindingInfos = straCard.preconditonSet.Bind();
-                ConsequenceApplier.Apply(straCard.consequenceSet, bindingInfos);
+                straCard.consequenceSet.Apply(character, true);
+
+                // 残暴词缀应用
+                if (character.HasTrait(Trait.cruel)) {
+                    StoryContext.instance.statusVector.people -= PCGVariableTable.instance.cruelTraitPeopleValuePerDecision;
+                }
             }
             else {
-                // 被拒绝
-                character.loyalty -= 1;
+                straCard.consequenceSet.Apply(character, false);
             }
 
             // end show Dialog
             ViewManager.instance.EndViewDialog();
             // end character
             ViewManager.instance.EndViewCharacterOfDialog();
+        }
+    }
+
+    private void BuffApplyBeforeRoundEnd() {
+        foreach (var character in StoryContext.instance.characterDeck) {
+            if (character.HasTrait(Trait.corrupt)) {
+                var corrputValue = PCGVariableTable.instance.corrputTraitMoneyPerRound;
+                StoryContext.instance.statusVector.money -= corrputValue;
+            }
         }
     }
 

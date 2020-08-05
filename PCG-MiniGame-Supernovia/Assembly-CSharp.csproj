@@ -304,13 +304,14 @@
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\Qualifier.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\QualifierLibrary.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\Trait.cs" />
+    <Compile Include="Assets\Scripts\Core\PersonalitySystem\TraitAlteration.cs" />
     <Compile Include="Assets\Scripts\Core\PersonalitySystem\TraitUtils.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\CharacterConsequence.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\Consequence.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\ConsequenceSet.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\KeywordConsequence.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\StatusConsequence.cs" />
-    <Compile Include="Assets\Scripts\Core\StorySystem\ConsequenceApplier.cs" />
+    <Compile Include="Assets\Scripts\Core\StorySystem\Consequence\StratagemConsequenceSet.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\EventCardFilter.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Precondition\BindingInfo.cs" />
     <Compile Include="Assets\Scripts\Core\StorySystem\Precondition\CharacterPrecondition.cs" />
@@ -322,6 +323,7 @@
     <Compile Include="Assets\Scripts\Core\StorySystem\StoryContext.cs" />
     <Compile Include="Assets\Scripts\DecisionInteraction.cs" />
     <Compile Include="Assets\Scripts\Depracted\CardSelector.cs" />
+    <Compile Include="Assets\Scripts\Depracted\ConsequenceApplier.cs" />
     <Compile Include="Assets\Scripts\Depracted\CountFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\Distribution.cs" />
     <Compile Include="Assets\Scripts\Depracted\EnvironmentConsequence.cs" />
@@ -368,6 +370,7 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GuideManager.cs" />
+    <Compile Include="Assets\Scripts\PCGVariableTable.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
     <Compile Include="Assets\Scripts\ResourceTable.cs" />
     <Compile Include="Assets\Scripts\StoryDirector\CouncilStateInfoWidget.cs" />

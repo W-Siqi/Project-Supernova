@@ -5,21 +5,6 @@ using PCG;
 
 // 用于保存一切故事运作信息的单例
 public class StoryContext : MonoBehaviour {
-    [System.Serializable]
-    public class StatusVector {
-        public int people = 80;
-        public int money = 76;
-        public int army= 20;
-
-        public static StatusVector operator + (StatusVector a, StatusVector b) {
-            var res = new StatusVector();
-            res.people = a.people + b.people;
-            res.money = a.money + b.money;
-            res.army = a.army + b.army;
-            return res;
-        }
-    }
-
     // 因为经常要切换上下文（副本卡），以及本中本
     // 需要维护一个deck栈，栈帧保存的是可用的卡的对象（只是引用，不追踪状态）
     private class StoryStackFrame {

@@ -91,7 +91,7 @@ public class SerializedStoryPlayer : MonoBehaviour
 
             // TBD: 可能会出错，如果consequence不是确定的话，show在没apply的时候不知道确定值
             // apply consequence
-            ConsequenceApplier.Apply(eventCard.consequenceSet, bindingInfos);
+            //ConsequenceApplier.ApplyAsEvent(eventCard.consequenceSet, bindingInfos);
         }
         yield return new WaitForSeconds(2f);
     }

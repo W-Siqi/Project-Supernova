@@ -5,5 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class StatusConsequence : Consequence
 {
-    public StoryContext.StatusVector delta = new StoryContext.StatusVector();
+    public StatusVector delta = new StatusVector();
 }

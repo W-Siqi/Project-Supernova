@@ -8,6 +8,7 @@ namespace PCG {
     public class CharacterCard : Card {
         public const int PERSONALITY_COUNT = 3;
         public int loyalty = 3;
+
         [System.Serializable]
         public class Attributes {
             public int atkVal = 0;
@@ -17,5 +18,14 @@ namespace PCG {
 
         public Attributes attributes = new Attributes();
         public Personality[] personalities = new Personality[PERSONALITY_COUNT];
+
+        public bool HasTrait(Trait trait) {
+            foreach (var p in personalities) {
+                if (p.trait == trait) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

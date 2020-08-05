@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using PCG;
 
-// 渲染对事件卡/决策卡两种卡的 修饰词编辑的模块
+// 渲染对事件卡修饰词编辑的模块
 public class DescriptionBlock{
     const int DESCRIPTION_COUNT = 6;
     const string DOWN_ARRORW_IMAGE_PATH = "Assets/ArtResourse/UI/downarrow.png";
@@ -19,12 +19,6 @@ public class DescriptionBlock{
         preconditionWidget = new PreconditionWidget(eventCard.preconditonSet);
         consequenceWidget = new ConsequenceWidget(eventCard.consequenceSet);
         InitMask(eventCard.preconditonSet,eventCard.consequenceSet);
-    }
-
-    public DescriptionBlock(StratagemCard stratagemCard) {
-        preconditionWidget = new PreconditionWidget(stratagemCard.preconditonSet);
-        consequenceWidget = new ConsequenceWidget(stratagemCard.consequenceSet);
-        InitMask(stratagemCard.preconditonSet, stratagemCard.consequenceSet);
     }
 
     private void InitMask(PreconditonSet preconditonSet, ConsequenceSet consequenceSet) {

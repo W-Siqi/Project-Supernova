@@ -4,6 +4,6 @@ using UnityEngine;
 
 namespace PCG {
     public enum Trait {
-        kind,tolerant,hopeful,fury,greedy,lazy,arrogent,hopeless
+        none,corrupt,cruel,wise,silence, indulgent,tricky,warlike,arrogent,jealous
     }
 }

@@ -6,7 +6,7 @@ namespace PCG {
     public class TraitUtils {
 
         public static bool IsEvil(Trait trait) {
-            if (trait == Trait.kind || trait == Trait.tolerant || trait == Trait.hopeful) {
+            if (trait == Trait.wise) {
                 return false;
             }
             return true;
@@ -15,20 +15,22 @@ namespace PCG {
             switch (trait) {
                 case Trait.arrogent:
                     return "傲慢";
-                case Trait.fury:
-                    return "怒";
-                case Trait.greedy:
-                    return "贪";
-                case Trait.hopeful:
-                    return "希冀";
-                case Trait.hopeless:
-                    return "绝望";
-                case Trait.kind:
-                    return "善";
-                case Trait.lazy:
-                    return "懒";
-                case Trait.tolerant:
-                    return "宽容";
+                case Trait.corrupt:
+                    return "腐败";
+                case Trait.cruel:
+                    return "残忍";
+                case Trait.indulgent:
+                    return "放纵";
+                case Trait.jealous:
+                    return "嫉妒";
+                case Trait.silence:
+                    return "沉默";
+                case Trait.tricky:
+                    return "奸诈";
+                case Trait.warlike:
+                    return "好战";
+                case Trait.wise:
+                    return "明智";
             }
             return trait.ToString();
         }

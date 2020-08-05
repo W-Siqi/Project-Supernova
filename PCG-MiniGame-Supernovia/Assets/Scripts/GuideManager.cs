@@ -119,19 +119,19 @@ public class GuideManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         // 事件2 - 魔鬼区服
-        var eventCard2 = DeckArchive.instance.FindCardByName(eventCard2Name) as EventCard;
-        var eventCharacter2 = DeckArchive.instance.FindCardByName(eventCharacter2Name) as CharacterCard;
-        StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("事件-" + eventCard2.name)));
-        yield return StartCoroutine(ViewManager.instance.ViewCardsOnScreen(new Card[] { eventCard2 }));
+        //var eventCard2 = DeckArchive.instance.FindCardByName(eventCard2Name) as EventCard;
+        //var eventCharacter2 = DeckArchive.instance.FindCardByName(eventCharacter2Name) as CharacterCard;
+        //StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("事件-" + eventCard2.name)));
+        //yield return StartCoroutine(ViewManager.instance.ViewCardsOnScreen(new Card[] { eventCard2 }));
 
 
-        var eventCharacter2Display = ViewManager.instance.ViewCardOnScreen(eventCharacter2);
-        yield return new WaitForSeconds(2f);
-        tipViewer.ViewTip("-事件的发生也会一定程度改变人格");
-        eventCharacter2Display.UpdatePersonality(eventCharacter2.personalities[0], Trait.fury);
-        eventCharacter2Display.UpdatePersonality(eventCharacter2.personalities[1], Trait.fury);
-        yield return new WaitForSeconds(7f);
-        DestroyImmediate(eventCharacter2Display.gameObject);
+        //var eventCharacter2Display = ViewManager.instance.ViewCardOnScreen(eventCharacter2);
+        //yield return new WaitForSeconds(2f);
+        //tipViewer.ViewTip("-事件的发生也会一定程度改变人格");
+        //eventCharacter2Display.UpdatePersonality(eventCharacter2.personalities[0], Trait.fury);
+        //eventCharacter2Display.UpdatePersonality(eventCharacter2.personalities[1], Trait.fury);
+        //yield return new WaitForSeconds(7f);
+        //DestroyImmediate(eventCharacter2Display.gameObject);
         yield return new WaitForSeconds(1f);
     }
 

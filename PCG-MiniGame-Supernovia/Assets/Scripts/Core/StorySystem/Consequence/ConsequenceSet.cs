@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using PCG;
 
+/// <summary>
+/// TBD: 应该叫eventSconsequecneSet
+/// </summary>
 [System.Serializable]
 public class ConsequenceSet
 {
@@ -12,4 +15,10 @@ public class ConsequenceSet
     public StatusConsequence statusConsequence = new StatusConsequence();
     public List<CharacterConsequence> characterConsequences = new List<CharacterConsequence>();
     public KeywordConsequence keywordConsequence = new KeywordConsequence();
+
+    public void Apply(BindingInfo[] bindingInfos) {
+        if (statusConsequenceEnabled) {
+            StoryContext.instance.statusVector += statusConsequence.delta;
+        }
+    }
 }
