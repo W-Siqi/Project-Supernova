@@ -6,10 +6,15 @@ using PCG;
 [System.Serializable]
 public class CharacterPrecondition : Precondition
 {
+    public bool isRandom = false;
     public Trait requiredTrait;
     public override bool SatisfiedByCurrentContext() {
            
         foreach (var character in StoryContext.instance.characterDeck) {
+            if (isRandom) {
+                return true;
+            }
+
             foreach (var personality in character.personalities) {
                 // 有1个character的1个personality符合，就返回
                 if (personality.trait == requiredTrait) {

@@ -6,28 +6,23 @@ using UnityEngine;
 [System.Serializable]
 public class StratagemConsequenceSet
 {
-    public List<TraitAlteration> traitAlterationsWhenAccept = new List<TraitAlteration>();
-    public List<TraitAlteration> traitAlterationsWhenDecline = new List<TraitAlteration>();
-    public StatusVector statusDeltaWhenAccept = new StatusVector();
-
+    public TraitAlteration traitAlterationWhenAccept = new TraitAlteration();
+    public TraitAlteration traitAlterationWhenDecline = new TraitAlteration();
+    public StatusConsequence statusConsequenceWhenAccept = new StatusConsequence();
     public void Apply(CharacterCard stratagemProvider, bool isStratagemAccepted) {
         if (isStratagemAccepted) {
-            var finalDelta = new StatusVector(statusDeltaWhenAccept);
+            var finalDelta = new StatusVector(statusConsequenceWhenAccept.delta);
             if (stratagemProvider.HasTrait(Trait.wise)) {
                 finalDelta.AmplifyValueIfPositive(PCGVariableTable.instance.wiseTraitAmplifyRate);
             }
 
-            foreach (var traitAlter in traitAlterationsWhenAccept) {
-                traitAlter.ApplyTo(stratagemProvider);
-            }
+            traitAlterationWhenAccept.ApplyTo(stratagemProvider);
         }
         else {
             //忠诚度必减少
             stratagemProvider.loyalty -= 1;
 
-            foreach (var traitAlter in traitAlterationsWhenDecline) {
-                traitAlter.ApplyTo(stratagemProvider);
-            }
+            traitAlterationWhenDecline.ApplyTo(stratagemProvider);
         }
     }
 }

@@ -333,7 +333,10 @@
     <Compile Include="Assets\Scripts\Depracted\QualiferAlteration.cs" />
     <Compile Include="Assets\Scripts\Depracted\QualiferLibraryEditor.cs" />
     <Compile Include="Assets\Scripts\Depracted\Qualifier.cs" />
+    <Compile Include="Assets\Scripts\Depracted\QualifierAlterationWidget.cs" />
     <Compile Include="Assets\Scripts\Depracted\QualifierLibrary.cs" />
+    <Compile Include="Assets\Scripts\Depracted\QualifierWidget.cs" />
+    <Compile Include="Assets\Scripts\Depracted\SearchQualiferWindow.cs" />
     <Compile Include="Assets\Scripts\Depracted\StoryStage.cs" />
     <Compile Include="Assets\Scripts\Depracted\StratagemCountFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\StratagemProbFilter.cs" />
@@ -352,7 +355,6 @@
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\DeckEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\EventCardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\EventDeckEditor.cs" />
-    <Compile Include="Assets\Scripts\EditSystem\EditorWindows\SearchQualiferWindow.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\StratagemCardEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\EditorWindows\StratagemDeckEditor.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\CardReferenceWidget.cs" />
@@ -364,8 +366,6 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\EventPreconditonWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\FightConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\PreconditionEditWidget.cs" />
-    <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierAlterationWidget.cs" />
-    <Compile Include="Assets\Scripts\EditSystem\Widgets\QualifierWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\StatusConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

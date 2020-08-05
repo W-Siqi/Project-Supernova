@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace PCG {
@@ -33,6 +35,14 @@ namespace PCG {
                     return "明智";
             }
             return trait.ToString();
+        }
+
+        public static Trait GetRandomTrait() {
+            var allValues = new List<Trait>();
+            foreach (Trait trait in Enum.GetValues(typeof(Trait))) {
+                allValues.Add(trait);
+            }
+            return allValues[UnityEngine.Random.Range(0, allValues.Count)];
         }
     }
 }

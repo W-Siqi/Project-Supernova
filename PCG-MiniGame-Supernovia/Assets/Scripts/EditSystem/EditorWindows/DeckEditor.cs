@@ -95,7 +95,10 @@ public abstract class DeckEditor : EditorWindow
         float TEX_HEIGHT_PERSENT = 0.8f;
 
         // draw avatar image
-        Rect texPos = new Rect(leftUpAnchor, new Vector2(width, height * TEX_HEIGHT_PERSENT));
+        Rect texPos = new Rect(leftUpAnchor, new Vector2(width, height * TEX_HEIGHT_PERSENT * 0.15f));
+        // draw name
+        GUI.Label(texPos, card.name);
+        texPos = new Rect(leftUpAnchor + new Vector2(0, height * TEX_HEIGHT_PERSENT*0.15f), new Vector2(width, height * TEX_HEIGHT_PERSENT));
         var avatarImg = card.GetAvatarImage();
         if (avatarImg != null) {
             GUI.DrawTexture(texPos, avatarImg);

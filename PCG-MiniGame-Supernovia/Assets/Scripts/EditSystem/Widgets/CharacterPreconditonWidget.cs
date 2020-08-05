@@ -15,8 +15,10 @@ public class CharacterPreconditonWidget : Widget
 
     public override void RenderUI() {
         EditorGUILayout.BeginHorizontal();
-        editTarget.requiredTrait = (Trait)EditorGUILayout.EnumPopup(editTarget.requiredTrait);
-        EditorGUILayout.LabelField("误差允许度", GUILayout.Width(100));
+        editTarget.isRandom = EditorGUILayout.Toggle("随机对象", editTarget.isRandom);
+        if (!editTarget.isRandom) {
+            editTarget.requiredTrait = (Trait)EditorGUILayout.EnumPopup(editTarget.requiredTrait);
+        }
         EditorGUILayout.EndHorizontal();
     }
 }

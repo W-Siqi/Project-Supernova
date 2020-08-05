@@ -5,7 +5,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class TraitAlteration {
-    public enum Type {none, add, remove }
+    public enum Type {none, add, remove, refreshAll}
 
     public Trait targetTrait;
     public Type type;
@@ -19,7 +19,7 @@ public class TraitAlteration {
         if (type == Type.add) {
             bool existEmpty = false;
             foreach (var personality in target.personalities) {
-                if (personality.trait ==  Trait.none) {
+                if (personality.trait == Trait.none) {
                     existEmpty = true;
                     personality.trait = targetTrait;
                 }
@@ -35,6 +35,11 @@ public class TraitAlteration {
                 if (personality.trait == targetTrait) {
                     personality.trait = Trait.none;
                 }
+            }
+        }
+        else if (type == Type.refreshAll) {
+            foreach (var personality in target.personalities) {
+                personality.trait = TraitUtils.GetRandomTrait();
             }
         }
     }

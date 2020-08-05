@@ -4,9 +4,9 @@ using UnityEngine;
 
 [System.Serializable]
 public class StatusVector {
-    public int people = 80;
-    public int money = 76;
-    public int army = 20;
+    public int people = 0;
+    public int money = 0;
+    public int army = 0;
 
     public static StatusVector operator +(StatusVector a, StatusVector b) {
         var res = new StatusVector();

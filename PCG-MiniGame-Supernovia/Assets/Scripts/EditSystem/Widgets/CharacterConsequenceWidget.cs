@@ -15,9 +15,9 @@ public class CharacterConsequenceWidget:Widget
     public override void RenderUI() {
         EditorGUILayout.BeginHorizontal();
         editTarget.bindFlag = EditorGUILayout.Popup(editTarget.bindFlag, bindingOptions);
-        editTarget.traitToBecome = (Trait)EditorGUILayout.EnumPopup(editTarget.traitToBecome);
-        EditorGUILayout.LabelField("转化强度", GUILayout.Width(100));
-        editTarget.transferStrength = EditorGUILayout.IntField(editTarget.transferStrength);
+        editTarget.traitAlteration.targetTrait = (Trait)EditorGUILayout.EnumPopup(editTarget.traitAlteration.targetTrait);
+        editTarget.traitAlteration.type = (TraitAlteration.Type)EditorGUILayout.EnumPopup(editTarget.traitAlteration.type);
+        editTarget.loyaltyAlteraion = EditorGUILayout.IntField(editTarget.loyaltyAlteraion);
         EditorGUILayout.EndHorizontal();
     }
 }

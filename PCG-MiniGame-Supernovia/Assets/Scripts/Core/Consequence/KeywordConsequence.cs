@@ -6,7 +6,7 @@ namespace PCG {
     [System.Serializable]
     public class KeywordConsequence : Consequence {
         public enum Keyword { 
-            none,warFight,refreshTraits
+            none,warFight
         }
 
         public Keyword keyword = Keyword.none;

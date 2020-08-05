@@ -66,7 +66,7 @@ MonoBehaviour:
     - trait: 0
     - trait: 0
   eventCards:
-  - name: "\u4E0E\u9B54\u9B3C\u505A\u4EA4\u6613"
+  - name: "\u5929\u7F5A"
     description: "\u5BF9\u5FC3\u4E2D\u7684\u6076\u9B54\u533A\u670D"
     avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Background
       Pack Vol 1/background_67.png
@@ -74,33 +74,39 @@ MonoBehaviour:
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 1
+      characterEnabled: 0
       eventEnabled: 0
       characterPreconditions:
-      - requiredTrait: 5
-      - requiredTrait: 0
+      - isRandom: 0
+        requiredTrait: 5
+      - isRandom: 0
+        requiredTrait: 0
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 0
-      characterConsequenceEnabled: 1
-      keywordConsequenceEnabled: 1
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
-          people: 51
-          money: 14
-          army: 63
+          people: -50
+          money: 0
+          army: 0
       characterConsequences:
       - bindFlag: 0
-        traitToBecome: 0
-        transferStrength: 1
+        traitAlteration:
+          targetTrait: 0
+          type: 0
+        loyaltyAlteraion: 0
       - bindFlag: 0
-        traitToBecome: 0
-        transferStrength: 1
+        traitAlteration:
+          targetTrait: 0
+          type: 0
+        loyaltyAlteraion: 0
       keywordConsequence:
         keyword: 2
-  - name: "\u6697\u591C\u884C\u7A83"
+  - name: "\u519B\u5FC3\u7D0A\u4E71"
     description: 
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/14_alpha.tif
     isAanonymous: 0
@@ -114,15 +120,339 @@ MonoBehaviour:
         qualifiers: []
       eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 0
+      statusConsequenceEnabled: 1
       characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: 0
+          army: -50
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u8D22\u653F\u5371\u673A"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: -50
+          army: 0
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u6708\u4E0B\u9189\u9152"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 1
+        requiredTrait: 0
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      characterConsequenceEnabled: 1
       keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
           people: 80
           money: 76
           army: 20
+      characterConsequences:
+      - bindFlag: 0
+        traitAlteration:
+          targetTrait: 0
+          type: 3
+        loyaltyAlteraion: 0
+      keywordConsequence:
+        keyword: 2
+  - name: "\u795E\u4F51"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 0
+      eventEnabled: 0
+      characterPreconditions: []
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 60
+          money: 60
+          army: 60
       characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u51FA\u5F81"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 7
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 1
+      statusConsequence:
+        delta:
+          people: 80
+          money: 76
+          army: 20
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 1
+  - name: "\u5175\u53D8\u9547\u538B"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 7
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: 0
+          army: -30
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u4E0E\u738B\u5983\u79C1\u5954"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 5
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: -10
+          money: 0
+          army: 0
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u5927\u6446\u5BB4\u5E2D"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 5
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 1
+      characterConsequenceEnabled: 0
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: -10
+          army: 0
+      characterConsequences: []
+      keywordConsequence:
+        keyword: 0
+  - name: "\u8BEC\u9677"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 6
+      - isRandom: 1
+        requiredTrait: 0
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      characterConsequenceEnabled: 1
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: 0
+          army: 0
+      characterConsequences:
+      - bindFlag: 1
+        traitAlteration:
+          targetTrait: 0
+          type: 0
+        loyaltyAlteraion: -1
+      keywordConsequence:
+        keyword: 2
+  - name: "\u540C\u6D41\u5408\u6C61"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 6
+      - isRandom: 1
+        requiredTrait: 0
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      characterConsequenceEnabled: 1
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: 0
+          army: 0
+      characterConsequences:
+      - bindFlag: 1
+        traitAlteration:
+          targetTrait: 6
+          type: 1
+        loyaltyAlteraion: 0
+      keywordConsequence:
+        keyword: 0
+  - name: "\u81EA\u8BA4\u5931\u5BA0"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 8
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      characterConsequenceEnabled: 1
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: 0
+          army: 0
+      characterConsequences:
+      - bindFlag: 0
+        traitAlteration:
+          targetTrait: 0
+          type: 0
+        loyaltyAlteraion: -1
+      keywordConsequence:
+        keyword: 0
+  - name: "\u6043\u624D\u50B2\u7269"
+    description: 
+    avatarImagePath: 
+    isAanonymous: 0
+    discruption: this is a event, somthing happened
+    preconditonSet:
+      environmentEnabled: 0
+      characterEnabled: 1
+      eventEnabled: 0
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 8
+      - isRandom: 1
+        requiredTrait: 0
+      environmentPrecondition:
+        qualifiers: []
+      eventPreconditions: []
+    consequenceSet:
+      statusConsequenceEnabled: 0
+      characterConsequenceEnabled: 1
+      keywordConsequenceEnabled: 0
+      statusConsequence:
+        delta:
+          people: 0
+          money: 0
+          army: 0
+      characterConsequences:
+      - bindFlag: 1
+        traitAlteration:
+          targetTrait: 9
+          type: 1
+        loyaltyAlteraion: 0
       keywordConsequence:
         keyword: 0
   stratagemCards:
@@ -131,151 +461,188 @@ MonoBehaviour:
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10_alpha_periodical.tif
     yesText: "\u4E0D\u597D"
     noText: "\u53EF\u4EE5"
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 0
-      characterConsequenceEnabled: 1
-      keywordConsequenceEnabled: 1
-      statusConsequence:
+      traitAlterationWhenAccept:
+        targetTrait: 7
+        type: 1
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
         delta:
-          people: -22
-          money: -3
-          army: 20
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
+          people: 0
+          money: 0
+          army: 16
   - name: "\u52A0\u7A0E"
     description: "\u5E2E\u6211\u5077\u70B9\u98DF\u7269\uFF0C\u6211\u597D\u51E0\u5929\u6CA1\u6709\u5403\u4E86\u3002\u6211\u4EEC\u4E00\u8D77\u5206"
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/26.tif
     yesText: "\u597D\u5427"
     noText: "\u6211\u62D2\u7EDD"
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
         delta:
-          people: -13
-          money: 29
-          army: 6
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
-  - name: "\u6551\u4F60\u96BE\u6C11"
+          people: -11
+          money: 20
+          army: 0
+  - name: "\u9881\u5E03\u65B0\u653F"
     description: 
-    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/40.tif
+    avatarImagePath: 
     yesText: "\u53EF\u4EE5"
     noText: "\u4E0D\u884C"
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
         delta:
-          people: 26
-          money: -20
-          army: -4
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
-  - name: "\u7ED3\u4EA4\u4ED6\u56FD\u5173\u7CFB"
+          people: -10
+          money: 18
+          army: -11
+  - name: "\u4EA4\u6D41\u653F\u89C1"
     description: 
-    avatarImagePath: Assets/Resources/CardImage/Annotation 2020-07-29 015017.png
+    avatarImagePath: 
     yesText: "\u53EF\u4EE5"
     noText: "\u4E0D\u884C"
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 3
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
+        delta:
+          people: 0
+          money: 0
+          army: 0
+  - name: "\u53D8\u6CD5"
+    description: 
+    avatarImagePath: 
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    consequenceSet:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
         delta:
           people: 11
-          money: 15
-          army: 6
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
-  - name: "\u9881\u5E03\u65B0\u653F\u7B56"
+          money: 11
+          army: 11
+  - name: "\u5927\u6539\u9769"
     description: 
-    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/40_Holomask.tif
+    avatarImagePath: 
     yesText: "\u53EF\u4EE5"
     noText: "\u4E0D\u884C"
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
+        delta:
+          people: 11
+          money: -16
+          army: -30
+  - name: "\u5904\u51B3\u6218\u4FD8"
+    description: 
+    avatarImagePath: 
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    consequenceSet:
+      traitAlterationWhenAccept:
+        targetTrait: 2
+        type: 1
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
+        delta:
+          people: 25
+          money: 9
+          army: 0
+  - name: "\u5E73\u606F\u6C11\u6124"
+    description: 
+    avatarImagePath: 
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    consequenceSet:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 4
+        type: 1
+      statusConsequenceWhenAccept:
+        delta:
+          people: 16
+          money: -11
+          army: -16
+  - name: "\u6682\u505C\u6B4C\u821E"
+    description: 
+    avatarImagePath: 
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    consequenceSet:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 5
+        type: 1
+      statusConsequenceWhenAccept:
+        delta:
+          people: 0
+          money: 23
+          army: 0
+  - name: "\u53EC\u89C1\u4F7F\u8005"
+    description: 
+    avatarImagePath: 
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    consequenceSet:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
         delta:
           people: 5
-          money: -11
-          army: 6
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
-  - name: "\u52A0\u4FF8\u7984"
-    description: "\u6211\u8981\u94B1"
-    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/41_alpha.tif
+          money: 25
+          army: -14
+  - name: "\u62DC\u89C1\u795E\u660E"
+    description: 
+    avatarImagePath: 
     yesText: "\u53EF\u4EE5"
     noText: "\u4E0D\u884C"
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
     consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
+      traitAlterationWhenAccept:
+        targetTrait: 0
+        type: 0
+      traitAlterationWhenDecline:
+        targetTrait: 4
+        type: 1
+      statusConsequenceWhenAccept:
         delta:
-          people: 1
-          money: -17
-          army: 4
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
+          people: 0
+          money: -23
+          army: 0
   substoryCards:
   - name: name
     description: 
@@ -312,76 +679,52 @@ MonoBehaviour:
       avatarImagePath: 
       yesText: "\u53EF\u4EE5"
       noText: "\u4E0D\u884C"
-      preconditonSet:
-        environmentEnabled: 0
-        characterEnabled: 0
-        eventEnabled: 0
-        characterPreconditions: []
-        environmentPrecondition:
-          qualifiers: []
-        eventPreconditions: []
       consequenceSet:
-        statusConsequenceEnabled: 0
-        characterConsequenceEnabled: 0
-        keywordConsequenceEnabled: 0
-        statusConsequence:
+        traitAlterationWhenAccept:
+          targetTrait: 0
+          type: 0
+        traitAlterationWhenDecline:
+          targetTrait: 0
+          type: 0
+        statusConsequenceWhenAccept:
           delta:
-            people: 80
-            money: 1
-            army: 20
-        characterConsequences: []
-        keywordConsequence:
-          keyword: 0
+            people: 0
+            money: 0
+            army: 0
     - name: name
       description: 
       avatarImagePath: 
       yesText: "\u53EF\u4EE5"
       noText: "\u4E0D\u884C"
-      preconditonSet:
-        environmentEnabled: 0
-        characterEnabled: 0
-        eventEnabled: 0
-        characterPreconditions: []
-        environmentPrecondition:
-          qualifiers: []
-        eventPreconditions: []
       consequenceSet:
-        statusConsequenceEnabled: 0
-        characterConsequenceEnabled: 0
-        keywordConsequenceEnabled: 0
-        statusConsequence:
+        traitAlterationWhenAccept:
+          targetTrait: 0
+          type: 0
+        traitAlterationWhenDecline:
+          targetTrait: 0
+          type: 0
+        statusConsequenceWhenAccept:
           delta:
-            people: 80
-            money: 1
-            army: 20
-        characterConsequences: []
-        keywordConsequence:
-          keyword: 0
+            people: 0
+            money: 0
+            army: 0
     - name: name
       description: 
       avatarImagePath: 
       yesText: "\u53EF\u4EE5"
       noText: "\u4E0D\u884C"
-      preconditonSet:
-        environmentEnabled: 0
-        characterEnabled: 0
-        eventEnabled: 0
-        characterPreconditions: []
-        environmentPrecondition:
-          qualifiers: []
-        eventPreconditions: []
       consequenceSet:
-        statusConsequenceEnabled: 0
-        characterConsequenceEnabled: 0
-        keywordConsequenceEnabled: 0
-        statusConsequence:
+        traitAlterationWhenAccept:
+          targetTrait: 0
+          type: 0
+        traitAlterationWhenDecline:
+          targetTrait: 0
+          type: 0
+        statusConsequenceWhenAccept:
           delta:
-            people: 80
-            money: 1
-            army: 20
-        characterConsequences: []
-        keywordConsequence:
-          keyword: 0
+            people: 0
+            money: 0
+            army: 0
     eventCards:
     - name: name
       description: 
