@@ -39,7 +39,7 @@ namespace PCG {
         private ResTable resTable;
         private Dictionary<CharacterCard, CharacterStatusViewer> characterStatusViewerDict = new Dictionary<CharacterCard, CharacterStatusViewer>();
         public void Init() {
-            foreach (var charcater in StoryContext.instance.characterDeck) {
+            foreach (var charcater in PlayData.instance.gameState.characterDeck) {
                 var GO = Instantiate(ResourceTable.instance.prefabPage.characterStatusViewer);
                 var viewer = GO.GetComponent<CharacterStatusViewer>();
                 viewer.HookTo(charcater);

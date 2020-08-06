@@ -16,9 +16,9 @@ public class ConsequenceSet
     public List<CharacterConsequence> characterConsequences = new List<CharacterConsequence>();
     public KeywordConsequence keywordConsequence = new KeywordConsequence();
 
-    public void Apply(BindingInfo[] bindingInfos) {
+    public void Apply(BindingInfo[] bindingInfos,GameState gameStateToApply) {
         if (statusConsequenceEnabled) {
-            StoryContext.instance.statusVector += statusConsequence.delta;
+            gameStateToApply.statusVector += statusConsequence.delta;
         }
     }
 }

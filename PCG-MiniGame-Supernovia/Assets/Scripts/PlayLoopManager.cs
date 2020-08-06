@@ -5,25 +5,15 @@ using PCG;
 
 // 管理 决策 - 人物 - 事件 等游戏游玩主循环
 public class PlayLoopManager : MonoBehaviour {
-    [System.Serializable]
-    private class Config {
-        public int eventCountPerRound = 2;
-    }
-
-    [SerializeField]
-    private List<StoryStage> storyline = new List<StoryStage>();
-    [SerializeField]
-    private Config config;
-
     public IEnumerator PlayLoop() {
-        for(int round = 0; round < PCGVariableTable.instance.roundCount; round++ ) {
+        for(int round = 0; round < PlayData.instance.gameConfig.roundCount; round++ ) {
             BuffApplyBeforeRound();
 
             yield return StartCoroutine(CouncilStage(round));
 
             yield return StartCoroutine(EventStream());
 
-            if (CheckDeathEnding()) {
+            if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
                 Debug.Log("游戏失败");
                 break;
             }
@@ -31,34 +21,18 @@ public class PlayLoopManager : MonoBehaviour {
         Debug.Log("游戏结束");
     }
 
-    private bool CheckDeathEnding() {
-        var status = StoryContext.instance.statusVector;
-        if (status.army < 0 || status.money < 0 || status.people < 0) {
-            return true;
-        }
-        foreach (var character in StoryContext.instance.characterDeck) {
-            if (character.loyalty <= 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     IEnumerator EventStream() {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneRT);
         yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
-        var eventViewer = ViewManager.instance.eventViewer;
-        var qualifeiedEvents = EventCardFilter.Filt();
-        for (int i = 0; i < config.eventCountPerRound; i++) {
-            var selectedEvent = qualifeiedEvents[Random.Range(0, qualifeiedEvents.Length)];
-            var bindingInfos = selectedEvent.preconditonSet.Bind();
 
-            // 演出event
+        var eventViewer = ViewManager.instance.eventViewer;
+        foreach (var selectedEvent in GameExecuter.SelectEventCards(PlayData.instance.gameState, PlayData.instance.gameConfig)) {
+            var bindingInfos = selectedEvent.preconditonSet.Bind(PlayData.instance.gameState);
+
             // TBD: 可能会出错，如果consequence如果是运行时随机的话不是确定的话，show在没apply的时候不知道确定值
             yield return StartCoroutine(eventViewer.ViewEventCoroutine(selectedEvent, bindingInfos));
 
-            // apply consequence
-            selectedEvent.consequenceSet.Apply(bindingInfos);
+            selectedEvent.consequenceSet.Apply(bindingInfos, PlayData.instance.gameState);
         }
         yield return new WaitForSeconds(2f);
     }
@@ -67,10 +41,10 @@ public class PlayLoopManager : MonoBehaviour {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
 
-        foreach (var character in StoryContext.instance.characterDeck) {
+        foreach (var character in PlayData.instance.gameState.characterDeck) {
             if (character.HasTrait(Trait.silence)) {
                 //沉默检测
-                if (Random.value < PCGVariableTable.instance.slicentTraitSlicenceProbility) {
+                if (Random.value < PlayData.instance.gameConfig.slicentTraitSlicenceProbility) {
                     continue;
                 }
             }
@@ -79,7 +53,7 @@ public class PlayLoopManager : MonoBehaviour {
             ViewManager.instance.ViewCharacterOfDialog(character.GetAvatarImage());
 
             // 提取建议卡
-            var straCard = StoryContext.instance.stratagemDict[character][curRound];
+            var straCard =PlayData.instance.gameState.stratagemDict[character][curRound];
             // show Dialog
             ViewManager.instance.ViewDialog(straCard.description);
 
@@ -95,18 +69,7 @@ public class PlayLoopManager : MonoBehaviour {
                 yield return null;
             }
 
-            if (agreeDecision) {
-                // 应用后果
-                straCard.consequenceSet.Apply(character, true);
-
-                // 残暴词缀应用
-                if (character.HasTrait(Trait.cruel)) {
-                    StoryContext.instance.statusVector.people -= PCGVariableTable.instance.cruelTraitPeopleValuePerDecision;
-                }
-            }
-            else {
-                straCard.consequenceSet.Apply(character, false);
-            }
+            straCard.consequenceSet.Apply(PlayData.instance.gameState, PlayData.instance.gameConfig, character, agreeDecision);         
 
             // end show Dialog
             ViewManager.instance.EndViewDialog();
@@ -116,10 +79,10 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     private void BuffApplyBeforeRound() {
-        foreach (var character in StoryContext.instance.characterDeck) {
+        foreach (var character in PlayData.instance.gameState.characterDeck) {
             if (character.HasTrait(Trait.corrupt)) {
-                var corrputValue = PCGVariableTable.instance.corrputTraitMoneyPerRound;
-                StoryContext.instance.statusVector.money -= corrputValue;
+                var corrputValue = PlayData.instance.gameConfig.corrputTraitMoneyPerRound;
+               PlayData.instance.gameState.statusVector.money -= corrputValue;
 
                 ViewManager.instance.HightLightCharacterTrait(character, Trait.corrupt);
             }

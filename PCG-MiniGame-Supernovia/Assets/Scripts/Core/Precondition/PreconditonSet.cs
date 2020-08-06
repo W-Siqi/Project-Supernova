@@ -16,10 +16,10 @@ public class PreconditonSet
 
     // TBD:
     // 多个precondition 可能会bind到同一个对象
-    public BindingInfo[] Bind() {
+    public BindingInfo[] Bind(GameState gameState) {
         var bindingInfos = new List<BindingInfo>();
         foreach (var preconditon in characterPreconditions) {
-            bindingInfos.Add(preconditon.Bind());
+            bindingInfos.Add(preconditon.Bind(gameState));
         }
         return bindingInfos.ToArray();
     }
@@ -29,28 +29,14 @@ public class PreconditonSet
     /// </summary>
     /// <returns></returns>
     // TBD: evironment 和 event先废弃
-    public bool SatisfiedByCurrentContext() {
+    public bool SatisfiedAt(GameState givenState) {
         var charaSatisfied = true;
         foreach (var cha in characterPreconditions) {
-            if (!cha.SatisfiedByCurrentContext()) {
+            if (!cha.SatisfiedAt(givenState)) {
                 charaSatisfied = false;
                 break;
             }
         }
-
-        //var envSatisfied = true;
-        //var eventSatusfied = true;
-
-        //if (!environmentPrecondition.SatisfiedByCurrentContext()) {
-        //    envSatisfied = true;
-        //}
-
-        //foreach (var eventPreconditon in eventPreconditions) {
-        //    if (!eventPreconditon.SatisfiedByCurrentContext()) {
-        //        envSatisfied = false;
-        //        break;
-        //    }
-        //}
 
         return charaSatisfied;
     }

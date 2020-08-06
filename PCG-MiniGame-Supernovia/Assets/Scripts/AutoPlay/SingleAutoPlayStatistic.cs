@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleAutoPlayStatistic : MonoBehaviour
+public class SingleAutoPlayStatistic
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool win;
+    public int roundsSurvive;
+    public bool lostInEventStream;
+    public bool lostInCouncil;
+    public bool lostForMoney;
+    public bool lostForArmy;
+    public bool lostForPeople;
+    public bool lostForloyalty;
 }

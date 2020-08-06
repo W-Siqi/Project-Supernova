@@ -2,28 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PCGVariableTable : MonoBehaviour {
-    public static PCGVariableTable _instance = null;
+namespace PCG {
+    [System.Serializable]
+    public class GameConfig {
+        public int roundCount = 10;
+        public int characterCount = 4;
+        public int eventCountPerRound = 2;
 
-    public int roundCount = 10;
-    public int characterCount = 4;
+        public float wiseTraitAmplifyRate = 0.3f;
+        public float slicentTraitSlicenceProbility = 0.3f;
+        public int corrputTraitMoneyPerRound = 2;
+        public int cruelTraitPeopleValuePerDecision = 5;
 
-    public float wiseTraitAmplifyRate = 0.3f;
-    public float slicentTraitSlicenceProbility = 0.3f;
-    public int corrputTraitMoneyPerRound = 2;
-    public int cruelTraitPeopleValuePerDecision = 5;
-
-
-    public static PCGVariableTable instance {
-        get {
-            if (_instance == null) {
-                _instance = FindObjectOfType<PCGVariableTable>();
-                if (_instance == null) {
-                    var GO = new GameObject("PCG Table");
-                    _instance = GO.AddComponent<PCGVariableTable>();
-                }
-            }
-            return _instance;
+        public GameConfig MakeDeepCopy() {
+            return JsonUtility.FromJson<GameConfig>(JsonUtility.ToJson(this));
         }
     }
 }

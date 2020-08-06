@@ -16,12 +16,12 @@ public class StoryEndingManager : MonoBehaviour
     [SerializeField]
     private StoryBook.PageContent badEndLoyalty;
     public IEnumerator PlayStoryEnding() {
-        var status = StoryContext.instance.statusVector;
+        var status =PlayData.instance.gameState.statusVector;
         StoryBook.PageContent pageContentOfEnd = null;
         bool win = false;
 
         CharacterCard zeroLoyaltyCharacter = null;
-        foreach (var character in StoryContext.instance.characterDeck) {
+        foreach (var character in PlayData.instance.gameState.characterDeck) {
             if (character.loyalty <= 0) {
                 zeroLoyaltyCharacter = character;
                 break;

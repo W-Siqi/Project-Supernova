@@ -296,6 +296,7 @@
     <Compile Include="Assets\External\SceneAssests\Forest Sprite Pack\Scripts\OrthoParallax.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\AutoPlayManager.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\AutoPlayer.cs" />
+    <Compile Include="Assets\Scripts\AutoPlay\MonteCarloAutoPlayer.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\MultiAutoPlayStatistic.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\SingleAutoPlayStatistic.cs" />
     <Compile Include="Assets\Scripts\Core\BindingInfo.cs" />
@@ -308,9 +309,11 @@
     <Compile Include="Assets\Scripts\Core\Consequence\StatusConsequence.cs" />
     <Compile Include="Assets\Scripts\Core\Consequence\StratagemConsequenceSet.cs" />
     <Compile Include="Assets\Scripts\Core\EventCard.cs" />
-    <Compile Include="Assets\Scripts\Core\EventCardFilter.cs" />
     <Compile Include="Assets\Scripts\Core\EventDescriptionGenerator.cs" />
+    <Compile Include="Assets\Scripts\Core\GameExecuter.cs" />
+    <Compile Include="Assets\Scripts\Core\GameState.cs" />
     <Compile Include="Assets\Scripts\Core\Personality.cs" />
+    <Compile Include="Assets\Scripts\Core\PlayData.cs" />
     <Compile Include="Assets\Scripts\Core\Precondition\CharacterPrecondition.cs" />
     <Compile Include="Assets\Scripts\Core\Precondition\EnvironmentPrecondition.cs" />
     <Compile Include="Assets\Scripts\Core\Precondition\EventPreCondition.cs" />
@@ -330,6 +333,7 @@
     <Compile Include="Assets\Scripts\Depracted\CountFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\Distribution.cs" />
     <Compile Include="Assets\Scripts\Depracted\EnvironmentConsequence.cs" />
+    <Compile Include="Assets\Scripts\Depracted\EventCardFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\EventCountFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\EventProbFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\FightConsequence.cs" />

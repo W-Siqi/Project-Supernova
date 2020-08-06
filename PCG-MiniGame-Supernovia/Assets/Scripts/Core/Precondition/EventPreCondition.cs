@@ -11,12 +11,8 @@ namespace PCG {
             eventCardName = eventCard.name;
         }
 
-        /// <summary>
-        /// TBD: 当前为空实现
-        /// </summary>
-        /// <returns></returns>
-        public override bool SatisfiedByCurrentContext() {
-            return true;
+        public override bool SatisfiedAt(GameState givenState) {
+            throw new System.NotImplementedException();
         }
     }
 }

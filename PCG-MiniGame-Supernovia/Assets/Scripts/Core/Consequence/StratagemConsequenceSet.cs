@@ -9,15 +9,20 @@ public class StratagemConsequenceSet
     public TraitAlteration traitAlterationWhenAccept = new TraitAlteration();
     public TraitAlteration traitAlterationWhenDecline = new TraitAlteration();
     public StatusConsequence statusConsequenceWhenAccept = new StatusConsequence();
-    public void Apply(CharacterCard stratagemProvider, bool isStratagemAccepted) {
+    public void Apply(GameState gameStateToApply, GameConfig gameConfig, CharacterCard stratagemProvider, bool isStratagemAccepted) {
         if (isStratagemAccepted) {
             var finalDelta = new StatusVector(statusConsequenceWhenAccept.delta);
             if (stratagemProvider.HasTrait(Trait.wise)) {
-                finalDelta.AmplifyValueIfPositive(PCGVariableTable.instance.wiseTraitAmplifyRate);
+                finalDelta.AmplifyValueIfPositive(gameConfig.wiseTraitAmplifyRate);
             }
-            StoryContext.instance.statusVector += finalDelta;
+            gameStateToApply.statusVector += finalDelta;
 
             traitAlterationWhenAccept.ApplyTo(stratagemProvider);
+
+            //词缀check
+            if (stratagemProvider.HasTrait(Trait.cruel)) {
+                gameStateToApply.statusVector.people -= gameConfig.cruelTraitPeopleValuePerDecision;
+            }
         }
         else {
             //忠诚度必减少

@@ -8,9 +8,9 @@ public class CharacterPrecondition : Precondition
 {
     public bool isRandom = false;
     public Trait requiredTrait;
-    public override bool SatisfiedByCurrentContext() {
+    public override bool SatisfiedAt(GameState givenState){
            
-        foreach (var character in StoryContext.instance.characterDeck) {
+        foreach (var character in givenState.characterDeck) {
             if (isRandom) {
                 return true;
             }
@@ -30,9 +30,9 @@ public class CharacterPrecondition : Precondition
     /// 绑定失败，则返回一个空对象
     /// </summary>
     /// <returns></returns>
-    public BindingInfo Bind() {
+    public BindingInfo Bind(GameState gameState) {
         var bindingInfo= new BindingInfo();
-        bindingInfo.bindedCharacter = StoryContext.instance.characterDeck[Random.Range(0, StoryContext.instance.characterDeck.Count)];
+        bindingInfo.bindedCharacter = gameState.characterDeck[Random.Range(0, gameState.characterDeck.Count)];
         bindingInfo.bindedPersonalityOfCharacter = bindingInfo.bindedCharacter.personalities[0];
         return bindingInfo;
     }

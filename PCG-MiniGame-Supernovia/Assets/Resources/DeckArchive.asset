@@ -84,7 +84,7 @@ MonoBehaviour:
       keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
-          people: -50
+          people: -5
           money: 0
           army: 0
       characterConsequences:
@@ -121,7 +121,7 @@ MonoBehaviour:
         delta:
           people: 0
           money: 0
-          army: -50
+          army: -15
       characterConsequences: []
       keywordConsequence:
         keyword: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
       statusConsequence:
         delta:
           people: 0
-          money: -100
+          money: -8
           army: 0
       characterConsequences: []
       keywordConsequence:
@@ -257,7 +257,7 @@ MonoBehaviour:
       keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
-          people: -100
+          people: -8
           money: 0
           army: -14
       characterConsequences: []
@@ -284,7 +284,7 @@ MonoBehaviour:
       keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
-          people: -10
+          people: -9
           money: 0
           army: 0
       characterConsequences: []
