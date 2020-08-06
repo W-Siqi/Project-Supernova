@@ -7,7 +7,6 @@ using PCG;
 public class PlayLoopManager : MonoBehaviour {
     [System.Serializable]
     private class Config {
-        public bool playInQuickMode = true;
         public int eventCountPerRound = 2;
     }
 
@@ -16,34 +15,18 @@ public class PlayLoopManager : MonoBehaviour {
     [SerializeField]
     private Config config;
 
-    public void StartPlayLoop() {
-        StartCoroutine(PlayLoopCoroutine());
-    }
-
-    IEnumerator PlayLoopCoroutine() {
-        int round = 0;
-        foreach (var stage in storyline) {
-            if (round >= PCGVariableTable.instance.roundCount) {
-                Debug.Log("游戏胜利");
-                break;
-            }
-
-            if (!config.playInQuickMode) {
-                yield return StartCoroutine(ViewManager.instance.ViewReachNewStoryStageCoroutine(stage));
-            }
+    public IEnumerator PlayLoop() {
+        for(int round = 0; round < PCGVariableTable.instance.roundCount; round++ ) {
+            BuffApplyBeforeRound();
 
             yield return StartCoroutine(CouncilStage(round));
 
             yield return StartCoroutine(EventStream());
 
-            BuffApplyBeforeRoundEnd();
-
             if (CheckDeathEnding()) {
                 Debug.Log("游戏失败");
                 break;
             }
-
-            round++;
         }
         Debug.Log("游戏结束");
     }
@@ -132,11 +115,13 @@ public class PlayLoopManager : MonoBehaviour {
         }
     }
 
-    private void BuffApplyBeforeRoundEnd() {
+    private void BuffApplyBeforeRound() {
         foreach (var character in StoryContext.instance.characterDeck) {
             if (character.HasTrait(Trait.corrupt)) {
                 var corrputValue = PCGVariableTable.instance.corrputTraitMoneyPerRound;
                 StoryContext.instance.statusVector.money -= corrputValue;
+
+                ViewManager.instance.HightLightCharacterTrait(character, Trait.corrupt);
             }
         }
     }

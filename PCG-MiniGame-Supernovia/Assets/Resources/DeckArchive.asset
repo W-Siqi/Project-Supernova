@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: DeckArchive
   m_EditorClassIdentifier: 
   characterCards:
-  - name: "\u7EA2\u80E1\u5B50\u77EE\u4EBA"
+  - name: "\u51EF\u6492\u5C06\u519B"
     description: "\u4ED6\u6709\u957F\u7684\u7EA2\u7684\u80E1\u5B50"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 2/character_66.png
+    avatarImagePath: Assets/CardImageRef/Image-removebg-preview.png
     loyalty: 4
     attributes:
       atkVal: 3
@@ -26,10 +25,9 @@ MonoBehaviour:
     - trait: 0
     - trait: 0
     - trait: 0
-  - name: "\u9965\u997F\u96BE\u6C11"
+  - name: "\u6069\u65AF\u7279"
     description: "\u6076"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_38.png
+    avatarImagePath: Assets/CardImageRef/Image__2_-removebg-preview.png
     loyalty: 3
     attributes:
       atkVal: 6
@@ -39,10 +37,9 @@ MonoBehaviour:
     - trait: 0
     - trait: 0
     - trait: 0
-  - name: "\u5730\u7CBE\u5D3D\u5B50"
+  - name: "\u51A5\u51A5\u541B"
     description: "\u6700\u559C\u6B22\u94B1\u4E86"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 2/character_96.png
+    avatarImagePath: Assets/CardImageRef/Image__3_-removebg-preview.png
     loyalty: 3
     attributes:
       atkVal: 3
@@ -52,10 +49,9 @@ MonoBehaviour:
     - trait: 0
     - trait: 0
     - trait: 0
-  - name: "\u7EDD\u671B\u7537"
+  - name: "\u6D1B\u514B"
     description: "\u6CA1\u8111\u5B50"
-    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
-      Pack Vol 1/character_23.png
+    avatarImagePath: Assets/CardImageRef/Image-removebg-preview (1).png
     loyalty: 3
     attributes:
       atkVal: 8
@@ -74,12 +70,10 @@ MonoBehaviour:
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 0
+      characterEnabled: 1
       eventEnabled: 0
       characterPreconditions:
-      - isRandom: 0
-        requiredTrait: 5
-      - isRandom: 0
+      - isRandom: 1
         requiredTrait: 0
       environmentPrecondition:
         qualifiers: []
@@ -138,9 +132,11 @@ MonoBehaviour:
     discruption: this is a event, somthing happened
     preconditonSet:
       environmentEnabled: 0
-      characterEnabled: 0
+      characterEnabled: 1
       eventEnabled: 0
-      characterPreconditions: []
+      characterPreconditions:
+      - isRandom: 0
+        requiredTrait: 1
       environmentPrecondition:
         qualifiers: []
       eventPreconditions: []
@@ -151,13 +147,13 @@ MonoBehaviour:
       statusConsequence:
         delta:
           people: 0
-          money: -50
+          money: -100
           army: 0
       characterConsequences: []
       keywordConsequence:
         keyword: 0
   - name: "\u6708\u4E0B\u9189\u9152"
-    description: 
+    description: "[-c0]\u6700\u8FD1\u5FC3\u795E\u4E0D\u5B81\uFF0C; \u5728\u6708\u4E0B\u72EC\u914C\u3002;[>c0] "
     avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
@@ -261,9 +257,9 @@ MonoBehaviour:
       keywordConsequenceEnabled: 0
       statusConsequence:
         delta:
-          people: 0
+          people: -100
           money: 0
-          army: -30
+          army: -14
       characterConsequences: []
       keywordConsequence:
         keyword: 0

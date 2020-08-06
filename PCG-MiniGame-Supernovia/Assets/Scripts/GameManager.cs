@@ -6,20 +6,29 @@ using UnityEngine;
 namespace PCG {
     public class GameManager : MonoBehaviour {
         [SerializeField]
+        private GuideManager guideManager;
+        [SerializeField]
         private PlayLoopManager playLoopManager;
         [SerializeField]
-        private GuideManager guideManager;
+        private StoryEndingManager storyEndingManager;
+
         [SerializeField]
         private bool skipGuide;
 
         private void Awake() {
             DontDestroyOnLoad(gameObject);
-            StartGame();
+            StartCoroutine(PlayGame());
         }
 
         // [ContextMenu("start game")]
-        public void StartGame() {
-            StartCoroutine(StartGameProcedule());
+        public IEnumerator PlayGame() {
+            yield return StartCoroutine(StartGameProcedule());
+
+            // 开始游戏主循环
+            yield return StartCoroutine(playLoopManager.PlayLoop());
+
+            // ending
+            yield return StartCoroutine(storyEndingManager.PlayStoryEnding());
         }
 
         IEnumerator StartGameProcedule() {
@@ -33,8 +42,6 @@ namespace PCG {
             if (!skipGuide) {
                 yield return StartCoroutine(guideManager.RunGuidence());
             }
-            // 开始游戏主循环
-            playLoopManager.StartPlayLoop();
         }
     }
 }

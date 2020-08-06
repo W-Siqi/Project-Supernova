@@ -9,7 +9,8 @@ public class PersonalityViewerUGUI : MonoBehaviour
 {
     private const string DISSOLVE_SHADER_PROPERTY = "_SliceAmount";
     public Trait currentViewedTrait { get; private set; } = Trait.none;
-
+    [SerializeField]
+    SizeTween hightlightSizeTween;
     [SerializeField]
     Image background;
     [SerializeField]
@@ -25,6 +26,11 @@ public class PersonalityViewerUGUI : MonoBehaviour
         currentViewedTrait = trait;
         traitName.text = TraitUtils.TranslateToName(trait);
         background.sprite = GetTraitBackground(trait);
+        Highlight();
+    }
+
+    public void Highlight() {
+        hightlightSizeTween.Play();
     }
 
     private Sprite GetTraitBackground(Trait trait) {

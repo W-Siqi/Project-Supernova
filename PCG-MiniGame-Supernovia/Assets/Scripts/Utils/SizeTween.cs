@@ -11,21 +11,22 @@ public class SizeTween : MonoBehaviour
     [SerializeField]
     private bool resetAfterTweenOver = false;
 
+    int playID = 0;
     [ContextMenu("TEST Play")]
     public void Play() {
-        StartCoroutine(PlayTween());
+        StartCoroutine(PlayTween(++playID));
     }
 
-    IEnumerator PlayTween() {
+    IEnumerator PlayTween(int assignedID) {
         var originalSize = transform.localScale;
         var startTime = Time.time;
-        while (Time.time < startTime + playTime) {
+        while (assignedID == playID && Time.time < startTime + playTime) {
             var t = (Time.time - startTime) / playTime;
             transform.localScale = originalSize * sizeCurve.Evaluate(t);
             yield return null;
         }
 
-        if (resetAfterTweenOver) {
+        if (assignedID == playID && resetAfterTweenOver) {
             transform.localScale = originalSize;
         }
     }

@@ -12,16 +12,29 @@ public class CharacterStatusViewer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI name;
     [SerializeField]
-    private TextMeshProUGUI loyalty;
-    [SerializeField]
     private Image avatarImage;
 
+    [SerializeField]
+    private SizeTween loyaltyIconShake;
+    [SerializeField]
+    private TextMeshProUGUI loyaltyValText;
+    [SerializeField]
+    private Image loyaltySliderFillImg;
+    [SerializeField]
+    private TextColorTween loyaltyDiffTextShowAndHide;
+
     private CharacterCard hookedCharacter = null;
+    private int curLoyaltyVal = 0;
+    private int initLoyaltyVal = 1;
+
     public void HookTo(CharacterCard character) {
         hookedCharacter = character;
 
+        curLoyaltyVal = hookedCharacter.loyalty;
+        initLoyaltyVal = hookedCharacter.loyalty;
+
         name.text = hookedCharacter.name;
-        loyalty.text = hookedCharacter.loyalty.ToString();
+        loyaltyValText.text = hookedCharacter.loyalty.ToString();
         avatarImage.sprite = hookedCharacter.GetAvatarSprite();
 
         // personality
@@ -33,9 +46,18 @@ public class CharacterStatusViewer : MonoBehaviour
         }
     }
 
+    public void HightlightTrait(Trait trait) {
+        foreach (var personalityViewer in personalityViewerUGUIs) {
+            if (personalityViewer.currentViewedTrait == trait) {
+                personalityViewer.Highlight();
+            }
+        }
+    }
     private void Update() {
         if (hookedCharacter != null) {
-            loyalty.text = hookedCharacter.loyalty.ToString();
+            if (curLoyaltyVal != hookedCharacter.loyalty) {
+                OnLoyaltyChange(hookedCharacter.loyalty);
+            }
 
             for (int i = 0; i < hookedCharacter.personalities.Length; i++) {
                 if (personalityViewerUGUIs[i].currentViewedTrait != hookedCharacter.personalities[i].trait) {
@@ -43,5 +65,14 @@ public class CharacterStatusViewer : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnLoyaltyChange(int loyaltyVal) {
+        curLoyaltyVal = loyaltyVal;
+        loyaltyValText.text = curLoyaltyVal.ToString();
+        loyaltySliderFillImg.fillAmount = (float)curLoyaltyVal / (float)initLoyaltyVal;
+        loyaltyIconShake.Play();
+
+        loyaltyDiffTextShowAndHide.Play();
     }
 }

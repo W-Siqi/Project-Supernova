@@ -294,6 +294,10 @@
     <Compile Include="Assets\External\SceneAssests\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\TimedObjectDestructor.cs" />
     <Compile Include="Assets\External\SceneAssests\Forest Sprite Pack\Scripts\Hazards and Obstacles Update 05\Trampoline.cs" />
     <Compile Include="Assets\External\SceneAssests\Forest Sprite Pack\Scripts\OrthoParallax.cs" />
+    <Compile Include="Assets\Scripts\AutoPlay\AutoPlayManager.cs" />
+    <Compile Include="Assets\Scripts\AutoPlay\AutoPlayer.cs" />
+    <Compile Include="Assets\Scripts\AutoPlay\MultiAutoPlayStatistic.cs" />
+    <Compile Include="Assets\Scripts\AutoPlay\SingleAutoPlayStatistic.cs" />
     <Compile Include="Assets\Scripts\Core\BindingInfo.cs" />
     <Compile Include="Assets\Scripts\Core\Card.cs" />
     <Compile Include="Assets\Scripts\Core\CharacterCard.cs" />
@@ -305,6 +309,7 @@
     <Compile Include="Assets\Scripts\Core\Consequence\StratagemConsequenceSet.cs" />
     <Compile Include="Assets\Scripts\Core\EventCard.cs" />
     <Compile Include="Assets\Scripts\Core\EventCardFilter.cs" />
+    <Compile Include="Assets\Scripts\Core\EventDescriptionGenerator.cs" />
     <Compile Include="Assets\Scripts\Core\Personality.cs" />
     <Compile Include="Assets\Scripts\Core\Precondition\CharacterPrecondition.cs" />
     <Compile Include="Assets\Scripts\Core\Precondition\EnvironmentPrecondition.cs" />
@@ -381,9 +386,11 @@
     <Compile Include="Assets\Scripts\StoryDirector\SerializedStorySectionWidget.cs" />
     <Compile Include="Assets\Scripts\StoryDirector\ShowInfo.cs" />
     <Compile Include="Assets\Scripts\StoryDirector\ShowInfoWidget.cs" />
+    <Compile Include="Assets\Scripts\StoryEndingManager.cs" />
     <Compile Include="Assets\Scripts\Utils\AnchorManager.cs" />
     <Compile Include="Assets\Scripts\Utils\AnchorPoint.cs" />
     <Compile Include="Assets\Scripts\Utils\ColorTween.cs" />
+    <Compile Include="Assets\Scripts\Utils\ImageGUIColorTween.cs" />
     <Compile Include="Assets\Scripts\Utils\LerpAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\PositionTween.cs" />
     <Compile Include="Assets\Scripts\Utils\RuntimeMaterial.cs" />

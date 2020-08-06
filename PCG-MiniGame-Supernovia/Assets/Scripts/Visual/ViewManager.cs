@@ -37,14 +37,19 @@ namespace PCG {
 
         [SerializeField]
         private ResTable resTable;
-
+        private Dictionary<CharacterCard, CharacterStatusViewer> characterStatusViewerDict = new Dictionary<CharacterCard, CharacterStatusViewer>();
         public void Init() {
             foreach (var charcater in StoryContext.instance.characterDeck) {
                 var GO = Instantiate(ResourceTable.instance.prefabPage.characterStatusViewer);
                 var viewer = GO.GetComponent<CharacterStatusViewer>();
                 viewer.HookTo(charcater);
                 viewer.transform.SetParent(resTable.charcterStatusViewerLayout.transform);
+                characterStatusViewerDict[charcater] = viewer;
             }
+        }
+
+        public void HightLightCharacterTrait(CharacterCard characterCard, Trait trait) {
+            characterStatusViewerDict[characterCard].HightlightTrait(trait);
         }
 
         public IEnumerator ViewReachNewStoryStageCoroutine(StoryStage storyStage) {
@@ -130,16 +135,6 @@ namespace PCG {
             var leaveAnchor = resTable.viewCardLeaveAnchor.transform;
             LerpAnimator.instance.LerpPositionAndRotation(cardGOs[dontDerstroyIndex].transform, leaveAnchor.position, leaveAnchor.rotation, 1f);
             yield return new WaitForSeconds(1);
-        }
-
-        // TBD: 为了demo临时的接口
-        public CardDisplayBehaviour ViewCardOnScreen(Card card) {
-            var cardDisplay = CardDisplayBehaviour.Create(card, resTable.viewCardSpwanAnchor);
-            // show card
-            var destPos = Vector3.Lerp(resTable.viewCardRightAnchor.position, resTable.viewCardLeftAnchor.position, 0.5f);
-            var destRotate = Quaternion.Lerp(resTable.viewCardRightAnchor.rotation, resTable.viewCardLeftAnchor.rotation, 0.5f);
-            LerpAnimator.instance.LerpPositionAndRotation(cardDisplay.transform, destPos, destRotate, 1);
-            return cardDisplay;
         }
 
         public IEnumerator ViewCardsOnScreen(Card[] cards,float holdTime = 2f) {

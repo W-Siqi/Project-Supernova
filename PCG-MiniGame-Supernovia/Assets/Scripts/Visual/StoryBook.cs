@@ -11,7 +11,7 @@ public class StoryBook : MonoBehaviour
     private class PageConentShowPos {
         public AnchorPoint camAnchor;
         public RawImage contentPageImage;
-        public Text textContent;
+        public TextMeshProUGUI textContent;
         [HideInInspector]
         public Material conetentPageMat = null;
 
@@ -88,9 +88,9 @@ public class StoryBook : MonoBehaviour
         }
 
         StartCoroutine( ShowContentOn(pageContent, showPoses[curPosIndex++]));
-        var waitTime = 3f;
+        var waitTime = 2f;
         if (pageContent.image != null) {
-            waitTime += 4f;
+            waitTime += 2f;
         }
         yield return new WaitForSeconds(waitTime);
     }

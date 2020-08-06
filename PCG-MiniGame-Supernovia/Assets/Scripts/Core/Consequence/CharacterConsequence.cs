@@ -11,7 +11,8 @@ public class CharacterConsequence : Consequence{
 
     public TraitAlteration traitAlteration = new TraitAlteration();
     public int loyaltyAlteraion = 0;
-    public BindingInfo BindFromSequence(BindingInfo[] bindingInfoSequence) {
-        return bindingInfoSequence[bindFlag];
+
+    public string CreateDescription(BindingInfo bindingInfo) {
+        return bindingInfo.bindedCharacter.name + " 发生了改变";
     }
 }

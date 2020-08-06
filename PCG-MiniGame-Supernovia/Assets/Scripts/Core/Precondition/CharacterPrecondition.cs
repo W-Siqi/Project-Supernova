@@ -36,4 +36,8 @@ public class CharacterPrecondition : Precondition
         bindingInfo.bindedPersonalityOfCharacter = bindingInfo.bindedCharacter.personalities[0];
         return bindingInfo;
     }
+
+    public string CreateDescription(BindingInfo bindingInfo) {
+        return bindingInfo.bindedCharacter.name;
+    }
 }
