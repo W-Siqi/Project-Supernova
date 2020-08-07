@@ -97,25 +97,6 @@ public class ShowManager : MonoBehaviour {
         }
     }
 
-    // 各种事件卡的万能入口
-    public  IEnumerator ShowEvent(EventCard eventCard, CharacterCard[] bindedCharacters) {
-        // show event card selfs
-        var eventCardDisplay = ShowCardFromDeck( eventCard, DeckTarget.eventDeck,AnchorManager.instance.eventCardAnchor);
-
-        // show name 
-        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent(eventCard.name )));
-        BackCardToDeck(eventCardDisplay, DeckTarget.eventDeck);
-
-        // show descriptipn
-        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent(eventCard.description)));
-
-        // show image
-        yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent(eventCard.GetAvatarImage())));
-
-        yield return new WaitForSeconds(1f);
-    }
-
-    /// <summary>
     /// 卡片从牌堆抽出来到某个位置的动画
     /// </summary>
     /// <param name="card"></param>

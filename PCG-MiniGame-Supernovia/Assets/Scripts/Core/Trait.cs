@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace PCG {
     public enum Trait {
-        none,corrupt,cruel,wise,silence, indulgent,tricky,warlike,arrogent,jealous
+        none,
+        wise, silence, honest, tolerant, warlike,
+        corrupt, cruel, tricky, jealous, arrogent
     }
 }

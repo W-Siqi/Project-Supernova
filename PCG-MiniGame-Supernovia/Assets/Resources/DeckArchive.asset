@@ -100,31 +100,6 @@ MonoBehaviour:
         loyaltyAlteraion: 0
       keywordConsequence:
         keyword: 2
-  - name: "\u519B\u5FC3\u7D0A\u4E71"
-    description: 
-    avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/14_alpha.tif
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 0
-      eventEnabled: 0
-      characterPreconditions: []
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          people: 0
-          money: 0
-          army: -15
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
   - name: "\u8D22\u653F\u5371\u673A"
     description: 
     avatarImagePath: 
@@ -209,33 +184,6 @@ MonoBehaviour:
       characterConsequences: []
       keywordConsequence:
         keyword: 0
-  - name: "\u51FA\u5F81"
-    description: 
-    avatarImagePath: 
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - isRandom: 0
-        requiredTrait: 7
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 0
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 1
-      statusConsequence:
-        delta:
-          people: 80
-          money: 76
-          army: 20
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 1
   - name: "\u5175\u53D8\u9547\u538B"
     description: 
     avatarImagePath: 
@@ -263,62 +211,8 @@ MonoBehaviour:
       characterConsequences: []
       keywordConsequence:
         keyword: 0
-  - name: "\u4E0E\u738B\u5983\u79C1\u5954"
-    description: 
-    avatarImagePath: 
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - isRandom: 0
-        requiredTrait: 5
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          people: -9
-          money: 0
-          army: 0
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
-  - name: "\u5927\u6446\u5BB4\u5E2D"
-    description: 
-    avatarImagePath: 
-    isAanonymous: 0
-    discruption: this is a event, somthing happened
-    preconditonSet:
-      environmentEnabled: 0
-      characterEnabled: 1
-      eventEnabled: 0
-      characterPreconditions:
-      - isRandom: 0
-        requiredTrait: 5
-      environmentPrecondition:
-        qualifiers: []
-      eventPreconditions: []
-    consequenceSet:
-      statusConsequenceEnabled: 1
-      characterConsequenceEnabled: 0
-      keywordConsequenceEnabled: 0
-      statusConsequence:
-        delta:
-          people: 0
-          money: -10
-          army: 0
-      characterConsequences: []
-      keywordConsequence:
-        keyword: 0
   - name: "\u8BEC\u9677"
-    description: 
+    description: "[-c0],\u4ED6\u8BEC\u9677\u4E86[-c1]; \u4E8E\u662F\uFF0C [>c0]"
     avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
@@ -352,7 +246,7 @@ MonoBehaviour:
       keywordConsequence:
         keyword: 2
   - name: "\u540C\u6D41\u5408\u6C61"
-    description: 
+    description: "[-c0]\u4E0E[-c1]\u540C\u6D41\u5408\u6C61\uFF1B [>c2]"
     avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
@@ -386,7 +280,7 @@ MonoBehaviour:
       keywordConsequence:
         keyword: 0
   - name: "\u81EA\u8BA4\u5931\u5BA0"
-    description: 
+    description: "[-c0]; \u89C9\u5F97\u56FD\u738B\u6700\u8FD1\u5BF9\u4ED6\u6709\u70B9\u51B7\u6DE1;[>c0] "
     avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
@@ -418,7 +312,7 @@ MonoBehaviour:
       keywordConsequence:
         keyword: 0
   - name: "\u6043\u624D\u50B2\u7269"
-    description: 
+    description: "[-c0]; \u4ED6\u5B9E\u5728\u662F\u592A\u8FC7\u7316\u72C2\u3002\u4F7F\u5F97[-c1];[>c0] "
     avatarImagePath: 
     isAanonymous: 0
     discruption: this is a event, somthing happened
@@ -455,8 +349,8 @@ MonoBehaviour:
   - name: "\u5F81\u5175"
     description: "\u6211\u4EEC\u9700\u8981\u66F4\u591A\u7684\u519B\u961F"
     avatarImagePath: Assets/External/HyperCard/Textures+Artworks/Artworks/10_alpha_periodical.tif
-    yesText: "\u4E0D\u597D"
-    noText: "\u53EF\u4EE5"
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u597D"
     consequenceSet:
       traitAlterationWhenAccept:
         targetTrait: 7
@@ -638,6 +532,23 @@ MonoBehaviour:
         delta:
           people: 0
           money: -23
+          army: 0
+  - name: "\u5F00\u653E\u901A\u5546"
+    description: 
+    avatarImagePath: 
+    yesText: "\u53EF\u4EE5"
+    noText: "\u4E0D\u884C"
+    consequenceSet:
+      traitAlterationWhenAccept:
+        targetTrait: 1
+        type: 1
+      traitAlterationWhenDecline:
+        targetTrait: 0
+        type: 0
+      statusConsequenceWhenAccept:
+        delta:
+          people: 0
+          money: 39
           army: 0
   substoryCards:
   - name: name

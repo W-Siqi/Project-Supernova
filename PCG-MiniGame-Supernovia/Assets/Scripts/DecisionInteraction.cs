@@ -109,7 +109,7 @@ namespace PCG {
 
             decisionMade(false);
 
-            Destroy(gameObject, DISPEAR_ANIMATION_TIME);
+            Destroy(gameObject, DISPEAR_ANIMATION_TIME+1f);
         }
     }
 }

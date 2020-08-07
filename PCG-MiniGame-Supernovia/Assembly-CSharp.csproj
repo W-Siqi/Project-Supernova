@@ -296,6 +296,7 @@
     <Compile Include="Assets\External\SceneAssests\Forest Sprite Pack\Scripts\OrthoParallax.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\AutoPlayManager.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\AutoPlayer.cs" />
+    <Compile Include="Assets\Scripts\AutoPlay\IntelligentAutoPlayer.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\MonteCarloAutoPlayer.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\MultiAutoPlayStatistic.cs" />
     <Compile Include="Assets\Scripts\AutoPlay\SingleAutoPlayStatistic.cs" />
@@ -336,6 +337,7 @@
     <Compile Include="Assets\Scripts\Depracted\EventCardFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\EventCountFilter.cs" />
     <Compile Include="Assets\Scripts\Depracted\EventProbFilter.cs" />
+    <Compile Include="Assets\Scripts\Depracted\EventViewer.cs" />
     <Compile Include="Assets\Scripts\Depracted\FightConsequence.cs" />
     <Compile Include="Assets\Scripts\Depracted\FightManager.cs" />
     <Compile Include="Assets\Scripts\Depracted\FightViewer.cs" />
@@ -403,14 +405,17 @@
     <Compile Include="Assets\Scripts\Utils\TextColorTween.cs" />
     <Compile Include="Assets\Scripts\Visual\CardDisplayBehaviour.cs" />
     <Compile Include="Assets\Scripts\Visual\CharacterStatusViewer.cs" />
+    <Compile Include="Assets\Scripts\Visual\CharacterStausPannel.cs" />
     <Compile Include="Assets\Scripts\Visual\DeckDisplayBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Visual\EventViewer.cs" />
+    <Compile Include="Assets\Scripts\Visual\EventDescriptionPlayer.cs" />
     <Compile Include="Assets\Scripts\Visual\GuideTipViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\HitEffect.cs" />
     <Compile Include="Assets\Scripts\Visual\PersonalityViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\PersonalityViewerUGUI.cs" />
     <Compile Include="Assets\Scripts\Visual\ShowManager.cs" />
     <Compile Include="Assets\Scripts\Visual\StoryBook.cs" />
+    <Compile Include="Assets\Scripts\Visual\TraitTooltip.cs" />
+    <Compile Include="Assets\Scripts\Visual\TraitTooltipDetector.cs" />
     <Compile Include="Assets\Scripts\Visual\UIController.cs" />
     <Compile Include="Assets\Scripts\Visual\ValueViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\ViewManager.cs" />

@@ -49,6 +49,7 @@ public class StoryEndingManager : MonoBehaviour
     }
 
     private IEnumerator PlayEndingPage(StoryBook.PageContent content) {
-        yield return StartCoroutine(StoryBook.instance.ViewContent(content));
+        StoryBook.instance.ViewContent(content);
+        yield return null;
     }
 }

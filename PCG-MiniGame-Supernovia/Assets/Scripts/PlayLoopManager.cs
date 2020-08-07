@@ -7,7 +7,7 @@ using PCG;
 public class PlayLoopManager : MonoBehaviour {
     public IEnumerator PlayLoop() {
         for(int round = 0; round < PlayData.instance.gameConfig.roundCount; round++ ) {
-            BuffApplyBeforeRound();
+            GameExecuter.ApplyBuffBeforeRound(PlayData.instance.gameState, PlayData.instance.gameConfig, true);
 
             yield return StartCoroutine(CouncilStage(round));
 
@@ -22,15 +22,16 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator EventStream() {
-        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneRT);
-        yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
+        var newPageContent = new StoryBook.PageContent("");
+        var bookPage =  StoryBook.instance.ViewContent(newPageContent);
 
-        var eventViewer = ViewManager.instance.eventViewer;
+        var desctriptionPlayer = ViewManager.instance.eventDescriptionPlayer;
         foreach (var selectedEvent in GameExecuter.SelectEventCards(PlayData.instance.gameState, PlayData.instance.gameConfig)) {
             var bindingInfos = selectedEvent.preconditonSet.Bind(PlayData.instance.gameState);
 
-            // TBD: 可能会出错，如果consequence如果是运行时随机的话不是确定的话，show在没apply的时候不知道确定值
-            yield return StartCoroutine(eventViewer.ViewEventCoroutine(selectedEvent, bindingInfos));
+            // 必须要在apply结果前面进行演出
+            var description = EventDescription.Generate(selectedEvent, bindingInfos);
+            yield return StartCoroutine(desctriptionPlayer.PlayEventDescription(bindingInfos, description,bookPage.textContent));
 
             selectedEvent.consequenceSet.Apply(bindingInfos, PlayData.instance.gameState);
         }
@@ -38,8 +39,12 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator CouncilStage(int curRound) {
+        // new page
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
-        yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
+        StoryBook.instance.ViewContent(newPageContent);
+
+        // UI
+        ViewManager.instance.characterStausPannel.Showup();
 
         foreach (var character in PlayData.instance.gameState.characterDeck) {
             if (character.HasTrait(Trait.silence)) {
@@ -51,6 +56,7 @@ public class PlayLoopManager : MonoBehaviour {
 
             // show 角色
             ViewManager.instance.ViewCharacterOfDialog(character.GetAvatarImage());
+            ViewManager.instance.characterStausPannel.OnSelect(character);
 
             // 提取建议卡
             var straCard =PlayData.instance.gameState.stratagemDict[character][curRound];
@@ -76,17 +82,8 @@ public class PlayLoopManager : MonoBehaviour {
             // end character
             ViewManager.instance.EndViewCharacterOfDialog();
         }
-    }
 
-    private void BuffApplyBeforeRound() {
-        foreach (var character in PlayData.instance.gameState.characterDeck) {
-            if (character.HasTrait(Trait.corrupt)) {
-                var corrputValue = PlayData.instance.gameConfig.corrputTraitMoneyPerRound;
-               PlayData.instance.gameState.statusVector.money -= corrputValue;
-
-                ViewManager.instance.HightLightCharacterTrait(character, Trait.corrupt);
-            }
-        }
+        ViewManager.instance.characterStausPannel.Hide();
     }
 
     //IEnumerator VoteState() {

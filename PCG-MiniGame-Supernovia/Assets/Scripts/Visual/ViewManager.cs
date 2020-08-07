@@ -33,27 +33,17 @@ namespace PCG {
         public ValueViewer moneyValue;
         public ValueViewer peopleValue;
         public VoteViewer voteViewer;
-        public EventViewer eventViewer;
+        public EventDescriptionPlayer eventDescriptionPlayer;
+        public CharacterStausPannel characterStausPannel;
 
         [SerializeField]
         private ResTable resTable;
-        private Dictionary<CharacterCard, CharacterStatusViewer> characterStatusViewerDict = new Dictionary<CharacterCard, CharacterStatusViewer>();
         public void Init() {
-            foreach (var charcater in PlayData.instance.gameState.characterDeck) {
-                var GO = Instantiate(ResourceTable.instance.prefabPage.characterStatusViewer);
-                var viewer = GO.GetComponent<CharacterStatusViewer>();
-                viewer.HookTo(charcater);
-                viewer.transform.SetParent(resTable.charcterStatusViewerLayout.transform);
-                characterStatusViewerDict[charcater] = viewer;
-            }
-        }
-
-        public void HightLightCharacterTrait(CharacterCard characterCard, Trait trait) {
-            characterStatusViewerDict[characterCard].HightlightTrait(trait);
+            characterStausPannel.Init(PlayData.instance.gameState.characterDeck.ToArray());
         }
 
         public IEnumerator ViewReachNewStoryStageCoroutine(StoryStage storyStage) {
-            yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("营火 战斗 表决")));
+            // yield return StartCoroutine(StoryBook.instance.ViewContent(new StoryBook.PageContent("营火 战斗 表决")));
 
             float intervalTime = 0.2f;
             float flyTime = 1.5f;

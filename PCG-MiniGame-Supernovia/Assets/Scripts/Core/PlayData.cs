@@ -24,6 +24,7 @@ namespace PCG {
         /// </summary>
         public void InitData() {
             // init character
+            gameState.characterDeck.Clear();
             for (int i = 0; i < gameConfig.characterCount; i++) {
                 var charaPrototype = DeckArchive.instance.characterCards[i];
                 var newCharacter = Card.DeepCopy(charaPrototype);
@@ -37,6 +38,7 @@ namespace PCG {
             }
 
             // init startgems of character
+            gameState.stratagemDict.Clear();
             foreach (var chara in gameState.characterDeck) {
                 gameState.stratagemDict[chara] = new List<StratagemCard>();
                 for (int i = 0; i < gameConfig.roundCount; i++) {
@@ -46,6 +48,7 @@ namespace PCG {
             }
 
             // init event
+            gameState.eventDeck.Clear();
             gameState.eventDeck = new List<EventCard>();
             foreach (var card in DeckArchive.instance.eventCards) {
                 gameState.eventDeck.Add(Card.DeepCopy(card));

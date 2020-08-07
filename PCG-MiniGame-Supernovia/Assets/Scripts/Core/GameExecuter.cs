@@ -15,6 +15,22 @@ namespace PCG {
             return seleced.ToArray();
         }
 
+        /// <summary>
+        /// 主要是清算人物性格
+        /// </summary>
+        public static void ApplyBuffBeforeRound(GameState gameState, GameConfig gameConfig, bool viusalEffectOn = false) {
+            foreach (var character in gameState.characterDeck) {
+                // Trait-Pos: 贪婪
+                if (character.HasTrait(Trait.corrupt)) {
+                    var corrputValue = gameConfig.corrputTraitMoneyPerRound;
+                    gameState.statusVector.money -= corrputValue;
+
+                    if (viusalEffectOn) {
+                        ViewManager.instance.characterStausPannel.HightLightCharacterTrait(character, Trait.corrupt);
+                    }
+                }
+            }
+        }
 
         public static bool HasReachDeath(GameState checkTarget) {
             var status = checkTarget.statusVector;

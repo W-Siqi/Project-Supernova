@@ -37,7 +37,11 @@ public class CharacterPrecondition : Precondition
         return bindingInfo;
     }
 
-    public string CreateDescription(BindingInfo bindingInfo) {
-        return bindingInfo.bindedCharacter.name;
+    // 角色前提例子 [-c0] -代表前提，c代表charcter 0 代表bindinginfo的下标
+    public string CreateDescription(BindingInfo bindingInfo, int indexInBindingSequence) {
+        var characterShowupStr = string.Format("(c{0})",indexInBindingSequence.ToString());
+        var traitName = TraitUtils.TranslateToName(bindingInfo.bindedPersonalityOfCharacter.trait);
+        var finalDescription = string.Format("{0}{1}的{2}", characterShowupStr,traitName,bindingInfo.bindedCharacter.name);
+        return finalDescription;
     }
 }

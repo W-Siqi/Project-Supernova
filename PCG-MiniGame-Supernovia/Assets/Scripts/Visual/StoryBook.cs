@@ -8,7 +8,7 @@ public class StoryBook : MonoBehaviour
 {
     private const string DISSOLVE_SHADER_PROPERTY = "_SliceAmount";
     [System.Serializable]
-    private class PageConentShowPos {
+    public class PageConentShowPos {
         public AnchorPoint camAnchor;
         public RawImage contentPageImage;
         public TextMeshProUGUI textContent;
@@ -72,27 +72,24 @@ public class StoryBook : MonoBehaviour
         }
     }
 
-    public IEnumerator ViewContent(PageContent pageContent) {
+    public PageConentShowPos ViewContent(PageContent pageContent) {
         if (curPosIndex >= showPoses.Count) {
             // clear 
-            foreach (var showPos in showPoses) {
-                showPos.ClearContent();
+            foreach (var p in showPoses) {
+                p.ClearContent();
             }
             // turn
-            yield return StartCoroutine(TurnPage());
+            StartCoroutine(TurnPage());
             curPosIndex = 0;
         }
         else {
             // move to ...
-            LerpAnimator.instance.LerpPosition(mainCamera.transform,showPoses[curPosIndex].camAnchor.position,1f);
+            LerpAnimator.instance.LerpPosition(mainCamera.transform,showPoses[curPosIndex].camAnchor.position,0.3f);
         }
 
-        StartCoroutine( ShowContentOn(pageContent, showPoses[curPosIndex++]));
-        var waitTime = 2f;
-        if (pageContent.image != null) {
-            waitTime += 2f;
-        }
-        yield return new WaitForSeconds(waitTime);
+        var showPos = showPoses[curPosIndex++];
+        StartCoroutine(ShowContentOn(pageContent, showPos));
+        return showPos;
     }
 
     public IEnumerator TurnPage() {
@@ -115,11 +112,11 @@ public class StoryBook : MonoBehaviour
 
         if (pageContent.image != null) {
             if (pageContent.text != null) {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
             }
             conentShowPos.contentPageImage.enabled= true;
             StartCoroutine(UpdatePageDelayed(conentShowPos, pageContent.image));
-            var dissolveDuration = 2f;
+            var dissolveDuration = 1f;
             LerpAnimator.instance.LerpValues(1, 0, dissolveDuration,
                 (v) => {
                     conentShowPos.conetentPageMat.SetFloat(DISSOLVE_SHADER_PROPERTY, v);
@@ -131,8 +128,6 @@ public class StoryBook : MonoBehaviour
 
         yield return null;
     }
-
-
 
     IEnumerator UpdatePageDelayed(PageConentShowPos showPos, Texture pageContent) {
         yield return new WaitForEndOfFrame();

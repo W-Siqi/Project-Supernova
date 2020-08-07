@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace PCG {
     public abstract class AutoPlayer {
@@ -10,13 +11,15 @@ namespace PCG {
         /// <param name="stratagemCard"></param>
         /// <param name="gameState"></param>
         /// <returns></returns>
-        protected abstract float ProbailityOfAccept(StratagemCard stratagemCard, GameState gameState);
+        protected abstract float ProbailityOfAccept(StratagemCard stratagemCard,CharacterCard provider, GameState gameState);
 
         public SingleAutoPlayStatistic Play(GameState gameState, GameConfig gameConfig) {
+            Profiler.BeginSample("游玩- SingleAutoPlayStatistic Play()");
             var statistic = new SingleAutoPlayStatistic();
             int round;
             for (round = 0; round < gameConfig.roundCount; round++) {
                 // buff
+                GameExecuter.ApplyBuffBeforeRound(gameState, gameConfig);
 
                 // council
                 foreach (var character in gameState.characterDeck) {
@@ -26,7 +29,7 @@ namespace PCG {
                         }
                     }
                     var straCard = gameState.stratagemDict[character][round];
-                    var agreeDecision = Random.value < ProbailityOfAccept(straCard, gameState);
+                    var agreeDecision = Random.value < ProbailityOfAccept(straCard,character,gameState);
                     straCard.consequenceSet.Apply(gameState, gameConfig, character, agreeDecision);
                 }
 
@@ -52,6 +55,7 @@ namespace PCG {
 
             statistic.win = !GameExecuter.HasReachDeath(gameState);
             statistic.roundsSurvive = round;
+            Profiler.EndSample();
             return statistic;
         }
 

@@ -27,6 +27,10 @@ public class CharacterStatusViewer : MonoBehaviour
     private int curLoyaltyVal = 0;
     private int initLoyaltyVal = 1;
 
+    public CharacterCard GetHooedCharacter() {
+        return hookedCharacter;
+    }
+
     public void HookTo(CharacterCard character) {
         hookedCharacter = character;
 

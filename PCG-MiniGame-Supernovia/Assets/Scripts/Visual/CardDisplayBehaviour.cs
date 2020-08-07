@@ -62,6 +62,10 @@ namespace PCG {
             personalityViewerDict[hookedPersonality].TransferTo(newTrait);
         }
 
+        public void HighlightPersonality(Personality hookedPersonality) {
+            
+        }
+
         private void Init(Card card) {
             if (card == null) {
                 gameObject.name = "dummy";
