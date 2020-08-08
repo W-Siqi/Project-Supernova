@@ -5,6 +5,10 @@ using PCG;
 
 // 管理 决策 - 人物 - 事件 等游戏游玩主循环
 public class PlayLoopManager : MonoBehaviour {
+    bool userInputDecisionMade = false;
+    bool userInputAgreeDecision = false;
+    bool userInputNextRound = false;
+
     public IEnumerator PlayLoop() {
         for(int round = 0; round < PlayData.instance.gameConfig.roundCount; round++ ) {
             GameExecuter.ApplyBuffBeforeRound(PlayData.instance.gameState, PlayData.instance.gameConfig, true);
@@ -22,8 +26,8 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator EventStream() {
-        var newPageContent = new StoryBook.PageContent("");
-        var bookPage =  StoryBook.instance.ViewContent(newPageContent);
+        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex);
+        StoryBook.instance.ViewContent(newPageContent);
 
         var desctriptionPlayer = ViewManager.instance.eventDescriptionPlayer;
         foreach (var selectedEvent in GameExecuter.SelectEventCards(PlayData.instance.gameState, PlayData.instance.gameConfig)) {
@@ -31,7 +35,7 @@ public class PlayLoopManager : MonoBehaviour {
 
             // 必须要在apply结果前面进行演出
             var description = EventDescription.Generate(selectedEvent, bindingInfos);
-            yield return StartCoroutine(desctriptionPlayer.PlayEventDescription(bindingInfos, description,bookPage.textContent));
+            yield return StartCoroutine(desctriptionPlayer.PlayEventDescription(bindingInfos, description));
 
             selectedEvent.consequenceSet.Apply(bindingInfos, PlayData.instance.gameState);
         }
@@ -44,7 +48,7 @@ public class PlayLoopManager : MonoBehaviour {
         StoryBook.instance.ViewContent(newPageContent);
 
         // UI
-        ViewManager.instance.characterStausPannel.Showup();
+        ViewManager.instance.InitViewForCouncialStage();
 
         foreach (var character in PlayData.instance.gameState.characterDeck) {
             if (character.HasTrait(Trait.silence)) {
@@ -55,110 +59,61 @@ public class PlayLoopManager : MonoBehaviour {
             }
 
             // show 角色
-            ViewManager.instance.ViewCharacterOfDialog(character.GetAvatarImage());
+            ViewManager.instance.ViewCharacterOfDialog(character);
             ViewManager.instance.characterStausPannel.OnSelect(character);
 
             // 提取建议卡
             var straCard =PlayData.instance.gameState.stratagemDict[character][curRound];
             // show Dialog
-            ViewManager.instance.ViewDialog(straCard.description);
+            ViewManager.instance.ViewDialog(straCard,character);
 
-            // 生成交互
-            bool decisionMade = false;
-            bool agreeDecision = false;
-            DecisionInteraction.Create(
-                straCard,
-                (bool agree) => { decisionMade = true; agreeDecision = agree; });
-
-            // 等待玩家输入
-            while (!decisionMade) {
-                yield return null;
-            }
-
-            straCard.consequenceSet.Apply(PlayData.instance.gameState, PlayData.instance.gameConfig, character, agreeDecision);         
-
+            // 等待用户输入
+            yield return StartCoroutine(ResetAndWaitStratagemDecisionInput());
             // end show Dialog
             ViewManager.instance.EndViewDialog();
+
+            // apply 
+            straCard.consequenceSet.Apply(PlayData.instance.gameState, PlayData.instance.gameConfig, character, userInputAgreeDecision);
+            // 稍等一会再进入下一个角色，因为当前动画演出
+            yield return new WaitForSeconds(1f);
+
             // end character
             ViewManager.instance.EndViewCharacterOfDialog();
         }
 
         ViewManager.instance.characterStausPannel.Hide();
+
+        // next round btn
+        ViewManager.instance.ViewNextRoundBtn();
+        yield return StartCoroutine(ResetAndWaitNextRoundInput());
+        ViewManager.instance.EndNextRoundBtn();
     }
 
-    //IEnumerator VoteState() {
-    //    // show up viewer
-    //    var voteViwer = ViewManager.instance.voteViewer;
-    //    voteViwer.ShowUp();
-    //    yield return new WaitForSeconds(2.5f);
+    public void OnUserInputAcceptStragem() {
+       userInputDecisionMade = true;
+       userInputAgreeDecision = true;
+    }
 
-    //    var voters = StoryContext.instance.characterDeck.ToArray();
-    //    int playerVoteIndex = Random.Range(0, voters.Length);
-    //    int agreeVoteNumber = 0;
-    //    int disagreeVoteNumber = 0;
-    //    for (int i = 0; i < voters.Length; i++) {
-    //        // NPC Vote
-    //        var NPCVoter = voters[i];
-    //        var NPCVoteNumber = Random.Range(1, 7);
-    //        var agree = Random.value < 0.5f;
-    //        if (agree) {
-    //            agreeVoteNumber += NPCVoteNumber;
-    //        }
-    //        else {
-    //            disagreeVoteNumber += NPCVoteNumber;
-    //        }
-    //        voteViwer.NPCVote(agree, NPCVoteNumber, NPCVoter);
-    //        yield return new WaitForSeconds(1.2f);
+    public void OnUserInputDeclineStragem() {
+        userInputDecisionMade = true;
+        userInputAgreeDecision = false;
+    }
 
-    //        // Player Vote
-    //        if (i == playerVoteIndex) {
-    //            // viewer 准备
-    //            voteViwer.ViewBeforePlayerVote();
-    //            yield return new WaitForSeconds(2f);
+    public void OnUserInputNextRound() {
+        userInputNextRound = true;
+    }
 
-    //            // 玩家投票,生成交互
-    //            bool decisionMade = false;
-    //            bool agreeDecision = false;
-    //            DecisionInteraction.Create(
-    //                ResourceTable.instance.texturepage.aynominousCharacter,
-    //                "投票",
-    //                "是否放逐",
-    //                (ag) => { decisionMade = true; agreeDecision = ag; }); ;
-
-    //            // 等待玩家输入
-    //            while (!decisionMade) {
-    //                yield return null;
-    //            }
-
-    //            var playerVoteNumber = 50;
-    //            if (agreeDecision) {
-    //                agreeVoteNumber += playerVoteNumber;
-    //                voteViwer.PlayrVote(true,playerVoteNumber);
-    //            }
-    //            else {
-    //                disagreeVoteNumber += playerVoteNumber;
-    //                voteViwer.PlayrVote(false, playerVoteNumber);
-    //            }
-    //        }
-    //        yield return new WaitForSeconds(1f);
-    //    }
-
-    //    if (agreeVoteNumber > disagreeVoteNumber) {
-    //        voteViwer.ViewVoteResult(true);
-    //    }
-    //    else {
-    //        voteViwer.ViewVoteResult(false);
-    //    }
-
-    //    yield return new WaitForSeconds(3f);
-    //    voteViwer.Hide();
-    //}
-
-    //IEnumerator FightStage() {
-    //    var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.fightSceneRT);
-    //    yield return StartCoroutine(StoryBook.instance.ViewContent(newPageContent));
-
-    //    var enemies = FightManager.instance.InstanticteRandomEnemies();
-    //    yield return StartCoroutine(FightManager.instance.ExecuteFight(StoryContext.instance.characterDeck.ToArray(),enemies));
-    //}
+    private IEnumerator ResetAndWaitStratagemDecisionInput() {
+        userInputDecisionMade = false;
+        userInputAgreeDecision = false;
+        while (!userInputDecisionMade) {
+            yield return null;
+        }
+    }
+    private IEnumerator ResetAndWaitNextRoundInput() {
+        userInputNextRound = false;
+        while (!userInputNextRound) {
+            yield return null;
+        }
+    }
 }

@@ -19,13 +19,13 @@ public class PersonalityViewerUGUI : MonoBehaviour
     public void InitTo(Trait trait) {
         currentViewedTrait = trait;
         traitName.text = TraitUtils.TranslateToName(trait);
-        background.sprite = GetTraitBackground(trait);
+        background.color = GetTraitColor(trait);
     }
 
     public void TransferTo(Trait trait) {
         currentViewedTrait = trait;
         traitName.text = TraitUtils.TranslateToName(trait);
-        background.sprite = GetTraitBackground(trait);
+        background.color = GetTraitColor(trait);
         Highlight();
     }
 
@@ -33,12 +33,12 @@ public class PersonalityViewerUGUI : MonoBehaviour
         hightlightSizeTween.Play();
     }
 
-    private Sprite GetTraitBackground(Trait trait) {
+    private Color GetTraitColor(Trait trait) {
         if (TraitUtils.IsEvil(trait)) {
-            return ResourceTable.instance.texturepage.evilTraitBG;
+            return ViewManager.instance.resTable.evilTraitColor;
         }
         else {
-            return ResourceTable.instance.texturepage.noneEvilTraitBG;
+            return ViewManager.instance.resTable.noneEvilTraitColor;
         }
     }
 }

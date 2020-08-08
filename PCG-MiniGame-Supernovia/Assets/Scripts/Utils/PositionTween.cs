@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PositionTween : MonoBehaviour
 {
+    public bool autoPingPongLoop = false;
     public Transform startAnchor;
     public Transform endAnchor;
     public AnimationCurve mappingCurve;
@@ -11,6 +12,9 @@ public class PositionTween : MonoBehaviour
 
     private void Awake() {
         transform.position = startAnchor.position;
+        if (autoPingPongLoop) {
+            StartCoroutine(PlayTweenPingPongLoop());
+        }
     }
 
     [ContextMenu("Play Tween")]
@@ -36,6 +40,14 @@ public class PositionTween : MonoBehaviour
             });
     }
 
+    IEnumerator PlayTweenPingPongLoop() {
+        while (true) {
+            Play();
+            yield return new WaitForSeconds(duration);
+            Play(true);
+            yield return new WaitForSeconds(duration);
+        }
+    }
     public void ResetToStart() {
         transform.position = startAnchor.position;
     }

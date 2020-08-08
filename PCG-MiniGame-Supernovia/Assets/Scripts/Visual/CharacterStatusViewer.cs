@@ -5,12 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterStatusViewer : MonoBehaviour
-{
+public class CharacterStatusViewer : MonoBehaviour {
     [SerializeField]
     private List<PersonalityViewerUGUI> personalityViewerUGUIs = new List<PersonalityViewerUGUI>();
-    [SerializeField]
-    private TextMeshProUGUI name;
     [SerializeField]
     private Image avatarImage;
 
@@ -34,12 +31,12 @@ public class CharacterStatusViewer : MonoBehaviour
     public void HookTo(CharacterCard character) {
         hookedCharacter = character;
 
+        avatarImage.sprite = hookedCharacter.GetAvatarSprite();
+
         curLoyaltyVal = hookedCharacter.loyalty;
         initLoyaltyVal = hookedCharacter.loyalty;
-
-        name.text = hookedCharacter.name;
-        loyaltyValText.text = hookedCharacter.loyalty.ToString();
-        avatarImage.sprite = hookedCharacter.GetAvatarSprite();
+        loyaltyValText.text = string.Format("{0}/{1}", curLoyaltyVal.ToString(), initLoyaltyVal.ToString());
+        loyaltySliderFillImg.fillAmount = (float)curLoyaltyVal / (float)initLoyaltyVal;
 
         // personality
         if (hookedCharacter.personalities.Length != personalityViewerUGUIs.Count) {
@@ -73,7 +70,7 @@ public class CharacterStatusViewer : MonoBehaviour
 
     private void OnLoyaltyChange(int loyaltyVal) {
         curLoyaltyVal = loyaltyVal;
-        loyaltyValText.text = curLoyaltyVal.ToString();
+        loyaltyValText.text = string.Format("{0}/{1}", curLoyaltyVal.ToString(), initLoyaltyVal.ToString());
         loyaltySliderFillImg.fillAmount = (float)curLoyaltyVal / (float)initLoyaltyVal;
         loyaltyIconShake.Play();
 

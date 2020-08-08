@@ -51,12 +51,13 @@ public class CharacterStausPannel : MonoBehaviour
 
     private void Update() {
         var preY = 0f;
-        foreach (var viewer in characterStatusViewers) {
+        for (int i =0; i < characterStatusViewers.Count; i++) {
+            var viewer = characterStatusViewers[i];
             var posOffset = Vector3.zero;
             posOffset.y += preY;
             if (viewer.GetHooedCharacter() == selectedCharacter) {
                 posOffset.x += selectedXOffset;
-                posOffset.y += standardSpace * (selectedSizeAmplify - 1);
+                posOffset.y += standardSpace * ((selectedSizeAmplify - 1)/2);
                 viewer.transform.localScale = Vector3.one * selectedSizeAmplify;
                 preY += standardSpace * selectedSizeAmplify;
             }

@@ -23,9 +23,8 @@ public class ResourceTable : MonoBehaviour
     [System.Serializable]
     public class Texturepage {
         public Texture aynominousCharacter;
-        public RenderTexture fightSceneRT;
         public RenderTexture councilSceneRT;
-        public RenderTexture eventSceneRT;
+        public Texture eventSceneTex;
         public Sprite evilTraitBG;
         public Sprite noneEvilTraitBG;
     }

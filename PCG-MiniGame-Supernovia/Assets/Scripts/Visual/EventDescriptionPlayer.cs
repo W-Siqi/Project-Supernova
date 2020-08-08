@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace PCG {
     public class EventDescriptionPlayer : MonoBehaviour {
+        [SerializeField]
+        private Text eventTtileText;
+        [SerializeField]
+        private PositionTween eventTitleShowup;
+        [SerializeField]
+        private Text eventDescriptionText;
+        [SerializeField]
+        private PositionTween eventDescriptionShowup;
         [SerializeField]
         private AnchorPoint showCharacterFirstAnchor;
         [SerializeField]
@@ -14,12 +23,19 @@ namespace PCG {
 
         private Dictionary<BindingInfo, CardDisplayBehaviour> displayDict = new Dictionary<BindingInfo, CardDisplayBehaviour>();
 
-        public IEnumerator PlayEventDescription(BindingInfo[] bindingInfos, EventDescription eventDescription, TextMeshProUGUI textToFill) {
+        public void HideUI() {
+            eventDescriptionShowup.Play(true);
+            eventTitleShowup.Play(true);
+        }
+
+        public IEnumerator PlayEventDescription(BindingInfo[] bindingInfos, EventDescription eventDescription) {
             float charInterval = 0.05f;
             float paragraphInterval = 1f;
             float holdTime = 1f;
-            textToFill.text = eventDescription.title + "\n\n";
-            Debug.Log("tittle- " + eventDescription.title);
+            eventDescriptionShowup.Play();
+            eventTitleShowup.Play();
+            eventTtileText.text = eventDescription.title;
+            eventDescriptionText.text = "";
             foreach (var para in eventDescription.paragragh) {
                 Debug.Log("paragrah- " + para);
                 int cur = 0;
@@ -35,12 +51,12 @@ namespace PCG {
                     }
                     else {
                         // 普通字符
-                        textToFill.text += para[cur];
+                        eventDescriptionText.text += para[cur];
                         yield return new WaitForSeconds(charInterval);
                         cur++;
                     }
                 }
-                textToFill.text +='\n';
+                eventDescriptionText.text += '\n';
                 yield return new WaitForSeconds(paragraphInterval);
             }
 

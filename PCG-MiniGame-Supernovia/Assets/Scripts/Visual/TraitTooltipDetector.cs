@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PCG;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,7 +17,8 @@ public class TraitTooltipDetector : MonoBehaviour
 
     public void OnPointerEnter() {
         Debug.Log("Mouse enter");
-        traitTooltip.traitFullNameTMP.text = personalityViewer.currentViewedTrait.ToString();
+        traitTooltip.traitFullNameTMP.text = TraitUtils.GetFullName( personalityViewer.currentViewedTrait);
+        traitTooltip.traitDescriptionTMP.text = TraitUtils.GetTooltip(personalityViewer.currentViewedTrait);
         traitTooltip.gameObject.SetActive(true);
     }
     public void OnPointerExit() {
