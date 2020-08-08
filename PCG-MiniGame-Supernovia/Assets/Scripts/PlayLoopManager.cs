@@ -15,10 +15,13 @@ public class PlayLoopManager : MonoBehaviour {
 
             yield return StartCoroutine(CouncilStage(round));
 
+            if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
+                break;
+            }
+
             yield return StartCoroutine(EventStream());
 
             if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
-                Debug.Log("游戏失败");
                 break;
             }
         }
@@ -38,6 +41,10 @@ public class PlayLoopManager : MonoBehaviour {
             yield return StartCoroutine(desctriptionPlayer.PlayEventDescription(bindingInfos, description));
 
             selectedEvent.consequenceSet.Apply(bindingInfos, PlayData.instance.gameState);
+
+            if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
+                break;
+            }
         }
         yield return new WaitForSeconds(2f);
     }
@@ -79,6 +86,10 @@ public class PlayLoopManager : MonoBehaviour {
 
             // end character
             ViewManager.instance.EndViewCharacterOfDialog();
+
+            if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
+                break;
+            }
         }
 
         ViewManager.instance.characterStausPannel.Hide();

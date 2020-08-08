@@ -8,19 +8,25 @@ namespace PCG {
     public class ViewManager : MonoBehaviour {
         [System.Serializable]
         public class ResTable {
+            public PositionTween statusPannelShowup;
+            public PositionTween characterUITween;
+            public PositionTween nextRoundBtnShowup;
+            public PositionTween diaglogUITween;
+            public PositionTween endGameUIShowup;
+
             public TextMeshProUGUI stratagemDialogCharacterName;
             public TextMeshProUGUI stratagemDialogTitleName;
             public TextAnimator startagemDialogTextAnimator;
 
             public RawImage characterUIImage;
-            public PositionTween characterUITween;
-            public PositionTween nextRoundBtnShowup;
-            public PositionTween diaglogUITween;
+            public GameObject startGameMenuRoot;
+
             public AnchorPoint viewCardSpwanAnchor;
             public AnchorPoint viewCardLeftAnchor;
             public AnchorPoint viewCardRightAnchor;
             public AnchorPoint viewCardLeaveAnchor;
             public AnchorPoint centerBackCardAnchor;
+
             public Color evilTraitColor;
             public Color noneEvilTraitColor;
         }
@@ -43,15 +49,28 @@ namespace PCG {
         public EventDescriptionPlayer eventDescriptionPlayer;
         public CharacterStausPannel characterStausPannel;
 
-        public void Init() {
+        public void OnStortEnd() {
+            StoryBook.instance.ViewContent(new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex));
+            resTable.endGameUIShowup.Play();
+            resTable.statusPannelShowup.Play(true);
+            resTable.characterUITween.Play(true);
+            resTable.diaglogUITween.Play(true);
+            characterStausPannel.Hide();
+            eventDescriptionPlayer.HideUI();
+        }
+
+
+        public void InitForGameStart() {
+            resTable.startGameMenuRoot.SetActive(false);
+            resTable.statusPannelShowup.Play();
             characterStausPannel.Init(PlayData.instance.gameState.characterDeck.ToArray());
         }
 
         public void InitViewForCouncialStage() {
             characterStausPannel.Showup();
             eventDescriptionPlayer.HideUI();
-
         }
+
         public IEnumerator ViewCardsOnScreen(Card[] cards,float holdTime = 2f) {
             var cardDisplays = new List<CardDisplayBehaviour>();
             foreach (var card in cards) {

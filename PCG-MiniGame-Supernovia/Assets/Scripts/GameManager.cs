@@ -6,10 +6,12 @@ using UnityEngine;
 namespace PCG {
     public class GameManager : MonoBehaviour {
         [SerializeField]
+        private StartMenuManager startMenuManager;
+        [SerializeField]
         private PlayLoopManager playLoopManager;
         [SerializeField]
         private StoryEndingManager storyEndingManager;
-
+        
         private void Awake() {
             DontDestroyOnLoad(gameObject);
             StartCoroutine(PlayGame());
@@ -17,20 +19,22 @@ namespace PCG {
 
         // [ContextMenu("start game")]
         public IEnumerator PlayGame() {
+            yield return StartCoroutine(startMenuManager.WaitStartGame());
+
             InitGameProcedule();
 
             // 开始游戏主循环
             yield return StartCoroutine(playLoopManager.PlayLoop());
 
             // ending
-            yield return StartCoroutine(storyEndingManager.PlayStoryEnding());
+            storyEndingManager.OnStoryEnd();
         }
 
         void InitGameProcedule() {
             // 初始化故事状态
             int seed = Random.Range(-10000, 100000);
             PlayData.instance.InitData();
-            ViewManager.instance.Init();
+            ViewManager.instance.InitForGameStart();
         }
     }
 }

@@ -515,6 +515,7 @@
     <Compile Include="Assets\Scripts\PCGVariableTable.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
     <Compile Include="Assets\Scripts\ResourceTable.cs" />
+    <Compile Include="Assets\Scripts\StartMenuManager.cs" />
     <Compile Include="Assets\Scripts\StoryDirector\CouncilStateInfoWidget.cs" />
     <Compile Include="Assets\Scripts\StoryDirector\SerializedStory.cs" />
     <Compile Include="Assets\Scripts\StoryDirector\SerializedStoryEditor.cs" />

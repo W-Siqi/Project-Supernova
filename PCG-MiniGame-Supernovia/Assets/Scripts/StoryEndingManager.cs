@@ -1,10 +1,20 @@
 ﻿using PCG;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StoryEndingManager : MonoBehaviour
 {
+    [SerializeField]
+    private Text endingTitle;
+    [SerializeField]
+    private Text endingContent;
+    [SerializeField]
+    private RawImage endingImage;
+
     [SerializeField]
     private StoryBook.PageContent goodEnd;
     [SerializeField]
@@ -15,7 +25,8 @@ public class StoryEndingManager : MonoBehaviour
     private StoryBook.PageContent badEndPeople;
     [SerializeField]
     private StoryBook.PageContent badEndLoyalty;
-    public IEnumerator PlayStoryEnding() {
+
+    public void  OnStoryEnd() {
         var status =PlayData.instance.gameState.statusVector;
         StoryBook.PageContent pageContentOfEnd = null;
         bool win = false;
@@ -45,11 +56,21 @@ public class StoryEndingManager : MonoBehaviour
             pageContentOfEnd = goodEnd;
         }
 
-        yield return StartCoroutine(PlayEndingPage(pageContentOfEnd));
+        // fill content
+        if (win) {
+            endingTitle.text = "成功结局";
+        }
+        else {
+            endingTitle.text = "失败结局";
+        }
+
+        endingContent.text = pageContentOfEnd.text;
+        endingImage.texture = pageContentOfEnd.image;
+
+        ViewManager.instance.OnStortEnd();
     }
 
-    private IEnumerator PlayEndingPage(StoryBook.PageContent content) {
-        StoryBook.instance.ViewContent(content);
-        yield return null;
+    public void Restart() {
+        SceneManager.LoadScene("Main");
     }
 }

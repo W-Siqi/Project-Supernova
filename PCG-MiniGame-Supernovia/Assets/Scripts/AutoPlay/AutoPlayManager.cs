@@ -16,7 +16,7 @@ public class AutoPlayManager : MonoBehaviour
     [ContextMenu("刷新残局debug")]
     public void RefreshAndDebugPlay() {
         PlayData.instance.InitData();
-        ViewManager.instance.Init();
+        ViewManager.instance.InitForGameStart();
         Play(PlayData.instance.gameState.MakeDeepCopy(), PlayData.instance.gameConfig.MakeDeepCopy(), debugPlayTimes);
     }
 
