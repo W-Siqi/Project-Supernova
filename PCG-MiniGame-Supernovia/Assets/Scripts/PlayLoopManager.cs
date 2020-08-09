@@ -39,7 +39,9 @@ public class PlayLoopManager : MonoBehaviour {
             var bindingInfos = selectedEvent.preconditonSet.Bind(PlayData.instance.gameState);
 
             // 必须要在apply结果前面进行演出
+            Debug.Log(string.Format("=========================[{0}]-[{1}]========", selectedEvent.name,selectedEvent.description));
             var description = EventDescription.Generate(selectedEvent, bindingInfos);
+
             yield return StartCoroutine(desctriptionPlayer.PlayEventDescription(bindingInfos, description));
 
             selectedEvent.consequenceSet.Apply(bindingInfos, PlayData.instance.gameState);

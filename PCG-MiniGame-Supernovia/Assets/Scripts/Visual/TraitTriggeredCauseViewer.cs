@@ -26,10 +26,13 @@ namespace PCG {
 
         // 显示触发性格的起因
         public void ViewCause(GameStateModifyCause cause) {
-
             characterImage.texture = cause.belongedCharacter.GetAvatarImage();
+
             personalityViewer.InitTo(cause.trait);
+            ViewManager.instance.characterStausPannel.HightlightTrait(cause.belongedCharacter, cause.trait);
+
             tooptipText.text = TraitUtils.GetTooltip(cause.trait);
+
             charcracterShowup.Play();
             traitShowup.Play();
             tittleShowup.Play();

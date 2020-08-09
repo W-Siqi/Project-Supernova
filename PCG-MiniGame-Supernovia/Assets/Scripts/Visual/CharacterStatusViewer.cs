@@ -61,7 +61,7 @@ public class CharacterStatusViewer : MonoBehaviour {
     public void HightlightTrait(Trait trait) {
         foreach (var personalityViewer in personalityViewerUGUIs) {
             if (personalityViewer.currentViewedTrait == trait) {
-                personalityViewer.Highlight();
+                personalityViewer.HighlightOn();
             }
         }
     }

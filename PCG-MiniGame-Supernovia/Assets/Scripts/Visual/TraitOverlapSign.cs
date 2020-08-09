@@ -6,18 +6,34 @@ using UnityEngine;
 
 public class TraitOverlapSign : MonoBehaviour
 {
+    
     [SerializeField]
     TextMeshProUGUI signText;
     [SerializeField]
-    TextColorTween signShine;
+    ImageGUIColorTween bgColorShowAndHide;
+    [SerializeField]
+    TextColorTween textColorShowAndHide;
+    [SerializeField]
+    SizeTween sizeShowUp;
+    [SerializeField]
+    Color evilColor;
+    [SerializeField]
+    Color noneEvilColor;
     public void ShowSign(Trait trait) {
         if (TraitUtils.IsEvil(trait)) {
-            signShine.endColor = ViewManager.instance.resTable.evilTraitColor;
+            bgColorShowAndHide.endColor = evilColor;
         }
         else {
-            signShine.endColor = ViewManager.instance.resTable.noneEvilTraitColor;
+            bgColorShowAndHide.endColor = noneEvilColor;
         }
         signText.text = TraitUtils.TranslateToName(trait);
-        signShine.Play();
+        sizeShowUp.Play();
+        bgColorShowAndHide.Play();
+        textColorShowAndHide.Play();
+    }
+
+    [ContextMenu("TEST")]
+    private void Test() {
+        ShowSign(Trait.corrupt);
     }
 }

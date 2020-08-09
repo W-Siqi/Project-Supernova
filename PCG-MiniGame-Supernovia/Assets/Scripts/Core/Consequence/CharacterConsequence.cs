@@ -12,24 +12,23 @@ public class CharacterConsequence : Consequence{
     public TraitAlteration traitAlteration = new TraitAlteration();
     public int loyaltyAlteraion = 0;
 
+    // 动画(r[bindinfoIndex][trait-转ASCII]),r是remove trait
+    // 动画(a[bindinfoIndex][trait-转ASCII]),a是add trait
     public string CreateDescription(BindingInfo bindingInfo,int indexInBindingSequence) {
         var characterShowupStr = string.Format("(c{0})", indexInBindingSequence.ToString());
-        // 动画(t12怒),t是transfer，1 是bindinginfo，2是personalites的下标，2是tranfer的目标
-        int indexOfTrait= 0;
-        for (int i = 0; i < CharacterCard.PERSONALITY_COUNT; i++) {
-            if (bindingInfo.bindedCharacter.personalities[i] == bindingInfo.bindedPersonalityOfCharacter) {
-                indexOfTrait = i;
-                break;
-            }
+        var traitAnimationStr = "";
+        if (traitAlteration.type == TraitAlteration.Type.add) {
+            traitAnimationStr = string.Format("(a{0}{1})", indexInBindingSequence.ToString(), (char)traitAlteration.targetTrait);
         }
-        var traitTansferStr = string.Format("(t{0}{1})", indexOfTrait.ToString(),(char)traitAlteration.targetTrait);
-        var traitName = TraitUtils.TranslateToName(bindingInfo.bindedPersonalityOfCharacter.trait);
-        var finalDescription = string.Format("{0}{1}变得{2}{3}", characterShowupStr, bindingInfo.bindedCharacter.name, traitTansferStr,traitName);
+        else if (traitAlteration.type == TraitAlteration.Type.remove) {
+            traitAnimationStr = string.Format("(r{0}{1})", indexInBindingSequence.ToString(), (char)traitAlteration.targetTrait);
+        }
+        var finalDescription = string.Format("{0}{1}{2}发生了转变", characterShowupStr,traitAnimationStr, bindingInfo.bindedCharacter.name);
 
-        if (loyaltyAlteraion < 0) {
+        if (loyaltyAlteraion > 0) {
             finalDescription += "且忠诚";
         }
-        else {
+        else if(loyaltyAlteraion < 0) {
             finalDescription += ", 并且不那么忠诚了";
         }
         return finalDescription;

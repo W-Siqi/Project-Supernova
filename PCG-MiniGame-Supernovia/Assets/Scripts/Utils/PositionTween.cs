@@ -11,7 +11,10 @@ public class PositionTween : MonoBehaviour
     public float duration = 1f;
 
     private void Awake() {
-        transform.position = startAnchor.position;
+        if (startAnchor) {
+            transform.position = startAnchor.position;
+        }
+
         if (autoPingPongLoop) {
             StartCoroutine(PlayTweenPingPongLoop());
         }

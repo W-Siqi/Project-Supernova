@@ -143,7 +143,9 @@ namespace PCG {
                     }
                 }
                 else {
-                    stratagemProvider.loyalty -= 1;
+                    var modify = new GameStateModifyEvent( GameStateModifyCause.Type.madeStratagemDecision);
+                    modify.AddConsequence(stratagemProvider, -1);
+                    gameStateModifyEvents.Add(modify);
                 }
 
                 // 本身应用的后果 ： 角色性格改变 - 先不设定！

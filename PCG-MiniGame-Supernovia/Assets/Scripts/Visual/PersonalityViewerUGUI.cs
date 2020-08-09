@@ -12,10 +12,13 @@ public class PersonalityViewerUGUI : MonoBehaviour
     [SerializeField]
     SizeTween hightlightSizeTween;
     [SerializeField]
+    ImageGUIColorTween hightlightColorTween;
+    [SerializeField]
     Image background;
     [SerializeField]
     TextMeshProUGUI traitName;
 
+    private int hightlightAniID = 0;
     public void InitTo(Trait trait) {
         currentViewedTrait = trait;
         traitName.text = TraitUtils.TranslateToName(trait);
@@ -26,11 +29,28 @@ public class PersonalityViewerUGUI : MonoBehaviour
         currentViewedTrait = trait;
         traitName.text = TraitUtils.TranslateToName(trait);
         background.color = GetTraitColor(trait);
-        Highlight();
+        HighlightOn(3f);
     }
 
-    public void Highlight() {
-        hightlightSizeTween.Play();
+    public void HighlightOn(float duration = 4f) {
+        StartCoroutine(HightlightLooping(duration, ++hightlightAniID));
+    }
+
+    public void HighlightClose() {
+        hightlightAniID++;
+    }
+
+    private IEnumerator HightlightLooping(float duration, int id) {
+        float freq = 2f;
+        hightlightColorTween.playTime = freq;
+        hightlightSizeTween.playTime = freq;
+        var playedTime = 0f;
+        while (playedTime < duration && id == hightlightAniID) {
+            hightlightColorTween.Play();
+            hightlightSizeTween.Play();
+            playedTime += freq;
+            yield return new WaitForSeconds(freq);
+        }
     }
 
     private Color GetTraitColor(Trait trait) {

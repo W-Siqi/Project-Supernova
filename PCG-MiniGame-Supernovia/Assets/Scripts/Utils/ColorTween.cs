@@ -6,8 +6,7 @@ namespace PCG {
     public abstract class ColorTween : MonoBehaviour {
         public Color beginColor;
         public Color endColor;
-        [SerializeField]
-        private float playTime = 1f;
+        public float playTime = 1f;
         [SerializeField]
         private AnimationCurve tweenCurve;
 

@@ -22,16 +22,19 @@ public class EventDescription {
     public const char ANI_END_SIGN = ')';
     // 动画(c0) ,c代表character, 0 代表bindinginfo的下标
     public const char CHARACTER_ANIM_SIGN = 'c';
-    // 动画(h12),h是hightlight，1 是bindinginfo，2是personalites的下标
+    // 动画(h[bindinfoIndex][trait-转ASCII]),h是hightlight
     public const char TRAIT_HIGHTLIGHT_ANIM_SIGN = 'h';
-    // 动画(t12怒),t是transfer，1 是bindinginfo，2是personalites的下标，2是tranfer的目标
-    public const char TRAIT_TRANSFER_ANIM_SIGN = 't';
+    // 动画(r[bindinfoIndex][trait-转ASCII]),r是remove trait
+    public const char TRAIT_REMOVE_ANIM_SIGN = 'r';
+    // 动画(a[bindinfoIndex][trait-转ASCII]),a是add trait
+    public const char TRAIT_ADD_ANIM_SIGN = 'a';
 
 
     public string title = "";
     public List<string> paragragh = new List<string>();
 
     public static EventDescription Generate(EventCard eventCard, BindingInfo[] bindingInfos) {
+        Debug.Log(eventCard.name+ "  -[描述转化]  "+eventCard.description);
         var description = new EventDescription();
         description.title = eventCard.name;
         var contentStr = ParseToContentString(eventCard, bindingInfos);
@@ -66,6 +69,7 @@ public class EventDescription {
         if (convertSegment[0] == PRECONDITON_BEGIN) {
             if (convertSegment[1] == CHARACTER_SIGN) {
                 // 角色前提
+                //Debug.Log("[解析角色前提: ] " + convertSegment + " idnex为:" + (convertSegment[2] - '0'));
                 int index = convertSegment[2] - '0';
                 return eventCard.preconditonSet.characterPreconditions[index].CreateDescription(bindingInfos[index],index);
             }
@@ -73,11 +77,13 @@ public class EventDescription {
         else if (convertSegment[0] == CONSEQUENCE_BEGIN) {
             if (convertSegment[1] == CHARACTER_SIGN) {
                 // 角色后果
+                //Debug.Log("[解析后果前提: ] " + convertSegment + " idnex为:" + (convertSegment[2] - '0'));
                 int index = convertSegment[2] - '0';
                 return eventCard.consequenceSet.characterConsequences[index].CreateDescription(bindingInfos[index],index);
             }
             else if(convertSegment[1] == STATUS_VALUE_CHANGE_SIGN){
                 // 状态值后果
+                //Debug.Log("[解析状态值后果: ] " + convertSegment );
                 return eventCard.consequenceSet.statusConsequence.CreateDescription();
             }
         }

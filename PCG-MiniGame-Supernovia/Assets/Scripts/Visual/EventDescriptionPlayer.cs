@@ -15,13 +15,13 @@ namespace PCG {
         [SerializeField]
         private PositionTween eventDescriptionShowup;
         [SerializeField]
-        private AnchorPoint showCharacterFirstAnchor;
+        private Transform showCharacterFirstAnchor;
         [SerializeField]
-        private AnchorPoint showCharacterSecondAnchor;
+        private Transform showCharacterSecondAnchor;
         [SerializeField]
-        private AnchorPoint showCharacterSpawnAnchor;
+        private Transform showCharacterSpawnAnchor;
 
-        private Dictionary<BindingInfo, CardDisplayBehaviour> displayDict = new Dictionary<BindingInfo, CardDisplayBehaviour>();
+        private Dictionary<BindingInfo, CharacterCardViewer> viewerDict = new Dictionary<BindingInfo, CharacterCardViewer>();
 
         public void HideUI() {
             eventDescriptionShowup.Play(true);
@@ -37,7 +37,7 @@ namespace PCG {
             eventTtileText.text = eventDescription.title;
             eventDescriptionText.text = "";
             foreach (var para in eventDescription.paragragh) {
-                Debug.Log("paragrah- " + para);
+                Debug.Log("[paragrah]- " + para);
                 int cur = 0;
                 while (cur < para.Length) {
                     if (para[cur] == EventDescription.ANI_START_SIGN) {
@@ -61,16 +61,19 @@ namespace PCG {
             }
 
             yield return new WaitForSeconds(holdTime);
-            foreach (var displayKV in displayDict) {
-                DestroyImmediate(displayKV.Value.gameObject);
+            foreach (var viewer in viewerDict) {
+                DestroyImmediate(viewer.Value.gameObject);
             }
-            displayDict.Clear();
+            viewerDict.Clear();
+            Debug.Log("[结束]------------- " );
         }
 
         // 传进来的是不带()的
-        // 动画(c0) ,0 代表bindinginfo的下标
-        // 动画(h12),h是hightlight，1 是bindinginfo，2是personalites的下标
-        // 动画(t12怒),t是transfer，1 是bindinginfo，2是personalites的下标，3是tranfer的目标
+        // 动画(c[bindinfoIndex]) ,c代表character Showup
+        // 动画(h[bindinfoIndex][trait-转ASCII]),h是hightlight
+        // 动画(r[bindinfoIndex][trait-转ASCII]),r是remove trait
+        // 动画(a[bindinfoIndex][trait-转ASCII]),a是add trait
+        public const char TRAIT_ADD_ANIM_SIGN = 'a';
         private IEnumerator PlayAniamtionContent(BindingInfo[] bindingInfos, string animationIndecator) {
             var typeSign = animationIndecator[0];
             var bindingIndex = animationIndecator[1] - '0';
@@ -80,41 +83,48 @@ namespace PCG {
                 yield return StartCoroutine(CharacterShowup(bindingTarget));
             }
             else if (typeSign == EventDescription.TRAIT_HIGHTLIGHT_ANIM_SIGN) {
-                var personalityIndex = animationIndecator[2] - '0';
-                yield return StartCoroutine(HightlightTrait(bindingTarget,personalityIndex));
+                Trait transferTarget = (Trait)animationIndecator[2];
+                yield return StartCoroutine(PlayHightlightTrait(bindingTarget, transferTarget));
             }
-            else if (typeSign == EventDescription.TRAIT_TRANSFER_ANIM_SIGN) {
-                var personalityInedx = animationIndecator[2] - '0';
-                Trait transferTarget = (Trait)animationIndecator[3];
-                yield return StartCoroutine(TransferTrait(bindingTarget, personalityInedx, transferTarget));
+            else if (typeSign == EventDescription.TRAIT_ADD_ANIM_SIGN) {
+                Trait transferTarget = (Trait)animationIndecator[2];
+                yield return StartCoroutine(PlayAddTrait(bindingTarget, transferTarget));
             }
-
+            else if (typeSign == EventDescription.TRAIT_REMOVE_ANIM_SIGN) {
+                Trait transferTarget = (Trait)animationIndecator[2];
+                yield return StartCoroutine(PlayRemoveTrait(bindingTarget, transferTarget));
+            }
         }
 
         private IEnumerator CharacterShowup(BindingInfo bindingInfo) {
-            if (!displayDict.ContainsKey(bindingInfo)) {
-                float showTime = 0.6f;
-
-                var cardDisplay = CardDisplayBehaviour.Create(bindingInfo.bindedCharacter, showCharacterSpawnAnchor);
-                displayDict[bindingInfo] = cardDisplay;
+            if (!viewerDict.ContainsKey(bindingInfo)) {
 
                 var posDelta = showCharacterSecondAnchor.position - showCharacterFirstAnchor.position;
-                var destPos = showCharacterFirstAnchor.position + posDelta * (displayDict.Count - 1);
-                var destRotate = showCharacterFirstAnchor.rotation;
-                LerpAnimator.instance.LerpPositionAndRotation(cardDisplay.transform, destPos, destRotate, showTime);
-                yield return new WaitForSeconds(showTime);
+                var destPos = showCharacterFirstAnchor.position + posDelta * (viewerDict.Count);
+                var GO = new GameObject("temp anchor");
+                GO.transform.SetParent(showCharacterSpawnAnchor.parent);
+                GO.transform.position = destPos;
+                var viewer = CharacterCardViewer.Create(bindingInfo.bindedCharacter, showCharacterSpawnAnchor, GO.transform);
+                viewerDict[bindingInfo] = viewer;
+
+                yield return new WaitForSeconds(0.5f);
             }  
         }
 
-        private IEnumerator HightlightTrait(BindingInfo bindingInfo,int index) {
+        private IEnumerator PlayHightlightTrait(BindingInfo bindingInfo,Trait trait) {
             float showTime = 1f;
-            displayDict[bindingInfo].HighlightPersonality(bindingInfo.bindedCharacter.personalities[index]);
+            viewerDict[bindingInfo].HighlightTrait(bindingInfo.bindedPersonalityOfCharacter.trait);
             yield return new WaitForSeconds(showTime);
         }
 
-        private IEnumerator TransferTrait(BindingInfo bindingInfo, int index, Trait traitToTransfer) {
+        private IEnumerator PlayRemoveTrait(BindingInfo bindingInfo,Trait trait) {
             float showTime = 2f;
-            displayDict[bindingInfo].UpdatePersonality(bindingInfo.bindedCharacter.personalities[index],traitToTransfer);
+            viewerDict[bindingInfo].OnTraitRemove(trait);
+            yield return new WaitForSeconds(showTime);
+        }
+        private IEnumerator PlayAddTrait(BindingInfo bindingInfo, Trait trait) {
+            float showTime = 2f;
+            viewerDict[bindingInfo].OnTraitAdd(trait);
             yield return new WaitForSeconds(showTime);
         }
     }

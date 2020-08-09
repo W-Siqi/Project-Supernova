@@ -12,13 +12,18 @@ public class SizeTween : MonoBehaviour
     private bool resetAfterTweenOver = false;
 
     int playID = 0;
+    private Vector3 originalSize;
+
+    private void Awake() {
+        originalSize = transform.localScale;
+    }
+
     [ContextMenu("TEST Play")]
     public void Play() {
         StartCoroutine(PlayTween(++playID));
     }
 
     IEnumerator PlayTween(int assignedID) {
-        var originalSize = transform.localScale;
         var startTime = Time.time;
         while (assignedID == playID && Time.time < startTime + playTime) {
             var t = (Time.time - startTime) / playTime;

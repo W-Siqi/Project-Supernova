@@ -50,6 +50,10 @@ public class CharacterStausPannel : MonoBehaviour
         yield return StartCoroutine(characterViewer.ViewTraitChange(personalityIndex,newTrait));
     }
 
+    public void HightlightTrait(CharacterCard character, Trait trait) {
+        characterStatusViewerDict[character].HightlightTrait(trait);
+    }
+
     public void Hide() {
         showupTween.Play(true);
     }

@@ -532,6 +532,7 @@
     <Compile Include="Assets\Scripts\Utils\AnchorManager.cs" />
     <Compile Include="Assets\Scripts\Utils\AnchorPoint.cs" />
     <Compile Include="Assets\Scripts\Utils\ColorTween.cs" />
+    <Compile Include="Assets\Scripts\Utils\EventDescriptionTest.cs" />
     <Compile Include="Assets\Scripts\Utils\ImageGUIColorTween.cs" />
     <Compile Include="Assets\Scripts\Utils\LerpAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\PositionTween.cs" />
@@ -541,6 +542,7 @@
     <Compile Include="Assets\Scripts\Utils\TextAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\TextColorTween.cs" />
     <Compile Include="Assets\Scripts\Visual\CardDisplayBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Visual\CharacterCardViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\CharacterStatusViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\CharacterStausPannel.cs" />
     <Compile Include="Assets\Scripts\Visual\DeckDisplayBehaviour.cs" />

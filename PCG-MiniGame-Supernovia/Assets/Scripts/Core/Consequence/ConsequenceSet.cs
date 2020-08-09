@@ -19,6 +19,7 @@ public class ConsequenceSet
     public void Apply(BindingInfo[] bindingInfos,GameState gameStateToApply) {
         if (statusConsequenceEnabled) {
             gameStateToApply.statusVector += statusConsequence.delta;
+            ViewManager.instance.statusVectorPannel.ViewStatusVectorChange(statusConsequence.delta);
         }
     }
 }
