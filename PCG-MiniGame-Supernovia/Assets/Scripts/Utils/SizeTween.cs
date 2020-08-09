@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SizeTween : MonoBehaviour
 {
-    [SerializeField]
-    private float playTime = 1f;
+    public float playTime = 1f;
+
     [SerializeField]
     private AnimationCurve sizeCurve;
     [SerializeField]

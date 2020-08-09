@@ -13,7 +13,6 @@ namespace PCG {
         private StoryEndingManager storyEndingManager;
         
         private void Awake() {
-            DontDestroyOnLoad(gameObject);
             StartCoroutine(PlayGame());
         }
 

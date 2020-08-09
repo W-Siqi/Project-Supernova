@@ -7,8 +7,8 @@ using PCG;
 
 public class ValueViewer : MonoBehaviour
 {
-    [Range(0,100)]
-    public float debugValue = 60;
+    [SerializeField]
+    TraitOverlapSign traitOverlapSign;
 
     [SerializeField]
     private Slider sliderOfValue;  
@@ -32,25 +32,17 @@ public class ValueViewer : MonoBehaviour
     private float maxVal = 100;
     private float curVal = 0;
 
-    [ContextMenu("Test with debug value")]
-    public void DebugTest() {
-        SetCurrentValue(debugValue);
+
+    public void ApplyDiff(int delta) {
+        curVal += delta;
+        sliderOfValue.value = curVal / maxVal;
+        ShowDiff(delta);
     }
 
-    public void SetMaxValue(float maxVal) {
-        this.maxVal = maxVal;
+    public void ApplyDiff(int delta,Trait showTrait) {
+        traitOverlapSign.ShowSign(showTrait);
+        ApplyDiff(delta);
     }
-
-    public void SetCurrentValue(float curVal) {
-        var diff = curVal - this.curVal;
-        if (Mathf.Abs( diff) > 0.01) {
-            ShowDiff(diff);
-        }
-
-        this.curVal = curVal;
-        sliderOfValue.value = Mathf.Clamp(this.curVal, 0, maxVal) / maxVal;
-    }
-
 
     void ShowDiff(float diffValue) {     
         if (diffValue > 0) {

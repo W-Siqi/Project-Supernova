@@ -16,6 +16,14 @@ public class StatusVector {
         return res;
     }
 
+    public static StatusVector operator -(StatusVector a, StatusVector b) {
+        var res = new StatusVector();
+        res.people = a.people - b.people;
+        res.money = a.money - b.money;
+        res.army = a.army - b.army;
+        return res;
+    }
+
     public static StatusVector operator * (float val, StatusVector statusVector) {
         var res = new StatusVector(statusVector);
         res.people = (int)((float)(res.people)*val) ;

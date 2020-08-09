@@ -13,6 +13,7 @@ namespace PCG {
         public float wiseTraitAmplifyRate = 0.3f;
         public float slicentTraitSlicenceProbility = 0.3f;
         public float tolerantTraitKeepLoyaltyProbability = 0.5f;
+        public float honestProbability = 0.3f;
         public int jealousTraitThreshold = 3;
         public int corrputTraitMoneyPerRound = 2;
         public int cruelTraitPeopleValuePerDecision = 5;

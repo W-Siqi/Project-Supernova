@@ -27,5 +27,14 @@ namespace PCG {
             }
             return false;
         }
+
+        public int FindPersonaltyIndex(Personality personality) {
+            for(int i = 0; i < personalities.Length; i++){
+                if (personalities[i] == personality) {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

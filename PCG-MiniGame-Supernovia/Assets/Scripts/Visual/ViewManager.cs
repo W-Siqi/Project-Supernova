@@ -42,12 +42,10 @@ namespace PCG {
         }
 
         public ResTable resTable;
-        public ValueViewer armyValue;
-        public ValueViewer moneyValue;
-        public ValueViewer peopleValue;
-        public VoteViewer voteViewer;
         public EventDescriptionPlayer eventDescriptionPlayer;
+        public GameStateModifyEventPlayer gameStateModifyEventPlayer;
         public CharacterStausPannel characterStausPannel;
+        public StatusVectorPannel statusVectorPannel;
 
         public void OnStortEnd() {
             StoryBook.instance.ViewContent(new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex));
@@ -63,6 +61,7 @@ namespace PCG {
         public void InitForGameStart() {
             resTable.startGameMenuRoot.SetActive(false);
             resTable.statusPannelShowup.Play();
+            StartCoroutine(statusVectorPannel.ViewStatusVectorChange(PlayData.instance.gameState.statusVector));
             characterStausPannel.Init(PlayData.instance.gameState.characterDeck.ToArray());
         }
 
@@ -79,7 +78,7 @@ namespace PCG {
 
             // show card
             float showupInterval = 0.2f;
-            float showupAnimationDuration = 1.5f;
+            float showupAnimationDuration = 0.5f;
             for (int i = 0; i < cardDisplays.Count; i++) {
                 var cardDisplay = cardDisplays[i];
                 var t = (float)(i + 1) / (float)(cardDisplays.Count + 1);
@@ -98,9 +97,9 @@ namespace PCG {
                     cardDisplay.transform,
                     resTable.viewCardLeaveAnchor.position,
                     resTable.viewCardLeaveAnchor.rotation,
-                    2f);
+                    showupAnimationDuration);
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
 
 

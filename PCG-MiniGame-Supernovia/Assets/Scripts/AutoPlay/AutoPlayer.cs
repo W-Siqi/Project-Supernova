@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PCGP;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -19,7 +20,8 @@ namespace PCG {
             int round;
             for (round = 0; round < gameConfig.roundCount; round++) {
                 // buff
-                GameExecuter.ApplyBuffBeforeRound(gameState, gameConfig);
+                var modifies =  GameExecuter.CalculateBuffBeforeRound(gameState, gameConfig);
+                GameStateModifyEvent.ApplyModificationsTo(gameState, modifies);
 
                 // council
                 foreach (var character in gameState.characterDeck) {

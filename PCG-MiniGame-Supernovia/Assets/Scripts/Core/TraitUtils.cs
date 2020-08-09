@@ -40,7 +40,7 @@ namespace PCG {
                 case Trait.jealous:
                     return "妒";
                 case Trait.tricky:
-                    return "奸";
+                    return "骗";
             }
             return trait.ToString();
         }
@@ -68,7 +68,7 @@ namespace PCG {
                 case Trait.jealous:
                     return "嫉妒";
                 case Trait.tricky:
-                    return "奸诈";
+                    return "欺骗";
             }
             return trait.ToString();
         }
@@ -101,14 +101,22 @@ namespace PCG {
             return trait.ToString();
         }
 
-        public static Trait GetRandomTrait() {
+        public static Trait GetRandomTrait(bool canBeNone = false) {
             if (allValues == null) { 
                 allValues = new List<Trait>();
                 foreach (Trait trait in Enum.GetValues(typeof(Trait))) {
                     allValues.Add(trait);
                 }
             }
-            return allValues[UnityEngine.Random.Range(0, allValues.Count)];
+
+            var v =  allValues[UnityEngine.Random.Range(0, allValues.Count)];
+
+            if (!canBeNone && v == Trait.none) {
+                return GetRandomTrait();
+            }
+            else {
+                return v;
+            }
         }
     }
 }

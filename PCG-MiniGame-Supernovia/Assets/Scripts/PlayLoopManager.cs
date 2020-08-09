@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PCG;
+using PCGP;
 
 // 管理 决策 - 人物 - 事件 等游戏游玩主循环
 public class PlayLoopManager : MonoBehaviour {
@@ -10,9 +11,9 @@ public class PlayLoopManager : MonoBehaviour {
     bool userInputNextRound = false;
 
     public IEnumerator PlayLoop() {
-        for(int round = 0; round < PlayData.instance.gameConfig.roundCount; round++ ) {
-            GameExecuter.ApplyBuffBeforeRound(PlayData.instance.gameState, PlayData.instance.gameConfig, true);
+        yield return StartCoroutine(ViewManager.instance.ViewCardsOnScreen(PlayData.instance.gameState.characterDeck.ToArray()));
 
+        for(int round = 0; round < PlayData.instance.gameConfig.roundCount; round++ ) {
             yield return StartCoroutine(CouncilStage(round));
 
             if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
@@ -29,8 +30,9 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     IEnumerator EventStream() {
-        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex);
+        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         StoryBook.instance.ViewContent(newPageContent);
+        yield return new WaitForSeconds(1.5f);
 
         var desctriptionPlayer = ViewManager.instance.eventDescriptionPlayer;
         foreach (var selectedEvent in GameExecuter.SelectEventCards(PlayData.instance.gameState, PlayData.instance.gameConfig)) {
@@ -51,11 +53,17 @@ public class PlayLoopManager : MonoBehaviour {
 
     IEnumerator CouncilStage(int curRound) {
         // new page
-        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
+        var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex);
         StoryBook.instance.ViewContent(newPageContent);
+        yield return new WaitForSeconds(1.5f);
 
         // UI
         ViewManager.instance.InitViewForCouncialStage();
+
+        // 开局buff
+        var modifyEvents = GameExecuter.CalculateBuffBeforeRound(PlayData.instance.gameState, PlayData.instance.gameConfig);
+        yield return StartCoroutine(ViewManager.instance.gameStateModifyEventPlayer.PlayEvents(modifyEvents));
+        GameStateModifyEvent.ApplyModificationsTo(PlayData.instance.gameState, modifyEvents);
 
         foreach (var character in PlayData.instance.gameState.characterDeck) {
             if (character.HasTrait(Trait.silence)) {
@@ -65,27 +73,30 @@ public class PlayLoopManager : MonoBehaviour {
                 }
             }
 
-            // show 角色
-            ViewManager.instance.ViewCharacterOfDialog(character);
-            ViewManager.instance.characterStausPannel.OnSelect(character);
-
             // 提取建议卡
             var straCard =PlayData.instance.gameState.stratagemDict[character][curRound];
-            // show Dialog
-            ViewManager.instance.ViewDialog(straCard,character);
 
             // 等待用户输入
+            ViewManager.instance.ViewCharacterOfDialog(character);
+            ViewManager.instance.characterStausPannel.OnSelect(character);
+            ViewManager.instance.ViewDialog(straCard, character);
             yield return StartCoroutine(ResetAndWaitStratagemDecisionInput());
-            // end show Dialog
             ViewManager.instance.EndViewDialog();
-
-            // apply 
-            straCard.consequenceSet.Apply(PlayData.instance.gameState, PlayData.instance.gameConfig, character, userInputAgreeDecision);
-            // 稍等一会再进入下一个角色，因为当前动画演出
-            yield return new WaitForSeconds(1f);
-
-            // end character
             ViewManager.instance.EndViewCharacterOfDialog();
+
+            // 计算
+            var modifications = GameExecuter.CalculteStratagemDecision(
+                PlayData.instance.gameState,
+                PlayData.instance.gameConfig,
+                straCard,
+                character,
+                userInputAgreeDecision);
+
+            // 演出
+            yield return StartCoroutine(ViewManager.instance.gameStateModifyEventPlayer.PlayEvents(modifications));
+
+            // 应用
+            GameStateModifyEvent.ApplyModificationsTo(PlayData.instance.gameState, modifications);
 
             if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
                 break;

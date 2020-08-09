@@ -11,16 +11,18 @@ namespace PCG {
         [SerializeField]
         private AnimationCurve tweenCurve;
 
+        private int playID = 0;
+
         [ContextMenu("Test Play")]
         public void Play() {
-            StartCoroutine(PlayTween());
+            StartCoroutine(PlayTween(++playID));
         }
 
         protected abstract void SetColor(Color color);
 
-        IEnumerator PlayTween() {
+        IEnumerator PlayTween(int signedID) {
             var startTime = Time.time;
-            while (Time.time < startTime + playTime) {
+            while (Time.time < startTime + playTime && signedID == playID) {
                 var t = (Time.time - startTime) / playTime;
                 SetColor(Color.Lerp(beginColor, endColor, tweenCurve.Evaluate(t)));
                 yield return null;

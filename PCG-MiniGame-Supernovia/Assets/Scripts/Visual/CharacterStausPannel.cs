@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 不会主动update去监听状态，而是需要手动的调用API
+/// </summary>
 public class CharacterStausPannel : MonoBehaviour
 {
     public Transform upperLeftAnchor;
@@ -37,8 +40,14 @@ public class CharacterStausPannel : MonoBehaviour
         selectedCharacter = characterCard;
     }
 
-    public void HightLightCharacterTrait(CharacterCard characterCard, Trait trait) {
-        characterStatusViewerDict[characterCard].HightlightTrait(trait);
+    public IEnumerator ViewLoyaltyChange(CharacterCard character, int loyaltyDiff) {
+        var characterViewer = characterStatusViewerDict[character];
+        yield return StartCoroutine(characterViewer.ViewLoyaltyDelta(loyaltyDiff));
+    }
+
+    public IEnumerator ViewTraitChange(CharacterCard character, int personalityIndex, Trait newTrait) {
+        var characterViewer = characterStatusViewerDict[character];
+        yield return StartCoroutine(characterViewer.ViewTraitChange(personalityIndex,newTrait));
     }
 
     public void Hide() {
