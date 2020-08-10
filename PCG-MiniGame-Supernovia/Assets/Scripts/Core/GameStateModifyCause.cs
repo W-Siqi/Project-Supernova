@@ -10,8 +10,8 @@ namespace PCG {
         }
 
         public Type type;
-        public CharacterCard belongedCharacter;
+        public int belongedCharacterIndex;
         public Trait trait;
-        public EventCard eventCard;
+        public int eventCardIndex;
     }
 }

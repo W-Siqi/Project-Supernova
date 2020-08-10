@@ -72,7 +72,7 @@ namespace PCG {
             foreach (var character in gameState.characterDeck) {
                 // Trait-Pos: 贪婪
                 if (character.HasTrait(Trait.corrupt)) {
-                    var modify = new GameStateModifyEvent(character, Trait.corrupt);
+                    var modify = new GameStateModifyEvent(gameState, character, Trait.corrupt);
                     var addtionDelta = new StatusVector();
                     addtionDelta.money = -gameConfig.corrputTraitMoneyPerRound;
                     modify.AddConsequence(addtionDelta);
@@ -85,7 +85,7 @@ namespace PCG {
                         //寻找一个贪婪的，转成廉洁
                         var corruptIndex = targetCharacter.FindPersonaltyIndex(Trait.corrupt);
                         if (corruptIndex >= 0) {
-                            var modify = new GameStateModifyEvent(character, Trait.honest);
+                            var modify = new GameStateModifyEvent(gameState, character, Trait.honest);
                             modify.AddTraitChangeConsequence(gameState, targetCharacter, corruptIndex, Trait.honest);
                             gameStateModifyEvents.Add(modify);
                             break;
@@ -119,7 +119,7 @@ namespace PCG {
         /// <param name="bindingInfos"></param>
         /// <returns></returns>
         public static GameStateModifyEvent CalculteEventConsequence(GameState gameState, GameConfig gameConfig, EventCard eventCard, BindingInfo[] bindingInfos) {
-            var gameStateModifyEvent = new GameStateModifyEvent(eventCard,bindingInfos);
+            var gameStateModifyEvent = new GameStateModifyEvent(gameState, eventCard, bindingInfos);
             if (eventCard.consequenceSet.characterConsequenceEnabled) {
                 foreach (var characteConseq in eventCard.consequenceSet.characterConsequences) {
                     if (characteConseq.bindFlag >= bindingInfos.Length) {
@@ -166,13 +166,13 @@ namespace PCG {
 
                 // Trait-Pos:奸诈
                 if (stratagemProvider.HasTrait(Trait.tricky)) {
-                    var modify = new GameStateModifyEvent(stratagemProvider, Trait.tricky);
+                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.tricky);
                     modify.AddConsequence( -2* origanlDelta);
                     gameStateModifyEvents.Add(modify);
                 }
                 // Trait-Pos:明智
                 if (stratagemProvider.HasTrait(Trait.wise)) {
-                    var modify = new GameStateModifyEvent(stratagemProvider, Trait.wise);
+                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.wise);
                     var ampifiedDelta = new StatusVector(origanlDelta);
                     ampifiedDelta.AmplifyValueIfPositive(gameConfig.wiseTraitAmplifyRate);
                     modify.AddConsequence(ampifiedDelta-origanlDelta);
@@ -181,7 +181,7 @@ namespace PCG {
 
                 // Trait-Pos: 好战
                 if (stratagemProvider.HasTrait(Trait.warlike)) {
-                    var modify = new GameStateModifyEvent(stratagemProvider, Trait.warlike);
+                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.warlike);
                     var addtionDelta = new StatusVector();
                     addtionDelta.army = gameConfig.warlikeTraitArmyValueWhenAccept;
                     modify.AddConsequence(addtionDelta);
@@ -190,7 +190,7 @@ namespace PCG {
 
                 // Trait-Pos:残暴
                 if (stratagemProvider.HasTrait(Trait.cruel)) {
-                    var modify = new GameStateModifyEvent(stratagemProvider, Trait.cruel);
+                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.cruel);
                     var addtionDelta = new StatusVector();
                     addtionDelta.people = - gameConfig.cruelTraitPeopleValuePerDecision;
                     modify.AddConsequence(addtionDelta);
@@ -201,7 +201,7 @@ namespace PCG {
                 if (stratagemProvider.HasTrait(Trait.arrogent)) {
                     foreach (var character in gameState.characterDeck) {
                         if (character != stratagemProvider) {
-                            var modify = new GameStateModifyEvent(stratagemProvider, Trait.arrogent);
+                            var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.arrogent);
                             modify.AddLoyaltyChangeConsequence(gameState,character,-1);
                             gameStateModifyEvents.Add(modify);
                             break;
@@ -213,7 +213,7 @@ namespace PCG {
                 if (gameState.acceptCountInCurrentRound >= gameConfig.jealousTraitThreshold) {
                     foreach (var character in gameState.characterDeck) {
                         if (character != stratagemProvider && character.HasTrait(Trait.jealous)) {
-                            var modify = new GameStateModifyEvent(character, Trait.jealous);
+                            var modify = new GameStateModifyEvent(gameState, character, Trait.jealous);
                             modify.AddLoyaltyChangeConsequence(gameState, character, -1);
                             gameStateModifyEvents.Add(modify);
                         }
@@ -224,7 +224,7 @@ namespace PCG {
                 // Trait-Pos:宽容
                 if (stratagemProvider.HasTrait(Trait.tolerant)) {
                     if (Random.value > gameConfig.tolerantTraitKeepLoyaltyProbability) {
-                        var modify = new GameStateModifyEvent(stratagemProvider, Trait.tolerant);
+                        var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.tolerant);
                         modify.AddLoyaltyChangeConsequence(gameState,stratagemProvider, 0);
                         gameStateModifyEvents.Add(modify);
                     }

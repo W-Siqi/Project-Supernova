@@ -61,6 +61,32 @@ MonoBehaviour:
     - trait: 0
     - trait: 0
     - trait: 0
+  - name: "\u6770\u65AF\u9886\u4E3B"
+    description: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 1/character_17.png
+    loyalty: 3
+    attributes:
+      atkVal: 0
+      maxHP: 0
+      HP: 0
+    personalities:
+    - trait: 0
+    - trait: 0
+    - trait: 0
+  - name: "\u9A6C\u514B\u9A91\u58EB"
+    description: 
+    avatarImagePath: Assets/External/2D Fantasy Art Assets Full Pack/2D Character
+      Pack Vol 1/character_56.png
+    loyalty: 3
+    attributes:
+      atkVal: 0
+      maxHP: 0
+      HP: 0
+    personalities:
+    - trait: 0
+    - trait: 0
+    - trait: 0
   eventCards:
   - name: "\u8D22\u653F\u5371\u673A"
     description: "[-c0]\u548C[-c1]\u6697\u4E2D\u52FE\u7ED3;\u7BE1\u6539\u4E86\u8D26\u7C3F;\u5BB3\u5F97[>s0]"

@@ -31,7 +31,7 @@ namespace PCG {
             var samePreviousCharacter = false;
             if (previousCause != null
                 && previousCause.type == GameStateModifyCause.Type.triggerTrait
-                && previousCause.belongedCharacter == gameStateModifyEvent.modifyCause.belongedCharacter) {
+                && previousCause.belongedCharacterIndex == gameStateModifyEvent.modifyCause.belongedCharacterIndex) {
                 samePreviousCharacter = true;
             }
 
@@ -40,7 +40,7 @@ namespace PCG {
                 if (!samePreviousCharacter) {
                     yield return new WaitForSeconds(1f);
                 }
-                traitTriggeredCauseViewer.ViewCause(gameStateModifyEvent.modifyCause,samePreviousCharacter);
+                traitTriggeredCauseViewer.ViewCause(gameState, gameStateModifyEvent.modifyCause,samePreviousCharacter);
             }
             else if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.madeStratagemDecision) {
                 // 决策的casue没必要显示
@@ -49,8 +49,9 @@ namespace PCG {
             if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.triggerTrait
                 && gameStateModifyEvent.modifyCause.trait == Trait.silence) {
                 // silence 的触发效果是特殊的
-                ViewManager.instance.characterStausPannel.OnSelect(gameStateModifyEvent.modifyCause.belongedCharacter);
-                ViewManager.instance.characterStausPannel.ViewSentance(gameStateModifyEvent.modifyCause.belongedCharacter, "我今日无要事商议");
+                var character = gameState.characterDeck[gameStateModifyEvent.modifyCause.belongedCharacterIndex];
+                ViewManager.instance.characterStausPannel.OnSelect(character);
+                ViewManager.instance.characterStausPannel.ViewSentance(character, "我今日无要事商议");
                 yield return new WaitForSeconds(2f);
             }
             else {
@@ -68,7 +69,8 @@ namespace PCG {
 
 
         private IEnumerator PlayEventStreamStageModification(GameState gameState, GameStateModifyEvent gameStateModifyEvent) {
-            var description = EventDescription.Generate(gameState, gameStateModifyEvent.modifyCause.eventCard, gameStateModifyEvent.bindingInfos);    
+            var eventCard = gameState.eventDeck[gameStateModifyEvent.modifyCause.eventCardIndex];
+            var description = EventDescription.Generate(gameState, eventCard, gameStateModifyEvent.bindingInfos);    
             yield return StartCoroutine(ViewManager.instance.eventDescriptionPlayer.PlayEventDescription(gameState, description));
             // 暂时的做法，status改变直接走countil一样
             foreach (var coneq in gameStateModifyEvent.modifyConsequences) {

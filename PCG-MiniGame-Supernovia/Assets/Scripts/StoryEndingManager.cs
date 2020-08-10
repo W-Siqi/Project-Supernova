@@ -8,31 +8,23 @@ using UnityEngine.UI;
 
 public class StoryEndingManager : MonoBehaviour
 {
-    [SerializeField]
-    private Text endingTitle;
-    [SerializeField]
-    private Text endingContent;
-    [SerializeField]
-    private RawImage endingImage;
+    public Text endingTitle;
+    public Text endingContent;
+    public RawImage endingImage;
 
-    [SerializeField]
-    private StoryBook.PageContent goodEnd;
-    [SerializeField]
-    private StoryBook.PageContent badEndMoney;
-    [SerializeField]
-    private StoryBook.PageContent badEndArmy;
-    [SerializeField]
-    private StoryBook.PageContent badEndPeople;
-    [SerializeField]
-    private StoryBook.PageContent badEndLoyalty;
+    public StoryBook.PageContent goodEnd;
+    public StoryBook.PageContent badEndMoney;
+    public StoryBook.PageContent badEndArmy;
+    public StoryBook.PageContent badEndPeople;
+    public StoryBook.PageContent badEndLoyalty;
 
-    public void  OnStoryEnd() {
-        var status =PlayData.instance.gameState.statusVector;
+    public void  OnStoryEnd(GameState gameState) {
+        var status =gameState.statusVector;
         StoryBook.PageContent pageContentOfEnd = null;
         bool win = false;
 
         CharacterCard zeroLoyaltyCharacter = null;
-        foreach (var character in PlayData.instance.gameState.characterDeck) {
+        foreach (var character in gameState.characterDeck) {
             if (character.loyalty <= 0) {
                 zeroLoyaltyCharacter = character;
                 break;

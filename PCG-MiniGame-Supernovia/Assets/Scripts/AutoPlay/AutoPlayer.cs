@@ -23,6 +23,9 @@ namespace PCG {
 
             int round;
             for (round = 0; round < gameConfig.roundCount; round++) {
+                if (recordLog) {
+                    statistic.gameLog.AddStageSwitchLog(true);
+                }
                 // 开局buff
                 var roundStartModifies =  GameExecuter.CalculateBuffBeforeRound(gameState, gameConfig);
                 GameStateModifyEvent.ApplyModificationsTo(gameState, roundStartModifies);
@@ -36,18 +39,18 @@ namespace PCG {
                     if (character.HasTrait(Trait.silence)) {
                         if (Random.value < gameConfig.slicentTraitSlicenceProbility) {
                             // 生成一个空的modiy,主要是为了给回放系统
-                            var silenceEvent = new GameStateModifyEvent(character, Trait.silence);
+                            var silenceEvent = new GameStateModifyEvent(gameState,character, Trait.silence);
                             continue;
                         }
                     }
                     // 抽取决策卡
-                    var straCard = gameState.stratagemDict[character][round];
+                    var straCard = gameState.GetStratagem(character,round);
                     // AI玩家做决定
                     var agreeDecision = Random.value < ProbailityOfAccept(straCard, character, gameState);
 
-                    // TBD： 决策的还没有index化，无法record
-                    if (recordLog) { 
-                        
+                    // 记录日志
+                    if (recordLog) {
+                        statistic.gameLog.AddLog(gameState.GetIndex(straCard), gameState.GetIndex(character), agreeDecision);
                     }
 
                     // 计算增量
@@ -67,7 +70,10 @@ namespace PCG {
                     break;
                 }
 
-                // eventstream
+                // eventstream阶段
+                if (recordLog) {
+                    statistic.gameLog.AddStageSwitchLog(false);
+                }
                 foreach (var selectedEvent in GameExecuter.SelectEventCards(gameState, gameConfig)) {
                     // 绑定
                     var bindingInfos = GameExecuter.BindEventCharacters(gameState, selectedEvent);
@@ -95,6 +101,10 @@ namespace PCG {
                     statistic.lostInEventStream = true;
                     FillDeathReason(statistic, gameState);
                 }
+            }
+
+            if (recordLog) {
+                statistic.gameLog.LogEnding(gameState);
             }
 
             statistic.win = !GameExecuter.HasReachDeath(gameState);

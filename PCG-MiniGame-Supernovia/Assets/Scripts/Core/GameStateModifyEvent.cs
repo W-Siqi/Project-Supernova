@@ -32,19 +32,19 @@ namespace PCGP {
         /// </summary>
         /// <param name="character"></param>
         /// <param name="triggerdTrait"></param>
-        public GameStateModifyEvent(CharacterCard character, Trait triggerdTrait) {
+        public GameStateModifyEvent(GameState gameState, CharacterCard character, Trait triggerdTrait) {
             modifyCause.type = GameStateModifyCause.Type.triggerTrait;
             modifyCause.trait = triggerdTrait;
-            modifyCause.belongedCharacter = character;
+            modifyCause.belongedCharacterIndex = gameState.GetIndex(character);
         }
 
         /// <summary>
         /// 事件触发
         /// </summary>
         /// <param name="eventCard"></param>
-        public GameStateModifyEvent(EventCard eventCard,BindingInfo[] bindingInfos) {
+        public GameStateModifyEvent(GameState gameState, EventCard eventCard,BindingInfo[] bindingInfos) {
             modifyCause.type = GameStateModifyCause.Type.eventStream;
-            modifyCause.eventCard = eventCard;
+            modifyCause.eventCardIndex = gameState.GetIndex(eventCard);
             this.bindingInfos = bindingInfos;
         }
 

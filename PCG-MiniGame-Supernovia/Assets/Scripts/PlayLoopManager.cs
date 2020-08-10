@@ -47,14 +47,14 @@ public class PlayLoopManager : MonoBehaviour {
             // [没走GameExecuter！]沉默检测 - 当场播动画 
             if (character.HasTrait(Trait.silence)) {
                 if (Random.value < PlayData.instance.gameConfig.slicentTraitSlicenceProbility) {
-                    var silenceEvent = new GameStateModifyEvent(character,Trait.silence);
+                    var silenceEvent = new GameStateModifyEvent(PlayData.instance.gameState, character, Trait.silence);
                     yield return StartCoroutine(ViewManager.instance.gameStateModifyEventPlayer.PlayEvent(PlayData.instance.gameState,silenceEvent));
                     continue;
                 }
             }
 
             // 提取建议卡
-            var straCard = PlayData.instance.gameState.stratagemDict[character][curRound];
+            var straCard = PlayData.instance.gameState.GetStratagem(character,curRound);
 
             // 等待用户输入
             ActivateDecisionElements(straCard, character);

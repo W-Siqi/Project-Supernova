@@ -5,12 +5,9 @@ using UnityEngine;
 
 namespace PCG {
     public class GameManager : MonoBehaviour {
-        [SerializeField]
-        private StartMenuManager startMenuManager;
-        [SerializeField]
-        private PlayLoopManager playLoopManager;
-        [SerializeField]
-        private StoryEndingManager storyEndingManager;
+        public StartMenuManager startMenuManager;
+        public PlayLoopManager playLoopManager;
+        public StoryEndingManager storyEndingManager;
         
         private void Awake() {
             StartCoroutine(PlayGame());
@@ -26,7 +23,7 @@ namespace PCG {
             yield return StartCoroutine(playLoopManager.PlayLoop());
 
             // ending
-            storyEndingManager.OnStoryEnd();
+            storyEndingManager.OnStoryEnd(PlayData.instance.gameState);
         }
 
         void InitGameProcedule() {

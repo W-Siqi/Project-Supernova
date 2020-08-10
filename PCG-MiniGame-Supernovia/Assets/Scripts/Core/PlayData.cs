@@ -42,21 +42,25 @@ namespace PCG {
                 gameState.characterDeck.Add(newCharacter);
             }
 
-            // init startgems of character
-            gameState.stratagemDict.Clear();
-            foreach (var chara in gameState.characterDeck) {
-                gameState.stratagemDict[chara] = new List<StratagemCard>();
-                for (int i = 0; i < gameConfig.roundCount; i++) {
-                    var stratagemPrototype = DeckArchive.instance.stratagemCards[Random.Range(0, DeckArchive.instance.stratagemCards.Count)];
-                    gameState.stratagemDict[chara].Add(Card.DeepCopy(stratagemPrototype));
-                }
+            // copy stratagem pool
+            gameState.stratagemDeck.Clear();
+            foreach (var stragemCard in DeckArchive.instance.stratagemCards) {
+                gameState.stratagemDeck.Add(Card.DeepCopy(stragemCard));
             }
 
-            // init event
+            // copy event pool
             gameState.eventDeck.Clear();
-            gameState.eventDeck = new List<EventCard>();
             foreach (var card in DeckArchive.instance.eventCards) {
                 gameState.eventDeck.Add(Card.DeepCopy(card));
+            }
+
+            // init startgems of character
+            gameState.stratagemIndexDict.Clear();
+            foreach (var chara in gameState.characterDeck) {
+                gameState.stratagemIndexDict[chara] = new List<int>();
+                for (int i = 0; i < gameConfig.roundCount; i++) {
+                    gameState.stratagemIndexDict[chara].Add(Random.Range(0,gameState.stratagemDeck.Count));
+                }
             }
 
             // init status
