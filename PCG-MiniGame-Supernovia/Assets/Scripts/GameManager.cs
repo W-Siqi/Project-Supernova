@@ -32,7 +32,7 @@ namespace PCG {
         void InitGameProcedule() {
             // 初始化故事状态
             int seed = Random.Range(-10000, 100000);
-            PlayData.instance.InitData();
+            PlayData.instance.InitData(startMenuManager.selectedDifficulty);
             ViewManager.instance.InitForGameStart();
         }
     }

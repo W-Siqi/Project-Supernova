@@ -22,14 +22,19 @@ namespace PCG {
         /// <summary>
         /// 生成残局
         /// </summary>
-        public void InitData() {
+        public void InitData(float difficulty = 0.5f) {
+            gameConfig.characterCount = (int)Mathf.Lerp(3, 6, difficulty);
+            gameConfig.roundCount = (int)Mathf.Lerp(2, 7, difficulty);
+            gameConfig.minInitLoyalty = (int)Mathf.Lerp(4, 2, difficulty); 
+            gameConfig.maxInitLoyalty = gameConfig.minInitLoyalty+4;
+        
             // init character
             gameState.characterDeck.Clear();
             for (int i = 0; i < gameConfig.characterCount; i++) {
                 var charaPrototype = DeckArchive.instance.characterCards[i];
                 var newCharacter = Card.DeepCopy(charaPrototype);
                 // random properties
-                newCharacter.loyalty = Random.Range(3, 7);
+                newCharacter.loyalty = Random.Range(gameConfig.minInitLoyalty, gameConfig.maxInitLoyalty);
                 foreach (var p in newCharacter.personalities) {
                     p.trait = TraitUtils.GetRandomTrait();
                 }
@@ -55,9 +60,9 @@ namespace PCG {
             }
 
             // init status
-            gameState.statusVector.army = Random.Range(20, 100);
-            gameState.statusVector.money = Random.Range(20, 100);
-            gameState.statusVector.people = Random.Range(20, 100);
+            gameState.statusVector.army = Random.Range(20, 80);
+            gameState.statusVector.money = Random.Range(20, 80);
+            gameState.statusVector.people = Random.Range(20, 80);
         }
     }
 }

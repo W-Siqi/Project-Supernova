@@ -20,21 +20,28 @@ namespace PCG {
             var statistic = new SingleAutoPlayStatistic();
             int round;
             for (round = 0; round < gameConfig.roundCount; round++) {
-                // buff
+                // 开局buff
                 var modifies =  GameExecuter.CalculateBuffBeforeRound(gameState, gameConfig);
                 GameStateModifyEvent.ApplyModificationsTo(gameState, modifies);
 
                 // council - 重构
-                //foreach (var character in gameState.characterDeck) {
-                //    if (character.HasTrait(Trait.silence)) {
-                //        if (Random.value < gameConfig.slicentTraitSlicenceProbility) {
-                //            continue;
-                //        }
-                //    }
-                //    var straCard = gameState.stratagemDict[character][round];
-                //    var agreeDecision = Random.value < ProbailityOfAccept(straCard,character,gameState);
-                //    straCard.consequenceSet.Apply(gameState, gameConfig, character, agreeDecision);
-                //}
+                foreach (var character in gameState.characterDeck) {
+                    if (character.HasTrait(Trait.silence)) {
+                        if (Random.value < gameConfig.slicentTraitSlicenceProbility) {
+                            // 生成一个空的modiy,主要是为了给回放系统
+                            var silenceEvent = new GameStateModifyEvent(character, Trait.silence);
+                            continue;
+                        }
+                    }
+                    // 抽取决策卡
+                    var straCard = gameState.stratagemDict[character][round];
+                    // AI玩家做决定
+                    var agreeDecision = Random.value < ProbailityOfAccept(straCard, character, gameState);
+                    // 计算增量
+                    var modifications = GameExecuter.CalculteStratagemDecision(gameState, gameConfig,straCard, character, agreeDecision);
+                    // 应用增量
+                    GameStateModifyEvent.ApplyModificationsTo(gameState, modifications);
+                }
 
                 // deathCheck
                 if (GameExecuter.HasReachDeath(gameState)) {
@@ -46,13 +53,17 @@ namespace PCG {
                 // eventstream
                 foreach (var selectedEvent in GameExecuter.SelectEventCards(gameState, gameConfig)) {
                     // 绑定
-                    var bindingInfos = GameExecuter.BindEventCharacters(PlayData.instance.gameState, selectedEvent);
+                    var bindingInfos = GameExecuter.BindEventCharacters(gameState, selectedEvent);
+                    if (bindingInfos.Length < selectedEvent.preconditonSet.characterPreconditions.Count) {
+                        // 绑定失败 - select之后又被改了
+                        continue;
+                    }
                     // 计算
-                    var modification = GameExecuter.CalculteEventConsequence(PlayData.instance.gameState, PlayData.instance.gameConfig, selectedEvent, bindingInfos);
+                    var modification = GameExecuter.CalculteEventConsequence(gameState, gameConfig, selectedEvent, bindingInfos);
                     // 应用
-                    GameStateModifyEvent.ApplyModificationsTo(PlayData.instance.gameState, new GameStateModifyEvent[] { modification });
+                    GameStateModifyEvent.ApplyModificationsTo(gameState, new GameStateModifyEvent[] { modification });
 
-                    if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
+                    if (GameExecuter.HasReachDeath(gameState)) {
                         break;
                     }
                 }

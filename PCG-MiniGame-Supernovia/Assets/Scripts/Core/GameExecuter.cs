@@ -122,6 +122,9 @@ namespace PCG {
             var gameStateModifyEvent = new GameStateModifyEvent(eventCard,bindingInfos);
             if (eventCard.consequenceSet.characterConsequenceEnabled) {
                 foreach (var characteConseq in eventCard.consequenceSet.characterConsequences) {
+                    if (characteConseq.bindFlag >= bindingInfos.Length) {
+                        Debug.LogError(eventCard.name + "  实际bindinfo数: " + bindingInfos.Length + "bindingflag：" + characteConseq.bindFlag);
+                    }
                     var bindingInfo = bindingInfos[characteConseq.bindFlag];
                     var bindedCharacer = gameState.characterDeck[bindingInfo.bindedCharacterIndex];
                     if (characteConseq.traitAlteration.type != TraitAlteration.Type.none) {

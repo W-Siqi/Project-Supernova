@@ -9,19 +9,16 @@ public class AutoPlayManager : MonoBehaviour
 {
     public int batchPerFrame = 0;
     public MultiAutoPlayStatistic lastPlayStatistic;
+    [Range(0,1)]
+    public float debugDifficulty = 0.5f;
     public int debugPlayTimes = 10000;
     public bool useIntelligentAutoPlayer = true;
 
 
     [ContextMenu("刷新残局debug")]
     public void RefreshAndDebugPlay() {
-        PlayData.instance.InitData();
+        PlayData.instance.InitData(debugDifficulty);
         ViewManager.instance.InitForGameStart();
-        Play(PlayData.instance.gameState.MakeDeepCopy(), PlayData.instance.gameConfig.MakeDeepCopy(), debugPlayTimes);
-    }
-
-    [ContextMenu("按当前残局debug")]
-    public void DebugPlay() {
         Play(PlayData.instance.gameState.MakeDeepCopy(), PlayData.instance.gameConfig.MakeDeepCopy(), debugPlayTimes);
     }
          

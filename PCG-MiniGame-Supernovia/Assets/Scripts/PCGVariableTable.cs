@@ -18,7 +18,8 @@ namespace PCG {
         public int corrputTraitMoneyPerRound = 2;
         public int cruelTraitPeopleValuePerDecision = 5;
         public int warlikeTraitArmyValueWhenAccept = 10;
-
+        public int minInitLoyalty = 2;
+        public int maxInitLoyalty = 7;
         public GameConfig MakeDeepCopy() {
             return JsonUtility.FromJson<GameConfig>(JsonUtility.ToJson(this));
         }

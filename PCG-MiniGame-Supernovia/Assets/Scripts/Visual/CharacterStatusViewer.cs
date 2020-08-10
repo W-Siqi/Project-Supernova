@@ -37,7 +37,6 @@ public class CharacterStatusViewer : MonoBehaviour {
 
     public void ForceSync() {
         curLoyaltyVal = hookedCharacter.loyalty;
-        initLoyaltyVal = hookedCharacter.loyalty;
         loyaltyValText.text = string.Format("{0}/{1}", curLoyaltyVal.ToString(), initLoyaltyVal.ToString());
         loyaltySliderFillImg.fillAmount = (float)curLoyaltyVal / (float)initLoyaltyVal;
 

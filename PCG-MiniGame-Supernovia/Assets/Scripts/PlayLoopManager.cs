@@ -93,30 +93,6 @@ public class PlayLoopManager : MonoBehaviour {
         ViewManager.instance.EndNextRoundBtn();
     }
 
-    //IEnumerator EventStream() {
-    //    var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
-    //    StoryBook.instance.ViewContent(newPageContent);
-    //    yield return new WaitForSeconds(1.5f);
-
-    //    var desctriptionPlayer = ViewManager.instance.eventDescriptionPlayer;
-    //    foreach (var selectedEvent in GameExecuter.SelectEventCards(PlayData.instance.gameState, PlayData.instance.gameConfig)) {
-    //        //var bindingInfos = selectedEvent.preconditonSet.Bind(PlayData.instance.gameState);
-
-    //        //// 必须要在apply结果前面进行演出
-    //        //Debug.Log(string.Format("=========================[{0}]-[{1}]========", selectedEvent.name,selectedEvent.description));
-    //        //var description = EventDescription.Generate(selectedEvent, bindingInfos);
-
-    //        //yield return StartCoroutine(desctriptionPlayer.PlayEventDescription(bindingInfos, description));
-
-    //        //selectedEvent.consequenceSet.Apply(bindingInfos, PlayData.instance.gameState);
-
-    //        if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
-    //            break;
-    //        }
-    //    }
-    //    yield return new WaitForSeconds(2f);
-    //}
-
     IEnumerator EventStream() {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         StoryBook.instance.ViewContent(newPageContent);
