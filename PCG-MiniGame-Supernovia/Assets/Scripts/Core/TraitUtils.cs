@@ -106,7 +106,7 @@ namespace PCG {
                 case Trait.none:
                     return "未确定的性格，没有任何效果";
                 case Trait.wise:
-                    return "智慧 知识就是力量";
+                    return "智慧就是力量";
                 case Trait.silence:
                     return "沉默是金";
                 case Trait.honest:
@@ -114,15 +114,15 @@ namespace PCG {
                 case Trait.tolerant:
                     return "宽容 如海纳百川";
                 case Trait.warlike:
-                    return "战无不胜！";
+                    return "狭路相逢勇者胜";
                 case Trait.arrogent:
-                    return "唯我独尊";
+                    return "哼，没人比得上我";
                 case Trait.corrupt:
                     return "贪点小钱没啥";
                 case Trait.cruel:
                     return "残忍？我是残暴！";
                 case Trait.jealous:
-                    return "我嫉妒 全世界都负我";
+                    return "我嫉妒所有比我好的人";
                 case Trait.tricky:
                     return "谎言，不过是包装过的真相";
             }

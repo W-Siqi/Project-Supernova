@@ -8,48 +8,92 @@ namespace PCG {
         [SerializeField]
         private TraitTriggeredCauseViewer traitTriggeredCauseViewer;
 
-        public IEnumerator PlayEvents(GameStateModifyEvent[] gameStateModifyEvents) {
+        // 用来优化节奏的
+        private GameStateModifyCause previousCause = null;
+        public IEnumerator PlayEvents(GameState gameState, GameStateModifyEvent[] gameStateModifyEvents) {
+            previousCause = null;
             foreach (var e in gameStateModifyEvents) {
-                yield return StartCoroutine(PlayGameStateModifyEvent(e));
+                yield return StartCoroutine(PlayEvent(gameState, e));
             }
         }
 
-        public IEnumerator PlayGameStateModifyEvent(GameStateModifyEvent gameStateModifyEvent) {
+        public IEnumerator PlayEvent(GameState gameState, GameStateModifyEvent gameStateModifyEvent) {
+            if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.eventStream) {
+                yield return StartCoroutine(PlayEventStreamStageModification(gameState, gameStateModifyEvent));
+            }
+            else {
+                yield return StartCoroutine(PlayCouncilStageModification(gameState, gameStateModifyEvent));
+            }
+            previousCause = gameStateModifyEvent.modifyCause;
+        }
+
+        private IEnumerator PlayCouncilStageModification(GameState gameState, GameStateModifyEvent gameStateModifyEvent) {
+            var samePreviousCharacter = false;
+            if (previousCause != null
+                && previousCause.type == GameStateModifyCause.Type.triggerTrait
+                && previousCause.belongedCharacter == gameStateModifyEvent.modifyCause.belongedCharacter) {
+                samePreviousCharacter = true;
+            }
+
             // 显示 cause
             if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.triggerTrait) {
-                traitTriggeredCauseViewer.ViewCause(gameStateModifyEvent.modifyCause);
-                yield return new WaitForSeconds(1f);
+                if (!samePreviousCharacter) {
+                    yield return new WaitForSeconds(1f);
+                }
+                traitTriggeredCauseViewer.ViewCause(gameStateModifyEvent.modifyCause,samePreviousCharacter);
             }
-            else if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.madeStratagemDecision) { 
+            else if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.madeStratagemDecision) {
                 // 决策的casue没必要显示
             }
 
-            // 轮流播放结果
-            foreach (var conseq in gameStateModifyEvent.modifyConsequences) {
-                yield return PlayModifyConsequence(gameStateModifyEvent.modifyCause, conseq);
+            if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.triggerTrait
+                && gameStateModifyEvent.modifyCause.trait == Trait.silence) {
+                // silence 的触发效果是特殊的
+                ViewManager.instance.characterStausPannel.OnSelect(gameStateModifyEvent.modifyCause.belongedCharacter);
+                ViewManager.instance.characterStausPannel.ViewSentance(gameStateModifyEvent.modifyCause.belongedCharacter, "我今日无要事商议");
+                yield return new WaitForSeconds(2f);
+            }
+            else {
+                // 其他类型轮流播放结果
+                foreach (var conseq in gameStateModifyEvent.modifyConsequences) {
+                    yield return PlayModifyConsequence(gameState, gameStateModifyEvent.modifyCause, conseq);
+                }
             }
 
             // 结束显示 cause
             if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.triggerTrait) {
                 traitTriggeredCauseViewer.EndViewCause();
-                yield return new WaitForSeconds(2f);
             }
         }
 
+
+        private IEnumerator PlayEventStreamStageModification(GameState gameState, GameStateModifyEvent gameStateModifyEvent) {
+            var description = EventDescription.Generate(gameState, gameStateModifyEvent.modifyCause.eventCard, gameStateModifyEvent.bindingInfos);    
+            yield return StartCoroutine(ViewManager.instance.eventDescriptionPlayer.PlayEventDescription(gameState, description));
+            // 暂时的做法，status改变直接走countil一样
+            foreach (var coneq in gameStateModifyEvent.modifyConsequences) {
+                // Debug.Log("[event conseq的type] " + coneq.type);
+                if (coneq.type == GameStateModifyConsequence.Type.valueChange) {
+                    StartCoroutine( ViewManager.instance.statusVectorPannel.ViewStatusVectorChange(coneq.changeValue));
+                }
+            }
+        }
+
+
         // 显示结果
-        private IEnumerator PlayModifyConsequence(GameStateModifyCause cause, GameStateModifyConsequence consequence) {
+        private IEnumerator PlayModifyConsequence(GameState gameState, GameStateModifyCause cause, GameStateModifyConsequence consequence) {
             var characterPannel = ViewManager.instance.characterStausPannel;
             var statusVectorPannel = ViewManager.instance.statusVectorPannel;
 
             if (consequence.type == GameStateModifyConsequence.Type.loyaltyChange) {
                 yield return StartCoroutine(characterPannel.ViewLoyaltyChange(
-                    consequence.loyaltyChangeCharacter,
+                    gameState.characterDeck[consequence.loyaltyChangeCharacterIndex],
                     consequence.loyaltyDelta
                     ));
             }
             else if (consequence.type == GameStateModifyConsequence.Type.traitChange) {
                 yield return StartCoroutine(characterPannel.ViewTraitChange(
-                    consequence.traitChangeCharacter,
+                    gameState.characterDeck[consequence.traitChangeCharacterIndex],
                     consequence.changedPersonalityIndex,
                     consequence.newTrait ));
             }

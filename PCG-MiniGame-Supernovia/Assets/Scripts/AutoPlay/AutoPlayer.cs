@@ -14,6 +14,7 @@ namespace PCG {
         /// <returns></returns>
         protected abstract float ProbailityOfAccept(StratagemCard stratagemCard,CharacterCard provider, GameState gameState);
 
+        // TBD 重构
         public SingleAutoPlayStatistic Play(GameState gameState, GameConfig gameConfig) {
             Profiler.BeginSample("游玩- SingleAutoPlayStatistic Play()");
             var statistic = new SingleAutoPlayStatistic();
@@ -23,17 +24,17 @@ namespace PCG {
                 var modifies =  GameExecuter.CalculateBuffBeforeRound(gameState, gameConfig);
                 GameStateModifyEvent.ApplyModificationsTo(gameState, modifies);
 
-                // council
-                foreach (var character in gameState.characterDeck) {
-                    if (character.HasTrait(Trait.silence)) {
-                        if (Random.value < gameConfig.slicentTraitSlicenceProbility) {
-                            continue;
-                        }
-                    }
-                    var straCard = gameState.stratagemDict[character][round];
-                    var agreeDecision = Random.value < ProbailityOfAccept(straCard,character,gameState);
-                    straCard.consequenceSet.Apply(gameState, gameConfig, character, agreeDecision);
-                }
+                // council - 重构
+                //foreach (var character in gameState.characterDeck) {
+                //    if (character.HasTrait(Trait.silence)) {
+                //        if (Random.value < gameConfig.slicentTraitSlicenceProbility) {
+                //            continue;
+                //        }
+                //    }
+                //    var straCard = gameState.stratagemDict[character][round];
+                //    var agreeDecision = Random.value < ProbailityOfAccept(straCard,character,gameState);
+                //    straCard.consequenceSet.Apply(gameState, gameConfig, character, agreeDecision);
+                //}
 
                 // deathCheck
                 if (GameExecuter.HasReachDeath(gameState)) {
@@ -44,8 +45,16 @@ namespace PCG {
 
                 // eventstream
                 foreach (var selectedEvent in GameExecuter.SelectEventCards(gameState, gameConfig)) {
-                    var bindingInfos = selectedEvent.preconditonSet.Bind(PlayData.instance.gameState);
-                    selectedEvent.consequenceSet.Apply(bindingInfos, gameState);
+                    // 绑定
+                    var bindingInfos = GameExecuter.BindEventCharacters(PlayData.instance.gameState, selectedEvent);
+                    // 计算
+                    var modification = GameExecuter.CalculteEventConsequence(PlayData.instance.gameState, PlayData.instance.gameConfig, selectedEvent, bindingInfos);
+                    // 应用
+                    GameStateModifyEvent.ApplyModificationsTo(PlayData.instance.gameState, new GameStateModifyEvent[] { modification });
+
+                    if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
+                        break;
+                    }
                 }
 
                 // deathCheck

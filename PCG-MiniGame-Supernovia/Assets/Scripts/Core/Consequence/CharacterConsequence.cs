@@ -12,18 +12,18 @@ public class CharacterConsequence : Consequence{
     public TraitAlteration traitAlteration = new TraitAlteration();
     public int loyaltyAlteraion = 0;
 
-    // 动画(r[bindinfoIndex][trait-转ASCII]),r是remove trait
-    // 动画(a[bindinfoIndex][trait-转ASCII]),a是add trait
-    public string CreateDescription(BindingInfo bindingInfo,int indexInBindingSequence) {
-        var characterShowupStr = string.Format("(c{0})", indexInBindingSequence.ToString());
+    // 动画(r[charaIndex][trait-转ASCII]),r是remove trait
+    // 动画(a[charaIndex][trait-转ASCII]),a是add trait
+    public string CreateDescription( GameState gameState, int bindedCharacterIndex) {
+        var characterShowupStr = string.Format("(c{0})", bindedCharacterIndex);
         var traitAnimationStr = "";
         if (traitAlteration.type == TraitAlteration.Type.add) {
-            traitAnimationStr = string.Format("(a{0}{1})", indexInBindingSequence.ToString(), (char)traitAlteration.targetTrait);
+            traitAnimationStr = string.Format("(a{0}{1})", bindedCharacterIndex, (char)traitAlteration.targetTrait);
         }
         else if (traitAlteration.type == TraitAlteration.Type.remove) {
-            traitAnimationStr = string.Format("(r{0}{1})", indexInBindingSequence.ToString(), (char)traitAlteration.targetTrait);
+            traitAnimationStr = string.Format("(r{0}{1})", bindedCharacterIndex, (char)traitAlteration.targetTrait);
         }
-        var finalDescription = string.Format("{0}{1}{2}发生了转变", characterShowupStr,traitAnimationStr, bindingInfo.bindedCharacter.name);
+        var finalDescription = string.Format("{0}{1}{2}发生了转变", characterShowupStr,traitAnimationStr,gameState.characterDeck[bindedCharacterIndex].name);
 
         if (loyaltyAlteraion > 0) {
             finalDescription += "且忠诚";

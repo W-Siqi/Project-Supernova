@@ -8,6 +8,9 @@ using PCG;
 public class ValueViewer : MonoBehaviour
 {
     [SerializeField]
+    Image activateImg;
+
+    [SerializeField]
     TraitOverlapSign traitOverlapSign;
 
     [SerializeField]
@@ -32,6 +35,18 @@ public class ValueViewer : MonoBehaviour
     private float maxVal = 100;
     private float curVal = 0;
 
+    public void ForceSync(int val) {
+        curVal  = val;
+        sliderOfValue.value = curVal / maxVal;
+    }
+
+    public void Activate() {
+        activateImg.enabled = true;
+    }
+
+    public void Disactivate() {
+        activateImg.enabled = false;
+    }
 
     public void ApplyDiff(int delta) {
         curVal += delta;

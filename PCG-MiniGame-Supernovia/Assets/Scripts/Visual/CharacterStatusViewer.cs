@@ -29,11 +29,27 @@ public class CharacterStatusViewer : MonoBehaviour {
     [SerializeField]
     private SizeTween sentanceShowupAndHide;
     [SerializeField]
-    private TextMeshProUGUI sentanceText;
+    private Text sentanceText;
 
     private CharacterCard hookedCharacter = null;
     private int curLoyaltyVal = 0;
     private int initLoyaltyVal = 1;
+
+    public void ForceSync() {
+        curLoyaltyVal = hookedCharacter.loyalty;
+        initLoyaltyVal = hookedCharacter.loyalty;
+        loyaltyValText.text = string.Format("{0}/{1}", curLoyaltyVal.ToString(), initLoyaltyVal.ToString());
+        loyaltySliderFillImg.fillAmount = (float)curLoyaltyVal / (float)initLoyaltyVal;
+
+        // personality
+        if (hookedCharacter.personalities.Length != personalityViewerUGUIs.Count) {
+            throw new System.Exception("UI个数不对");
+        }
+        for (int i = 0; i < hookedCharacter.personalities.Length; i++) {
+            personalityViewerUGUIs[i].InitTo(hookedCharacter.personalities[i].trait);
+        }
+    }
+
 
     public CharacterCard GetHooedCharacter() {
         return hookedCharacter;
@@ -58,6 +74,20 @@ public class CharacterStatusViewer : MonoBehaviour {
         }
     }
 
+    public void ActivateTrait(Trait trait) {
+        foreach (var personalityViewer in personalityViewerUGUIs) {
+            if (personalityViewer.currentViewedTrait == trait) {
+                personalityViewer.Activate();
+            }
+        }
+    }
+
+    public void DisactivateAllTraits() {
+        foreach (var personalityViewer in personalityViewerUGUIs) {
+            personalityViewer.Disactivate();
+        }
+    }
+
     public void HightlightTrait(Trait trait) {
         foreach (var personalityViewer in personalityViewerUGUIs) {
             if (personalityViewer.currentViewedTrait == trait) {
@@ -67,7 +97,7 @@ public class CharacterStatusViewer : MonoBehaviour {
     }
 
     public IEnumerator ViewTraitChange(int personaltyIndex, Trait newTrait) {
-        float waitTime = 1f;
+        float waitTime = 2f;
         personalityViewerUGUIs[personaltyIndex].TransferTo(newTrait);
         traitOverlapSign.ShowSign(newTrait);
         yield return new WaitForSeconds(waitTime);
@@ -84,15 +114,20 @@ public class CharacterStatusViewer : MonoBehaviour {
             loyaltyChangeDiffText.text = string.Format("忠诚度 {0}", loyaltyDelta);
             yield return StartCoroutine(ViewCharacterSentance("陛下真让人失望"));
         }
+        else if (loyaltyDelta == 0) {
+            loyaltyChangeDiffText.text = string.Format("忠诚度不变", loyaltyDelta);
+            yield return StartCoroutine(ViewCharacterSentance("陛下不采纳也罢"));
+        }
         else {
             yield return StartCoroutine(ViewCharacterSentance("我对陛下忠心耿耿"));
         }
     }
 
-    private IEnumerator ViewCharacterSentance(string sentance) {
+    // 后面的对话会自动覆盖前面的，不用担心冲突
+    public IEnumerator ViewCharacterSentance(string sentance) {
         sentanceShowupAndHide.gameObject.SetActive(true);
-        float duration = 2f;
-        float waitTime = 1f;
+        float duration = 3f;
+        float waitTime = 2f;
         sentanceShowupAndHide.playTime = duration;
         sentanceShowupAndHide.Play();
         sentanceText.text = sentance;

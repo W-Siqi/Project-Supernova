@@ -25,17 +25,23 @@ namespace PCG {
         TextMeshProUGUI tooptipText;
 
         // 显示触发性格的起因
-        public void ViewCause(GameStateModifyCause cause) {
+        public void ViewCause(GameStateModifyCause cause, bool samePreviousCharacter = false) {
             characterImage.texture = cause.belongedCharacter.GetAvatarImage();
 
             personalityViewer.InitTo(cause.trait);
             ViewManager.instance.characterStausPannel.HightlightTrait(cause.belongedCharacter, cause.trait);
-
+            ViewManager.instance.characterStausPannel.ViewSentance(cause.belongedCharacter, TraitUtils.GetTraitSlogan(cause.trait));
             tooptipText.text = TraitUtils.GetTooltip(cause.trait);
 
-            charcracterShowup.Play();
+            if (!samePreviousCharacter) {
+                charcracterShowup.Play();
+                tittleShowup.Play();
+            }
+            else {
+                charcracterShowup.SetToEnd();
+                tittleShowup.SetToEnd();
+            }
             traitShowup.Play();
-            tittleShowup.Play();
             tooltipShowup.Play();
         }
 

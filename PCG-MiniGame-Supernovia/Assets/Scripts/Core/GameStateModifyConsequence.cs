@@ -14,11 +14,11 @@ public class GameStateModifyConsequence
 
     public StatusVector changeValue;
 
-    public CharacterCard traitChangeCharacter;
+    public int traitChangeCharacterIndex;
     public int changedPersonalityIndex;
     public Trait newTrait;
 
-    public CharacterCard loyaltyChangeCharacter;
+    public int loyaltyChangeCharacterIndex;
     public int loyaltyDelta;
 
     public void ApplyTo(GameState gameState) {
@@ -26,9 +26,11 @@ public class GameStateModifyConsequence
             gameState.statusVector += changeValue;
         }
         else if (type == Type.traitChange) {
+            var traitChangeCharacter = gameState.characterDeck[traitChangeCharacterIndex];
             traitChangeCharacter.personalities[changedPersonalityIndex].trait = newTrait;
         }
         else if (type == Type.loyaltyChange) {
+            var loyaltyChangeCharacter = gameState.characterDeck[loyaltyChangeCharacterIndex];
             loyaltyChangeCharacter.loyalty += loyaltyDelta;
         }
     }

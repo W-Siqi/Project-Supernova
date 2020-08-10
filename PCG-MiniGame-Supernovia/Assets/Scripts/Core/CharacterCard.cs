@@ -36,5 +36,19 @@ namespace PCG {
             }
             return -1;
         }
+
+        /// <summary>
+        /// 返回-1如果没有的
+        /// </summary>
+        /// <param name="trait"></param>
+        /// <returns></returns>
+        public int FindPersonaltyIndex(Trait trait) {
+            for (int i = 0; i < personalities.Length; i++) {
+                if (personalities[i].trait == trait) {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

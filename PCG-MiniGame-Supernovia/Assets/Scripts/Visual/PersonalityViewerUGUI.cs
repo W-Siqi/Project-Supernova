@@ -17,6 +17,8 @@ public class PersonalityViewerUGUI : MonoBehaviour
     Image background;
     [SerializeField]
     TextMeshProUGUI traitName;
+    [SerializeField]
+    Image activateImg;
 
     private int hightlightAniID = 0;
     public void InitTo(Trait trait) {
@@ -30,6 +32,14 @@ public class PersonalityViewerUGUI : MonoBehaviour
         traitName.text = TraitUtils.TranslateToName(trait);
         background.color = GetTraitColor(trait);
         HighlightOn(3f);
+    }
+
+    public void Activate() {
+        activateImg.enabled = true;
+    }
+
+    public void Disactivate() {
+        activateImg.enabled = false;
     }
 
     public void HighlightOn(float duration = 4f) {

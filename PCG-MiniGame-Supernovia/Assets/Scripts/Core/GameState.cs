@@ -53,5 +53,14 @@ namespace PCG {
         public void RefreshForNewRound() {
             acceptCountInCurrentRound = 0;
         }
+
+        public int GetIndex(CharacterCard character) {
+            for (int i = 0; i < characterDeck.Count; i++) {
+                if (characterDeck[i] == character) {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

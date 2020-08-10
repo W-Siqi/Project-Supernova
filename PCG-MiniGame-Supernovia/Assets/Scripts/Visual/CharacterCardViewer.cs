@@ -14,11 +14,13 @@ public class CharacterCardViewer : MonoBehaviour
     [SerializeField]
     private Image avatarImage;
     [SerializeField]
+    private TextMeshProUGUI nameText;
+    [SerializeField]
     private TraitOverlapSign traitAddSign;
     [SerializeField]
     SizeTween santanceSizeTween;
     [SerializeField]
-    TextMeshProUGUI santanceText;
+    Text santanceText;
     [SerializeField]
     Image removeTraitImage;
     private CharacterCard hookedCharacter = null;
@@ -31,6 +33,7 @@ public class CharacterCardViewer : MonoBehaviour
         viewer.spawnPositonTween.startAnchor = spawnAnchor;
         viewer.spawnPositonTween.endAnchor = targetAnchor;
         viewer.spawnPositonTween.Play();
+        viewer.nameText.text = character.name;
         return viewer;
     }
 

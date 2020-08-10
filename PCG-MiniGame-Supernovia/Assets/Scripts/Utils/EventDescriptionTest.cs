@@ -12,20 +12,18 @@ public class EventDescriptionTest : MonoBehaviour
         yield return null;
         PlayData.instance.InitData();
         foreach (var selectedEvent in DeckArchive.instance.eventCards) {
-            var bindingInfos = selectedEvent.preconditonSet.Bind(PlayData.instance.gameState);
-            // 必须要在apply结果前面进行演出
-            Debug.Log(string.Format("=========================[{0}]-[{1}]========", selectedEvent.name, selectedEvent.description));
-            var description = EventDescription.Generate(selectedEvent, bindingInfos);
+            var bindingInfos = GameExecuter.BindEventCharacters(PlayData.instance.gameState, selectedEvent);
+            if (bindingInfos.Length == selectedEvent.preconditonSet.characterPreconditions.Count) {
+                // 绑定成功了才放
+                var modification = GameExecuter.CalculteEventConsequence(
+                  PlayData.instance.gameState,
+                  PlayData.instance.gameConfig,
+                  selectedEvent,
+                  bindingInfos);
 
-            yield return StartCoroutine(desctriptionPlayer.PlayEventDescription(bindingInfos, description));
-
-            selectedEvent.consequenceSet.Apply(bindingInfos, PlayData.instance.gameState);
+                // 演出
+                yield return StartCoroutine(ViewManager.instance.gameStateModifyEventPlayer.PlayEvent(PlayData.instance.gameState, modification));
+            }       
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

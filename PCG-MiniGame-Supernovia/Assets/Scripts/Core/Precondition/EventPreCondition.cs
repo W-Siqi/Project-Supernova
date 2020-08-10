@@ -10,9 +10,5 @@ namespace PCG {
         public EventPrecondition(EventCard eventCard) {
             eventCardName = eventCard.name;
         }
-
-        public override bool SatisfiedAt(GameState givenState) {
-            throw new System.NotImplementedException();
-        }
     }
 }

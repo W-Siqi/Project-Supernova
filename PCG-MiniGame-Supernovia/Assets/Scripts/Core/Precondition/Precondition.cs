@@ -5,5 +5,4 @@ using UnityEngine;
 
 public abstract class Precondition
 {
-    public abstract bool SatisfiedAt(GameState givenState);
 }

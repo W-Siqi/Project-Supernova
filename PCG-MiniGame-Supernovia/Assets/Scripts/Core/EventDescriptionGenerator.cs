@@ -22,27 +22,27 @@ public class EventDescription {
     public const char ANI_END_SIGN = ')';
     // 动画(c0) ,c代表character, 0 代表bindinginfo的下标
     public const char CHARACTER_ANIM_SIGN = 'c';
-    // 动画(h[bindinfoIndex][trait-转ASCII]),h是hightlight
+    // 动画(h[charaIndex][trait-转ASCII]),h是hightlight
     public const char TRAIT_HIGHTLIGHT_ANIM_SIGN = 'h';
-    // 动画(r[bindinfoIndex][trait-转ASCII]),r是remove trait
+    // 动画(r[charaIndex][trait-转ASCII]),r是remove trait
     public const char TRAIT_REMOVE_ANIM_SIGN = 'r';
-    // 动画(a[bindinfoIndex][trait-转ASCII]),a是add trait
+    // 动画(a[charaIndex][trait-转ASCII]),a是add trait
     public const char TRAIT_ADD_ANIM_SIGN = 'a';
 
 
     public string title = "";
     public List<string> paragragh = new List<string>();
 
-    public static EventDescription Generate(EventCard eventCard, BindingInfo[] bindingInfos) {
+    public static EventDescription Generate(GameState gameState, EventCard eventCard, BindingInfo[] bindingInfos) {
         Debug.Log(eventCard.name+ "  -[描述转化]  "+eventCard.description);
         var description = new EventDescription();
         description.title = eventCard.name;
-        var contentStr = ParseToContentString(eventCard, bindingInfos);
+        var contentStr = ParseToContentString(gameState, eventCard, bindingInfos);
         description.paragragh.AddRange(DivideToParagraphs(contentStr));
         return description;
     }
 
-    private static string ParseToContentString(EventCard eventCard, BindingInfo[] bindingInfos) {
+    private static string ParseToContentString(GameState gameState, EventCard eventCard, BindingInfo[] bindingInfos) {
         var rawString = eventCard.description;
         var contentString = "";
         int cur = 0;
@@ -57,7 +57,7 @@ public class EventDescription {
                 while (end < rawString.Length && rawString[end] != CONVERT_END) {
                     end++;
                 }
-                contentString += ParseConvertSegment(rawString.Substring(start, end - start),eventCard,bindingInfos);
+                contentString += ParseConvertSegment(gameState, rawString.Substring(start, end - start),eventCard,bindingInfos);
                 cur = end + 1;
             }
         }
@@ -65,25 +65,25 @@ public class EventDescription {
     }
 
     // [convertsign] ,不包括 [ 和 ]
-    private static string ParseConvertSegment(string convertSegment, EventCard eventCard, BindingInfo[] bindingInfos) {
+    private static string ParseConvertSegment(GameState gameState, string convertSegment, EventCard eventCard, BindingInfo[] bindingInfos) {
         if (convertSegment[0] == PRECONDITON_BEGIN) {
             if (convertSegment[1] == CHARACTER_SIGN) {
                 // 角色前提
-                //Debug.Log("[解析角色前提: ] " + convertSegment + " idnex为:" + (convertSegment[2] - '0'));
+                Debug.Log("[解析角色前提: ] " + convertSegment + " idnex为:" + (convertSegment[2] - '0'));
                 int index = convertSegment[2] - '0';
-                return eventCard.preconditonSet.characterPreconditions[index].CreateDescription(bindingInfos[index],index);
+                return eventCard.preconditonSet.characterPreconditions[index].CreateDescription(gameState, bindingInfos[index].bindedCharacterIndex);
             }
         }
         else if (convertSegment[0] == CONSEQUENCE_BEGIN) {
             if (convertSegment[1] == CHARACTER_SIGN) {
                 // 角色后果
-                //Debug.Log("[解析后果前提: ] " + convertSegment + " idnex为:" + (convertSegment[2] - '0'));
+                Debug.Log("[解析后果前提: ] " + convertSegment + " idnex为:" + (convertSegment[2] - '0'));
                 int index = convertSegment[2] - '0';
-                return eventCard.consequenceSet.characterConsequences[index].CreateDescription(bindingInfos[index],index);
+                return eventCard.consequenceSet.characterConsequences[index].CreateDescription(gameState, bindingInfos[index].bindedCharacterIndex);
             }
             else if(convertSegment[1] == STATUS_VALUE_CHANGE_SIGN){
                 // 状态值后果
-                //Debug.Log("[解析状态值后果: ] " + convertSegment );
+                Debug.Log("[解析状态值后果: ] " + convertSegment );
                 return eventCard.consequenceSet.statusConsequence.CreateDescription();
             }
         }

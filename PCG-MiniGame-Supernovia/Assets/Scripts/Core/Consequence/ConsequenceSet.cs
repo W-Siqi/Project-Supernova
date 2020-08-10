@@ -16,10 +16,10 @@ public class ConsequenceSet
     public List<CharacterConsequence> characterConsequences = new List<CharacterConsequence>();
     public KeywordConsequence keywordConsequence = new KeywordConsequence();
 
-    public void Apply(BindingInfo[] bindingInfos,GameState gameStateToApply) {
-        if (statusConsequenceEnabled) {
-            gameStateToApply.statusVector += statusConsequence.delta;
-            ViewManager.instance.statusVectorPannel.ViewStatusVectorChange(statusConsequence.delta);
-        }
-    }
+    //public void Apply(BindingInfo[] bindingInfos,GameState gameStateToApply) {
+    //    if (statusConsequenceEnabled) {
+    //        gameStateToApply.statusVector += statusConsequence.delta;
+    //        ViewManager.instance.statusVectorPannel.ViewStatusVectorChange(statusConsequence.delta);
+    //    }
+    //}
 }

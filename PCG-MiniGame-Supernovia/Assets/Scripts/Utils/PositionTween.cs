@@ -25,6 +25,9 @@ public class PositionTween : MonoBehaviour
         Play(false);
     }
 
+    public void SetToEnd() {
+        transform.position = endAnchor.position;
+    }
     public void Play(bool reverse = false) {
         Vector3 from;
         Vector3 to;

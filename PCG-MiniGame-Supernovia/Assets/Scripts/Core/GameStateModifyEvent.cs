@@ -5,7 +5,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace PCGP {
+    /// <summary>
+    /// 必须和某一个gameState对应，因为里面的下标都是和gameState绑定的
+    /// </summary>
     public class GameStateModifyEvent {
+        // 专门对event的
+        public BindingInfo[] bindingInfos = null;
         public GameStateModifyCause modifyCause = new GameStateModifyCause();
         public List<GameStateModifyConsequence> modifyConsequences = new List<GameStateModifyConsequence>();
 
@@ -32,6 +37,16 @@ namespace PCGP {
             modifyCause.belongedCharacter = character;
         }
 
+        /// <summary>
+        /// 事件触发
+        /// </summary>
+        /// <param name="eventCard"></param>
+        public GameStateModifyEvent(EventCard eventCard,BindingInfo[] bindingInfos) {
+            modifyCause.type = GameStateModifyCause.Type.eventStream;
+            modifyCause.eventCard = eventCard;
+            this.bindingInfos = bindingInfos;
+        }
+
         public void AddConsequence(StatusVector statusVector) {
             var newConsequence = new GameStateModifyConsequence();
             newConsequence.type = GameStateModifyConsequence.Type.valueChange;
@@ -39,19 +54,21 @@ namespace PCGP {
             modifyConsequences.Add(newConsequence);
         }
 
-        public void AddConsequence(CharacterCard traitChangeCharacter,Personality changedPersonality, Trait newTrait) {
+        // 结合gameState才有意义
+        public void AddTraitChangeConsequence(GameState gameState, CharacterCard traitChangeCharacter,int personalityIndex, Trait newTrait) {
             var newConsequence = new GameStateModifyConsequence();
             newConsequence.type = GameStateModifyConsequence.Type.traitChange;
-            newConsequence.traitChangeCharacter = traitChangeCharacter;
-            newConsequence.changedPersonalityIndex = traitChangeCharacter.FindPersonaltyIndex(changedPersonality);
+            newConsequence.traitChangeCharacterIndex = gameState.GetIndex(traitChangeCharacter);
+            newConsequence.changedPersonalityIndex = personalityIndex;
             newConsequence.newTrait = newTrait;
             modifyConsequences.Add(newConsequence);
         }
 
-        public void AddConsequence(CharacterCard loyaltyChangeCharacter, int loyaltyDelta) {
+        // 结合gameState才有意义
+        public void AddLoyaltyChangeConsequence(GameState gameState, CharacterCard loyaltyChangeCharacter, int loyaltyDelta) {
             var newConsequence = new GameStateModifyConsequence();
             newConsequence.type = GameStateModifyConsequence.Type.loyaltyChange;
-            newConsequence.loyaltyChangeCharacter = loyaltyChangeCharacter;
+            newConsequence.loyaltyChangeCharacterIndex = gameState.GetIndex(loyaltyChangeCharacter);
             newConsequence.loyaltyDelta = loyaltyDelta;
             modifyConsequences.Add(newConsequence);
         }

@@ -6,8 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 不会主动update去监听状态，而是需要手动的调用API
 /// </summary>
-public class CharacterStausPannel : MonoBehaviour
-{
+public class CharacterStausPannel : MonoBehaviour {
     public Transform upperLeftAnchor;
     public float standardSpace;
     public float selectedSizeAmplify = 1.2f;
@@ -17,7 +16,7 @@ public class CharacterStausPannel : MonoBehaviour
     private CharacterCard selectedCharacter;
     private List<CharacterStatusViewer> characterStatusViewers = new List<CharacterStatusViewer>();
     private Dictionary<CharacterCard, CharacterStatusViewer> characterStatusViewerDict = new Dictionary<CharacterCard, CharacterStatusViewer>();
-    
+
     public void Init(CharacterCard[] characters) {
         // clear old
         foreach (var v in characterStatusViewers) {
@@ -36,8 +35,29 @@ public class CharacterStausPannel : MonoBehaviour
             viewer.transform.SetParent(transform);
         }
     }
+
+    public void ForceSync() {
+        foreach (var viewer in characterStatusViewers) {
+            viewer.ForceSync();
+        }
+    }
+
+    // 会把这个角色状态放大突出
     public void OnSelect(CharacterCard characterCard) {
         selectedCharacter = characterCard;
+    }
+
+    public void ViewSentance(CharacterCard character, string sentance) {
+        StartCoroutine(characterStatusViewerDict[character].ViewCharacterSentance(sentance));
+    }
+
+    public void ActivateTrait(CharacterCard character,Trait trait) {
+        characterStatusViewerDict[character].ActivateTrait(trait);
+    }
+    public void DisactivateAllTraits() {
+        foreach (var viewer in characterStatusViewers) {
+            viewer.DisactivateAllTraits();
+        }
     }
 
     public IEnumerator ViewLoyaltyChange(CharacterCard character, int loyaltyDiff) {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class TraitAlteration {
-    public enum Type {none, add, remove, refreshAll}
+    public enum Type {none, add, remove}
 
     public Trait targetTrait;
     public Type type;
@@ -15,32 +15,59 @@ public class TraitAlteration {
         type = Type.none;
     }
 
-    public void ApplyTo(CharacterCard target) {
+    public void CalculateAlteration(CharacterCard target, out int changedPersonalityIndex, out Trait newTrait) {
+        changedPersonalityIndex = 0;
         if (type == Type.add) {
+            newTrait = targetTrait;
+            // 挑空的
             bool existEmpty = false;
-            foreach (var personality in target.personalities) {
-                if (personality.trait == Trait.none) {
+            for (int i = 0; i < target.personalities.Length; i++) {
+                if (target.personalities[i].trait == Trait.none) {
                     existEmpty = true;
-                    personality.trait = targetTrait;
+                    changedPersonalityIndex = i;
+                    break;
                 }
             }
 
+            // 没空的add就随机覆盖了
             if (!existEmpty) {
-                var selectedPersonality = target.personalities[Random.Range(0, CharacterCard.PERSONALITY_COUNT)];
-                selectedPersonality.trait = targetTrait;
+                changedPersonalityIndex = Random.Range(0, CharacterCard.PERSONALITY_COUNT);
             }
         }
         else if (type == Type.remove) {
-            foreach (var personality in target.personalities) {
-                if (personality.trait == targetTrait) {
-                    personality.trait = Trait.none;
+            newTrait = Trait.none;
+            for (int i = 0; i < target.personalities.Length; i++) {
+                if (target.personalities[i].trait == targetTrait) {
+                    changedPersonalityIndex = i;
                 }
             }
         }
-        else if (type == Type.refreshAll) {
-            foreach (var personality in target.personalities) {
-                personality.trait = TraitUtils.GetRandomTrait();
-            }
+        else {
+            throw new System.Exception("unf");
         }
     }
+
+    //public void ApplyTo(CharacterCard target) {
+    //    if (type == Type.add) {
+    //        bool existEmpty = false;
+    //        foreach (var personality in target.personalities) {
+    //            if (personality.trait == Trait.none) {
+    //                existEmpty = true;
+    //                personality.trait = targetTrait;
+    //            }
+    //        }
+
+    //        if (!existEmpty) {
+    //            var selectedPersonality = target.personalities[Random.Range(0, CharacterCard.PERSONALITY_COUNT)];
+    //            selectedPersonality.trait = targetTrait;
+    //        }
+    //    }
+    //    else if (type == Type.remove) {
+    //        foreach (var personality in target.personalities) {
+    //            if (personality.trait == targetTrait) {
+    //                personality.trait = Trait.none;
+    //            }
+    //        }
+    //    }
+    //}
 }
