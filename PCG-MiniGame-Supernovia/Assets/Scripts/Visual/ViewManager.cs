@@ -58,11 +58,11 @@ namespace PCG {
         }
 
 
-        public void InitForGameStart() {
+        public void InitForGameStart(GameState gameState) {
             resTable.startGameMenuRoot.SetActive(false);
             resTable.statusPannelShowup.Play();
-            StartCoroutine(statusVectorPannel.ViewStatusVectorChange(PlayData.instance.gameState.statusVector));
-            characterStausPannel.Init(PlayData.instance.gameState.characterDeck.ToArray());
+            StartCoroutine(statusVectorPannel.ViewStatusVectorChange(gameState.statusVector));
+            characterStausPannel.Init(gameState.characterDeck.ToArray());
         }
 
         public void InitViewForCouncialStage() {

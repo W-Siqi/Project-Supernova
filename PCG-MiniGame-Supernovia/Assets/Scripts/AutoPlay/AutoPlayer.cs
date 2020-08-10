@@ -14,17 +14,24 @@ namespace PCG {
         /// <returns></returns>
         protected abstract float ProbailityOfAccept(StratagemCard stratagemCard,CharacterCard provider, GameState gameState);
 
-        // TBD 重构
-        public SingleAutoPlayStatistic Play(GameState gameState, GameConfig gameConfig) {
+        public SingleAutoPlayStatistic Play(GameState gameState, GameConfig gameConfig, bool recordLog = false) {
             Profiler.BeginSample("游玩- SingleAutoPlayStatistic Play()");
             var statistic = new SingleAutoPlayStatistic();
+            if (recordLog) {
+                statistic.gameLog = new GameLog();
+            }
+
             int round;
             for (round = 0; round < gameConfig.roundCount; round++) {
                 // 开局buff
-                var modifies =  GameExecuter.CalculateBuffBeforeRound(gameState, gameConfig);
-                GameStateModifyEvent.ApplyModificationsTo(gameState, modifies);
+                var roundStartModifies =  GameExecuter.CalculateBuffBeforeRound(gameState, gameConfig);
+                GameStateModifyEvent.ApplyModificationsTo(gameState, roundStartModifies);
+                // 记录日志
+                if (recordLog) {
+                    statistic.gameLog.AddLogs(roundStartModifies);
+                }
 
-                // council - 重构
+                // council statge
                 foreach (var character in gameState.characterDeck) {
                     if (character.HasTrait(Trait.silence)) {
                         if (Random.value < gameConfig.slicentTraitSlicenceProbility) {
@@ -37,10 +44,20 @@ namespace PCG {
                     var straCard = gameState.stratagemDict[character][round];
                     // AI玩家做决定
                     var agreeDecision = Random.value < ProbailityOfAccept(straCard, character, gameState);
+
+                    // TBD： 决策的还没有index化，无法record
+                    if (recordLog) { 
+                        
+                    }
+
                     // 计算增量
                     var modifications = GameExecuter.CalculteStratagemDecision(gameState, gameConfig,straCard, character, agreeDecision);
                     // 应用增量
                     GameStateModifyEvent.ApplyModificationsTo(gameState, modifications);
+                    // 记录日志
+                    if (recordLog) {
+                        statistic.gameLog.AddLogs(modifications);
+                    }
                 }
 
                 // deathCheck
@@ -58,10 +75,15 @@ namespace PCG {
                         // 绑定失败 - select之后又被改了
                         continue;
                     }
+
                     // 计算
                     var modification = GameExecuter.CalculteEventConsequence(gameState, gameConfig, selectedEvent, bindingInfos);
                     // 应用
                     GameStateModifyEvent.ApplyModificationsTo(gameState, new GameStateModifyEvent[] { modification });
+                    // 记录日志
+                    if (recordLog) {
+                        statistic.gameLog.AddLog(modification);
+                    }
 
                     if (GameExecuter.HasReachDeath(gameState)) {
                         break;

@@ -442,6 +442,8 @@
     <Compile Include="Assets\Scripts\Core\EventCard.cs" />
     <Compile Include="Assets\Scripts\Core\EventDescriptionGenerator.cs" />
     <Compile Include="Assets\Scripts\Core\GameExecuter.cs" />
+    <Compile Include="Assets\Scripts\Core\GameLog.cs" />
+    <Compile Include="Assets\Scripts\Core\GameLogPlayer.cs" />
     <Compile Include="Assets\Scripts\Core\GameState.cs" />
     <Compile Include="Assets\Scripts\Core\GameStateModifyCause.cs" />
     <Compile Include="Assets\Scripts\Core\GameStateModifyConsequence.cs" />

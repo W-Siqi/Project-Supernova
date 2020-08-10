@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace PCG {
+    [System.Serializable]
     public class GameStateModifyCause {
         public enum Type { 
             madeStratagemDecision,triggerTrait,eventStream

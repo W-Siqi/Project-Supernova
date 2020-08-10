@@ -8,6 +8,7 @@ namespace PCGP {
     /// <summary>
     /// 必须和某一个gameState对应，因为里面的下标都是和gameState绑定的
     /// </summary>
+    [System.Serializable]
     public class GameStateModifyEvent {
         // 专门对event的
         public BindingInfo[] bindingInfos = null;
