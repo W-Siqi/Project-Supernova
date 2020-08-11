@@ -129,32 +129,32 @@ public class PlayLoopManager : MonoBehaviour {
         ViewManager.instance.statusVectorPannel.ActivateRelatedValues(stratagem.consequenceSet.statusConsequenceWhenAccept.delta);
         foreach (var character in PlayData.instance.gameState.characterDeck) {
             if (straDelta.people > 0) {
-                traitsPannel.ActivateTrait(character, Trait.silence);
+                traitsPannel.ActivateTrait(character, Trait.silence,"这是提升民心的建议，陛下若不采纳会忠诚度-1");
             }
             if (straDelta.army > 0) {
-                traitsPannel.ActivateTrait(character, Trait.warlike);
+                traitsPannel.ActivateTrait(character, Trait.warlike,"这是提升军队的建议，陛下若不采纳会忠诚度-1");
             }
             if (straDelta.money > 0) {
-                traitsPannel.ActivateTrait(character, Trait.corrupt);
+                traitsPannel.ActivateTrait(character, Trait.corrupt,"虽然次计增加收入，但腐败之人会从中获取提成");
             }
 
             if (provider.HasTrait(Trait.honest)) {
-                traitsPannel.ActivateTrait(character, Trait.corrupt);
+                traitsPannel.ActivateTrait(character, Trait.corrupt,string.Format("采用{0}的建议, 一定几率会消除{1}的腐败性格",provider.name,character.name));
             }
 
             if (provider.HasTrait(Trait.cruel)) {
-                traitsPannel.ActivateTrait(character, Trait.tolerant);
+                traitsPannel.ActivateTrait(character, Trait.tolerant, character.name+ "宽容的性格，会降低你采纳“残暴”所带来的副作用");
             }
 
             if (provider.HasTrait(Trait.arrogent)) {
-                traitsPannel.ActivateTrait(character, Trait.arrogent);
+                traitsPannel.ActivateTrait(character, Trait.arrogent,string.Format("{0}和{1}同为傲慢之人，无论采纳谁的建议，另一个人都会忠诚度-1",provider.name, character.name));
             }
 
-            traitsPannel.ActivateTrait(character, Trait.jealous);
+            traitsPannel.ActivateTrait(character, Trait.jealous, string.Format("{0}为嫉妒之人，一回合内采纳3个以上他人的建议，忠诚度-1",character.name));
         }
         Trait[] traitsToActivate = { Trait.arrogent, Trait.warlike, Trait.wise, Trait.cruel, Trait.tolerant, Trait.tricky , Trait.honest};
         foreach (var t in traitsToActivate) {
-            traitsPannel.ActivateTrait(provider, t);
+            traitsPannel.ActivateTrait(provider, t, TraitUtils.GetTooltip(t));
         }
     }
 

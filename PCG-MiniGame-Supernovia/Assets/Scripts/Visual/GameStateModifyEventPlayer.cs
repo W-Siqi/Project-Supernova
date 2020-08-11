@@ -46,20 +46,19 @@ namespace PCG {
                 // 决策的casue没必要显示
             }
 
-            if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.triggerTrait
+            if (gameStateModifyEvent.modifyConsequences.Count == 0
+                && gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.triggerTrait
                 && gameStateModifyEvent.modifyCause.trait == Trait.silence) {
-                // silence 的触发效果是特殊的
+                // silence 的特殊的沉默效果
                 var character = gameState.characterDeck[gameStateModifyEvent.modifyCause.belongedCharacterIndex];
                 ViewManager.instance.characterStausPannel.OnSelect(character);
                 ViewManager.instance.characterStausPannel.ViewSentance(character, "我今日无要事商议");
                 yield return new WaitForSeconds(2f);
             }
-            else {
-                // 其他类型轮流播放结果
-                foreach (var conseq in gameStateModifyEvent.modifyConsequences) {
-                    yield return PlayModifyConsequence(gameState, gameStateModifyEvent.modifyCause, conseq);
-                }
-            }
+            // 其他类型轮流播放结果
+            foreach (var conseq in gameStateModifyEvent.modifyConsequences) {
+                yield return PlayModifyConsequence(gameState, gameStateModifyEvent.modifyCause, conseq);
+            }         
 
             // 结束显示 cause
             if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.triggerTrait) {

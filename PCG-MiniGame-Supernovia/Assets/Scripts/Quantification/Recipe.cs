@@ -113,6 +113,8 @@ namespace PCG {
 
         private CharacterCard BuildRandomCharacter() {
             var newCharacter = new CharacterCard();
+            newCharacter.avatarImageIndex = Random.Range(0, ResourcePool.instance.avatarSprites.Count);
+            newCharacter.name = ResourcePool.instance.GetRandomName();
             // random properties
             newCharacter.loyalty = Random.Range(2, 7);
             var existedTrait = new List<Trait>();

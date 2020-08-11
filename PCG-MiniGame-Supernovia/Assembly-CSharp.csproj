@@ -539,6 +539,7 @@
     <Compile Include="Assets\Scripts\ResourceTable.cs" />
     <Compile Include="Assets\Scripts\StartMenuManager.cs" />
     <Compile Include="Assets\Scripts\StoryEndingManager.cs" />
+    <Compile Include="Assets\Scripts\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Utils\AnchorManager.cs" />
     <Compile Include="Assets\Scripts\Utils\AnchorPoint.cs" />
     <Compile Include="Assets\Scripts\Utils\ColorTween.cs" />

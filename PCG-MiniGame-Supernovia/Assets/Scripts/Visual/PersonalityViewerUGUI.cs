@@ -10,6 +10,8 @@ public class PersonalityViewerUGUI : MonoBehaviour
     private const string DISSOLVE_SHADER_PROPERTY = "_SliceAmount";
     public Trait currentViewedTrait { get; private set; } = Trait.none;
     [SerializeField]
+    TraitTooltipDetector tooltipDetector;
+    [SerializeField]
     SizeTween hightlightSizeTween;
     [SerializeField]
     ImageGUIColorTween hightlightColorTween;
@@ -19,7 +21,6 @@ public class PersonalityViewerUGUI : MonoBehaviour
     TextMeshProUGUI traitName;
     [SerializeField]
     Image activateImg;
-
     private int hightlightAniID = 0;
     public void InitTo(Trait trait) {
         currentViewedTrait = trait;
@@ -34,8 +35,9 @@ public class PersonalityViewerUGUI : MonoBehaviour
         HighlightOn(3f);
     }
 
-    public void Activate() {
+    public void Activate(string toolTip) {
         activateImg.enabled = true;
+        tooltipDetector.toolTip = toolTip;
     }
 
     public void Disactivate() {

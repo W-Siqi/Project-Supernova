@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class TraitTooltipDetector : MonoBehaviour
 {
+    public string toolTip = "";
     [SerializeField]
     PersonalityViewerUGUI personalityViewer;
     [SerializeField]
@@ -18,7 +19,7 @@ public class TraitTooltipDetector : MonoBehaviour
     public void OnPointerEnter() {
         Debug.Log("Mouse enter");
         traitTooltip.traitFullNameTMP.text = TraitUtils.GetFullName( personalityViewer.currentViewedTrait);
-        traitTooltip.traitDescriptionTMP.text = TraitUtils.GetTooltip(personalityViewer.currentViewedTrait);
+        traitTooltip.traitDescriptionTMP.text = toolTip;
         traitTooltip.gameObject.SetActive(true);
     }
     public void OnPointerExit() {

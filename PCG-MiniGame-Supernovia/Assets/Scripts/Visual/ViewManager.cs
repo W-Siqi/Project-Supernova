@@ -17,8 +17,8 @@ namespace PCG {
             public PositionTween diaglogUITween;
             public PositionTween endGameUIShowup;
 
-            public TextMeshProUGUI stratagemDialogCharacterName;
-            public TextMeshProUGUI stratagemDialogTitleName;
+            public Text stratagemDialogCharacterName;
+            public Text stratagemDialogTitleName;
             public TextAnimator startagemDialogTextAnimator;
 
             public RawImage characterUIImage;

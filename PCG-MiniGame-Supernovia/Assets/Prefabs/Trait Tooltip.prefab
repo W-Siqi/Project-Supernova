@@ -69,7 +69,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 6.003125
+  m_padding: 1.25
   m_canvasRenderer: {fileID: 3511503965437146583}
   m_TextComponent: {fileID: 9187876289311058995}
   m_materialReferenceIndex: 1
@@ -255,7 +255,7 @@ RectTransform:
   m_GameObject: {fileID: 6495195312378713942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.73188275, y: 0.70728225, z: 1}
   m_Children:
   - {fileID: 6495195312428006268}
   m_Father: {fileID: 0}
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 3529328560620005446}
   m_TextComponent: {fileID: 6495195313090153932}
   m_materialReferenceIndex: 1

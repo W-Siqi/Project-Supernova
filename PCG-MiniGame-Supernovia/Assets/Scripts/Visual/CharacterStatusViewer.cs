@@ -73,10 +73,10 @@ public class CharacterStatusViewer : MonoBehaviour {
         }
     }
 
-    public void ActivateTrait(Trait trait) {
+    public void ActivateTrait(Trait trait,string tooltip) {
         foreach (var personalityViewer in personalityViewerUGUIs) {
             if (personalityViewer.currentViewedTrait == trait) {
-                personalityViewer.Activate();
+                personalityViewer.Activate(tooltip);
             }
         }
     }

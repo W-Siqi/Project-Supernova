@@ -11,8 +11,7 @@ namespace PCG {
         public string name = "name";
         public string description = "";
 
-        [SerializeField]
-        private int avatarImageIndex = 0;
+        public int avatarImageIndex = 0;
         private Texture2D loadedAvatarImage = null;
         private Sprite loadedAvatarSprite = null;
 

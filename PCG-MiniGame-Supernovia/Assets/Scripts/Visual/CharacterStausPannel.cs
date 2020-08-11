@@ -51,8 +51,8 @@ public class CharacterStausPannel : MonoBehaviour {
         StartCoroutine(characterStatusViewerDict[character].ViewCharacterSentance(sentance));
     }
 
-    public void ActivateTrait(CharacterCard character,Trait trait) {
-        characterStatusViewerDict[character].ActivateTrait(trait);
+    public void ActivateTrait(CharacterCard character,Trait trait,string tooltip) {
+        characterStatusViewerDict[character].ActivateTrait(trait,tooltip);
     }
     public void DisactivateAllTraits() {
         foreach (var viewer in characterStatusViewers) {

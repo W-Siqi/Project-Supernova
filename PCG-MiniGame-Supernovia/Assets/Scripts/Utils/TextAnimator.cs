@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PCG {
     public class TextAnimator : MonoBehaviour {
         [SerializeField]
-        private TextMeshProUGUI textMeshPro;
+        private Text text;
         [SerializeField]
         private float characterTimeInterval = 0.06f;
 
         private int animID = 0;
 
         public void Play(string content,float delay = 0) {
-            textMeshPro.text = "";
+            text.text = "";
             StartCoroutine(PlayAnimationWithID(++animID, content, delay));
         }
 
@@ -30,7 +31,7 @@ namespace PCG {
                     break;
                 }
                 curStr += c;
-                textMeshPro.text = curStr;
+                text.text = curStr;
                 yield return new WaitForSeconds(characterTimeInterval);
             }
         }

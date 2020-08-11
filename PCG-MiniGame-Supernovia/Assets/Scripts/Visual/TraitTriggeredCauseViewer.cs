@@ -7,6 +7,8 @@ using UnityEngine.UI;
 namespace PCG {
     public class TraitTriggeredCauseViewer : MonoBehaviour {
         [SerializeField]
+        AudioSource causeAudio;
+        [SerializeField]
         PositionTween charcracterShowup;
         [SerializeField]
         RawImage characterImage;
@@ -22,10 +24,12 @@ namespace PCG {
         [SerializeField]
         PositionTween tooltipShowup;
         [SerializeField]
-        TextMeshProUGUI tooptipText;
+        Text tooptipText;
 
         // 显示触发性格的起因
         public void ViewCause(GameState gameState, GameStateModifyCause cause, bool samePreviousCharacter = false) {
+            causeAudio.Play();
+
             var belongedCharacter = gameState.characterDeck[cause.belongedCharacterIndex];
             characterImage.texture = belongedCharacter.GetAvatarImage();
 
