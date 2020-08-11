@@ -36,7 +36,7 @@ namespace PCG {
             personalityViewer.InitTo(cause.trait);
             ViewManager.instance.characterStausPannel.HightlightTrait(belongedCharacter, cause.trait);
             ViewManager.instance.characterStausPannel.ViewSentance(belongedCharacter, TraitUtils.GetTraitSlogan(cause.trait));
-            tooptipText.text = TraitUtils.GetTooltip(cause.trait);
+            tooptipText.text = cause.traitCauseTooltip;
 
      
             charcracterShowup.Play();

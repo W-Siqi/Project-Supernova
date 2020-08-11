@@ -54,7 +54,10 @@ public class PlayLoopManager : MonoBehaviour {
             // [没走GameExecuter！]沉默检测 - 当场播动画 
             if (character.HasTrait(Trait.silence)) {
                 if (Random.value < PlayData.instance.gameConfig.slicentTraitSlicenceProbility) {
-                    var silenceEvent = new GameStateModifyEvent(PlayData.instance.gameState, character, Trait.silence);
+                    var silenceEvent = new GameStateModifyEvent(PlayData.instance.gameState, 
+                        character, 
+                        Trait.silence,
+                        string.Format("沉默的[{0}]本回合不提意见", character.name));
                     yield return StartCoroutine(ViewManager.instance.gameStateModifyEventPlayer.PlayEvent(PlayData.instance.gameState,silenceEvent));
                     continue;
                 }

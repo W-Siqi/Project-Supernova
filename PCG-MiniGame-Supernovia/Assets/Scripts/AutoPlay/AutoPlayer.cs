@@ -41,7 +41,11 @@ namespace PCG {
                     if (character.HasTrait(Trait.silence)) {
                         if (Random.value < gameConfig.slicentTraitSlicenceProbility) {
                             // 生成一个空的modiy,主要是为了给回放系统
-                            var silenceEvent = new GameStateModifyEvent(gameState,character, Trait.silence);
+                            var silenceEvent = new GameStateModifyEvent(gameState,
+                                character, 
+                                Trait.silence,
+                            string.Format("沉默的[{0}]本回合不提意见", character.name));
+
                             continue;
                         }
                     }

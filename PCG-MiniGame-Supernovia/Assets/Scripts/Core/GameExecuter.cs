@@ -72,7 +72,11 @@ namespace PCG {
             foreach (var character in gameState.characterDeck) {
                 // Trait-Pos: 贪婪
                 if (character.HasTrait(Trait.corrupt)) {
-                    var modify = new GameStateModifyEvent(gameState, character, Trait.corrupt);
+                    var modify = new GameStateModifyEvent(gameState, 
+                        character, 
+                        Trait.corrupt,
+                        string.Format("贪婪的[{0}]每回合都会贪金币", character.name));
+
                     var addtionDelta = new StatusVector();
                     addtionDelta.money = -gameConfig.corrputTraitMoneyPerRound;
                     modify.AddConsequence(addtionDelta);
@@ -157,7 +161,11 @@ namespace PCG {
                         //寻找一个贪婪的，转成廉洁
                         var corruptIndex = targetCharacter.FindPersonaltyIndex(Trait.corrupt);
                         if (corruptIndex >= 0) {
-                            var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.honest);
+                            var modify = new GameStateModifyEvent(gameState, 
+                                stratagemProvider, 
+                                Trait.honest,
+                                string.Format("采纳了廉洁[{0}]的建议，\n 消除了[{1}]的腐败", stratagemProvider.name,targetCharacter.name));
+
                             modify.AddTraitChangeConsequence(gameState, targetCharacter, corruptIndex, Trait.honest);
                             gameStateModifyEvents.Add(modify);
                             break;
@@ -167,13 +175,21 @@ namespace PCG {
 
                 // Trait-Pos:奸诈
                 if (stratagemProvider.HasTrait(Trait.tricky) && Random.value < gameConfig.trickyTraitTriggerProb) {
-                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.tricky);
+                    var modify = new GameStateModifyEvent(gameState, 
+                        stratagemProvider,
+                        Trait.tricky,
+                        string.Format("采纳了谎话连篇[{0}]的建议，事与愿违", stratagemProvider.name));
+
                     modify.AddConsequence( -2* origanlDelta);
                     gameStateModifyEvents.Add(modify);
                 }
                 // Trait-Pos:明智
                 if (stratagemProvider.HasTrait(Trait.wise)) {
-                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.wise);
+                    var modify = new GameStateModifyEvent(gameState, 
+                        stratagemProvider, 
+                        Trait.wise,
+                        string.Format("采纳了智慧[{0}]的建议，提升了收益", stratagemProvider.name));
+
                     var ampifiedDelta = new StatusVector(origanlDelta);
                     ampifiedDelta.AmplifyValueIfPositive(gameConfig.wiseTraitAmplifyRate);
                     modify.AddConsequence(ampifiedDelta-origanlDelta);
@@ -182,7 +198,11 @@ namespace PCG {
 
                 // Trait-Pos: 好战
                 if (stratagemProvider.HasTrait(Trait.warlike)) {
-                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.warlike);
+                    var modify = new GameStateModifyEvent(gameState, 
+                        stratagemProvider, 
+                        Trait.warlike,
+                        string.Format("采纳了勇猛[{0}]的建议，提升了军队",stratagemProvider.name));
+
                     var addtionDelta = new StatusVector();
                     addtionDelta.army = gameConfig.warlikeTraitArmyValueWhenAccept;
                     modify.AddConsequence(addtionDelta);
@@ -191,7 +211,11 @@ namespace PCG {
 
                 // Trait-Pos:残暴
                 if (stratagemProvider.HasTrait(Trait.cruel)) {
-                    var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.cruel);
+                    var modify = new GameStateModifyEvent(gameState, 
+                        stratagemProvider, 
+                        Trait.cruel,
+                        string.Format("采纳了残暴的[{0}]的建议,民心下降", stratagemProvider.name));
+
                     var addtionDelta = new StatusVector();
                     addtionDelta.people = - gameConfig.cruelTraitPeopleValuePerDecision;
                     modify.AddConsequence(addtionDelta);
@@ -200,7 +224,11 @@ namespace PCG {
                     // Trait-Pos：宽容 - 联动
                     foreach (var character in gameState.characterDeck) {
                         if (character.HasTrait(Trait.tolerant) && Random.value < gameConfig.tolerantWipeCruelProb) {
-                            var tolerantModify = new GameStateModifyEvent(gameState, character, Trait.tolerant);
+                            var tolerantModify = new GameStateModifyEvent(gameState, 
+                                character, 
+                                Trait.tolerant,
+                                string.Format("[{0}]的宽容，\n 降低了[{1}]的残暴对名的影响", character.name,stratagemProvider.name));
+
                             var tolerAddtionDelta = new StatusVector();
                             tolerAddtionDelta.people = gameConfig.cruelTraitPeopleValuePerDecision;
                             tolerantModify.AddConsequence(addtionDelta);
@@ -214,7 +242,11 @@ namespace PCG {
                 if (stratagemProvider.HasTrait(Trait.arrogent)) {
                     foreach (var character in gameState.characterDeck) {
                         if (character != stratagemProvider && character.HasTrait( Trait.arrogent)) {
-                            var modify = new GameStateModifyEvent(gameState, character, Trait.arrogent);
+                            var modify = new GameStateModifyEvent(gameState,
+                                character, 
+                                Trait.arrogent,
+                                string.Format("[{0}]和[{1}]同为傲慢之人，无论采纳谁的建议，另一个人都会忠诚度-1", stratagemProvider.name, character.name));
+
                             modify.AddLoyaltyChangeConsequence(gameState,character,-1);
                             gameStateModifyEvents.Add(modify);
                             break;
@@ -226,7 +258,11 @@ namespace PCG {
                 if (gameState.acceptCountInCurrentRound >= gameConfig.jealousTraitThreshold) {
                     foreach (var character in gameState.characterDeck) {
                         if (character != stratagemProvider && character.HasTrait(Trait.jealous)) {
-                            var modify = new GameStateModifyEvent(gameState, character, Trait.jealous);
+                            var modify = new GameStateModifyEvent(gameState, 
+                                character,
+                                Trait.jealous,
+                                string.Format("你采纳了3个以上的建议，[{0}]的嫉妒使他忠诚度减少", character.name));
+
                             modify.AddLoyaltyChangeConsequence(gameState, character, -1);
                             gameStateModifyEvents.Add(modify);
                         }
@@ -237,7 +273,11 @@ namespace PCG {
                 if (origanlDelta.money > 0) {
                     foreach (var character in gameState.characterDeck) {
                         if (character.HasTrait(Trait.corrupt)) {
-                            var modify = new GameStateModifyEvent(gameState, character, Trait.corrupt);
+                            var modify = new GameStateModifyEvent(gameState, 
+                                character, 
+                                Trait.corrupt
+                                , string.Format("由于[{0}]的腐败,\n 政策【{1}】 财政收益减少", stratagemProvider.name, stratagem.name));
+
                             var addtionDelta = new StatusVector();
                             addtionDelta.money = -gameConfig.corrputTraitMoneyPerStratagem;
                             modify.AddConsequence(addtionDelta);
@@ -250,7 +290,11 @@ namespace PCG {
                 if (stratagemProvider.HasTrait(Trait.tolerant)) {
                     // Trait-Pos:宽容
                     if (Random.value > gameConfig.tolerantTraitKeepLoyaltyProbability) {
-                        var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.tolerant);
+                        var modify = new GameStateModifyEvent(gameState, 
+                            stratagemProvider, 
+                            Trait.tolerant,
+                            string.Format("由于[{0}]的宽容，没采纳建议也不会减忠诚度", stratagemProvider.name));
+
                         modify.AddLoyaltyChangeConsequence(gameState,stratagemProvider, 0);
                         gameStateModifyEvents.Add(modify);
                     }
@@ -266,7 +310,11 @@ namespace PCG {
                 if (stratagem.consequenceSet.statusConsequenceWhenAccept.delta.army > 0) {
                     foreach (var character in gameState.characterDeck) {
                         if (character.HasTrait(Trait.warlike)) {
-                            var modify = new GameStateModifyEvent(gameState, character, Trait.warlike);
+                            var modify = new GameStateModifyEvent(gameState, 
+                                character, 
+                                Trait.warlike,
+                                string.Format("增加军力的政策【{0}】未采纳,\n勇猛[{1}]的忠诚降低", stratagem.name, stratagemProvider.name));
+
                             modify.AddLoyaltyChangeConsequence(gameState, character, -1);
                             gameStateModifyEvents.Add(modify);
                         }
@@ -277,7 +325,11 @@ namespace PCG {
                 if (stratagem.consequenceSet.statusConsequenceWhenAccept.delta.people > 0) {
                     foreach (var character in gameState.characterDeck) {
                         if (character.HasTrait(Trait.silence)) {
-                            var modify = new GameStateModifyEvent(gameState, character, Trait.silence);
+                            var modify = new GameStateModifyEvent(gameState, 
+                                character, 
+                                Trait.silence,
+                                string.Format("增加民心的政策【{0}】未采纳,\n沉默的[{1}]也看不下去了", stratagem.name, stratagemProvider.name));
+
                             modify.AddLoyaltyChangeConsequence(gameState, character, -1);
                             gameStateModifyEvents.Add(modify);
                         }

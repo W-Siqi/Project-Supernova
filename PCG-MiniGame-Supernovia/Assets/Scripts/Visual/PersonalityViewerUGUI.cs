@@ -36,11 +36,13 @@ public class PersonalityViewerUGUI : MonoBehaviour
     }
 
     public void Activate(string toolTip) {
+        tooltipDetector.gameObject.SetActive(true);
         activateImg.enabled = true;
         tooltipDetector.toolTip = toolTip;
     }
 
     public void Disactivate() {
+        tooltipDetector.gameObject.SetActive(false);
         activateImg.enabled = false;
     }
 

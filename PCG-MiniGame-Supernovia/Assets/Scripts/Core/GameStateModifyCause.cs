@@ -12,6 +12,7 @@ namespace PCG {
         public Type type;
         public int belongedCharacterIndex;
         public Trait trait;
+        public string traitCauseTooltip = "";
         public int eventCardIndex;
     }
 }

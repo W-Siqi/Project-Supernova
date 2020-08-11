@@ -32,9 +32,10 @@ namespace PCGP {
         /// </summary>
         /// <param name="character"></param>
         /// <param name="triggerdTrait"></param>
-        public GameStateModifyEvent(GameState gameState, CharacterCard character, Trait triggerdTrait) {
+        public GameStateModifyEvent(GameState gameState, CharacterCard character, Trait triggerdTrait,string causeResionTooltip) {
             modifyCause.type = GameStateModifyCause.Type.triggerTrait;
             modifyCause.trait = triggerdTrait;
+            modifyCause.traitCauseTooltip = causeResionTooltip;
             modifyCause.belongedCharacterIndex = gameState.GetIndex(character);
         }
 

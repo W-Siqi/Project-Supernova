@@ -548,6 +548,7 @@
     <Compile Include="Assets\Scripts\Visual\TraitTooltip.cs" />
     <Compile Include="Assets\Scripts\Visual\TraitTooltipDetector.cs" />
     <Compile Include="Assets\Scripts\Visual\TraitTriggeredCauseViewer.cs" />
+    <Compile Include="Assets\Scripts\Visual\ValueChangeTooltip.cs" />
     <Compile Include="Assets\Scripts\Visual\ValueViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\ViewManager.cs" />
     <Compile Include="Assets\Scripts\Wrapper\BookControllerWrapper.cs" />

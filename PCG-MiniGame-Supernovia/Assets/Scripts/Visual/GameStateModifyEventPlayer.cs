@@ -41,6 +41,7 @@ namespace PCG {
                     yield return new WaitForSeconds(1f);
                 }
                 traitTriggeredCauseViewer.ViewCause(gameState, gameStateModifyEvent.modifyCause,samePreviousCharacter);
+                yield return new WaitForSeconds(2f);
             }
             else if (gameStateModifyEvent.modifyCause.type == GameStateModifyCause.Type.madeStratagemDecision) {
                 // 决策的casue没必要显示

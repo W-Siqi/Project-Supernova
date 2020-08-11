@@ -264,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5393588632416046766
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1554,7 +1554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2944912272449338125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2222,7 +2222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3034183761120610031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2359,9 +2359,19 @@ PrefabInstance:
       propertyPath: m_padding
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1280982429311287273, guid: 2a3adfa5e8f867346a6f8082d3f15149,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1567672243110314531, guid: 2a3adfa5e8f867346a6f8082d3f15149,
         type: 3}
       propertyPath: m_padding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567672243110314531, guid: 2a3adfa5e8f867346a6f8082d3f15149,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6495195312082631337, guid: 2a3adfa5e8f867346a6f8082d3f15149,
@@ -2712,6 +2722,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280982429311287273, guid: 2a3adfa5e8f867346a6f8082d3f15149,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567672243110314531, guid: 2a3adfa5e8f867346a6f8082d3f15149,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6495195312378713942, guid: 2a3adfa5e8f867346a6f8082d3f15149,
         type: 3}
@@ -3218,9 +3238,19 @@ PrefabInstance:
       propertyPath: m_padding
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1280982429311287273, guid: 2a3adfa5e8f867346a6f8082d3f15149,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1567672243110314531, guid: 2a3adfa5e8f867346a6f8082d3f15149,
         type: 3}
       propertyPath: m_padding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567672243110314531, guid: 2a3adfa5e8f867346a6f8082d3f15149,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6495195312082631337, guid: 2a3adfa5e8f867346a6f8082d3f15149,

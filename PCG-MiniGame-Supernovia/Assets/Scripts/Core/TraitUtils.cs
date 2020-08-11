@@ -9,7 +9,6 @@ namespace PCG {
         private static List<Trait> allValues = null;
         public static bool IsEvil(Trait trait) {
             if (trait == Trait.wise
-                || trait == Trait.silence
                 || trait == Trait.honest
                 || trait == Trait.tolerant
                 || trait == Trait.warlike) {
