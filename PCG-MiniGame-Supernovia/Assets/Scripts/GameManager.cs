@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace PCG {
     public class GameManager : MonoBehaviour {
+        public bool usePCG;
         public StartMenuManager startMenuManager;
         public PlayLoopManager playLoopManager;
         public StoryEndingManager storyEndingManager;
@@ -17,7 +18,7 @@ namespace PCG {
         public IEnumerator PlayGame() {
             yield return StartCoroutine(startMenuManager.WaitStartGame());
 
-            InitGameProcedule();
+            yield return StartCoroutine(InitGameProcedule());
 
             // 开始游戏主循环
             yield return StartCoroutine(playLoopManager.PlayLoop());
@@ -26,10 +27,16 @@ namespace PCG {
             storyEndingManager.OnStoryEnd(PlayData.instance.gameState);
         }
 
-        void InitGameProcedule() {
+        IEnumerator InitGameProcedule() {
             // 初始化故事状态
             int seed = Random.Range(-10000, 100000);
-            PlayData.instance.InitData(startMenuManager.selectedDifficulty);
+            if (usePCG) {
+                yield return StartCoroutine(PlayData.instance.InitData(startMenuManager.selectedDifficulty));
+            }
+            else {
+                PlayData.instance.InitDataWithoutPCG();
+            }
+
             ViewManager.instance.InitForGameStart(PlayData.instance.gameState);
         }
     }

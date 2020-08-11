@@ -7,11 +7,6 @@ namespace PCG {
         public AutoPlayManager autoPlayManager;
         public int debugPlayIndex = 0;
 
-        [ContextMenu("读取AutoPlayer当前数据播放")]
-        private void DebugPlay() {
-            Play(autoPlayManager.lastPlayedGameInitState, autoPlayManager.lastGameLogs[debugPlayIndex]);
-        }
-
         bool isPlaying = false;
         public void Play(GameState initState, GameLog gameLog) {
             if (!isPlaying) {

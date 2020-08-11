@@ -9,7 +9,6 @@ namespace PCG {
         public int characterCount = 4;
         public int eventCountPerRound = 2;
 
-
         public float wiseTraitAmplifyRate = 0.3f;
         public float slicentTraitSlicenceProbility = 0.3f;
         public float tolerantTraitKeepLoyaltyProbability = 0.5f;
@@ -18,8 +17,7 @@ namespace PCG {
         public int corrputTraitMoneyPerRound = 2;
         public int cruelTraitPeopleValuePerDecision = 5;
         public int warlikeTraitArmyValueWhenAccept = 10;
-        public int minInitLoyalty = 2;
-        public int maxInitLoyalty = 7;
+
         public GameConfig MakeDeepCopy() {
             return JsonUtility.FromJson<GameConfig>(JsonUtility.ToJson(this));
         }

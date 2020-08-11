@@ -22,19 +22,22 @@ namespace PCG {
         /// <summary>
         /// 生成残局
         /// </summary>
-        public void InitData(float difficulty = 0.5f) {
-            gameConfig.characterCount = (int)Mathf.Lerp(3, 6, difficulty);
-            gameConfig.roundCount = (int)Mathf.Lerp(2, 7, difficulty);
-            gameConfig.minInitLoyalty = (int)Mathf.Lerp(4, 2, difficulty); 
-            gameConfig.maxInitLoyalty = gameConfig.minInitLoyalty+4;
-        
+        public IEnumerator InitData(float difficulty) {
+            var recipePCG = FindObjectOfType<RecipePCG>();
+            yield return StartCoroutine(recipePCG.GenerateRecipe(difficulty));
+            var recipe = recipePCG.GetCurrentRecipeCopy();
+            gameState = recipe.gameState;
+            gameConfig = recipe.gameConfig;
+        }
+
+        public void InitDataWithoutPCG() {
             // init character
             gameState.characterDeck.Clear();
             for (int i = 0; i < gameConfig.characterCount; i++) {
                 var charaPrototype = DeckArchive.instance.characterCards[i];
                 var newCharacter = Card.DeepCopy(charaPrototype);
                 // random properties
-                newCharacter.loyalty = Random.Range(gameConfig.minInitLoyalty, gameConfig.maxInitLoyalty);
+                newCharacter.loyalty = Random.Range(2, 7);
                 foreach (var p in newCharacter.personalities) {
                     p.trait = TraitUtils.GetRandomTrait();
                 }
@@ -59,7 +62,7 @@ namespace PCG {
             foreach (var chara in gameState.characterDeck) {
                 gameState.stratagemIndexDict[chara] = new List<int>();
                 for (int i = 0; i < gameConfig.roundCount; i++) {
-                    gameState.stratagemIndexDict[chara].Add(Random.Range(0,gameState.stratagemDeck.Count));
+                    gameState.stratagemIndexDict[chara].Add(Random.Range(0, gameState.stratagemDeck.Count));
                 }
             }
 

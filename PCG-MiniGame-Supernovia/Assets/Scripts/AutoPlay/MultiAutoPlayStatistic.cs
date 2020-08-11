@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class MultiAutoPlayStatistic 
 {
+    public float winRate = 0;
     public int playCount;
     public int winCount;
     public double averageRoundsCountPerPlay;
@@ -20,6 +21,7 @@ public class MultiAutoPlayStatistic
         winCount += singleAutoPlayStatistic.win ? 1 : 0;
         totalRoundsPlay += singleAutoPlayStatistic.roundsSurvive;
         averageRoundsCountPerPlay = totalRoundsPlay / (double)playCount;
+        winRate = (float)winCount / (float)playCount;
         if (singleAutoPlayStatistic.lostInCouncil) {
             lostInCouncil++;
         }

@@ -138,14 +138,32 @@ namespace PCG {
                 }
             }
 
-            var v =  allValues[UnityEngine.Random.Range(0, allValues.Count)];
+            var randIndex =  UnityEngine.Random.Range(0, allValues.Count);
 
-            if (!canBeNone && v == Trait.none) {
-                return GetRandomTrait();
+            if (!canBeNone && allValues[randIndex] == Trait.none) {
+                randIndex = (randIndex + 1) % allValues.Count;
             }
-            else {
-                return v;
+
+            return allValues[randIndex];
+        }
+
+        public static Trait GetRandomTrait(Trait blackList, bool canBeNone = false) {
+            if (allValues == null) {
+                allValues = new List<Trait>();
+                foreach (Trait trait in Enum.GetValues(typeof(Trait))) {
+                    allValues.Add(trait);
+                }
             }
+
+            var randIndex = UnityEngine.Random.Range(0, allValues.Count);
+
+            if (!canBeNone && allValues[randIndex] == Trait.none) {
+                randIndex = (randIndex + 1) % allValues.Count;
+            }
+            if (allValues[randIndex] == blackList) {
+                randIndex = (randIndex + 1) % allValues.Count;
+            }
+            return allValues[randIndex];
         }
     }
 }

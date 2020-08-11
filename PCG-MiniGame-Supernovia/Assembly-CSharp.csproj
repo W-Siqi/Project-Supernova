@@ -528,6 +528,13 @@
     <Compile Include="Assets\Scripts\GuideManager.cs" />
     <Compile Include="Assets\Scripts\PCGVariableTable.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />
+    <Compile Include="Assets\Scripts\Quantification\ContinuesQuantifyValue.cs" />
+    <Compile Include="Assets\Scripts\Quantification\DifficultyQuantifizer.cs" />
+    <Compile Include="Assets\Scripts\Quantification\DifficultyVector.cs" />
+    <Compile Include="Assets\Scripts\Quantification\DiscreteQuantifiyValue.cs" />
+    <Compile Include="Assets\Scripts\Quantification\QuantifyValueTable.cs" />
+    <Compile Include="Assets\Scripts\Quantification\Recipe.cs" />
+    <Compile Include="Assets\Scripts\Quantification\RecipePCG.cs" />
     <Compile Include="Assets\Scripts\ResourceTable.cs" />
     <Compile Include="Assets\Scripts\StartMenuManager.cs" />
     <Compile Include="Assets\Scripts\StoryEndingManager.cs" />
@@ -638,6 +645,7 @@
     <None Include="Assets\External\Local\MidevilVillageKindow\beffio\Medieval Kingdom\Content\Shaders\beffio_Trees.shader" />
     <None Include="Assets\External\HyperCard\Shaders\HyperCard_Sprite.shader" />
     <None Include="Assets\External\HyperCard\Shaders\Card (Face).shader" />
+    <None Include="Assets\quantifyTable.txt" />
     <None Include="Assets\External\Local\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\ThroneHall\PostProcessing\Resources\Shaders\TAA.cginc" />
     <None Include="Assets\ThroneHall\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
