@@ -31,16 +31,22 @@ public class StoryEndingManager : MonoBehaviour
             }
         }
 
+        endingContent.text = "";
         if (zeroLoyaltyCharacter != null) {
+            endingContent.text += string.Format("【{0}】的忠诚度降为零\n", zeroLoyaltyCharacter.name);
             pageContentOfEnd = badEndLoyalty;
+            ViewManager.instance.CharacterBetralEnding(zeroLoyaltyCharacter);
         }
         else if (status.army <= 0) {
+            endingContent.text += string.Format("你的【军队】值 降为零\n");
             pageContentOfEnd = badEndArmy;
         }
         else if (status.money <= 0) {
+            endingContent.text += string.Format("你的【财政】值 降为零0\n");
             pageContentOfEnd = badEndMoney;
         }
         else if (status.people <= 0) {
+            endingContent.text += string.Format("你的【民心】值 降为零\n");
             pageContentOfEnd = badEndPeople;
         }
         else {
@@ -56,7 +62,7 @@ public class StoryEndingManager : MonoBehaviour
             endingTitle.text = "失败结局";
         }
 
-        endingContent.text = pageContentOfEnd.text;
+        endingContent.text += pageContentOfEnd.text;
         endingImage.texture = pageContentOfEnd.image;
 
         ViewManager.instance.OnStortEnd();

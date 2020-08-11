@@ -63,7 +63,6 @@ namespace PCG {
             StoryBook.instance.ViewContent(new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex));
             resTable.endGameUIShowup.Play();
             resTable.statusPannelShowup.Play(true);
-            resTable.characterUITween.Play(true);
             resTable.diaglogUITween.Play(true);
             characterStausPannel.Hide();
             eventDescriptionPlayer.HideUI();
@@ -82,7 +81,7 @@ namespace PCG {
             eventDescriptionPlayer.HideUI();
         }
 
-        public IEnumerator ViewCardsOnScreen(Card[] cards,float holdTime = 2f) {
+        public IEnumerator ViewCardsOnScreen(Card[] cards, float holdTime = 2f) {
             var cardDisplays = new List<CardDisplayBehaviour>();
             foreach (var card in cards) {
                 cardDisplays.Add(CardDisplayBehaviour.Create(card, resTable.viewCardSpwanAnchor));
@@ -114,6 +113,12 @@ namespace PCG {
             yield return new WaitForSeconds(1f);
         }
 
+        public void CharacterBetralEnding(CharacterCard character) {
+            resTable.stratagemDialogCharacterName.text = "【叛】"+ character.name;
+            resTable.stratagemDialogCharacterName.color = Color.red;
+            resTable.characterUIImage.texture = character.GetAvatarImage();
+            resTable.characterUITween.Play();
+        }
 
         public void ViewCharacterOfDialog(CharacterCard character) {
             resTable.characterUIImage.texture = character.GetAvatarImage();
