@@ -525,6 +525,7 @@
     <Compile Include="Assets\Scripts\EditSystem\Widgets\StatusConsequenceWidget.cs" />
     <Compile Include="Assets\Scripts\EditSystem\Widgets\Widget.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GlobalSettings.cs" />
     <Compile Include="Assets\Scripts\GuideManager.cs" />
     <Compile Include="Assets\Scripts\PCGVariableTable.cs" />
     <Compile Include="Assets\Scripts\PlayLoopManager.cs" />

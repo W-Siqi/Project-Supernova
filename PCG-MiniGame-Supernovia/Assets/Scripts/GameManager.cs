@@ -39,6 +39,10 @@ namespace PCG {
                 PlayData.instance.InitDataWithoutPCG(startMenuManager.selectedDifficulty);
             }
 
+            GlobalSettings.instance.savedDifficulty = startMenuManager.selectedDifficulty;
+            GlobalSettings.instance.openTutorial = startMenuManager.tutorialOpened;
+            GlobalSettings.instance.theSingleton = true;
+
             ViewManager.instance.InitForGameStart(PlayData.instance.gameState);
         }
     }

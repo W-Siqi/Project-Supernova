@@ -24,7 +24,7 @@ namespace PCG {
         public TraitQuantifyValue trickyTrait;
         public TraitQuantifyValue jealousTrait;
         public TraitQuantifyValue arrogentTrait;
-
+        public TraitQuantifyValue noneTrait;
 
         public DiscreteQuantifyValue winRound;
         public DiscreteQuantifyValue loyalty;
@@ -45,6 +45,7 @@ namespace PCG {
                     _triatQuantifyDict[Trait.tricky] = trickyTrait;
                     _triatQuantifyDict[Trait.jealous] = jealousTrait;
                     _triatQuantifyDict[Trait.arrogent] = arrogentTrait;
+                    _triatQuantifyDict[Trait.none] = noneTrait;
                 }
                 return _triatQuantifyDict;
             }

@@ -46,7 +46,11 @@ public class PlayLoopManager : MonoBehaviour {
         yield return StartCoroutine(ViewManager.instance.gameStateModifyEventPlayer.PlayEvents(PlayData.instance.gameState,modifyEvents));
         GameStateModifyEvent.ApplyModificationsTo(PlayData.instance.gameState, modifyEvents);
 
-        foreach (var character in PlayData.instance.gameState.characterDeck) {
+        // 教程
+        TutorialManager.instance.OpenMainStatusTutorial(curRound,0);
+        TutorialManager.instance.OpenLoyaltyStatusTutorial(curRound,0);
+        for (int i = 0; i < PlayData.instance.gameState.characterDeck.Count; i++){
+            var character = PlayData.instance.gameState.characterDeck[i];
             // [没走GameExecuter！]沉默检测 - 当场播动画 
             if (character.HasTrait(Trait.silence)) {
                 if (Random.value < PlayData.instance.gameConfig.slicentTraitSlicenceProbility) {
@@ -60,6 +64,7 @@ public class PlayLoopManager : MonoBehaviour {
             var straCard = PlayData.instance.gameState.GetStratagem(character,curRound);
 
             // 等待用户输入
+            TutorialManager.instance.OpenHighliightTutorial(curRound,i);
             ActivateDecisionElements(straCard, character);
             ViewManager.instance.ViewCharacterOfDialog(character);
             ViewManager.instance.characterStausPannel.OnSelect(character);
@@ -68,6 +73,7 @@ public class PlayLoopManager : MonoBehaviour {
             ViewManager.instance.EndViewDialog();
             ViewManager.instance.EndViewCharacterOfDialog();
             DisactivateDecisionElements();
+            TutorialManager.instance.OpenStratagemTutorial(curRound,i);
 
             // 计算
             var modifications = GameExecuter.CalculteStratagemDecision(
@@ -91,6 +97,7 @@ public class PlayLoopManager : MonoBehaviour {
         ViewManager.instance.characterStausPannel.Hide();
 
         // next round btn
+        TutorialManager.instance.OpenTraitStoryTutorial(curRound);
         ViewManager.instance.ViewNextRoundBtn();
         yield return StartCoroutine(ResetAndWaitNextRoundInput());
         ViewManager.instance.EndNextRoundBtn();
