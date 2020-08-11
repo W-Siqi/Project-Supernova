@@ -84,7 +84,7 @@ namespace PCG {
             }
 
             Profiler.EndSample();
-            UnityEngine.Debug.Log("时间： " + (Time.time - startTime).ToString());
+            // UnityEngine.Debug.Log("时间： " + (Time.time - startTime).ToString());
 
             isPlaying = false;
         }

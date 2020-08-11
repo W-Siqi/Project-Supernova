@@ -37,8 +37,9 @@ namespace PCG {
 
 
         public void ToRandom(QuantifyValueTable quantifyValueTable){
-            gameConfig.characterCount = (int)Mathf.Lerp(3, 6, difficulty);
-            gameConfig.roundCount = (int)Mathf.Lerp(2, 7, difficulty);
+            gameConfig.characterCount = Random.Range(quantifyValueTable.characterCount.from, quantifyValueTable.characterCount.to + 1);
+            gameConfig.roundCount = Random.Range(quantifyValueTable.winRound.from, quantifyValueTable.winRound.to + 1);
+
             // init character
             gameState.characterDeck.Clear();
             for (int i = 0; i < gameConfig.characterCount; i++) {
@@ -69,7 +70,7 @@ namespace PCG {
             gameState.stratagemIndexDict.Clear();
             foreach (var chara in gameState.characterDeck) {
                 gameState.stratagemIndexDict[chara] = new List<int>();
-                for (int i = 0; i < gameConfig.roundCount; i++) {
+                for (int i = 0; i < quantifyValueTable.winRound.to; i++) {
                     gameState.stratagemIndexDict[chara].Add(Random.Range(0, gameState.stratagemDeck.Count));
                 }
             }
@@ -80,6 +81,7 @@ namespace PCG {
             gameState.statusVector.people = Random.Range(20, 80);
         }
 
+        // 这个核心函数...
         public void AdjustDifficulty(QuantifyValueTable quantifyValueTable, float targetDifficult) {
             ToRandom(quantifyValueTable);
         }

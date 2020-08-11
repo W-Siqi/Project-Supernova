@@ -8,6 +8,6 @@ namespace PCG {
         public int from = 1;
         public int to = 10;
         public int step = 1;
-        public List<float> stepDifficultyFactors;
+        public List<double> difficultyFactors;
     }
 }
