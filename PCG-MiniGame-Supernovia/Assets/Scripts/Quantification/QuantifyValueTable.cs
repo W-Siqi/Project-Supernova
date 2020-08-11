@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using UnityEngine;
 using UnityEditor;
 
@@ -50,6 +51,31 @@ namespace PCG {
         }
 
         private Dictionary<Trait, TraitQuantifyValue> _triatQuantifyDict = null;
+
+        public Trait GetRandomTraitUsingQuanficiton(Trait trait, bool moreDifficult) {
+            var curDifficulty = triatQuantifyDict[trait].difficultyFacor;
+
+            var allValues = new List<Trait>();
+            foreach (Trait t in Enum.GetValues(typeof(Trait))) {
+                if (t != Trait.none) {
+                    allValues.Add(t);
+                }
+            }
+            int iter = UnityEngine.Random.Range(0,allValues.Count);
+            for (int i = 0; i < allValues.Count; i++) {
+                if (moreDifficult && triatQuantifyDict[allValues[iter]].difficultyFacor < curDifficulty) {
+                    return allValues[iter];
+                }
+                else if (!moreDifficult && triatQuantifyDict[allValues[iter]].difficultyFacor > curDifficulty) {
+                    return allValues[iter];
+                }
+                else {
+                    iter = (iter + 1) % allValues.Count;
+                }
+            }
+            return trait;
+        }
+
         //public static QuantifyValueTable instance {
         //    get {
         //        if (_instance == null) {

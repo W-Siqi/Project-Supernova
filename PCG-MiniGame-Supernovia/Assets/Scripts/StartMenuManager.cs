@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class StartMenuManager : MonoBehaviour
 {
     public float selectedDifficulty = 0.2f;
+
+    public GameObject UserInterface;
+    public GameObject PCGDashboard;
+
+
     [SerializeField]
     float minDifficulty = 0.3f;
     [SerializeField]
@@ -18,7 +23,6 @@ public class StartMenuManager : MonoBehaviour
     private TextMeshProUGUI difficultyValueText;
     [SerializeField]
     private Button startGameButton;
-    public GameObject PCGLoading;
 
     private bool gameStart = false;
 

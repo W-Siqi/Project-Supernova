@@ -30,12 +30,13 @@ namespace PCG {
             // 初始化故事状态
             int seed = Random.Range(-10000, 100000);
             if (usePCG) {
-                startMenuManager.PCGLoading.SetActive(true);
+                startMenuManager.PCGDashboard.SetActive(true);
+                startMenuManager.UserInterface.SetActive(false);
                 yield return StartCoroutine(PlayData.instance.InitData(startMenuManager.selectedDifficulty));
-                startMenuManager.PCGLoading.SetActive(false);
+                yield return new WaitForSeconds(2f);
             }
             else {
-                PlayData.instance.InitDataWithoutPCG();
+                PlayData.instance.InitDataWithoutPCG(startMenuManager.selectedDifficulty);
             }
 
             ViewManager.instance.InitForGameStart(PlayData.instance.gameState);

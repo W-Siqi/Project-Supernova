@@ -8,11 +8,11 @@ namespace PCG {
     public class TraitUtils {
         private static List<Trait> allValues = null;
         public static bool IsEvil(Trait trait) {
-            if (trait == Trait.wise 
-                || trait == Trait.silence 
+            if (trait == Trait.wise
+                || trait == Trait.silence
                 || trait == Trait.honest
                 || trait == Trait.tolerant
-                || trait ==  Trait.warlike) {
+                || trait == Trait.warlike) {
                 return false;
             }
             return true;
@@ -131,14 +131,14 @@ namespace PCG {
 
 
         public static Trait GetRandomTrait(bool canBeNone = false) {
-            if (allValues == null) { 
+            if (allValues == null) {
                 allValues = new List<Trait>();
                 foreach (Trait trait in Enum.GetValues(typeof(Trait))) {
                     allValues.Add(trait);
                 }
             }
 
-            var randIndex =  UnityEngine.Random.Range(0, allValues.Count);
+            var randIndex = UnityEngine.Random.Range(0, allValues.Count);
 
             if (!canBeNone && allValues[randIndex] == Trait.none) {
                 randIndex = (randIndex + 1) % allValues.Count;
@@ -164,6 +164,35 @@ namespace PCG {
                 randIndex = (randIndex + 1) % allValues.Count;
             }
             return allValues[randIndex];
+        }
+
+        public static Trait GetRandomTrait(Trait[] blackList, bool canBeNone = false) {
+            if (allValues == null) {
+                allValues = new List<Trait>();
+                foreach (Trait trait in Enum.GetValues(typeof(Trait))) {
+                    allValues.Add(trait);
+                }
+            }
+
+            var randIndex = UnityEngine.Random.Range(0, allValues.Count);
+
+            if (!canBeNone && allValues[randIndex] == Trait.none) {
+                randIndex = (randIndex + 1) % allValues.Count;
+            }
+
+            while(IsInBlacklist(allValues[randIndex], blackList)) {
+                randIndex = (randIndex + 1) % allValues.Count;
+            }
+            return allValues[randIndex];
+        }
+
+        private static bool IsInBlacklist(Trait trait, Trait[] blackList) {
+            foreach (var t in blackList) {
+                if (trait == t) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

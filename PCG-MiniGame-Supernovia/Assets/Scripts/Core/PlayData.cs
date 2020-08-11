@@ -30,9 +30,9 @@ namespace PCG {
             gameConfig = recipe.gameConfig;
         }
 
-        public void InitDataWithoutPCG() {
+        public void InitDataWithoutPCG(float difficulty) {
             var recipe = new Recipe();
-            recipe.ToRandom(FindObjectOfType<DifficultyQuantifizer>().quantifyValueTable);
+            recipe.ToRandom(FindObjectOfType<DifficultyQuantifizer>().quantifyValueTable,difficulty);
             gameState = recipe.gameState;
             gameConfig = recipe.gameConfig;
         }

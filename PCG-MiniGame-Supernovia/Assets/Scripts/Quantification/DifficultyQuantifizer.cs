@@ -38,6 +38,7 @@ namespace PCG {
             StreamReader reader = new StreamReader(config.savePath);
             var serialized  = reader.ReadToEnd();
             reader.Close();
+            Debug.Log(serialized);
             quantifyValueTable = JsonUtility.FromJson<QuantifyValueTable>(serialized);
         }
 
