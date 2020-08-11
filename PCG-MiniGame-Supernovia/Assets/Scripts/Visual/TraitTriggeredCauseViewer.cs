@@ -34,14 +34,9 @@ namespace PCG {
             ViewManager.instance.characterStausPannel.ViewSentance(belongedCharacter, TraitUtils.GetTraitSlogan(cause.trait));
             tooptipText.text = TraitUtils.GetTooltip(cause.trait);
 
-            if (!samePreviousCharacter) {
-                charcracterShowup.Play();
-                tittleShowup.Play();
-            }
-            else {
-                charcracterShowup.SetToEnd();
-                tittleShowup.SetToEnd();
-            }
+     
+            charcracterShowup.Play();
+            tittleShowup.Play();
             traitShowup.Play();
             tooltipShowup.Play();
         }

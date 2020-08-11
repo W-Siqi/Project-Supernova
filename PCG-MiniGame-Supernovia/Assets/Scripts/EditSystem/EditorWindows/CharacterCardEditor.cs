@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using PCG;
 
+# if UNITY_EDITOR
 namespace PCG {
     public class CharacterCardEditor : CardEditor {
         protected override void OnGUI() {
@@ -29,3 +30,4 @@ namespace PCG {
         }
     }
 }
+# endif

@@ -77,21 +77,7 @@ namespace PCG {
                     addtionDelta.money = -gameConfig.corrputTraitMoneyPerRound;
                     modify.AddConsequence(addtionDelta);
                     gameStateModifyEvents.Add(modify);
-                }
-
-                // Trait-Pos: 廉洁
-                if (character.HasTrait(Trait.honest) && Random.value < gameConfig.honestProbability) {
-                    foreach (var targetCharacter in gameState.characterDeck) {
-                        //寻找一个贪婪的，转成廉洁
-                        var corruptIndex = targetCharacter.FindPersonaltyIndex(Trait.corrupt);
-                        if (corruptIndex >= 0) {
-                            var modify = new GameStateModifyEvent(gameState, character, Trait.honest);
-                            modify.AddTraitChangeConsequence(gameState, targetCharacter, corruptIndex, Trait.honest);
-                            gameStateModifyEvents.Add(modify);
-                            break;
-                        }
-                    }
-                }
+                }            
             }
             return gameStateModifyEvents.ToArray();
         }
@@ -164,8 +150,23 @@ namespace PCG {
                 // stratagem.consequenceSet.traitAlterationWhenAccept.ApplyTo(stratagemProvider);
                 gameStateModifyEvents.Add(stratagemCausedModify);
 
+
+                // Trait-Pos: 廉洁
+                if (stratagemProvider.HasTrait(Trait.honest) && Random.value < gameConfig.honestProbabilityPerStratagem) {
+                    foreach (var targetCharacter in gameState.characterDeck) {
+                        //寻找一个贪婪的，转成廉洁
+                        var corruptIndex = targetCharacter.FindPersonaltyIndex(Trait.corrupt);
+                        if (corruptIndex >= 0) {
+                            var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.honest);
+                            modify.AddTraitChangeConsequence(gameState, targetCharacter, corruptIndex, Trait.honest);
+                            gameStateModifyEvents.Add(modify);
+                            break;
+                        }
+                    }
+                }
+
                 // Trait-Pos:奸诈
-                if (stratagemProvider.HasTrait(Trait.tricky)) {
+                if (stratagemProvider.HasTrait(Trait.tricky) && Random.value < gameConfig.trickyTraitTriggerProb) {
                     var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.tricky);
                     modify.AddConsequence( -2* origanlDelta);
                     gameStateModifyEvents.Add(modify);
@@ -195,13 +196,25 @@ namespace PCG {
                     addtionDelta.people = - gameConfig.cruelTraitPeopleValuePerDecision;
                     modify.AddConsequence(addtionDelta);
                     gameStateModifyEvents.Add(modify);
+
+                    // Trait-Pos：宽容 - 联动
+                    foreach (var character in gameState.characterDeck) {
+                        if (character.HasTrait(Trait.tolerant) && Random.value < gameConfig.tolerantWipeCruelProb) {
+                            var tolerantModify = new GameStateModifyEvent(gameState, character, Trait.tolerant);
+                            var tolerAddtionDelta = new StatusVector();
+                            tolerAddtionDelta.people = gameConfig.cruelTraitPeopleValuePerDecision;
+                            tolerantModify.AddConsequence(addtionDelta);
+                            gameStateModifyEvents.Add(tolerantModify);
+                            break;
+                        }
+                    }
                 }
 
-                // Trait-Pos:傲慢
+                // Trait-Pos:傲慢 - 联动
                 if (stratagemProvider.HasTrait(Trait.arrogent)) {
                     foreach (var character in gameState.characterDeck) {
-                        if (character != stratagemProvider) {
-                            var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.arrogent);
+                        if (character != stratagemProvider && character.HasTrait( Trait.arrogent)) {
+                            var modify = new GameStateModifyEvent(gameState, character, Trait.arrogent);
                             modify.AddLoyaltyChangeConsequence(gameState,character,-1);
                             gameStateModifyEvents.Add(modify);
                             break;
@@ -209,7 +222,7 @@ namespace PCG {
                     }
                 }
 
-                // Trait-Pos:嫉妒
+                // Trait-Pos:嫉妒 - 联动
                 if (gameState.acceptCountInCurrentRound >= gameConfig.jealousTraitThreshold) {
                     foreach (var character in gameState.characterDeck) {
                         if (character != stratagemProvider && character.HasTrait(Trait.jealous)) {
@@ -219,10 +232,23 @@ namespace PCG {
                         }
                     }
                 }
+
+                // Trait-Pos： 贪婪 - 联动
+                if (origanlDelta.money > 0) {
+                    foreach (var character in gameState.characterDeck) {
+                        if (character.HasTrait(Trait.corrupt)) {
+                            var modify = new GameStateModifyEvent(gameState, character, Trait.corrupt);
+                            var addtionDelta = new StatusVector();
+                            addtionDelta.money = -gameConfig.corrputTraitMoneyPerStratagem;
+                            modify.AddConsequence(addtionDelta);
+                            gameStateModifyEvents.Add(modify);
+                        }
+                    }
+                }
             }
             else {
-                // Trait-Pos:宽容
                 if (stratagemProvider.HasTrait(Trait.tolerant)) {
+                    // Trait-Pos:宽容
                     if (Random.value > gameConfig.tolerantTraitKeepLoyaltyProbability) {
                         var modify = new GameStateModifyEvent(gameState, stratagemProvider, Trait.tolerant);
                         modify.AddLoyaltyChangeConsequence(gameState,stratagemProvider, 0);
@@ -235,8 +261,28 @@ namespace PCG {
                     gameStateModifyEvents.Add(modify);
                 }
 
-                // 本身应用的后果 ： 角色性格改变 - 先不设定！
-                // stratagem.consequenceSet.traitAlterationWhenDecline.ApplyTo(stratagemProvider);
+
+                // Trait-Pos： 好战 - 不采纳
+                if (stratagem.consequenceSet.statusConsequenceWhenAccept.delta.army > 0) {
+                    foreach (var character in gameState.characterDeck) {
+                        if (character.HasTrait(Trait.warlike)) {
+                            var modify = new GameStateModifyEvent(gameState, character, Trait.warlike);
+                            modify.AddLoyaltyChangeConsequence(gameState, character, -1);
+                            gameStateModifyEvents.Add(modify);
+                        }
+                    }
+                }
+
+                // Trait-Pos： 沉默 - 不采纳
+                if (stratagem.consequenceSet.statusConsequenceWhenAccept.delta.people > 0) {
+                    foreach (var character in gameState.characterDeck) {
+                        if (character.HasTrait(Trait.silence)) {
+                            var modify = new GameStateModifyEvent(gameState, character, Trait.silence);
+                            modify.AddLoyaltyChangeConsequence(gameState, character, -1);
+                            gameStateModifyEvents.Add(modify);
+                        }
+                    }
+                }
             }
             return gameStateModifyEvents.ToArray();
         }

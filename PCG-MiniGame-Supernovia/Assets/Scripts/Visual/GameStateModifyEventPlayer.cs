@@ -76,9 +76,10 @@ namespace PCG {
             foreach (var coneq in gameStateModifyEvent.modifyConsequences) {
                 // Debug.Log("[event conseq的type] " + coneq.type);
                 if (coneq.type == GameStateModifyConsequence.Type.valueChange) {
-                    StartCoroutine( ViewManager.instance.statusVectorPannel.ViewStatusVectorChange(coneq.changeValue));
+                    yield return StartCoroutine( ViewManager.instance.statusVectorPannel.ViewStatusVectorChange(coneq.changeValue));
                 }
             }
+            yield return new WaitForSeconds(1f);
         }
 
 

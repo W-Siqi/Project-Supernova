@@ -4,13 +4,13 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using PCG;
-
+# if UNITY_EDITOR
 public class PreconditionWidget : Widget {
     private PreconditonSet editTarget;
 
     // environment preconditon
-    private SelectAndAddWidget<Qualifier> addEnvQualifierWidget;
-    private DynamicWidgetGroup<QualifierWidget, Qualifier> envQualiferWidgetGroup;
+    //private SelectAndAddWidget<Qualifier> addEnvQualifierWidget;
+    //private DynamicWidgetGroup<QualifierWidget, Qualifier> envQualiferWidgetGroup;
 
     // event preconditon
     private Dictionary<EventPrecondition, EventCard> eventPrectionsDict;
@@ -23,12 +23,12 @@ public class PreconditionWidget : Widget {
         editTarget = target;
 
         // init environment widgets
-        List<Qualifier> envQualifers = editTarget.environmentPrecondition.qualifiers;
-        addEnvQualifierWidget = new SelectAndAddWidget<Qualifier>(
-            envQualifers,
-            () => DeckArchive.instance.environmentQualifierLib.GetQualiferNamesWithBlackList(envQualifers),
-            (string name) =>new Qualifier(name));
-        envQualiferWidgetGroup = new DynamicWidgetGroup<QualifierWidget, Qualifier>(editTarget.environmentPrecondition.qualifiers);
+        //List<Qualifier> envQualifers = editTarget.environmentPrecondition.qualifiers;
+        //addEnvQualifierWidget = new SelectAndAddWidget<Qualifier>(
+        //    envQualifers,
+        //    () => DeckArchive.instance.environmentQualifierLib.GetQualiferNamesWithBlackList(envQualifers),
+        //    (string name) =>new Qualifier(name));
+        //envQualiferWidgetGroup = new DynamicWidgetGroup<QualifierWidget, Qualifier>(editTarget.environmentPrecondition.qualifiers);
 
 
         chaPreconditonWidgetGroup = new DynamicWidgetGroup<CharacterPreconditonWidget, CharacterPrecondition>(editTarget.characterPreconditions, false);
@@ -94,8 +94,6 @@ public class PreconditionWidget : Widget {
     private void RenderEnvironmentPrecontionUI() {
         EditorGUILayout.BeginHorizontal(EditorStyleResource.preconditionBlockStyle);
         EditorGUILayout.LabelField("环境");
-        envQualiferWidgetGroup.RenderUI();
-        addEnvQualifierWidget.RenderUI();
         EditorGUILayout.EndHorizontal();
     }
 
@@ -162,3 +160,4 @@ public class PreconditionWidget : Widget {
         }
     }
 }
+#endif

@@ -535,6 +535,7 @@
     <Compile Include="Assets\Scripts\Quantification\QuantifyValueTable.cs" />
     <Compile Include="Assets\Scripts\Quantification\Recipe.cs" />
     <Compile Include="Assets\Scripts\Quantification\RecipePCG.cs" />
+    <Compile Include="Assets\Scripts\ResourcePool.cs" />
     <Compile Include="Assets\Scripts\ResourceTable.cs" />
     <Compile Include="Assets\Scripts\StartMenuManager.cs" />
     <Compile Include="Assets\Scripts\StoryEndingManager.cs" />

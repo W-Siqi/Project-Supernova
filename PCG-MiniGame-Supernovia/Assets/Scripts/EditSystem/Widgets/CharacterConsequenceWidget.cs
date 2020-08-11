@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using PCG;
-
+# if UNITY_EDITOR
 public class CharacterConsequenceWidget:Widget
 {
     private static string[] bindingOptions ={ "角色1","角色2","角色3"};
@@ -21,3 +21,4 @@ public class CharacterConsequenceWidget:Widget
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif

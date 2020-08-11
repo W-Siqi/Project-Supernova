@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using PCG;
 
+# if UNITY_EDITOR
 public class CharacterDeckEditor : DeckEditor {
     [MenuItem("PCG编辑/人物卡")]
     public static void ShowWindow() {
@@ -22,3 +23,4 @@ public class CharacterDeckEditor : DeckEditor {
         return new CharacterCard();
     }
 }
+# endif

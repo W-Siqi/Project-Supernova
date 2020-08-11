@@ -8,6 +8,10 @@ using PCG;
 public class ValueViewer : MonoBehaviour
 {
     [SerializeField]
+    Image upArrow;
+    [SerializeField]
+    Image downArrow;
+    [SerializeField]
     Image activateImg;
 
     [SerializeField]
@@ -40,12 +44,20 @@ public class ValueViewer : MonoBehaviour
         sliderOfValue.value = curVal / maxVal;
     }
 
-    public void Activate() {
+    public void Activate(float delta) {
         activateImg.enabled = true;
+        if (delta > 0) {
+            upArrow.enabled = true;
+        }
+        else {
+            downArrow.enabled = true;
+        }
     }
 
     public void Disactivate() {
         activateImg.enabled = false;
+        upArrow.enabled = false;
+        downArrow.enabled = false;
     }
 
     public void ApplyDiff(int delta) {

@@ -6,6 +6,7 @@ using UnityEditor;
 using System;
 using PCG;
 
+# if UNITY_EDITOR
 [System.Serializable]
 public class DeckArchive : ScriptableObject {
     private const string ARCHIVE_SAVE_DIR = "Assets/Resources";
@@ -144,3 +145,4 @@ public class DeckArchive : ScriptableObject {
         return archive;
     }
 }
+# endif

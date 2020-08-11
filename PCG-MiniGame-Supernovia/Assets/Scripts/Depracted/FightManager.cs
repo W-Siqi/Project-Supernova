@@ -12,20 +12,20 @@ namespace PCG {
             instance = this;
         }
 
-        public CharacterCard[] InstanticteRandomEnemies() {
-            int count = 6;
-            var enemies = new List<CharacterCard>();
-            for (int i = 0; i < count; i++) {
-                var enemy = new CharacterCard();
-                enemy.attributes.atkVal = Random.Range(1, 6);
-                enemy.attributes.maxHP = Random.Range(5, 20);
-                enemy.attributes.HP = enemy.attributes.maxHP;
-                enemy.name = "测试怪";
-                enemy.SetAvatarImage(enemyImageForTest);
-                enemies.Add(enemy);
-            }
-            return enemies.ToArray();
-        }
+        //public CharacterCard[] InstanticteRandomEnemies() {
+        //    int count = 6;
+        //    var enemies = new List<CharacterCard>();
+        //    for (int i = 0; i < count; i++) {
+        //        var enemy = new CharacterCard();
+        //        enemy.attributes.atkVal = Random.Range(1, 6);
+        //        enemy.attributes.maxHP = Random.Range(5, 20);
+        //        enemy.attributes.HP = enemy.attributes.maxHP;
+        //        enemy.name = "测试怪";
+        //        enemy.SetAvatarImage(enemyImageForTest);
+        //        enemies.Add(enemy);
+        //    }
+        //    return enemies.ToArray();
+        //}
 
         public IEnumerator ExecuteFight(CharacterCard[] allies, CharacterCard[] enemies) {
             List<CharacterCard> aliveAllies = new List<CharacterCard>(allies);

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using UnityEngine;
 
 namespace PCG {
@@ -31,7 +30,9 @@ namespace PCG {
             // 初始化故事状态
             int seed = Random.Range(-10000, 100000);
             if (usePCG) {
+                startMenuManager.PCGLoading.SetActive(true);
                 yield return StartCoroutine(PlayData.instance.InitData(startMenuManager.selectedDifficulty));
+                startMenuManager.PCGLoading.SetActive(false);
             }
             else {
                 PlayData.instance.InitDataWithoutPCG();

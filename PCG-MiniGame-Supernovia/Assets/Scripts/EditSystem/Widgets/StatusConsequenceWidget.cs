@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
-
+# if UNITY_EDITOR
 public class StatusConsequenceWidget : Widget
 {
     private StatusConsequence editTarget;
@@ -23,3 +22,4 @@ public class StatusConsequenceWidget : Widget
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif

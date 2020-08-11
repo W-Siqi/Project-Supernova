@@ -23,6 +23,8 @@ namespace PCG {
 
             int round;
             for (round = 0; round < gameConfig.roundCount; round++) {
+                gameState.RefreshForNewRound();
+
                 if (recordLog) {
                     statistic.gameLog.AddStageSwitchLog(true);
                 }

@@ -9,16 +9,21 @@ public class StatusVectorPannel : MonoBehaviour
     public ValueViewer moneyValue;
     public ValueViewer peopleValue;
 
+
+    private void Awake() {
+        DisactivateAllValues();
+    }
+
     // 会改变的值标出来
     public void ActivateRelatedValues(StatusVector delta) {
         if (delta.money != 0) {
-            moneyValue.Activate();
+            moneyValue.Activate(delta.money);
         }
         if (delta.army != 0) {
-            armyValue.Activate();
+            armyValue.Activate(delta.army);
         }
         if (delta.people != 0) {
-            peopleValue.Activate();
+            peopleValue.Activate(delta.people);
         }
     }
 

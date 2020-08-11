@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+# if UNITY_EDITOR
 // 专门用来搜索添加对应的项目
 public class SelectAndAddWidget<T>:Widget
 {
@@ -43,3 +43,4 @@ public class SelectAndAddWidget<T>:Widget
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif

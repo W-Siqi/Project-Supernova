@@ -8,6 +8,9 @@ namespace PCG {
     public class ViewManager : MonoBehaviour {
         [System.Serializable]
         public class ResTable {
+            public SizeTween winConditionShowupAndHide;
+            public Text roundCount;
+
             public PositionTween statusPannelShowup;
             public PositionTween characterUITween;
             public PositionTween nextRoundBtnShowup;
@@ -46,6 +49,15 @@ namespace PCG {
         public GameStateModifyEventPlayer gameStateModifyEventPlayer;
         public CharacterStausPannel characterStausPannel;
         public StatusVectorPannel statusVectorPannel;
+
+        public IEnumerator ViewWinConditon(int round) {
+            resTable.winConditionShowupAndHide.gameObject.SetActive(true);
+            resTable.roundCount.text = round.ToString();
+            resTable.winConditionShowupAndHide.playTime = 5f;
+            resTable.winConditionShowupAndHide.Play();
+            yield return new WaitForSeconds(5f);
+            resTable.winConditionShowupAndHide.gameObject.SetActive(false);
+        }
 
         public void OnStortEnd() {
             StoryBook.instance.ViewContent(new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex));

@@ -5,6 +5,7 @@ using UnityEditor;
 using System;
 using PCG;
 
+# if UNITY_EDITOR
 // 提供最初的卡片排版和罗列
 // 子类:
 //  1)换具体渲染卡片的delegate
@@ -129,3 +130,4 @@ public abstract class DeckEditor : EditorWindow
         GUI.color = Color.white;
     }
 }
+# endif

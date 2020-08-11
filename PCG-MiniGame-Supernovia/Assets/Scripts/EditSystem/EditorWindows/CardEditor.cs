@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+# if UNITY_EDITOR
 namespace PCG { 
 // 所有卡片编辑器的基类
 // 编辑头像，名称，前缀等共通特性
@@ -31,9 +32,6 @@ public abstract class CardEditor : EditorWindow
             }
             else if (card is StratagemCard) {
                 newWindow = CreateInstance<StratagemCardEditor>();
-            }
-            else if (card is SubstoryCard) {
-                newWindow = CreateInstance<SubstoryCardEditor>();
             }
             else {
                 Debug.LogError("unknown type of card");
@@ -91,9 +89,7 @@ public abstract class CardEditor : EditorWindow
                 GUILayout.Width(WINDOW_WIDTH),
                 GUILayout.Height(IMAGE_HEIGHT));
 
-            if (newImg != editTarget.GetAvatarImage()) {
-                editTarget.SetAvatarImage(newImg);
-            }
+
         }
         else {
             var newImg = (Texture2D)EditorGUILayout.ObjectField(
@@ -101,10 +97,6 @@ public abstract class CardEditor : EditorWindow
                 typeof(Texture2D),
                 GUILayout.Width(WINDOW_WIDTH),
                 GUILayout.Height(IMAGE_HEIGHT));
-
-            if (newImg != null) {
-                editTarget.SetAvatarImage(newImg);
-            }
         }
     }
 
@@ -121,3 +113,4 @@ public abstract class CardEditor : EditorWindow
 
 }
 
+# endif

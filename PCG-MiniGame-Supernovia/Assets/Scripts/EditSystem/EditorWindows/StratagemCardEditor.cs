@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+# if UNITY_EDITOR
 namespace PCG {
     public class StratagemCardEditor : CardEditor {
         private StatusConsequenceWidget statusConsequenceWidget;
@@ -34,5 +35,6 @@ namespace PCG {
 
         }
     }
-
 }
+
+#endif

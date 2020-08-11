@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using PCG;
 
+# if UNITY_EDITOR
 public class StratagemDeckEditor : DeckEditor
 {
     [MenuItem("PCG编辑/决策卡")]
@@ -22,3 +23,4 @@ public class StratagemDeckEditor : DeckEditor
         return new StratagemCard();
     }
 }
+# endif

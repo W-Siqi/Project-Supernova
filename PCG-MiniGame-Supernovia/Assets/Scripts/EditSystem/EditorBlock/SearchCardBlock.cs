@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using PCG;
-
+# if UNITY_EDITOR
 public class SearchCardBlock {
     public enum SearchTarget {
         characterCard,
@@ -62,3 +62,4 @@ public class SearchCardBlock {
         return candidates;
     }
 }
+#endif

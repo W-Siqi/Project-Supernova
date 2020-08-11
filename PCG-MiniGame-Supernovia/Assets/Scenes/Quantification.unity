@@ -171,8 +171,6 @@ MonoBehaviour:
     corrputTraitMoneyPerRound: 2
     cruelTraitPeopleValuePerDecision: 5
     warlikeTraitArmyValueWhenAccept: 10
-    minInitLoyalty: 2
-    maxInitLoyalty: 7
 --- !u!4 &997419920
 Transform:
   m_ObjectHideFlags: 0
@@ -216,6 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621d03465af46c446a78a794c26d8f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config:
+    errorAllowed: 0.05
+    playRoundsPerEstimate: 1000
+    maxStep: 30
   autoPlay: {fileID: 1215274155}
   quantifizer: {fileID: 1800103214}
   recipe:
@@ -241,9 +243,8 @@ MonoBehaviour:
       corrputTraitMoneyPerRound: 2
       cruelTraitPeopleValuePerDecision: 5
       warlikeTraitArmyValueWhenAccept: 10
-      minInitLoyalty: 2
-      maxInitLoyalty: 7
   recipeHistory: []
+  debugDifficulty: 0.63
 --- !u!4 &1181901819
 Transform:
   m_ObjectHideFlags: 0
@@ -303,7 +304,7 @@ MonoBehaviour:
     lostForloyalty: 18
   lastGameLogs: []
   debugDifficulty: 0.5
-  debugPlayTimes: 474
+  debugPlayTimes: 10000
   debugRecipe:
     difficulty: -1
     gameState:
@@ -1259,7 +1260,7 @@ MonoBehaviour:
       acceptCountInCurrentRound: 0
     gameConfig:
       roundCount: 2
-      characterCount: 3
+      characterCount: 5
       eventCountPerRound: 2
       wiseTraitAmplifyRate: 0.3
       slicentTraitSlicenceProbility: 0.3
@@ -1269,8 +1270,6 @@ MonoBehaviour:
       corrputTraitMoneyPerRound: 2
       cruelTraitPeopleValuePerDecision: 5
       warlikeTraitArmyValueWhenAccept: 10
-      minInitLoyalty: 4
-      maxInitLoyalty: 8
   recordLog: 0
   useIntelligentAutoPlayer: 1
 --- !u!4 &1215274156
@@ -1317,30 +1316,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config:
-    maxTestCount: 1000
-    samePath: Assets/quantifyTable.txt
+    recipeTestCount: 1000
+    playcountPerRecepe: 30
+    savePath: Assets/quantifyTable.txt
   quantifyValueTable:
-    corruptTrait:
+    wiseTrait:
       difficultyFacor: 0
-    jealousTrait:
+    silenceTrait:
+      difficultyFacor: 0
+    honestTrait:
       difficultyFacor: 0
     tolerantTrait:
       difficultyFacor: 0
+    warlikeTrait:
+      difficultyFacor: 0
+    corruptTrait:
+      difficultyFacor: 0
+    cruelTrait:
+      difficultyFacor: 0
+    trickyTrait:
+      difficultyFacor: 0
+    jealousTrait:
+      difficultyFacor: 0
+    arrogentTrait:
+      difficultyFacor: 0
     winRound:
-      from: 1
-      to: 10
+      from: 2
+      to: 7
       step: 1
-      stepDifficultyFactors: []
+      difficultyFactors: []
     loyalty:
-      from: 1
-      to: 10
+      from: 2
+      to: 7
       step: 1
-      stepDifficultyFactors: []
+      difficultyFactors: []
     characterCount:
-      from: 1
-      to: 10
+      from: 3
+      to: 6
       step: 1
-      stepDifficultyFactors: []
+      difficultyFactors: []
+    eventCountPerRound:
+      from: 2
+      to: 4
+      step: 1
+      difficultyFactors: []
 --- !u!4 &1800103215
 Transform:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+# if UNITY_EDITOR
 namespace PCG {
     public class EventCardEditor : CardEditor {
         private DescriptionBlock descriptionBlock;
@@ -20,3 +21,4 @@ namespace PCG {
         }
     }
 }
+# endif

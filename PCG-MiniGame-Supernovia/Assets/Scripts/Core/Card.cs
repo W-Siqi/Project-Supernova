@@ -12,7 +12,7 @@ namespace PCG {
         public string description = "";
 
         [SerializeField]
-        private string avatarImagePath = "";
+        private int avatarImageIndex = 0;
         private Texture2D loadedAvatarImage = null;
         private Sprite loadedAvatarSprite = null;
 
@@ -23,31 +23,11 @@ namespace PCG {
 
 
         public Texture2D GetAvatarImage() {
-            if (loadedAvatarImage == null) {
-                loadedAvatarImage = AssetDatabase.LoadAssetAtPath<Texture2D>(avatarImagePath);
-            }
-
-            if (loadedAvatarImage) {
-                return loadedAvatarImage;
-            }
-            else {
-                if (defaultImage == null) {
-                    defaultImage = new Texture2D(100, 100);
-                }
-                return defaultImage;
-            }
+            return  ResourcePool.instance.avatarTextures[avatarImageIndex];
         }
 
         public Sprite GetAvatarSprite() {
-            if (loadedAvatarSprite == null) {
-                loadedAvatarSprite = AssetDatabase.LoadAssetAtPath<Sprite>(avatarImagePath);
-            }
-            return loadedAvatarSprite;     
-        }
-
-        public void SetAvatarImage(Texture2D newAvatarImage) {
-            avatarImagePath = AssetDatabase.GetAssetPath(newAvatarImage);
-            loadedAvatarImage = AssetDatabase.LoadAssetAtPath<Texture2D>(avatarImagePath);
+            return ResourcePool.instance.avatarSprites[avatarImageIndex];    
         }
     }
 }

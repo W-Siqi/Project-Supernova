@@ -12,8 +12,11 @@ public class PlayLoopManager : MonoBehaviour {
 
     public IEnumerator PlayLoop() {
         //yield return StartCoroutine(ViewManager.instance.ViewCardsOnScreen(PlayData.instance.gameState.characterDeck.ToArray()));
+        yield return StartCoroutine(ViewManager.instance.ViewWinConditon(PlayData.instance.gameConfig.roundCount));
 
         for(int round = 0; round < PlayData.instance.gameConfig.roundCount; round++ ) {
+            PlayData.instance.gameState.RefreshForNewRound();
+
             yield return StartCoroutine(CouncilStage(round));
 
             if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
@@ -120,13 +123,38 @@ public class PlayLoopManager : MonoBehaviour {
     }
 
     private void ActivateDecisionElements(StratagemCard stratagem, CharacterCard provider) {
+        var straDelta = stratagem.consequenceSet.statusConsequenceWhenAccept.delta;
+        var traitsPannel = ViewManager.instance.characterStausPannel;
+
         ViewManager.instance.statusVectorPannel.ActivateRelatedValues(stratagem.consequenceSet.statusConsequenceWhenAccept.delta);
         foreach (var character in PlayData.instance.gameState.characterDeck) {
-            ViewManager.instance.characterStausPannel.ActivateTrait(character, Trait.jealous);
+            if (straDelta.people > 0) {
+                traitsPannel.ActivateTrait(character, Trait.silence);
+            }
+            if (straDelta.army > 0) {
+                traitsPannel.ActivateTrait(character, Trait.warlike);
+            }
+            if (straDelta.money > 0) {
+                traitsPannel.ActivateTrait(character, Trait.corrupt);
+            }
+
+            if (provider.HasTrait(Trait.honest)) {
+                traitsPannel.ActivateTrait(character, Trait.corrupt);
+            }
+
+            if (provider.HasTrait(Trait.cruel)) {
+                traitsPannel.ActivateTrait(character, Trait.tolerant);
+            }
+
+            if (provider.HasTrait(Trait.arrogent)) {
+                traitsPannel.ActivateTrait(character, Trait.arrogent);
+            }
+
+            traitsPannel.ActivateTrait(character, Trait.jealous);
         }
-        Trait[] traitsToActivate = { Trait.arrogent, Trait.warlike, Trait.wise, Trait.cruel, Trait.tolerant, Trait.tricky };
+        Trait[] traitsToActivate = { Trait.arrogent, Trait.warlike, Trait.wise, Trait.cruel, Trait.tolerant, Trait.tricky , Trait.honest};
         foreach (var t in traitsToActivate) {
-            ViewManager.instance.characterStausPannel.ActivateTrait(provider, t);
+            traitsPannel.ActivateTrait(provider, t);
         }
     }
 

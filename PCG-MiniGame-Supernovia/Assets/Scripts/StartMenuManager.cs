@@ -18,7 +18,7 @@ public class StartMenuManager : MonoBehaviour
     private TextMeshProUGUI difficultyValueText;
     [SerializeField]
     private Button startGameButton;
-
+    public GameObject PCGLoading;
 
     private bool gameStart = false;
 

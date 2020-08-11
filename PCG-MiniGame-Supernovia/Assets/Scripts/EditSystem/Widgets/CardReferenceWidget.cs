@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using PCG;
 
+# if UNITY_EDITOR
 /// <summary>
 /// 所有card都可用的
 /// </summary>
@@ -26,3 +27,4 @@ public class CardReferenceWidget : Widget
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif

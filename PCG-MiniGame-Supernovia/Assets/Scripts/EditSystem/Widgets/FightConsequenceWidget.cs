@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+# if UNITY_EDITOR
 public class FightConsequenceWidget : Widget
 {
     private static string[] bindingOptions = { "随机", "角色1", "角色2", "角色3" };
@@ -22,3 +22,4 @@ public class FightConsequenceWidget : Widget
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif

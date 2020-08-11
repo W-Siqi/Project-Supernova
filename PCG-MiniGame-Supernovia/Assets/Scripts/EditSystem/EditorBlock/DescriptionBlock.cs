@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using PCG;
-
+# if UNITY_EDITOR
 // 渲染对事件卡修饰词编辑的模块
 public class DescriptionBlock{
     const int DESCRIPTION_COUNT = 6;
@@ -65,3 +65,4 @@ public class DescriptionBlock{
         consequenceWidget.RenderUI();
     }
 }
+#endif

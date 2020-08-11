@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using PCG;
-
+# if UNITY_EDITOR
 public class ConsequenceWidget : Widget{
     private ConsequenceSet editTarget;
 
@@ -57,3 +57,4 @@ public class ConsequenceWidget : Widget{
         editTarget.keywordConsequenceEnabled = keywordConsequence; 
     }
 }
+#endif

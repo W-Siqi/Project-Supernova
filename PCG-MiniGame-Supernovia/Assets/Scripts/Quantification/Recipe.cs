@@ -43,8 +43,7 @@ namespace PCG {
             // init character
             gameState.characterDeck.Clear();
             for (int i = 0; i < gameConfig.characterCount; i++) {
-                var charaPrototype = DeckArchive.instance.characterCards[i];
-                var newCharacter = Card.DeepCopy(charaPrototype);
+                var newCharacter = new CharacterCard();
                 // random properties
                 newCharacter.loyalty = Random.Range(2, 7);
                 foreach (var p in newCharacter.personalities) {
@@ -56,13 +55,13 @@ namespace PCG {
 
             // copy stratagem pool
             gameState.stratagemDeck.Clear();
-            foreach (var stragemCard in DeckArchive.instance.stratagemCards) {
+            foreach (var stragemCard in ResourcePool.instance.stratagemCards) {
                 gameState.stratagemDeck.Add(Card.DeepCopy(stragemCard));
             }
 
             // copy event pool
             gameState.eventDeck.Clear();
-            foreach (var card in DeckArchive.instance.eventCards) {
+            foreach (var card in ResourcePool.instance.eventCards) {
                 gameState.eventDeck.Add(Card.DeepCopy(card));
             }
 

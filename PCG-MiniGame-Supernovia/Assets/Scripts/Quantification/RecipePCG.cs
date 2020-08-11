@@ -45,14 +45,27 @@ namespace PCG {
                 recipe.difficulty = autoPlay.lastPlayStatistic.winRate;
                 Debug.Log("[PCG] - 估算结果： "+recipe.difficulty);
 
+                recipeHistory.Add(new Recipe(recipe));
+
                 if (Math.Abs(targetDifficulty - recipe.difficulty) < config.errorAllowed) {
                     break;
                 }
                 else {
-                    recipeHistory.Add(new Recipe(recipe));
                     recipe.AdjustDifficulty(quantifizer.quantifyValueTable, targetDifficulty);
                 }
             }
+
+            Recipe bestRecipe = recipe;
+            float minDiff = Mathf.Abs(bestRecipe.difficulty - targetDifficulty);
+            foreach (var r in recipeHistory) {
+                if (Mathf.Abs(r.difficulty - targetDifficulty) < minDiff) {
+                    bestRecipe = r;
+                    minDiff = Mathf.Abs(bestRecipe.difficulty - targetDifficulty);
+                }
+            }
+
+            Debug.Log("[PCG] - 最终结果： " + bestRecipe.difficulty);
+            recipe = new Recipe(bestRecipe);
         }
 
         public Recipe GetCurrentRecipeCopy() {

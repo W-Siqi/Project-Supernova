@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using PCG;
+
+# if UNITY_EDITOR
 public class EventDeckEditor : DeckEditor
 {
     [MenuItem("PCG编辑/事件")]
@@ -22,3 +24,4 @@ public class EventDeckEditor : DeckEditor
         return new EventCard();
     }
 }
+#endif

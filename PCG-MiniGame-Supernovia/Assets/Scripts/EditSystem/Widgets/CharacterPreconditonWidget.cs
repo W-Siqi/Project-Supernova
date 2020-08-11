@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using PCG;
 
-
+# if UNITY_EDITOR
 public class CharacterPreconditonWidget : Widget
 {
     private CharacterPrecondition editTarget;
@@ -22,3 +22,4 @@ public class CharacterPreconditonWidget : Widget
         EditorGUILayout.EndHorizontal();
     }
 }
+#endif

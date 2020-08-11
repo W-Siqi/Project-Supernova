@@ -27,17 +27,4 @@ public class SerializedStory : ScriptableObject
     private const string DEFAULT_SAVE_NAME = "SerializedStory.asset";
 
     public List<Section> sections = new List<Section>();
-
-
-    public static SerializedStory CreateAndSave() {
-        var savePath = string.Format("{0}/{1}", DEFAULT_SAVE_DIR, DEFAULT_SAVE_NAME);
-
-        if (!Directory.Exists(DEFAULT_SAVE_DIR)) {
-            Directory.CreateDirectory(DEFAULT_SAVE_DIR);
-        }
-
-        var serializedStory = ScriptableObject.CreateInstance<SerializedStory>();
-        AssetDatabase.CreateAsset(serializedStory, savePath);
-        return serializedStory;
-    }
 }

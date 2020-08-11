@@ -19,6 +19,14 @@ namespace PCG {
         public Attributes attributes = new Attributes();
         public Personality[] personalities = new Personality[PERSONALITY_COUNT];
 
+        public CharacterCard() {
+            attributes = new Attributes();
+            personalities = new Personality[PERSONALITY_COUNT];
+            for (int i = 0; i < personalities.Length; i++) {
+                personalities[i] = new Personality();
+            }
+        }
+
         public bool HasTrait(Trait trait) {
             foreach (var p in personalities) {
                 if (p.trait == trait) {

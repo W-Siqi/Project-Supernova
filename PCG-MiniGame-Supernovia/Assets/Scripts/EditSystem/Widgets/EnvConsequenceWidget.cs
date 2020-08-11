@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+# if UNITY_EDITOR
 public class EnvConsequenceWidget : Widget
 {
     private EnvironmentConsequence editTarget;
@@ -35,3 +36,4 @@ public class EnvConsequenceWidget : Widget
         return potiencialNames.ToArray();
     }
 }
+#endif

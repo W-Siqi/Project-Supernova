@@ -31,45 +31,10 @@ namespace PCG {
         }
 
         public void InitDataWithoutPCG() {
-            // init character
-            gameState.characterDeck.Clear();
-            for (int i = 0; i < gameConfig.characterCount; i++) {
-                var charaPrototype = DeckArchive.instance.characterCards[i];
-                var newCharacter = Card.DeepCopy(charaPrototype);
-                // random properties
-                newCharacter.loyalty = Random.Range(2, 7);
-                foreach (var p in newCharacter.personalities) {
-                    p.trait = TraitUtils.GetRandomTrait();
-                }
-
-                gameState.characterDeck.Add(newCharacter);
-            }
-
-            // copy stratagem pool
-            gameState.stratagemDeck.Clear();
-            foreach (var stragemCard in DeckArchive.instance.stratagemCards) {
-                gameState.stratagemDeck.Add(Card.DeepCopy(stragemCard));
-            }
-
-            // copy event pool
-            gameState.eventDeck.Clear();
-            foreach (var card in DeckArchive.instance.eventCards) {
-                gameState.eventDeck.Add(Card.DeepCopy(card));
-            }
-
-            // init startgems of character
-            gameState.stratagemIndexDict.Clear();
-            foreach (var chara in gameState.characterDeck) {
-                gameState.stratagemIndexDict[chara] = new List<int>();
-                for (int i = 0; i < gameConfig.roundCount; i++) {
-                    gameState.stratagemIndexDict[chara].Add(Random.Range(0, gameState.stratagemDeck.Count));
-                }
-            }
-
-            // init status
-            gameState.statusVector.army = Random.Range(20, 80);
-            gameState.statusVector.money = Random.Range(20, 80);
-            gameState.statusVector.people = Random.Range(20, 80);
+            var recipe = new Recipe();
+            recipe.ToRandom(FindObjectOfType<DifficultyQuantifizer>().quantifyValueTable);
+            gameState = recipe.gameState;
+            gameConfig = recipe.gameConfig;
         }
     }
 }

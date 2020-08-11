@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/External/CCGKit/Demo/Scenes/Home.unity
     guid: 2dbda52846efd49d2abae89b74d0501f
-  - enabled: 1
+  - enabled: 0
     path: Assets/External/CCGKit/Demo/Scenes/Lobby.unity
     guid: a4c40d647ade24dbb9aa3fdb24576ffd
-  - enabled: 1
+  - enabled: 0
     path: Assets/External/CCGKit/Demo/Scenes/DeckBuilder.unity
     guid: 6e50784ef73e545938d9df65870415fa
-  - enabled: 1
+  - enabled: 0
     path: Assets/External/CCGKit/Demo/Scenes/Game.unity
     guid: c5f0e1bda8df04004829d31b8fc8f2ed
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: f684de39399019b4c90c4a3cb1c5a7cf
   m_configObjects: {}
