@@ -45,6 +45,7 @@ namespace PCG {
         }
 
         public ResTable resTable;
+        public GameDashboard gameDashboard;
         public EventDescriptionPlayer eventDescriptionPlayer;
         public GameStateModifyEventPlayer gameStateModifyEventPlayer;
         public CharacterStausPannel characterStausPannel;
@@ -76,7 +77,8 @@ namespace PCG {
             characterStausPannel.Init(gameState.characterDeck.ToArray());
         }
 
-        public void InitViewForCouncialStage() {
+        public void InitViewForCouncialStage(int round,int totalRound) {
+            gameDashboard.UpdateState(round,totalRound,true);
             characterStausPannel.Showup();
             eventDescriptionPlayer.HideUI();
         }

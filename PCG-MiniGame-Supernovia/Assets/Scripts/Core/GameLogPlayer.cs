@@ -33,11 +33,12 @@ namespace PCG {
                         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.eventSceneTex);
                         StoryBook.instance.ViewContent(newPageContent);
                         yield return new WaitForSeconds(1.5f);
-                        ViewManager.instance.InitViewForCouncialStage();
+                        ViewManager.instance.InitViewForCouncialStage(999,999);
                     }
                     else {
                         // init from council
                         ViewManager.instance.characterStausPannel.Hide();
+                        ViewManager.instance.gameDashboard.UpdateState(999, 999, false);
                         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
                         StoryBook.instance.ViewContent(newPageContent);
                         yield return new WaitForSeconds(1.5f);

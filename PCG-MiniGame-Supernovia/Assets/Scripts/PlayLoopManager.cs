@@ -23,7 +23,7 @@ public class PlayLoopManager : MonoBehaviour {
                 break;
             }
 
-            yield return StartCoroutine(EventStream());
+            yield return StartCoroutine(EventStream(round));
 
             if (GameExecuter.HasReachDeath(PlayData.instance.gameState)) {
                 break;
@@ -39,7 +39,7 @@ public class PlayLoopManager : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
 
         // UI
-        ViewManager.instance.InitViewForCouncialStage();
+        ViewManager.instance.InitViewForCouncialStage(curRound,PlayData.instance.gameConfig.roundCount);
 
         // 开局buff
         var modifyEvents = GameExecuter.CalculateBuffBeforeRound(PlayData.instance.gameState, PlayData.instance.gameConfig);
@@ -106,10 +106,11 @@ public class PlayLoopManager : MonoBehaviour {
         ViewManager.instance.EndNextRoundBtn();
     }
 
-    IEnumerator EventStream() {
+    IEnumerator EventStream(int round) {
         var newPageContent = new StoryBook.PageContent(ResourceTable.instance.texturepage.councilSceneRT);
         StoryBook.instance.ViewContent(newPageContent);
         yield return new WaitForSeconds(1.5f);
+        ViewManager.instance.gameDashboard.UpdateState(round, PlayData.instance.gameConfig.roundCount, false);
 
         foreach (var selectedEvent in GameExecuter.SelectEventCards(PlayData.instance.gameState, PlayData.instance.gameConfig)) {
             // 绑定

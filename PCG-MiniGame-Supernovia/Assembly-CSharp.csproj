@@ -476,6 +476,7 @@
     <Compile Include="Assets\Scripts\Depracted\SubstoryCardEditor.cs" />
     <Compile Include="Assets\Scripts\Depracted\SubstoryDeckEditor.cs" />
     <Compile Include="Assets\Scripts\Depracted\UIController.cs" />
+    <Compile Include="Assets\Scripts\Depracted\ValueChangeTooltip.cs" />
     <Compile Include="Assets\Scripts\Depracted\VoteViewer.cs" />
     <Compile Include="Assets\Scripts\Depracted\VoterGroupViewer.cs" />
     <Compile Include="Assets\Scripts\EditSystem\DeckArchive.cs" />
@@ -537,6 +538,8 @@
     <Compile Include="Assets\Scripts\Visual\CharacterStausPannel.cs" />
     <Compile Include="Assets\Scripts\Visual\DeckDisplayBehaviour.cs" />
     <Compile Include="Assets\Scripts\Visual\EventDescriptionPlayer.cs" />
+    <Compile Include="Assets\Scripts\Visual\GameDashboard.cs" />
+    <Compile Include="Assets\Scripts\Visual\GameStageViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\GameStateModifyEventPlayer.cs" />
     <Compile Include="Assets\Scripts\Visual\GuideTipViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\PersonalityViewer.cs" />
@@ -548,7 +551,6 @@
     <Compile Include="Assets\Scripts\Visual\TraitTooltip.cs" />
     <Compile Include="Assets\Scripts\Visual\TraitTooltipDetector.cs" />
     <Compile Include="Assets\Scripts\Visual\TraitTriggeredCauseViewer.cs" />
-    <Compile Include="Assets\Scripts\Visual\ValueChangeTooltip.cs" />
     <Compile Include="Assets\Scripts\Visual\ValueViewer.cs" />
     <Compile Include="Assets\Scripts\Visual\ViewManager.cs" />
     <Compile Include="Assets\Scripts\Wrapper\BookControllerWrapper.cs" />

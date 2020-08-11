@@ -313,7 +313,7 @@ namespace PCG {
                             var modify = new GameStateModifyEvent(gameState, 
                                 character, 
                                 Trait.warlike,
-                                string.Format("增加军力的政策【{0}】未采纳,\n勇猛[{1}]的忠诚降低", stratagem.name, stratagemProvider.name));
+                                string.Format("增加军力的政策【{0}】未采纳,\n勇猛[{1}]的忠诚降低", stratagem.name, character.name));
 
                             modify.AddLoyaltyChangeConsequence(gameState, character, -1);
                             gameStateModifyEvents.Add(modify);
@@ -328,7 +328,7 @@ namespace PCG {
                             var modify = new GameStateModifyEvent(gameState, 
                                 character, 
                                 Trait.silence,
-                                string.Format("增加民心的政策【{0}】未采纳,\n沉默的[{1}]也看不下去了", stratagem.name, stratagemProvider.name));
+                                string.Format("增加民心的政策【{0}】未采纳,\n沉默的[{1}]也看不下去了", stratagem.name, character.name));
 
                             modify.AddLoyaltyChangeConsequence(gameState, character, -1);
                             gameStateModifyEvents.Add(modify);
