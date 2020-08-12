@@ -2,15 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
 
 namespace PCG {
     [ExecuteInEditMode]
     public class AutoPlayManager : MonoBehaviour {
+        private string LOG_SAVE_PATH = "Assets/GamelogPackage.asset";
+
         public int batchPerFrame = 0;
         public MultiAutoPlayStatistic lastPlayStatistic;
-        public List<GameLog> lastGameLogs = new List<GameLog>();
 
         [Range(0, 1)]
         public float debugDifficulty = 0.5f;
@@ -21,6 +23,8 @@ namespace PCG {
         public bool useIntelligentAutoPlayer = true;
 
         public bool isPlaying { get; private set; }
+
+        private GameLogPackage gameLogPackage = null;
 
         [ContextMenu("刷新Recipe")]
         public void RefreshDebugRecipe() {
@@ -43,13 +47,16 @@ namespace PCG {
                 UnityEngine.Debug.LogError("记录日志不能超过数量");
                 return;
             }
-            lastGameLogs.Clear();
             lastPlayStatistic = new MultiAutoPlayStatistic();
             StartCoroutine(PlayingCoroutine(recipe.gameState, recipe.gameConfig, playTimes, recordLog));
         }
 
         // 模拟的总协程
         IEnumerator PlayingCoroutine(GameState gameState, GameConfig gameConfig, int playTimes, bool recordLog) {
+            if (recordLog) {
+                gameLogPackage = ScriptableObject.CreateInstance<GameLogPackage>();
+                gameLogPackage.gameState = gameState;
+            }
             isPlaying = true;
 
             Profiler.BeginSample("autoplay");
@@ -76,7 +83,7 @@ namespace PCG {
                     lastPlayStatistic.Merge(playRes);
                     // 记录日志
                     if (recordLog) {
-                        lastGameLogs.Add(playRes.gameLog);
+                        gameLogPackage.playStatistics.Add(playRes);
                     }
                 }
                 playCount += batchCount;
@@ -85,7 +92,10 @@ namespace PCG {
 
             Profiler.EndSample();
             // UnityEngine.Debug.Log("时间： " + (Time.time - startTime).ToString());
-
+            if (recordLog) {
+                gameLogPackage.summerayStatistic = lastPlayStatistic;
+                AssetDatabase.CreateAsset(gameLogPackage,LOG_SAVE_PATH);
+            }
             isPlaying = false;
         }
     }

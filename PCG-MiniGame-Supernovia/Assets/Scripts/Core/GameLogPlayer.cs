@@ -4,10 +4,16 @@ using UnityEngine;
 
 namespace PCG {
     public class GameLogPlayer : MonoBehaviour {
-        public AutoPlayManager autoPlayManager;
-        public int debugPlayIndex = 0;
+        public GameLogPackage logPackage;
+        public int playIndex = 0;
 
         bool isPlaying = false;
+
+        [ContextMenu("播放")]
+        private void PlayLogPackage() {
+            Play(logPackage.gameState, logPackage.playStatistics[playIndex].gameLog);
+        }
+
         public void Play(GameState initState, GameLog gameLog) {
             if (!isPlaying) {
                 StartCoroutine(PlayGamelog(initState.MakeDeepCopy(), gameLog));
